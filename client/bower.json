@@ -1,0 +1,27 @@
+{
+  "name": "SuperList.client",
+  "version": "0.0.0",
+  "homepage": "https://github.com/moshemal/SuperList",
+  "authors": [
+    "Moshe <moshemal@gmail.com>"
+  ],
+  "description": "client of SuperList application",
+  "main": "main.js",
+  "moduleType": [
+    "amd"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendors",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "kendo-ui": "~2015.1.408+SP1",
+    "requirejs": "~2.1.17",
+    "text": "~2.0.14"
+  }
+}
