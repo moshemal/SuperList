@@ -21,7 +21,7 @@ function route(request, response, postData) {
     pathname = "/" + pathname.split("/").slice(2).join("/");
     console.log("Serving api for: ", pathname, " with data: " + postData);
     return typeof handle[pathname] === 'function' ?
-      handle[pathname](response, pathname, postData, request) :
+      handle[pathname](response, parsedUrl, postData, request) :
       notFound(response);
   } else {
     console.log("Serving static for: " + pathname);

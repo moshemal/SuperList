@@ -1,6 +1,5 @@
 var fs 						= require('fs');
 var querystring 	= require("querystring");
-var cookies 			= require("./cookies");
 
 var passwords = null;
 var sessions 	= {};
@@ -19,11 +18,9 @@ function isRegistered(id, password){
 }
 
 
-function login(response, pathname, postData){
+function login(response, parsedUrl, postData){
 	
 	var parsedData = querystring.parse(postData);
-	
-	console.log(pathname, postData, parsedData);
 
 	if (isRegistered(parsedData.user, parsedData.password)){
 		var token 	= Math.random();

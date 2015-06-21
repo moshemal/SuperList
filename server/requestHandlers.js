@@ -16,11 +16,11 @@ function validateCreateUserParams (parsedQuery) {
   parsedQuery.user !== "" && parsedQuery.password !== "");
 }
 
-function createUser (response, pathname, postData){
+function createUser (response, parsedUrl, postData){
   var parsedQuery = querystring.parse(postData);
   if (validateCreateUserParams(parsedQuery)){
     if (auth.createUser(parsedQuery.user, parsedQuery.password)){
-      db.createUser();
+      db.createUser(parsedQuery.user, parsedQuery.properties);
       response.writeHead(200, {"Content-Type": "text/plain"});
       response.write("we are creating user: " + parsedQuery.user);
       response.end();
@@ -32,4 +32,5 @@ function createUser (response, pathname, postData){
   response.end();
 }
 
-exports.upload = upload;
+exports.upload      = upload;
+exports.createUser  = createUser;

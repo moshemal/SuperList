@@ -5,10 +5,10 @@ var db							= require('./db');
 
 
 function decorateWithIsloggedIn(func){
-	return function (response, pathname, postData, request){
+	return function (response, parsedUrl, postData, request){
 		var cks = cookies.parseCookies(request);
 		if (auth.isLoggedIn(cks)){
-			func(response, pathname, postData, request);
+			func(response, parsedUrl, postData, request);
 		} else {
 			response.writeHead(401, {
 				"Content-Type": "text/plain"
@@ -20,7 +20,7 @@ function decorateWithIsloggedIn(func){
 
 var handle = {
 	"/login": 			auth.login,
-	"/createUser":  db.createUser,
+	"/createUser":  requestHandlers.createUser,
 	"/upload":      decorateWithIsloggedIn(requestHandlers.upload)
 }
 
