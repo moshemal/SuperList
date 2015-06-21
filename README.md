@@ -1,6 +1,8 @@
 # SuperList
 Single page application, with node.js server, educational project
 
+**This project is not for production uses**
+
 ## Installation
 From the project directory:
 ```bash
