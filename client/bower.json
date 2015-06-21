@@ -20,7 +20,7 @@
     "tests"
   ],
   "dependencies": {
-    "kendo-ui": "~2015.1.408+SP1",
+    "kendo-ui": "~2015.1.408",
     "requirejs": "~2.1.17",
     "text": "~2.0.14"
   }
