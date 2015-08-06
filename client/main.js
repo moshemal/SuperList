@@ -10,7 +10,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout'],
 
   function startLoggin(){
     function loginSuccess(){
-      console.log("login success moving to application");
+      console.log("login success moving to application gali: was here.");
       startApp();
       login.destroy();
     }
