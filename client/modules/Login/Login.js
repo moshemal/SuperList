@@ -1,13 +1,15 @@
-define(['jquery', 'text!./template.html', 'core/request'], function($, template, request){
+define(['jquery', 'text!./template.html', 'core/request',  'modules/Create/Create'], function($, template, request, Create){
 	'use strict';
 		
 	function Login(initObj){
 		initObj = initObj || {};
 		var that = this;
+
 		this._dfd = $.Deferred();
 		
 		var htmlDom = this.$ = $(template);
-		this.$.on('submit', function(ev){
+
+		this.$.find("#loginform").on('submit', function(ev){
 			console.log(ev);
 			var name = ev.target[0].value;
 			var password = ev.target[1].value;
@@ -27,7 +29,7 @@ define(['jquery', 'text!./template.html', 'core/request'], function($, template,
 	}
 	
 	Login.prototype.resetDeferred = function (){
-		this._dfd = $.Deferred();
+		this._dfd = new $.Deferred();
 	}
 
 	Login.prototype.getPromise = function (){
