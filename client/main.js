@@ -5,7 +5,7 @@
 define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules/Create/Create'], 
   function($, Login, cookies, layout, Create){
   'use strict';
-  //global vars
+  
   var AUTH_STR = "auth";
 	var login;
 	var create;
@@ -50,11 +50,11 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   }
 
   //checking if allready logged in
-  if(cookies.getCookie(AUTH_STR) !== "" ) {
+  /* if(cookies.getCookie(AUTH_STR) !== "" ) {
     console.log("starting application");
     startApp();
-  } else {
+  } else { */
     startLoggin();
-  }
+  //}
 });
 
