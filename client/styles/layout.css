@@ -1,0 +1,33 @@
+ body{
+        height: 100%;
+           }
+
+
+
+        /*for 1*/
+                #top-pane { 
+                  background-color: rgba(1, 10, 70, 0.10);
+                }
+              
+              
+                /*for 2*/
+                #middle-pane { 
+                 background-color: rgba(191, 110, 70, 0.10);
+                  /*height: 1000px;700*/
+                  /*width: "160%";*/
+                }
+              
+                /*for 3*/
+                #bottom-pane{ 
+                  background-color: rgba(66, 45,7, 0.15); 
+                }
+              
+              /*for 4*/
+              #center-pane{ 
+                background-color: rgba(55,777, 888, 0.05);
+              }
+              
+               /*for 5 */
+              #right-pane{ 
+                background-color: rgba(50,89, 14, 0.04); 
+              }
