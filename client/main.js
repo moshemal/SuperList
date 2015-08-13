@@ -2,8 +2,8 @@
  * Created by moshemal.
  */
 
-define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules/Create/Create'], 
-  function($, Login, cookies, layout, Create){
+define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules/Create/Create','core/windowcreate'], 
+  function($, Login, cookies, layout, Create, window){
   'use strict';
   //global vars
   var AUTH_STR = "auth";

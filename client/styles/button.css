@@ -1,0 +1,15 @@
+
+/* button in laout part 3 */
+#bottom-pane p{
+     margin: 0 0 30px;
+      line-height: 40px;
+	  /*background-color: rgba(66, 45,7, 0.15);*/ 
+
+}
+
+
+
+
+.k-button  {
+  background-color: rgba(191, 110, 70, 0.10);
+}
