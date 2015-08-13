@@ -35,13 +35,13 @@ define(['kendo', 'text!./templates/WindowCreateList.html'],
 			
               modal: true,
 			  width: "505px",
-              title: "Craete New List",
+              title: "Create New List",
               close: function() {
                 $(".open-button").show();
               },
               visible: false
             });
-			wnd.data("kendoWindow").center();
+			// wnd.data("kendoWindow").center();
 			
           }
         });
