@@ -9,6 +9,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   var AUTH_STR = "auth";
 	var login;
 	var create;
+	//var win;
   function startLoggin(){
     function loginSuccess(){
       console.log("login success moving to application gali: was here.");
@@ -47,6 +48,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   }
   function startApp(){
     layout.createLayout("3W", "#container");
+	//win = new window();
   }
 
   //checking if allready logged in
