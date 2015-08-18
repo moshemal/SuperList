@@ -1,7 +1,7 @@
 define(['jquery', 'text!./templates/l2U.html', 'text!./templates/l3W.html', 'kendo'], 
 	function($, l2U, l3W){
 		'use strict';
-	
+	//console.log($);
 	
 	function getJLayout (type){
 		var layoutHtml;
@@ -45,9 +45,6 @@ $("#left-pane").kendoSplitter({
 
 				
 	}
-	
-	
-	
 
 	return {
 		createLayout: createLayout

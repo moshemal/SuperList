@@ -2,7 +2,7 @@
  * Created by moshemal.
  */
 
-define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules/Create/Create','core/windowcreate'], 
+define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules/Create/Create','core/menu','core/windowcreate'], 
   function($, Login, cookies, layout, Create, window){
   'use strict';
   //global vars
@@ -10,6 +10,8 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
 	var login;
 	var create;
 	//var win;
+	//var panal;//menu bar
+	
   function startLoggin(){
     function loginSuccess(){
       console.log("login success moving to application gali: was here.");
@@ -48,6 +50,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   }
   function startApp(){
     layout.createLayout("3W", "#container");
+	window.createMenu("panalBar", "#megaStore");
 	//win = new window();
   }
 
