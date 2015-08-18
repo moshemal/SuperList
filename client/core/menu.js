@@ -8,7 +8,7 @@ define(['jquery', 'text!./templates/Menu.html', 'kendo'],
 		switch (type){
 			//case "2U":  menuHtml = $(l2U); //
 									//break;
-			case "panalBar":  menuHtml = $(Menu); //
+			case "panelBar":  menuHtml = $(Menu); //
 									break;
 			default:    menuHtml = $(Menu);
 		}

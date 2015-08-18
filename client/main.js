@@ -3,7 +3,7 @@
  */
 
 define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules/Create/Create','core/menu','core/windowcreate'], 
-  function($, Login, cookies, layout, Create, window){
+  function($, Login, cookies, layout, Create, menu, window){
   'use strict';
   //global vars
   var AUTH_STR = "auth";
@@ -50,7 +50,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   }
   function startApp(){
     layout.createLayout("3W", "#container");
-	window.createMenu("panalBar", "#megaStore");
+	menu.createMenu("panelBar", "#megaStore");
 	//win = new window();
   }
 
