@@ -3,6 +3,11 @@ Single page application, with node.js server, educational project
 
 **This project is not for production uses**
 
+##  Project Members
+Gali Bril 301352878
+Nadav "Lord of GitHub" Gur-Arieh 300430758
+Matan Rosenfeld 301672788
+
 ## Installation
 From the project directory:
 ```bash
