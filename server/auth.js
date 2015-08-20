@@ -24,7 +24,7 @@ function login(response, parsedUrl, postData){
 
 	if (isRegistered(parsedData.user, parsedData.password)){
 		var token 	= Math.random();
-		var expires = new Date(new Date().getTime() + 1000*60*60*24*4); //4 days 
+		var expires = new Date(new Date().getTime() + 1000*60*60/* *24*4 */); //4 days 
 		var authCookie = AUTH_KEY + "=" + token + "; Path=/; Expires=" + expires;
 		var userCookie = "user=" + parsedData.user + "; Path=/; Expires=" + expires;
 		sessions[parsedData.user] = "" + token;

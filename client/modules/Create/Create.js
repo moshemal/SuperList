@@ -11,7 +11,7 @@ define(['jquery', 'text!./template.html', 'core/request'], function($, template,
 			console.log(ev);
 			var name = ev.target[0].value;
 			var password = ev.target[1].value;
-			var properties = ev.target[2].name + ": " + ev.target[2].value + ", \r\n" + ev.target[3].name + ": " + ev.target[3].value
+			var properties = ev.target[2].name + ": " + ev.target[2].value + ", 	" + ev.target[3].name + ": " + ev.target[3].value
 			var promise = request.createUser(name, password, properties);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;

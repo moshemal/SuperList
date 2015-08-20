@@ -20,7 +20,7 @@ function createUser (response, parsedUrl, postData){
   var parsedQuery = querystring.parse(postData);
   if (validateCreateUserParams(parsedQuery)){
     if (auth.createUser(parsedQuery.user, parsedQuery.password)){
-      db.createUser(parsedQuery.user, parsedQuery.properties);
+      db.createUser(parsedQuery.user, parsedQuery.properties); //to the make dir 
       response.writeHead(200, {"Content-Type": "text/plain"});
       response.write("we are creating user: " + parsedQuery.user);
       response.end();
