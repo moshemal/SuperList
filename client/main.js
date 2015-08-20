@@ -51,7 +51,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   function startApp(){
     layout.createLayout("3W", "#container");
 	menu.createMenu("panelBar", "#megaStore");
-	//win = new window();
+	window.createButton("buttonPlus", "#windowButton");
   }
 
   //checking if allready logged in
