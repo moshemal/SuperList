@@ -12,11 +12,13 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
 	//var win;
 	//var panal;//menu bar
 	
+//for User exsiset	
   function startLoggin(){
-    function loginSuccess(){
+    
+	function loginSuccess(){
       console.log("login success moving to application gali: was here.");
       startApp();
-      login.destroy();
+      login.destroy(); //go to the splitter
     }
 
     function loginFail(){
@@ -28,10 +30,13 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
 	
     login = new Login();
     login.appendTo("#container");
+	//
 	login.$.find("#createbtn").on('click', function(){startCreate();})
     login.getPromise().then(loginSuccess, loginFail);  
 
   }
+  
+  //for sign in new User
   function startCreate(){
 	  function createSuccess(){
 		console.log("creation success moving to login.");
@@ -48,6 +53,8 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
 	login.destroy();
 	create.getPromise().then(createSuccess,createFail);
   }
+  
+  
   function startApp(){
     layout.createLayout("3W", "#container");
 	menu.createMenu("panelBar", "#megaStore");
