@@ -48,7 +48,7 @@ define(['jquery', 'text!./templates/WindowCreateList.html', 'kendo'],
 			
               modal: true,
 			  width: "505px",
-              title: "Craete New List",
+              title: "Create New List",
               close: function() {
                 $(".open-button").show();
               },
