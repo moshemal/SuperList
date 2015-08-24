@@ -12,6 +12,7 @@ define(['jquery', 'text!./template.html', 'core/request',  'modules/Create/Creat
 		this.$.find("#loginform").on('submit', function(ev){
 			console.log(ev);
 			var name = ev.target[0].value;
+			//console.log(ev.target[0].value);
 			var password = ev.target[1].value;
 			var promise = request.login(name, password);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});

@@ -28,11 +28,11 @@ define(['jquery', 'text!./templates/WindowCreateList.html', 'kendo'],
 		  spriteCssClass: "k-icon k-i-plus"
 		  });
 		  
-		   var wnd = $("#window");
+		   var wndHtml = $("#window");
 		  var buttonOpen = $(".open-button").data("kendoButton");
 		  
           buttonOpen.bind("click", function() {
-            wnd.data("kendoWindow").open();
+            wndHtml.data("kendoWindow").open();
             $(this).hide();
           });
 
@@ -43,8 +43,8 @@ define(['jquery', 'text!./templates/WindowCreateList.html', 'kendo'],
 
 		  
 		 
-          if (!wnd.data("kendoWindow")) {
-            wnd.kendoWindow({
+          if (!wndHtml.data("kendoWindow")) {
+            wndHtml.kendoWindow({
 			
               modal: true,
 			  width: "505px",
@@ -54,7 +54,7 @@ define(['jquery', 'text!./templates/WindowCreateList.html', 'kendo'],
               },
               visible: false
             });
-			wnd.data("kendoWindow").center();
+			wndHtml.data("kendoWindow").center();
 			
          }		
 	}//create Button Plus

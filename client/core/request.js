@@ -13,9 +13,11 @@ define(['jquery'], function($){
 				password: password
 			}
 		});
-	}
+	} //end login
 
   function createUser (name, password, properties){
+   console.log("in client/request.js create user name :: "+name);
+   console.log("in client/request.js create user password :: "+password);
     return $.ajax("/api/createUser", {
       method: "post",
       success: function(data, a, xhr){
