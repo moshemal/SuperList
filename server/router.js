@@ -12,19 +12,20 @@ function notFound(response){
 }
 
 function route(request, response, postData) {
-  var parsedUrl = url.parse(request.url);
+  var parsedUrl = url.parse(request.url);//127.0.0.1.8888
   var pathname = parsedUrl.pathname;
 
   console.log("About to route a request for " + pathname);
 
   if (pathname.indexOf("/api") === 0){
     pathname = "/" + pathname.split("/").slice(2).join("/");
-    console.log("Serving api for: ", pathname, " with data: " + postData);
+    console.log("in router.js Serving api for: ", pathname, " with data: " + postData);
     return typeof handle[pathname] === 'function' ?
       handle[pathname](response, parsedUrl, postData, request) :
       notFound(response);
-  } else {
-    console.log("Serving static for: " + pathname);
+  } 
+  else {
+    console.log("in router.js Serving static for: " + pathname);
     staticServer.serve(request, response);
   }
 }
