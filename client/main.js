@@ -9,8 +9,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   var AUTH_STR = "auth";
 	var login;
 	var create;
-	//var win;
-	//var panal;//menu bar
+	var user;
 	
 //for User exsiset	
   function startLoggin(){
@@ -62,12 +61,14 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   
   
   function startApp(){
+  	user=cookies.getCookie("user");
+  console.log(user);
+  
     layout.createLayout("3W", "#container");
 	menu.createMenu("panelBar", "#megaStore");
 	window.createButton("buttonPlus", "#windowButton");
-	//console.log("login  gali: was here."+login.getName());
-		//withdraw client
-		console.log(cookies.getCookie("user"));
+	
+
   }
 
   //checking if allready logged in

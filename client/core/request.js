@@ -10,7 +10,7 @@ define(['jquery'], function($){
 			//var xhr - an object
 			//var data - print auth=0.05080643412657082 maybe take the data base from auth.js
 			success: function(data, a, xhr){
-				console.log(data);
+				console.log(data)
 				
 			},
 			
