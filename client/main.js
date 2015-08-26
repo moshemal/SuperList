@@ -71,6 +71,8 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   //checking if allready logged in
   if(cookies.getCookie(AUTH_STR) !== "" ) {
     console.log("starting application");
+	//withdraw client
+	console.log(cookies.getCookie("user"));
     startApp();
   } else {
     startLoggin();
