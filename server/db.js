@@ -8,10 +8,13 @@ function createUser (user, properites){
 	
 			return;
 		} else {
+		//make a user file
 			fs.mkdir('./db/' + user, function(){
+			//make a file that his path db/user/lists
 					fs.mkdir('./db/' + user + '/lists', 
 					function(){
-						fs.writeFile('./db/' + user + '/properites.json', properites, 'utf8');
+					//write to the file path db/user/properites.json its properties
+						fs.writeFile('./db/' + user + '/properites.json', JSON.stringify(properites), 'utf8');
 					});
 			});
 		}
