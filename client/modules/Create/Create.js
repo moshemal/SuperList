@@ -15,7 +15,7 @@ define(['jquery', 'text!./template.html', 'core/request'], function($, template,
 			var job =  ev.target[3].name + ": " + ev.target[3].value; //job
 			var full_name = ev.target[2].name + ": " + ev.target[2].value; //full name
 			var properties = full_name +  ", " + job;
-			var promise = request.createUser(name, password, properties);
+			var promise = request.createUser(name, password, properties); //go to request.js and write the data base of the user
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
 		});

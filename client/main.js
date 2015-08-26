@@ -17,6 +17,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
     
 	function loginSuccess(){
       console.log("login success moving to application gali: was here.");
+	  
       startApp();
       login.destroy(); //go to the splitter
     }
@@ -32,7 +33,8 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
     login.appendTo("#container");
 	//
 	login.$.find("#createbtn").on('click', function(){startCreate();})
-    login.getPromise().then(loginSuccess, loginFail);  
+    
+	login.getPromise().then(loginSuccess, loginFail);  
 
   }
   
@@ -43,22 +45,27 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
 		startLoggin();
 		create.destroy();
 	  }
+	  
+	  
 	  function createFail(){
       console.log("creation fail trying again");
       create.resetDeferred();
       create.getPromise().then(createSuccess, createFail);
     }
+	
+	
 	create = new Create();
 	create.appendTo("#container");
 	login.destroy();
 	create.getPromise().then(createSuccess,createFail);
-  }
+  } //end of start Create
   
   
   function startApp(){
     layout.createLayout("3W", "#container");
 	menu.createMenu("panelBar", "#megaStore");
 	window.createButton("buttonPlus", "#windowButton");
+	//console.log("login  gali: was here."+login.getName());
   }
 
   //checking if allready logged in
