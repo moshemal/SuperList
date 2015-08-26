@@ -66,13 +66,15 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
 	menu.createMenu("panelBar", "#megaStore");
 	window.createButton("buttonPlus", "#windowButton");
 	//console.log("login  gali: was here."+login.getName());
+		//withdraw client
+		console.log(cookies.getCookie("user"));
   }
 
   //checking if allready logged in
   if(cookies.getCookie(AUTH_STR) !== "" ) {
     console.log("starting application");
-	//withdraw client
-	console.log(cookies.getCookie("user"));
+
+
     startApp();
   } else {
     startLoggin();
