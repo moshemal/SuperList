@@ -2,8 +2,8 @@
  * Created by moshemal.
  */
 
-define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules/Create/Create','core/menu','core/windowcreate'], 
-  function($, Login, cookies, layout, Create, menu, window){
+define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules/Create/Create','core/menu','core/windowcreate','core/list'], 
+  function($, Login, cookies, layout, Create, menu, window,taskOfList){
   'use strict';
   //global vars
   var AUTH_STR = "auth";
@@ -62,9 +62,11 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   
   function startApp(){
   	user=cookies.getCookie("user");
-  console.log(user);
-  
+  //console.log(user);
+  //document.writeln("hello "+user);
     layout.createLayout("3W", "#container");
+	//
+	
 	menu.createMenu("panelBar", "#megaStore");
 	window.createButton("buttonPlus", "#windowButton");
 	

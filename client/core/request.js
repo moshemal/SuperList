@@ -8,7 +8,7 @@ define(['jquery'], function($){
 			
 			//var a- bool value that if we suceed of login will print success
 			//var xhr - an object
-			//var data - print auth=0.05080643412657082 maybe take the data base from auth.js
+			//var data - print auth=0.05080643412657082 maybe take the data base from cookies.js
 			success: function(data, a, xhr){
 				console.log(data)
 				
