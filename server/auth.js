@@ -10,7 +10,7 @@ fs.readFile('db/passwords.json', 'utf8' ,function(err, data){
 		console.log('error reading file: ' + err);
 		return;
 	}
-	passwords = JSON.parse(data);
+	passwords = JSON.parse(data);//txt
 });
 
 function isRegistered(id, password){

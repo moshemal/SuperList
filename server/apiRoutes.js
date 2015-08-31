@@ -6,8 +6,8 @@ var db							= require('./db');
 
 function decorateWithIsloggedIn(func){
 	return function (response, parsedUrl, postData, request){
-		var cks = cookies.parseCookies(request);
-		if (auth.isLoggedIn(cks)){
+		var cks = cookies.parseCookies(request);//the function is in cookies.js
+		if (auth.isLoggedIn(cks)){////the function is in auth.js
 			func(response, parsedUrl, postData, request);
 		} else {
 			response.writeHead(401, {

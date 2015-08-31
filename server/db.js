@@ -14,7 +14,7 @@ function createUser (user, properites){
 					fs.mkdir('./db/' + user + '/lists', 
 					function(){
 					//write to the file path db/user/properites.json its properties
-						fs.writeFile('./db/' + user + '/properites.json', JSON.stringify(properites), 'utf8');
+						fs.writeFile('./db/' + user + '/properites.json', properites , 'utf8');
 					});
 			});
 		}
