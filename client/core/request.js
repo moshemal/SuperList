@@ -10,11 +10,8 @@ define(['jquery'], function($){
 			//var xhr - an object
 			//var data - print auth=0.05080643412657082 maybe take the data base from cookies.js
 			success: function(data, a, xhr){
-				console.log(data)
-				
-			},
-			
-			
+				console.log(data)	
+			},	
 			data: {
 				user: 		name,
 				password: password
@@ -24,17 +21,17 @@ define(['jquery'], function($){
 	} //end login
 
   function createUser (name, password, properties){
-   //console.log("in client/request.js create user properties :: "+properties);
-   //console.log("in client/request.js create user password :: "+password);
+   //console.log("in client/request.js create user properties :: " +properties);
+   
     return $.ajax("/api/createUser", {
       method: "post",
       success: function(data, a, xhr){
-        console.log(data.user)
+        console.log(data)
       },
       data: {
         user: 		name,
         password: password,
-        properties: JSON.stringify(properties || {})
+        properties: JSON.stringify(properties,null,2)
       }
     });
   }
