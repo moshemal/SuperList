@@ -23,7 +23,9 @@ define(['jquery','text!./templates/taskList.html', 'kendo'],
 		//});
 		jListTask.appendTo(selector);
 		
-		// create a template using the above definition
+		
+		/**
+		 create a template using the above definition
          var template = kendo.template($("#template").html());
 		
 		
@@ -31,7 +33,7 @@ define(['jquery','text!./templates/taskList.html', 'kendo'],
                 transport: {
                     read: {
                         url: "./server/db/"+user+"/properties",
-                        dataType: "jsonp"
+                       dataType: "jsonp"
                     }
                 },
                 requestStart: function() {
@@ -47,7 +49,7 @@ define(['jquery','text!./templates/taskList.html', 'kendo'],
 
             dataSource.read();
         });
-		
+		**/
 		
 		
 		
