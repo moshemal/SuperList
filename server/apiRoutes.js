@@ -7,9 +7,10 @@ var db							= require('./db');
 function decorateWithIsloggedIn(func){
 	return function (response, parsedUrl, postData, request){
 		var cks = cookies.parseCookies(request);//the function is in cookies.js
-		if (auth.isLoggedIn(cks)){////the function is in auth.js
+		if (auth.isLoggedIn(cks)){//the function is in auth.js
 			func(response, parsedUrl, postData, request);
-		} else {
+		} 
+		else {
 			response.writeHead(401, {
 				"Content-Type": "text/plain"
 			});

@@ -1,23 +1,28 @@
 var fs = require('fs');
 
 
+
 function createUser (user, properites){
 	fs.stat('./db/' + user, function(err, stat){
-	
+	console.log("in db.js "+properites);
 		if (stat){
 	
 			return;
 		} else {
-		//make a user file
-			fs.mkdir('./db/' + user, function(){
-			//make a file that his path db/user/lists
-					fs.mkdir('./db/' + user + '/lists', 
-					function(){
-					//write to the file path db/user/properites.json its properties
+		
+			fs.mkdir('./db/' + user, //file db --> file user
+			
+			function(){
+					fs.mkdir('./db/' + user + '/lists', //file db --> file user --> file list  
+					
+					
+					function(){//file db -->file user --> properties.json
+					
 						fs.writeFile('./db/' + user + '/properites.json', properites , 'utf8');
+						//
 					});
 			});
-		}
+		}//end else
 	})
 }
 

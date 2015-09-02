@@ -7,6 +7,7 @@ function parseCookies (request) {
         list[parts.shift().trim()] = decodeURI(parts.join('='));
     });
 
+	//console.log("in cookies.js servr "+list);
     return list;
 }
 

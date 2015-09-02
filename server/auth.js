@@ -11,6 +11,8 @@ fs.readFile('db/passwords.json', 'utf8' ,function(err, data){
 		return;
 	}
 	passwords = JSON.parse(data);//txt
+	//console.log('in auth.js passwords = ' + data);
+	
 });
 
 function isRegistered(id, password){
@@ -21,7 +23,7 @@ function isRegistered(id, password){
 function login(response, parsedUrl, postData){
 	
 	var parsedData = querystring.parse(postData);
-
+	// console.log('in auth.js login = ' + parsedData.user);
 	if (isRegistered(parsedData.user, parsedData.password)){
 		var token 	= Math.random();
 		var expires = new Date(new Date().getTime() + 1000*60*60/* *24*4 */); //4 days 
@@ -33,7 +35,8 @@ function login(response, parsedUrl, postData){
 			"Content-Type": "text/plain"
 		});
 		response.write(AUTH_KEY + "=" + token);	
-	} else {
+	} 
+	else {
 		response.writeHead(401, {
 			"Content-Type": "text/plain"
 		});	
@@ -52,6 +55,8 @@ function createUser (user, password){
 		return false;
 	}
 	passwords[user] = password;
+	//console.log('in create auth' +user+'  = ' + passwords[user]);
+	//console.log('in create auth type'+ typeof passwords);
 	fs.writeFile('db/passwords.json', JSON.stringify(passwords), 'utf8');
 	return true;
 }
