@@ -1,4 +1,4 @@
-	qdefine([], function(){
+	define([], function(){
 	'use strict';
 	
 	var container = $('<div></div>');
