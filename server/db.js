@@ -4,12 +4,12 @@ var fs = require('fs');
 
 function createUser (user, properites){
 	fs.stat('./db/' + user, function(err, stat){
-	console.log("in db.js "+properites);
+	//console.log("in db.js "+properites);
 		if (stat){
 	
 			return;
-		} else {
-		
+		} 
+		else {
 			fs.mkdir('./db/' + user, //file db --> file user
 			
 			function(){
@@ -18,8 +18,12 @@ function createUser (user, properites){
 					
 					function(){//file db -->file user --> properties.json
 					
+				        //properites={
+						//"full": "value",
+                        //	"job: "value"					
+						//}
 						fs.writeFile('./db/' + user + '/properites.json', properites , 'utf8');
-						//
+						
 					});
 			});
 		}//end else

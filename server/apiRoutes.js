@@ -20,9 +20,11 @@ function decorateWithIsloggedIn(func){
 }
 
 var handle = {
-	"/login": 			auth.login,
-	"/createUser":  requestHandlers.createUser,
-	"/upload":      decorateWithIsloggedIn(requestHandlers.upload)
+	"/login": 			auth.login, //auth.js line 24
+	"/createUser":  requestHandlers.createUser, //requestHandlers.js line 22
+	//requestHandlers.js line 6 and then go to function  decorateWithIsloggedIn line 7
+	"/upload":      decorateWithIsloggedIn(requestHandlers.upload) 
+	
 }
 
 

@@ -2,6 +2,8 @@ var querystring = require('querystring');
 var db					= require('./db');
 var auth				= require('./auth');
 
+
+//???
 function upload(response, pathname, postData) {
   console.log("in requestHandlers.js :: upload was called");
   response.writeHead(200, {"Content-Type": "text/plain"});
@@ -16,11 +18,12 @@ function validateCreateUserParams (parsedQuery) {
   parsedQuery.user !== "" && parsedQuery.password !== "");
 }
 
+//from apiRouter.js "/createUser":  requestHandlers.createUser,
 function createUser (response, parsedUrl, postData){
   var parsedQuery = querystring.parse(postData);
-  if (validateCreateUserParams(parsedQuery)){
-    if (auth.createUser(parsedQuery.user, parsedQuery.password)){
-      db.createUser(parsedQuery.user, parsedQuery.properties); //to the make dir 
+  if (validateCreateUserParams(parsedQuery)){//line 15
+    if (auth.createUser(parsedQuery.user, parsedQuery.password)){//auth.js line 55
+      db.createUser(parsedQuery.user, parsedQuery.properties); //to the make dir.js 
       response.writeHead(200, {"Content-Type": "text/plain"});
       response.write("we are creating user: " + parsedQuery.user);
       response.end();
