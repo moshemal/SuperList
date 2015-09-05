@@ -2,21 +2,21 @@
  * Created by moshemal.
  */
 
-define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules/Create/Create','core/menu','core/windowcreate','core/list'], 
-  function($, Login, cookies, layout, Create, menu, window,taskOfList){
+define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 
+'modules/Create/Create','core/menu','core/windowcreate','modules/ListView/ListView','core/list' ], 
+  function($, Login, cookies, layout, Create, menu, window,ListView){
   'use strict';
   //global vars
   var AUTH_STR = "auth";
 	var login;
 	var create;
 	var user;
-	
+	var list;
 //for User exsiset	
   function startLoggin(){
     
 	function loginSuccess(){
-      console.log("login success moving to application gali: was here.");
-	  
+      console.log("login success moving to application gali: was here.");  
       startApp();
       login.destroy(); //go to the splitter
     }
@@ -28,10 +28,9 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
 		
     }
 	
-    login = new Login();
-    login.appendTo("#container");
-	//
-	login.$.find("#createbtn").on('click', function(){startCreate();})
+    login = new Login(); //
+    login.appendTo("#container");//
+	login.$.find("#createbtn").on('click', function(){startCreate();});//???
     
 	login.getPromise().then(loginSuccess, loginFail);  
 
@@ -39,6 +38,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   
   //for sign in new User
   function startCreate(){
+  
 	  function createSuccess(){
 		console.log("creation success moving to login.");
 		startLoggin();
@@ -61,25 +61,22 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 'modules
   
   
   function startApp(){
-  	user=cookies.getCookie("user");
-  //console.log(user);
-  //document.writeln("hello "+user);
     layout.createLayout("3W", "#container");
-	//
+	list=new ListView();
 	
-	menu.createMenu("panelBar", "#megaStore");
+//	menu.createMenu("panelBar", "#megaStore");
 	window.createButton("buttonPlus", "#windowButton");
 	
 
   }
 
-  //checking if allready logged in
-  if(cookies.getCookie(AUTH_STR) !== "" ) {
-    console.log("starting application");
-
-
+  //the beging
+   user=cookies.getCookie(AUTH_STR);//decorateWithIsloggedIn
+  if(user !== "" ) {
+    console.log("starting application" +user);
     startApp();
   } else {
+  //console.log("login " +user);
     startLoggin();
   }
 });

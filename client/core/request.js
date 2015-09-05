@@ -2,15 +2,17 @@ define(['jquery'], function($){
 	
 	'use strict';
 
+	
+	//we will get back from server/auth.js/function login
+	//line 61 response.write(AUTH_KEY + "=" + token);	
 	function login(name, password){
-		return $.ajax("/api/login", {
+		return $.ajax("/api/login",  { 
 			method: "post",
-			
-			//var a- bool value that if we suceed of login will print success
-			//var xhr - an object
-			//var data - print auth=0.05080643412657082 maybe take the data base from cookies.js
 			success: function(data, a, xhr){
-				console.log(data)	
+			alert("line 12 in request "+ data);
+				console.log(data)
+				//console.log(xhr)
+            //				
 			},	
 			data: {
 				user: 		name,
@@ -26,6 +28,7 @@ define(['jquery'], function($){
     return $.ajax("/api/createUser", {
       method: "post",
       success: function(data, a, xhr){
+	  //alert("create line 30 request  "+data);
         console.log(data)
       },
       data: {
@@ -35,8 +38,31 @@ define(['jquery'], function($){
       }
     });
   }
+  
+  
+  function upload(){
+		return $.ajax("/api/upload",  { 
+			method: "get",
+			success: function(data, a, xhr){
+			alert("line 46 in request "+ data);
+				console.log(xhr)
+            //				
+			}
+			//data: {
+				
+			//}
+			
+		});
+	} //end login
+  
+  
+  
+  
+  
+  
 	return {
 		login:      login,
-    createUser: createUser
+    createUser: createUser,
+	upload : upload
 	}
 });

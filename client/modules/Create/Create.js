@@ -12,10 +12,9 @@ define(['jquery', 'text!./template.html', 'core/request'], function($, template,
 			//alert("the type  "+ev.target[2]);
 			
 			var name = ev.target[0].value; //the user name
-			var password = ev.target[1].value; //the passwor
-			
-			var fullName = ev.target[2].value;
-			var job = ev.target[3].value;
+			var password = ev.target[1].value; //the password
+			var fullName = ev.target[2].value;//
+			var job = ev.target[3].value;//
 			
 			//for writing to propeties.json this the my way 
 			//maybe will find another way of fixing that
