@@ -5,10 +5,12 @@ var auth				= require('./auth');
 
 //???
 function upload(response, pathname, postData) {
-  console.log("in requestHandlers.js :: upload was called");
+  //console.log("in requestHandlers.js :: upload was called");
   response.writeHead(200, {"Content-Type": "text/plain"});
-  var parsedData = querystring.parse(postData).text;
+  var parsedData = querystring.parse(postData).text;//???? i dont know why he put parse(postData).text
+  
   response.write("You have sent: " + parsedData);
+  //console.log("in line 12 Handlers: " +parsedData.user);
   response.end();
 }
 
@@ -22,9 +24,10 @@ function validateCreateUserParams (parsedQuery) {
 function createUser (response, parsedUrl, postData){
   var parsedQuery = querystring.parse(postData);
   if (validateCreateUserParams(parsedQuery)){//line 15
-    if (auth.createUser(parsedQuery.user, parsedQuery.password)){//auth.js line 55
+    if (auth.createUser(parsedQuery.user, parsedQuery.password)){//auth.js line 80
       db.createUser(parsedQuery.user, parsedQuery.properties); //to the make dir.js 
       response.writeHead(200, {"Content-Type": "text/plain"});
+	 // console.log("in line 28 request handler = " + parsedQuery.properties);
       response.write("we are creating user: " + parsedQuery.user);
       response.end();
       return;

@@ -19,7 +19,7 @@ function route(request, response, postData) {
 
   if (pathname.indexOf("/api") === 0){
     pathname = "/" + pathname.split("/").slice(2).join("/");
-    //console.log("in router.js Serving api for: ", pathname, " with data: " + postData);
+    console.log("in router.js Serving api for Dynamic: ", pathname, " with data: " + postData);
 	
     return typeof handle[pathname] === 'function' ?
       handle[pathname](response, parsedUrl, postData, request) :

@@ -28,12 +28,15 @@ fs.readFile('./db/' + userNameFile + '/properites.json', 'utf8' ,function(err, d
 	}
 	
 	propertiesOfUser = JSON.parse(data);//tx
-	console.log("im am in server [auth.js] line 30 read file= "+data);
+	//console.log("im am in server [auth.js] line 30 read file= "+data);
 });
 }
-//function printPropertiesJson(){
 
-//}
+
+function getPropertiesJson(userNameFile){
+readPropertiesJson(userNameFile);
+return propertiesOfUser;
+}
 
 
 
@@ -57,7 +60,9 @@ function login(response, parsedUrl, postData){
 		response.writeHead(200, {
 			"Content-Type": "text/plain"
 		});
-		response.write(AUTH_KEY + "=" + token);	
+		//console.log("in line 60 = "+AUTH_KEY + "=" + token)
+		response.write(AUTH_KEY + "=" + token);	//will return to client side client/request.js
+		//response.write(propertiesOfUser);
 	} 
 	
 	else {
@@ -84,7 +89,7 @@ function createUser(user, password){
 	return true;
 }
 
-
+exports.getPropertiesJson = getPropertiesJson;
 exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn; 
 exports.createUser 	= createUser;
