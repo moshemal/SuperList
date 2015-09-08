@@ -1,5 +1,5 @@
-define(['jquery', 'text!./template.html', 'core/request',  'modules/Create/Create'], 
-function($, template, request, Create){
+define(['jquery', 'text!./template.html', 'core/request'],  //'modules/Create/Create'], 
+function($, template, request){ //Create){
 	'use strict';
 		
 	function Login(initObj){
