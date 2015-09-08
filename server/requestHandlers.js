@@ -9,9 +9,9 @@ console.log("welcome to upload line 6 in RH.js");
   var p = auth.getPropertiesFS();
   response.writeHead(200, {"Content-Type": "text/plain"});
   var parsedData = querystring.parse(postData).text;
-  //var pp = querystring.parse(p).text;
+  var pp = querystring.parse(p);
   //console.log("line 10 "+pp);
-  response.write(p);
+  response.write("in "+pp);
   response.end();
 }
 
@@ -42,4 +42,4 @@ function createUser (response, parsedUrl, postData){
 }
 
 exports.upload      = upload;
-//exports.createUser  = createUser;
+exports.createUser  = createUser;
