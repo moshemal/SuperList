@@ -26,7 +26,7 @@ console.log("welcome to decorateWithIsloggedIn line 8 in apiRouter.js");
 
 var handle = {
 	"/login": 			auth.login,
-	//"/createUser":  requestHandlers.createUser,
+	"/createUser":  requestHandlers.createUser,
 	//"/upload" : requestHandlers.upload,
 	"/upload":      decorateWithIsloggedIn(requestHandlers.upload)
 }
