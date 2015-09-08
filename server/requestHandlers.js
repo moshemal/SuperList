@@ -3,10 +3,15 @@ var db					= require('./db');
 var auth				= require('./auth');
 
 function upload(response, pathname, postData) {
-  console.log("upload was called");
+console.log("welcome to upload line 6 in RH.js");
+  //console.log("upload was called");
+  
+  var p = auth.getPropertiesFS();
   response.writeHead(200, {"Content-Type": "text/plain"});
   var parsedData = querystring.parse(postData).text;
-  response.write("You have sent: " + parsedData);
+  //var pp = querystring.parse(p).text;
+  //console.log("line 10 "+pp);
+  response.write(p);
   response.end();
 }
 
