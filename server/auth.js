@@ -116,4 +116,4 @@ exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn;
 // exports.list 	= list;
   exports.getPropertiesFS = getPropertiesFS ;
-//exports.createUser 	= createUser;
+exports.createUser 	= createUser;
