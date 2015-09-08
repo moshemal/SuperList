@@ -22,7 +22,8 @@ define(['jquery'], function($){
 		});
 	} //end login
 
-  function createUser (name, password, properties){
+	
+	 function createUser (name, password, properties){
    //console.log("in client/request.js create user properties :: " +properties);
    
     return $.ajax("/api/createUser", {
@@ -39,30 +40,33 @@ define(['jquery'], function($){
     });
   }
   
-  
-  function upload(){
-		return $.ajax("/api/upload",  { 
-			method: "get",
-			success: function(data, a, xhr){
-			alert("line 46 in request "+ data);
-				console.log(xhr)
-            //				
-			}
-			//data: {
-				
-			//}
-			
-		});
-	} //end login
+	
   
   
-  
-  
-  
-  
+
+
+function upload(){
+ return $.ajax("/api/upload", {
+      method: "post",
+      success: function(data, a, xhr){
+	  //alert("create line 30 request  "+data);
+        console.log(data)
+      },
+      data: {
+        //user: 		name,
+        //password: password,
+        //properties: JSON.stringify(properties,null,2)
+      }
+    });
+		
+	}
+   
 	return {
 		login:      login,
-    createUser: createUser,
-	upload : upload
+		//createUser: createUser,
+    upload: upload
+	//list : list
+	//addNewTask: addNewTask
+	//listView : listView 
 	}
 });
