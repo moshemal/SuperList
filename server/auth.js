@@ -7,6 +7,7 @@ var properites = null;
 var userName=null;
 var sessions 	= {};
 var AUTH_KEY 	= "auth";
+//var userName ;
 
 fs.readFile('db/passwords.json', 'utf8' ,function(err, data){
 	if(err){
@@ -17,8 +18,13 @@ fs.readFile('db/passwords.json', 'utf8' ,function(err, data){
 });
 
 
-function propertiesFS(){
-fs.readFile('db/'+userName+'/properites.json', 'utf8' ,function(err, data){
+function isRegistered(id, password){
+	return (id && password && passwords[id] === password);
+}
+
+
+function propertiesFS(user){
+fs.readFile('db/'+user+'/properites.json', 'utf8' ,function(err, data){
 	if(err){
 		console.log('error reading file 54: ' + err);
 		return;
@@ -28,9 +34,7 @@ fs.readFile('db/'+userName+'/properites.json', 'utf8' ,function(err, data){
 	});
 }
 	
-function isRegistered(id, password){
-	return (id && password && passwords[id] === password);
-}
+
 
 
 function login(response, parsedUrl, postData){
@@ -45,12 +49,16 @@ function login(response, parsedUrl, postData){
 		var authCookie = AUTH_KEY + "=" + token + "; Path=/; Expires=" + expires;
 		var userCookie = "user=" + parsedData.user + "; Path=/; Expires=" + expires;
 		sessions[parsedData.user] = "" + token;
+			//here the data base
+		userName = parsedData.user; 
+		//readPropertiesJson();
 		response.setHeader("Set-Cookie", [userCookie, authCookie]);
 		response.writeHead(200, {
 			"Content-Type": "text/plain"
 		});
 		response.write(AUTH_KEY + "=" + token);	
-	} else {
+	} 
+	else {
 		response.writeHead(401, {
 			"Content-Type": "text/plain"
 		});	
@@ -65,29 +73,17 @@ function isLoggedIn (cookies){
 }
 
 
-
-
-function list(response, parsedUrl, postData){
-	if (userName!==null){	
-		response.writeHead(200, {
-			"Content-Type": "text/plain"
-		});
-		 var parsedData = querystring.parse(properites);
-		 	console.log('69: ' + properites);
-		response.write("hhh" +parsedData);	
-	} else {
-		response.writeHead(401, {
-			"Content-Type": "text/plain"
-		});	
+function createUser(user, password){
+	if (passwords[user]){
+		return false;
 	}
-	response.end();
-	
-
+	passwords[user] = password;
+	fs.writeFile('db/passwords.json', JSON.stringify(passwords), 'utf8');
+	return true;
 }
-
 
 exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn;
- exports.list 	= list;
+// exports.list 	= list;
   exports.propertiesFS 	= propertiesFS;
 //exports.createUser 	= createUser;
