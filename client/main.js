@@ -2,16 +2,15 @@
  * Created by moshemal.
  */
 
-define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout', 
-'modules/Create/Create','core/menu','core/windowcreate','modules/ListView/ListView','core/list' ], 
-  function($, Login, cookies, layout, Create, menu, window,ListView){
+define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout','core/windowcreate','core/request'],//'modules/ListView/ListView','core/list' ], 
+  function($, Login, cookies, layout, window,request){
   'use strict';
   //global vars
   var AUTH_STR = "auth";
 	var login;
-	var create;
+	//var create;
 	var user;
-	var list;
+	var lst;
 //for User exsiset	
   function startLoggin(){
     
@@ -36,33 +35,12 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout',
 
   }
   
-  //for sign in new User
-  function startCreate(){
-  
-	  function createSuccess(){
-		console.log("creation success moving to login.");
-		startLoggin();
-		create.destroy();
-	  }
-	  
-	  
-	  function createFail(){
-      console.log("creation fail trying again");
-      create.resetDeferred();
-      create.getPromise().then(createSuccess, createFail);
-    }
-	
-	
-	create = new Create();
-	create.appendTo("#container");
-	login.destroy();
-	create.getPromise().then(createSuccess,createFail);
-  } //end of start Create
   
   
   function startApp(){
     layout.createLayout("3W", "#container");
-	list=new ListView();
+	//list=new ListView();
+	request.upload();
 	
 //	menu.createMenu("panelBar", "#megaStore");
 	window.createButton("buttonPlus", "#windowButton");
