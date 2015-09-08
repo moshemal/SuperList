@@ -19,7 +19,7 @@ define(['jquery', 'text!./template.html', 'core/request'], function($, template,
 			//for writing to propeties.json this the my way 
 			//maybe will find another way of fixing that
 			var properties={
-			full : fullName, //the value name
+			name : fullName, //the value name
 			job : job
 			}; 
 			
