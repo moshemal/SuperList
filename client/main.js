@@ -3,8 +3,8 @@
  */
 
 define(['jquery', 'modules/Login/Login', 'core/cookies',
- 'core/layout','modules/Create/Create','core/windowcreate','core/request','core/TaskList/NewTask'],
-  function($, Login, cookies, layout,Create,window,request,NewTask){
+ 'core/layout','modules/Create/Create','core/windowcreate','core/request','core/TaskList/NewTask','core/menu'],
+  function($, Login, cookies, layout,Create,window,request,NewTask,menu){
   'use strict';
   //global vars
   var AUTH_STR = "auth";
@@ -57,7 +57,6 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	  
 	  }
   
-  
   /*for task lisr maybe if i have time create something like "startLoggin()" "startCreate()" */
   function startTaskList(){
   function listSuccess(){
@@ -78,21 +77,27 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
   lst.getPromise().then(listSuccess,listFail);  
   }
   
+  function NameOfTheUser(){
+  document.getElementById("middle").innerHTML =
+"<h1>Hello <b>"+user+"</b><\h1>"
+  
+  }
+  
+  
   
   function startApp(){
     layout.createLayout("3W", "#container");
 	user=cookies.getCookie('user');
+	NameOfTheUser();
 	console.log("starting application " +user);
 	//startTaskList();
-	request.upload();
-	
-	
-	
-//	menu.createMenu("panelBar", "#megaStore");
 	window.createButton("buttonPlus", "#windowButton");
+	request.upload();	
+    menu.createMenu("panelBar", "#megaStore");
+	
   }
 
-  //the beging
+  
    user=cookies.getCookie(AUTH_STR);//decorateWithIsloggedIn
   if(user !== "" ) {
     console.log("starting application" +user);

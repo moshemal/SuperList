@@ -24,6 +24,12 @@
 			  background-image: url("/img/timeright.jpg");		
                 
               }
+			  #middle h1{
+			  color: white;
+			  font-size: 6.5em; /* 14px/16=0.875em */
+			   text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+			  
+			  }
               
                /*for 5 */
               #right-pane{ 
