@@ -40,10 +40,8 @@ define(['jquery'], function($){
   
 	
   
-  
-
-
-function upload(user){
+ 
+function upload(){
 $.get("/api/upload", function( data ) {
   $( "#taskList" ).html( data );
   //alert( "Load was performed." );
@@ -52,15 +50,27 @@ $.get("/api/upload", function( data ) {
 	}
 	
 	
-	
-	
-   
+  function addNewTask(data){
+   //console.log("in client/request.js create user properties :: " +properties);
+    return $.ajax("/api/addNewTask", {
+      method: "post",
+	  contentType: "application/json; charset=utf-8",
+	    dataType: "json",
+	    data:JSON.stringify(data),
+      success: function(data, a, xhr){
+	  //alert("create line 30 request  "+data);
+        console.log(data)
+      }
+    });
+  }
+  
+	  
 	return {
 		login:      login,
 	createUser: createUser,
-    upload: upload
+    upload: upload,
 	//list : list
-	//addNewTask: addNewTask
+	addNewTask: addNewTask
 	//listView : listView 
 	}
 });
