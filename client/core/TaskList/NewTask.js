@@ -12,14 +12,15 @@ function($,addlistWindow, request){
 
 		
 		//found on the interenet in gitHub
-		setTime(function{
-		
+		// setTimeout(function(){
+		$('#addlist').on('click',function() {
 		that.openWindow();	 
 	    that.newTaskToDB(that);
-
-		},80);
+     return false;
+	 });
+		//},80);
 		
-		return false;
+		
 	
  
 	}

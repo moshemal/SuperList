@@ -3,8 +3,8 @@
  */
 
 define(['jquery', 'modules/Login/Login', 'core/cookies',
- 'core/layout','modules/Create/Create','core/windowcreate','core/request'],//'modules/ListView/ListView','core/list' ], 
-  function($, Login, cookies, layout,Create,window,request){
+ 'core/layout','modules/Create/Create','core/windowcreate','core/request','core/TaskList/NewTask'],
+  function($, Login, cookies, layout,Create,window,request,NewTask){
   'use strict';
   //global vars
   var AUTH_STR = "auth";
@@ -12,7 +12,8 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	var create;
 	var user = null;
 	var lst;
-//for User exsiset	
+
+	
   function startLoggin(){
 	function loginSuccess(){
       console.log("login success moving to application gali: was here.");  
@@ -36,7 +37,6 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
   
    //for sign in new User
   function startCreate(){
-  
 	  function createSuccess(){
 		console.log("creation success moving to login.");
 		startLoggin();
@@ -58,26 +58,38 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	  }
   
   
-  
-  
-  
-  
-  
-  
+  /*for task lisr maybe if i have time create something like "startLoggin()" "startCreate()" */
+  function startTaskList(){
+  function listSuccess(){
+		console.log("List success moving to login.");
+		//startLoggin();
+		//create.destroy();
+		request.upload();//not good must be fixed
+	  }
+	  
+	   function listFail(){
+      console.log("List fail trying again");
+	  request.upload();//not good must be fixed
+      //create.resetDeferred();
+      //create.getPromise().then(createSuccess, createFail);
+    }
+  lst= new NewTask();
+  lst.appendTo("#taskList");
+  lst.getPromise().then(listSuccess,listFail);  
+  }
   
   
   function startApp(){
     layout.createLayout("3W", "#container");
 	user=cookies.getCookie('user');
 	console.log("starting application " +user);
-	//lst=
-	request.upload(user);
-	//console.log(lst);
+	//startTaskList();
+	request.upload();
+	
+	
 	
 //	menu.createMenu("panelBar", "#megaStore");
 	window.createButton("buttonPlus", "#windowButton");
-	
-
   }
 
   //the beging

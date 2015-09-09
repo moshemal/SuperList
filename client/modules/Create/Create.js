@@ -14,13 +14,13 @@ define(['jquery', 'text!./template.html', 'core/request'], function($, template,
 			var name = ev.target[0].value; //the user name
 			var password = ev.target[1].value; //the password
 			var fullName = ev.target[2].value;//
-			var job = ev.target[3].value;//
+			var job = ev.target[3].key;//
+			var jobV = ev.target[3].value;
 			
 			//for writing to propeties.json this the my way 
 			//maybe will find another way of fixing that
 			var properties={
-			name : fullName, //the value name
-			job : job
+			name : fullName, job : jobV
 			}; 
 			
 			//alert("the type  "+typeof properties);

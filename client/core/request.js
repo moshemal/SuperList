@@ -33,18 +33,23 @@ define(['jquery'], function($){
       data: {
         user: 		name,
         password: password,
-        properties: JSON.stringify(properties || {})//JSON.stringify(properties,null,2)
+        properties: JSON.stringify(properties )//JSON.stringify(properties,null,2)
       }
     });
   }
   
-	
-  
- 
+
 function upload(){
 $.get("/api/upload", function( data ) {
-  $( "#taskList" ).html( data );
-  //alert( "Load was performed." );
+//alert(data);
+//var inlineTemplate = kendo.template("Hello,  ProductName: #: ProductName # #= job #");
+//var inlineData = "'"+data+"'";//{ firstName: "John", lastName: "Doe" };
+var obj = JSON.parse(data);
+console.log(typeof data);
+document.getElementById("taskList").innerHTML =
+"<h1>List Of Properties<\h1>"+
+"<h2>"+obj.name +"</h2>" +
+"<h2>"+obj.job+"</h2>"; 
 });
 
 	}

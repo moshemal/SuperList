@@ -1,9 +1,6 @@
  body{
         height: 100%;
            }
-
-
-
         /*for 1*/
                 #top-pane { 
                   background-color: rgba(1, 10, 70, 0.10);
@@ -24,10 +21,12 @@
               
               /*for 4*/
               #center-pane{ 
-                background-color: rgba(55,777, 888, 0.05);
+			  background-image: url("/img/timeright.jpg");		
+                
               }
               
                /*for 5 */
               #right-pane{ 
-                background-color: rgba(50,89, 14, 0.04); 
+                /*background-color: rgba(50,89, 14, 0.04);*/
+           	 background-image: url("/img/right.jpg");	
               }
