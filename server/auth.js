@@ -1,9 +1,8 @@
 var fs 						= require('fs');
-//var fs2 						= require('fs');
 var querystring 	= require("querystring");
 
 var passwords = null;
-var properites = null;
+var properitess = {};
 var userName=null;
 var sessions 	= {};
 var AUTH_KEY 	= "auth";
@@ -23,22 +22,24 @@ function isRegistered(id, password){
 }
 
 
-function propertiesFS(user){
+function propertiesFS(){
 console.log("welcome to propertiesFS line 27 in auth.js");
-fs.readFile('db/'+userName+'/properites.json', 'utf8' ,function(err, data){
+fs.readFile('db/'+ userName +'/properites.json', 'utf8' ,function(err, data){
 	if(err){
 		console.log('error reading file 29: ' + err);
 		return;
 	}
-	properites = JSON.parse(data);
-	//console.log('auth line 34: ' + properites.full);
+	properitess = data;//JSON.parse(data);
+	console.log('auth line 34: ' + properitess );
 	});
 }
 	
 
 	function getPropertiesFS(){
 console.log("welcome to getPropertiesFS line 40 in auth.js");
-return properites;
+propertiesFS();
+console.log('auth line 42: ' + properitess);
+return properitess;
 }
 	
 
@@ -57,7 +58,7 @@ function login(response, parsedUrl, postData){
 		sessions[parsedData.user] = "" + token;
 			//here the data base
 		userName = parsedData.user; 
-		propertiesFS(userName);
+		propertiesFS();
 		//readPropertiesJson();
 		response.setHeader("Set-Cookie", [userCookie, authCookie]);
 		response.writeHead(200, {

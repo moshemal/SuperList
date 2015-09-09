@@ -7,11 +7,12 @@ console.log("welcome to upload line 6 in RH.js");
   //console.log("upload was called");
   
   var p = auth.getPropertiesFS();
+  console.log("welcome to upload line 10 in RH.js "+p);
   response.writeHead(200, {"Content-Type": "text/plain"});
   var parsedData = querystring.parse(postData).text;
-  var pp = querystring.parse(p);
+  //var pp = querystring.parse(p).text;
   //console.log("line 10 "+pp);
-  response.write("in "+pp);
+  response.write(p);
   response.end();
 }
 
