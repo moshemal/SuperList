@@ -21,7 +21,7 @@
               
               /*for 4*/
               #center-pane{ 
-			  background-image: url("/img/timeright.jpg");		
+			  background-image: url("../img/timeright.jpg");		
                 
               }
 			  #middle h1{
@@ -34,5 +34,5 @@
                /*for 5 */
               #right-pane{ 
                 /*background-color: rgba(50,89, 14, 0.04);*/
-           	 background-image: url("/img/right.jpg");	
+           	 background-image: url("../img/right.jpg");	
               }
