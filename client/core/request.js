@@ -51,20 +51,25 @@ document.getElementById("taskList").innerHTML =
 "<h2>"+obj.name +"</h2>" +
 "<h2>"+obj.job+"</h2>"; 
 });
+}
 
-	}
 	
 	
-  function addNewTask(data){
+	
+	
+	
+	
+	
+  function addNewTask(task){
    //console.log("in client/request.js create user properties :: " +properties);
     return $.ajax("/api/addNewTask", {
       method: "post",
-	  contentType: "application/json; charset=utf-8",
-	    dataType: "json",
-	    data:JSON.stringify(data),
       success: function(data, a, xhr){
-	  //alert("create line 30 request  "+data);
+	  //alert("create line 69 request  "+data);
         console.log(data)
+      },
+      data: {
+         task: JSON.stringify(task)//JSON.stringify(properties,null,2)
       }
     });
   }

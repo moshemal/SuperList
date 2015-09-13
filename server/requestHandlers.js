@@ -3,11 +3,11 @@ var db					= require('./db');
 var auth				= require('./auth');
 
 function upload(response, pathname, postData) {
-console.log("welcome to upload line 6 in RH.js");
+//console.log("welcome to upload line 6 in RH.js");
   //console.log("upload was called");
   
   var p = auth.getPropertiesFS();
-  console.log("welcome to upload line 10 in RH.js "+p);
+  //console.log("welcome to upload line 10 in RH.js "+p);
   response.writeHead(200, {"Content-Type": "text/plain"});
   var parsedData = querystring.parse(postData).text;
   //var pp = querystring.parse(p).text;
@@ -15,8 +15,6 @@ console.log("welcome to upload line 6 in RH.js");
   response.write(p);
   response.end();
 }
-
-
 
 function validateCreateUserParams (parsedQuery) {
   return (typeof parsedQuery.user === 'string' &&
@@ -42,5 +40,26 @@ function createUser (response, parsedUrl, postData){
   response.end();
 }
 
+
+
+function addNewTask(response, parsedUrl, postData){
+  var parsedQuery = querystring.parse(postData);
+    if (auth.addNewTask(parsedQuery.task)){//auth.js line 80
+	console.log("in line 49 request handler = " + parsedQuery.task);
+      response.writeHead(200, {"Content-Type": "text/plain"});
+      response.write("we are Task user: " + parsedQuery.task);
+      response.end();
+      return;
+    }
+  
+  response.writeHead(500, {"Content-Type": "text/plain"});
+  response.write("fail to create new Task");
+  response.end();
+}
+
+
 exports.upload      = upload;
 exports.createUser  = createUser;
+exports.addNewTask  = addNewTask;
+
+

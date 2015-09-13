@@ -8,23 +8,15 @@ define(['jquery', 'text!./template.html', 'core/request'], function($, template,
 		
 		var htmlDom = this.$ = $(template); //template.html
 		
-		this.$.on('submit', function(ev){
-			//alert("the type  "+ev.target[2]);
-			
-			var task = ev.target[0].value; //the user name
-			
-			
-			//for writing to propeties.json this the my way 
-			//maybe will find another way of fixing that
-			var properties={
-			name : fullName, job : jobV
-			}; 
-			
-			//alert("the type  "+typeof properties);
-			var promise = request.createUser(name, password, properties); //go to request.js and write the data base of the user
-			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
+		
+		
+		 setTimeout(function(){
+		this.$.find("#newtask").on('click', function(){
+			 that.openWindow();
+           that.saveListToDb(that);
 			return false;
 		});
+		},80);
 
 	}
 
@@ -36,23 +28,23 @@ define(['jquery', 'text!./template.html', 'core/request'], function($, template,
 		}
 	}
 	
-	AddTask.prototype.resetDeferred = function (){
+	AddTask.prototype.resetDeferred = function(){
 		this._dfd = $.Deferred();
 	}
 
-	AddTask.prototype.getPromise = function (){
+	AddTask.prototype.getPromise = function(){
 		return this._dfd.promise();
 	}
 
-	AddTask.prototype.destroy = function (){
+	AddTask.prototype.destroy = function(){
 		this.$.off('submit');
 		this.$.remove();
 	}
 	
 	
 	//interenet gitHub
-	AddTask.prototype.openWindow = function (){
-		 $(addlistWindow()).kendoWindow({
+	AddTask.prototype.openWindow = function(){
+		 $(template()).kendoWindow({
         width: "250px",
         height: "80px",
         title: "Creat new list",
@@ -67,18 +59,35 @@ define(['jquery', 'text!./template.html', 'core/request'], function($, template,
 	
 	
 	//interenet gitHub
-	AddTask.prototype.uploadTaskList = function (){
+	AddTask.prototype.uploadTaskList = function(){
 		('#taskList').empty();
 		request.upload();		
 	}
 	
-	AddTask.prototype.closeWindow = function() {
+	AddTask.prototype.closeWindow = function(){
     var window = $('.createTask');
     window.data("kendoWindow").close();
   };
 	
 	
-	
+	AddTask.prototype.saveListToDb = function(that){
+        this.$.find("#newtask").on('submit', function(ev){
+          var variable= ev.target[0].value; //the user name
+          if ( variable !== "") {
+            var promise = request.addNewList({
+              name: variable,
+              num: '',
+              task: []
+            });
+            promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
+          }
+		  
+		  else{
+            alert('list name is empty');
+          }
+		  return false;
+  });
+}
 	
 
 	return AddTask;

@@ -3,15 +3,15 @@
  */
 
 define(['jquery', 'modules/Login/Login', 'core/cookies',
- 'core/layout','modules/Create/Create','core/windowcreate','core/request','core/TaskList/NewTask','core/menu'],
-  function($, Login, cookies, layout,Create,window,request,NewTask,menu){
+ 'core/layout','modules/Create/Create','core/request','core/WindowForm'],
+  function($, Login, cookies, layout,Create,request,WindowForm){
   'use strict';
   //global vars
   var AUTH_STR = "auth";
 	var login;
 	var create;
 	var user = null;
-	var lst;
+	var win;
 
 	
   function startLoggin(){
@@ -57,7 +57,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	  
 	  }
   
-  /*for task lisr maybe if i have time create something like "startLoggin()" "startCreate()" */
+  /*for task lisr maybe if i have time create something like "startLoggin()" "startCreate()" 
   function startTaskList(){
   function listSuccess(){
 		console.log("List success moving to login.");
@@ -72,10 +72,14 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
       //create.resetDeferred();
       //create.getPromise().then(createSuccess, createFail);
     }
-  lst= new NewTask();
+  lst= new AddTask();
   lst.appendTo("#taskList");
   lst.getPromise().then(listSuccess,listFail);  
   }
+  */
+  
+  
+  
   
   function NameOfTheUser(){
   document.getElementById("middle").innerHTML =
@@ -90,10 +94,11 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	user=cookies.getCookie('user');
 	NameOfTheUser();
 	console.log("starting application " +user);
-	//startTaskList();
-	window.createButton("buttonPlus", "#windowButton");
+	
+	//window.createButton("buttonPlus", "#addlist");
+	win = new WindowForm();
 	request.upload();	
-    menu.createMenu("panelBar", "#megaStore");
+    //menu.createMenu("panelBar", "#megaStore");
 	
   }
 

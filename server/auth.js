@@ -23,7 +23,7 @@ function isRegistered(id, password){
 
 
 function propertiesFS(){
-console.log("welcome to propertiesFS line 27 in auth.js");
+//console.log("welcome to propertiesFS line 27 in auth.js");
 fs.readFile('db/'+ userName +'/properites.json', 'utf8' ,function(err, data){
 	if(err){
 		console.log('error reading file 29: ' + err);
@@ -36,7 +36,7 @@ fs.readFile('db/'+ userName +'/properites.json', 'utf8' ,function(err, data){
 	
 
 	function getPropertiesFS(){
-console.log("welcome to getPropertiesFS line 40 in auth.js");
+//console.log("welcome to getPropertiesFS line 40 in auth.js");
 propertiesFS();
 console.log('auth line 42: ' + properitess);
 return properitess;
@@ -49,17 +49,15 @@ function login(response, parsedUrl, postData){
 	var parsedData = querystring.parse(postData);
 
 	if (isRegistered(parsedData.user, parsedData.password)){
-	//userName = parsedData.user;
-	//propertiesFS();
 		var token 	= Math.random();
 		var expires = new Date(new Date().getTime() + 1000*60*60*24*4); //4 days 
 		var authCookie = AUTH_KEY + "=" + token + "; Path=/; Expires=" + expires;
 		var userCookie = "user=" + parsedData.user + "; Path=/; Expires=" + expires;
 		sessions[parsedData.user] = "" + token;
-			//here the data base
+		//here the data base
 		userName = parsedData.user; 
-		propertiesFS();
-		//readPropertiesJson();
+		propertiesFS(); //for me an help function 
+		
 		response.setHeader("Set-Cookie", [userCookie, authCookie]);
 		response.writeHead(200, {
 			"Content-Type": "text/plain"
@@ -76,7 +74,7 @@ function login(response, parsedUrl, postData){
 }
 
 function isLoggedIn (cookies){
-console.log("welcome to isLoggedIn line 70 in auth.js");
+//console.log("welcome to isLoggedIn line 70 in auth.js");
 	var token = cookies[AUTH_KEY];
 	var user = cookies["user"];
 	return (token && user && sessions[user] == token); 
@@ -84,6 +82,8 @@ console.log("welcome to isLoggedIn line 70 in auth.js");
 
 
 function createUser(user, password){
+//console.log("auth.js line 87  "+typeof user + " vlaue "+user);
+//console.log("auth.js line 88  "+typeof password + " vlaue "+password);
 	if (passwords[user]){
 		return false;
 	}
@@ -92,29 +92,23 @@ function createUser(user, password){
 	return true;
 }
 
-/**
-function show(response, parsedUrl, postData){
-	var parsedQuery = querystring.parse(postData);
-  //if (validateCreateUserParams(parsedQuery)){//line 15
-   // if (auth.createUser(parsedQuery.user, parsedQuery.password)){//auth.js line 80
-      db.createUser(parsedQuery.user, parsedQuery.properties); //to the make dir.js 
-      response.writeHead(200, {"Content-Type": "text/plain"});
-	 // console.log("in line 28 request handler = " + parsedQuery.properties);
-      response.write(properites);
-      response.end();
-      return;
-    }
-  }
-  response.writeHead(500, {"Content-Type": "text/plain"});
-  response.write("fail to show list");
-  response.end();
+
+
+function addNewTask(task){
+console.log("auth.js line 100  "+typeof user + " vlaue "+task);
+//console.log("auth.js line 88  "+typeof password + " vlaue "+password);
+	if (task===""){
+	console.log("empty list in line 103 auth.js");
+		return false;
+	}
+	fs.writeFile('db/'+ userName +'/lists/list.json', task, 'utf8');
+	return true;
 }
-}
-**/
+
 
 
 exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn;
-// exports.list 	= list;
-  exports.getPropertiesFS = getPropertiesFS ;
+exports.getPropertiesFS = getPropertiesFS ;
 exports.createUser 	= createUser;
+exports.addNewTask 	= addNewTask;

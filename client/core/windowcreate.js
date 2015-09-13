@@ -22,6 +22,7 @@ define(['jquery', 'text!./templates/WindowCreateList.html', 'kendo'],
 			width: "100%",
 			height: "100%"
 		});
+		
 		jButton.appendTo(selector);
 		
 		$(".open-button").kendoButton({
@@ -29,6 +30,7 @@ define(['jquery', 'text!./templates/WindowCreateList.html', 'kendo'],
 		  });
 		  
 		   var wndHtml = $("#window");
+		  
 		  var buttonOpen = $(".open-button").data("kendoButton");
 		  
           buttonOpen.bind("click", function() {
@@ -43,7 +45,9 @@ define(['jquery', 'text!./templates/WindowCreateList.html', 'kendo'],
 
 		  
 		 
-          if (!wndHtml.data("kendoWindow")) {
+		 //create Window
+    
+	if (!wndHtml.data("kendoWindow")) {
             wndHtml.kendoWindow({
 			
               modal: true,
@@ -56,9 +60,20 @@ define(['jquery', 'text!./templates/WindowCreateList.html', 'kendo'],
             });
 			wndHtml.data("kendoWindow").center();
 			
-         }		
-	}//create Button Plus
+         }	
 
+
+		 
+	}//end create Button Plus
+
+	
+	
+	
+	
+	
+	
+	
+	
 	return {
 		createButton: createButton
 	}
