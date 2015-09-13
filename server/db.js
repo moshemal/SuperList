@@ -25,7 +25,7 @@ function createUser (user, properites){
 						var e =[];
 						
 						fs.writeFile('./db/' + user + '/properites.json', properites , 'utf8');
-						fs.writeFile('./db/' + user + '/lists/list.json', [] , 'utf8');
+						//fs.writeFile('./db/' + user + '/lists/list.json', [] , 'utf8');
 						
 					});
 					

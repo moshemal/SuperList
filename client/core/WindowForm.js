@@ -18,7 +18,9 @@ define(['jquery','core/request', 'text!./templates/Window.html', 'kendo'],
        $('#addlist').on('click',function() {
            that.openWindow();
            that.saveListToDb(that);
+		   return false;
        });
+	   //return false;
         },80);
 		
 		
@@ -74,6 +76,7 @@ define(['jquery','core/request', 'text!./templates/Window.html', 'kendo'],
           }else{
             alert('list name is empty');
           }
+		  return false;
   });
 };
 
