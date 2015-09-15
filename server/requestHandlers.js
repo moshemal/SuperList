@@ -43,11 +43,13 @@ function createUser (response, parsedUrl, postData){
 
 
 function addNewTask(response, parsedUrl, postData){
+//console.log(postData);console.log(typeof postData);
   var parsedQuery = querystring.parse(postData);
-    if (auth.addNewTask(parsedQuery.task)){//auth.js line 80
-	console.log("in line 49 request handler = " + parsedQuery.task);
+  //console.log(parsedQuery);console.log(typeof parsedQuery);
+    if (auth.addNewTask(parsedQuery.name,parsedQuery.num)){//auth.js line 80
+	console.log("in line 49 request handler = " + parsedQuery.num);
       response.writeHead(200, {"Content-Type": "text/plain"});
-      response.write("we are Task user: " + parsedQuery.task);
+      response.write("we are Task user: " + parsedQuery);
       response.end();
       return;
     }

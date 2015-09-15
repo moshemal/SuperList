@@ -1,7 +1,5 @@
 var fs = require('fs');
 
-
-
 function createUser (user, properites){
 	fs.stat('./db/' + user, function(err, stat){
 	//console.log("in db.js "+properites);
@@ -25,7 +23,7 @@ function createUser (user, properites){
 						var e =[];
 						
 						fs.writeFile('./db/' + user + '/properites.json', properites , 'utf8');
-						//fs.writeFile('./db/' + user + '/lists/list.json', [] , 'utf8');
+						fs.writeFile('./db/' + user + '/lists/list.json', JSON.stringify(e) , 'utf8');
 						
 					});
 					
