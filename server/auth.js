@@ -1,8 +1,10 @@
 var fs 						= require('fs');
+var fs2 						= require('fs');
 var querystring 	= require("querystring");
 
 var passwords = null;
 var i = 0;
+var index =0;
 var lists = [];
 var properitess = {};
 var userName=null;
@@ -16,7 +18,7 @@ fs.readFile('db/passwords.json', 'utf8' ,function(err, data){
 		return;
 	}
 	passwords = JSON.parse(data);
-	//console.log(typeof data);
+     //console.log("auth line 20 "+ ++i);
 	//console.log(passwords);
 	//console.log(typeof passwords);
 });
@@ -28,7 +30,7 @@ function isRegistered(id, password){
 
 
 function propertiesFS(){
-//console.log("welcome to propertiesFS line 27 in auth.js");
+console.log("welcome to propertiesFS line 32 in auth.js");
 fs.readFile('db/'+ userName +'/properites.json', 'utf8' ,function(err, data){
 	if(err){
 		console.log('error reading file 29: ' + err);
@@ -36,40 +38,38 @@ fs.readFile('db/'+ userName +'/properites.json', 'utf8' ,function(err, data){
 	}
 	//console.log('auth line 33: ' + properitess );
 	properitess = data;//JSON.parse(data);
-	//console.log('auth line 35: ' +  properitess );
+	console.log('auth line 40: ' +  ++i );
 	});
 }
 	
 
-	function getPropertiesFS(){
-//console.log("welcome to getPropertiesFS line 40 in auth.js");
+function getPropertiesFS(){
 propertiesFS();
-//console.log('auth line 42: ' + properitess);
 return properitess;
 }
 	
-
 	
-	function listFS(){
-//console.log("welcome to propertiesFS line 27 in auth.js");
-fs.readFile('db/'+ userName +'/lists/list.json', 'utf8' ,function(err, data){
-	if(err){
-		console.log('error reading file 56: ' + err);
-		return;
-	}
+function listFS(){
+console.log("welcome to listFS line 54 in auth.js");
+var data = fs.readFileSync('db/'+ userName +'/lists/list.json', "utf8");
+//fs2.readFile('db/'+ userName +'/lists/list.json', 'utf8' ,function(err, data){
+	//if(err){
+		//console.log('error reading file 56: ' + err);
+		//return;
+	//}
 	//console.log('auth line 60: ' +typeof data);
 	lists = JSON.parse(data);
 	console.log("line 62 auth "+   ++i);
-	//console.log("line 62 auth "+   lists[0].name);
-	//console.log("line 62 auth "+   lists[1].name);
-	});
 }
 
+function getListFS(){
+listFS();
+//console.log('auth line 80: ' + lists);
+return lists;
+}
 	
-	
-
 function login(response, parsedUrl, postData){
-	console.log("welcome to login 42 in auth.js "+postData);
+	console.log("welcome to login 72 in auth.js "+postData);
 	var parsedData = querystring.parse(postData);
 
 	if (isRegistered(parsedData.user, parsedData.password)){
@@ -78,14 +78,14 @@ function login(response, parsedUrl, postData){
 		var authCookie = AUTH_KEY + "=" + token + "; Path=/; Expires=" + expires;
 		var userCookie = "user=" + parsedData.user + "; Path=/; Expires=" + expires;
 		sessions[parsedData.user] = "" + token;
+		
 		//here the data base
 		userName = parsedData.user;
-		//console.log('auth line 61: ' + properitess);
-		//console.log('auth line 62: ' + typeof null); //typeof null === object
 		propertiesFS(); //for me an help function 
-		
-		listFS();//read list task
-		/*
+		listFS();
+		console.log(lists.length +" size "+ typeof lists.length);
+		console.log("line 86 auth  "+ ++i);		
+		/**
 		//var name = "gali";
 		//var num = i++;
 		var task =[];
@@ -95,30 +95,15 @@ function login(response, parsedUrl, postData){
 	item["task"] =task;	
 		lists.push(item);
 		fs.writeFile('db/'+ userName +'/lists/list.json',JSON.stringify(lists), 'utf8');
-		*/
-		
-		
-		
-		console.log(lists.length +" size "+ typeof lists.length);
-		//console.log(lists[0]);
-		console.log("line 101 auth  "+ ++i);
-		
-		
+		**/
 		response.setHeader("Set-Cookie", [userCookie, authCookie]);
-		response.writeHead(200, {
-			"Content-Type": "text/plain"
-		});
+		response.writeHead(200, {"Content-Type": "text/plain"});
 		response.write(AUTH_KEY + "=" + token);	
 		//response.write("nnn" + properites.full);	
 	} 
-	
-	
-	
-	
+
 	else {
-		response.writeHead(401, {
-			"Content-Type": "text/plain"
-		});	
+		response.writeHead(401, {"Content-Type": "text/plain"});	
 	}
 	response.end();
 }
@@ -132,8 +117,6 @@ function isLoggedIn (cookies){
 
 
 function createUser(user, password){
-//console.log("auth.js line 87  "+typeof user + " vlaue "+user);
-//console.log("auth.js line 88  "+typeof password + " vlaue "+password);
 	if (passwords[user]){
 		return false;
 	}
@@ -144,17 +127,20 @@ function createUser(user, password){
 
 
 
-function addNewTask(name,num){
-//var parsedData = querystring.parse(postData);
-//console.log("auth.js line 100  "+typeof data + " vlaue "+data);
-//console.log("auth.js line 88  "+typeof password + " vlaue "+password);
-	if (list[i]){
-	console.log(" list in line 109 auth.js");
-		return false;
-	}
-	num =++i;
-	list[i] = num;
-	fs.writeFile('db/'+ userName +'/lists/list.json',JSON.stringify(list), 'utf8');
+function addNewTask(name,num,task){
+
+//console.log("name is auth 135"+typeof name);
+//console.log("num is 136  "+num);
+console.log("task is 137 "+typeof task);
+
+var item = {
+name : name,
+num : lists.length + 1,
+task : [] //come back
+};
+
+lists.push(item);
+fs.writeFile('db/'+ userName +'/lists/list.json',JSON.stringify(lists), 'utf8');
 	return true;
 }
 
@@ -162,7 +148,8 @@ function addNewTask(name,num){
 
 exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn;
-exports.getPropertiesFS = getPropertiesFS;
-exports.listFS = listFS;
+exports.getListFS = getListFS;
+//exports.getPropertiesFS = getPropertiesFS;
+
 exports.createUser 	= createUser;
 exports.addNewTask 	= addNewTask;

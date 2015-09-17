@@ -48,30 +48,28 @@ var obj = JSON.parse(data);
 console.log(typeof data);
 document.getElementById("taskList").innerHTML =
 "<h1>List Of Properties<\h1>"+
-"<h2>"+obj.name +"</h2>" +
-"<h2>"+obj.job+"</h2>"; 
+"<h2>"+obj[0].name +"</h2>"; 
 });
 }
 
-	
-	
-	
-	
-	
-	
-	
-  function addNewTask(task){
-   //console.log("in client/request.js create user properties :: " +properties);
-    return $.ajax("/api/addNewTask", {
-      method: "post",
-      success: function(data, a, xhr){
-	  //alert("create line 69 request  "+data);
-        console.log(data)
+		
+  function addNewTask(name){
+  return $.ajax("/api/addNewTask", {
+				method: "post",
+				  success: function(data, a, xhr){
+	            alert("create line 61 request  "+data);
+                  console.log(data)
       },
-      data: {
-         task: JSON.stringify(task)//JSON.stringify(properties,null,2)
-      }
-    });
+	data:{ //JSON.stringify(data)
+       name: 		name,
+        num: ''
+       //task: []//JSON.stringify(properties,null,2)
+	
+	
+	}
+
+	
+		});
   }
   
 	  

@@ -30,10 +30,7 @@ function($, template, request){ //Create){
 		//this.user = elem;
 	//}
 	
-	Login.prototype.getName = function (){
 	
-	return	this.name;
-	}
 	
 	Login.prototype.appendTo = function (elem){
 		if (this.$){
