@@ -3,8 +3,9 @@
  */
 
 define(['jquery', 'modules/Login/Login', 'core/cookies',
- 'core/layout','modules/Create/Create','core/request','core/WindowForm'],
-  function($, Login, cookies, layout,Create,request,WindowForm){
+ 'core/layout','modules/Create/Create','core/request',
+ 'modules/ButtonPlus/BtnAdd','modules/Window/WinForm'],
+  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm){
   'use strict';
   
   //global vars
@@ -12,8 +13,8 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	var login;
 	var create;
 	var user = null;
-	var win;
-
+	var btn;
+var win;
 	
   function startLoggin(){
 	function loginSuccess(){
@@ -58,30 +59,18 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	  
 	  }
   
-  /*for task lisr maybe if i have time create something like "startLoggin()" "startCreate()" 
-  function startTaskList(){
-  function listSuccess(){
-		console.log("List success moving to login.");
-		//startLoggin();
-		//create.destroy();
-		request.upload();//not good must be fixed
+  
+  
+  
+    
+   //for sign in new User
+  function startWin(){
+	 win = new WinForm();
+	 win.openWin();
+	  win.$.find(".close-button").on('click', function(){win.closeWin();});//???
 	  }
-	  
-	   function listFail(){
-      console.log("List fail trying again");
-	  request.upload();//not good must be fixed
-      //create.resetDeferred();
-      //create.getPromise().then(createSuccess, createFail);
-    }
-  lst= new AddTask();
-  lst.appendTo("#taskList");
-  lst.getPromise().then(listSuccess,listFail);  
-  }
-  */
   
-  
-  
-  
+ 
   function NameOfTheUser(){
   document.getElementById("middle").innerHTML =
 "<h1>Hello <b>"+user+"</b><\h1>"
@@ -95,11 +84,15 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	user=cookies.getCookie('user');
 	NameOfTheUser();
 	console.log("starting application " +user);
-	$('#task').appendTo('#middle-pane');
+	//$('#task').appendTo('#middle-pane');
 	request.upload();	
-	//window.createButton("buttonPlus", "#addlist");
-	//$(".btn btn-primary").append("#middle-pane");
-	win = new WindowForm();
+	//button.createButton("buttonPlus", "#task");
+	//console.log(button);
+	btn = new BtnAdd();
+	btn.appendTo("#task");
+	btn.$.find(".open-button").on('click', function(){startWin();});//???
+	//win.createBtn();
+	//win = new WindowButton();
 	console.log("bbbbb");
     //menu.createMenu("panelBar", "#megaStore");
 	
