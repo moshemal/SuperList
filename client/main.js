@@ -65,9 +65,28 @@ var win;
     
    //for sign in new User
   function startWin(){
+  function winSuccess(){
+		console.log("NEW TASK success .");
+		request.upload();
+		//win.destroy();
+		win.closeWin();
+	  }
+	  
+	 function winFail(){
+      console.log("NEW TASK fail trying again");
+	 // win.destroy();
+		win.closeWin();
+      //create.resetDeferred();
+      //create.getPromise().then(createSuccess, createFail);
+    }
+	 
+  
+  
 	 win = new WinForm();
 	 win.openWin();
+	 
 	  win.$.find(".close-button").on('click', function(){win.closeWin();});//???
+	  win.getPromise().then(winSuccess,winFail);  
 	  }
   
  

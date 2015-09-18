@@ -1,5 +1,5 @@
-define(['jquery','text!./WinForm.html','kendo'],
-function($, template){
+define(['jquery','text!./WinForm.html','core/request','kendo'],
+function($, template,request){
 'use strict';
 
 
@@ -21,7 +21,15 @@ function WinForm(initObj){
               visible: false
             }).data("kendoWindow");//.open();
 
-
+			
+			this.$.find("#addtask").on('submit', function(ev){
+			console.log(ev);
+			var name = ev.target[0].value;
+			var promise = request.addNewTask(name);
+			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
+			
+			return false;
+		});
 
 }
 
@@ -46,7 +54,20 @@ WinForm.prototype.openWin = function (){
 		}
 	}
 	
+		
+WinForm.prototype.resetDeferred = function(){
+		this._dfd = new $.Deferred();
+	}
+
+WinForm.prototype.getPromise = function(){
+		return this._dfd.promise();
+	}
 	
+	
+WinForm.prototype.destroy = function(){
+		this.$.off('submit');
+		//this.$.remove();
+	}
 	
 
 
