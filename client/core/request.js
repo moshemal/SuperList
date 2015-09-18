@@ -45,7 +45,9 @@ $.get("/api/upload", function( data ) {
 //var inlineTemplate = kendo.template("Hello,  ProductName: #: ProductName # #= job #");
 //var inlineData = "'"+data+"'";//{ firstName: "John", lastName: "Doe" };
 var obj = JSON.parse(data);
-console.log(obj);
+//console.log(obj.length);
+
+var text = "<h1>List Of Task  all:"+obj.length+"<\h1>" 
 document.getElementById("taskList").innerHTML =
 "<h1>List Of Task<\h1>"+
 "<h2>"+obj[0].name +"</h2>"; 

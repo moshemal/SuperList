@@ -8,7 +8,8 @@ console.log("welcome to upload line 6 in RH.js");
   //var p = auth.getPropertiesFS();
   var lst = auth.getListFS();
   var str = JSON.stringify(lst);
-  //console.log(str);
+   console.log("upload RH");
+  console.log(str);
   
   
   //console.log("welcome to upload line 10 in RH.js "+p);
@@ -48,6 +49,9 @@ function createUser (response, parsedUrl, postData){
 
 function addNewTask(response, parsedUrl, postData){
 //console.log(postData);console.log(typeof postData);
+console.log("line 51 RH add new task");
+
+
   var parsedQuery = querystring.parse(postData);
   //console.log(parsedQuery);console.log(typeof parsedQuery);
     if (auth.addNewTask(parsedQuery.name,parsedQuery.num,parsedQuery.task)){//auth.js line 80
