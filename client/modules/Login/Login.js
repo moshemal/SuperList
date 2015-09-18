@@ -1,11 +1,10 @@
-define(['jquery', 'text!./template.html', 'core/request'],  //'modules/Create/Create'], 
-function($, template, request){ //Create){
+define(['jquery', 'text!./template.html', 'core/request'], 
+function($, template, request){ 
 	'use strict';
 		
 	function Login(initObj){
 		initObj = initObj || {};
 		var that = this;
-        //var user = {} ;
 		this._dfd = $.Deferred();
 		
 		var htmlDom = this.$ = $(template);

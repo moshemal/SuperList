@@ -45,9 +45,9 @@ $.get("/api/upload", function( data ) {
 //var inlineTemplate = kendo.template("Hello,  ProductName: #: ProductName # #= job #");
 //var inlineData = "'"+data+"'";//{ firstName: "John", lastName: "Doe" };
 var obj = JSON.parse(data);
-//console.log(data);
+console.log(obj);
 document.getElementById("taskList").innerHTML =
-"<h1>List Of Properties<\h1>"+
+"<h1>List Of Task<\h1>"+
 "<h2>"+obj[0].name +"</h2>"; 
 });
 }
