@@ -6,6 +6,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
  'core/layout','modules/Create/Create','core/request','core/WindowForm'],
   function($, Login, cookies, layout,Create,request,WindowForm){
   'use strict';
+  
   //global vars
   var AUTH_STR = "auth";
 	var login;
@@ -94,10 +95,12 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	user=cookies.getCookie('user');
 	NameOfTheUser();
 	console.log("starting application " +user);
-	
-	//window.createButton("buttonPlus", "#addlist");
-	win = new WindowForm();
+	$('#task').appendTo('#middle-pane');
 	request.upload();	
+	//window.createButton("buttonPlus", "#addlist");
+	//$(".btn btn-primary").append("#middle-pane");
+	win = new WindowForm();
+	console.log("bbbbb");
     //menu.createMenu("panelBar", "#megaStore");
 	
   }

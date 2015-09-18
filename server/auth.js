@@ -81,7 +81,7 @@ function login(response, parsedUrl, postData){
 		
 		//here the data base
 		userName = parsedData.user;
-		propertiesFS(); //for me an help function 
+		//propertiesFS(); //for me an help function 
 		listFS();
 		console.log(lists.length +" size "+ typeof lists.length);
 		console.log("line 86 auth  "+ ++i);		
@@ -129,9 +129,9 @@ function createUser(user, password){
 
 function addNewTask(name,num,task){
 
-//console.log("name is auth 135"+typeof name);
+console.log("name is auth 135"+typeof name);
 //console.log("num is 136  "+num);
-console.log("task is 137 "+typeof task);
+//console.log("task is 137 "+typeof task);
 
 var item = {
 name : name,
@@ -140,7 +140,8 @@ task : [] //come back
 };
 
 lists.push(item);
-fs.writeFile('db/'+ userName +'/lists/list.json',JSON.stringify(lists), 'utf8');
+fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists));
+//console.log(fs.getTime());
 	return true;
 }
 
