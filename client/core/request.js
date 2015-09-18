@@ -45,20 +45,21 @@ $.get("/api/upload", function( data ) {
 //var inlineTemplate = kendo.template("Hello,  ProductName: #: ProductName # #= job #");
 //var inlineData = "'"+data+"'";//{ firstName: "John", lastName: "Doe" };
 var obj = JSON.parse(data);
-console.log(typeof data);
+//console.log(data);
 document.getElementById("taskList").innerHTML =
 "<h1>List Of Properties<\h1>"+
 "<h2>"+obj[0].name +"</h2>"; 
 });
 }
 
-		
+		var i =0;
   function addNewTask(name){
   return $.ajax("/api/addNewTask", {
 				method: "post",
 				  success: function(data, a, xhr){
-	            alert("create line 61 request  "+data);
+	            //alert("create line 61 request  "+data);
                   console.log(data)
+				  //console.log(++i);
       },
 	data:{ //JSON.stringify(data)
        name: 		name,
