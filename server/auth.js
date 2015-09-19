@@ -1,16 +1,15 @@
 var fs 						= require('fs');
-var fs2 						= require('fs');
+
 var querystring 	= require("querystring");
 
 var passwords = null;
 var i = 0;
-var index =0;
 var lists = []; // for list of task
 var properitess = {};
 var userName=null; //
 var sessions 	= {};
 var AUTH_KEY 	= "auth";
-//var userName ;
+
 
 fs.readFile('db/passwords.json', 'utf8' ,function(err, data){
 	if(err){
@@ -18,6 +17,7 @@ fs.readFile('db/passwords.json', 'utf8' ,function(err, data){
 		return;
 	}
 	passwords = JSON.parse(data);
+	console.log('read passwords auth line 21: ' +  ++i );
      
 });
 
@@ -39,7 +39,6 @@ fs.readFile('db/'+ userName +'/properites.json', 'utf8' ,function(err, data){
 	});
 }
 	
-
 function getPropertiesFS(){
 propertiesFS();
 return properitess;
@@ -49,11 +48,6 @@ return properitess;
 function readListFS(){
 console.log("welcome to listFS line 54 in auth.js");
 var data = fs.readFileSync('db/'+ userName +'/lists/list.json', "utf8"); //it's more fast for write and will return null
-//fs2.readFile('db/'+ userName +'/lists/list.json', 'utf8' ,function(err, data){
-	//if(err){
-		//console.log('error reading file 56: ' + err);
-		//return;
-	//}
 	lists = JSON.parse(data); //an Object
 	console.log("line 62 auth "+   ++i);
 }
@@ -69,17 +63,17 @@ function login(response, parsedUrl, postData){
 	var parsedData = querystring.parse(postData);
 
 	if (isRegistered(parsedData.user, parsedData.password)){
+		//here the data base
+		userName = parsedData.user; // i need the name of the user for read what inside list and for other thing
+		readListFS(); //we have to much exception so if we we need to login read for security
+		//console.log(lists.length +" size "+ typeof lists.length);
+		//console.log("line 86 auth  "+ ++i);		
+		
 		var token 	= Math.random();
 		var expires = new Date(new Date().getTime() + 1000*60*60*24*4); //4 days 
 		var authCookie = AUTH_KEY + "=" + token + "; Path=/; Expires=" + expires;
 		var userCookie = "user=" + parsedData.user + "; Path=/; Expires=" + expires;
 		sessions[parsedData.user] = "" + token;
-		
-		//here the data base
-		userName = parsedData.user; // i need the name of the user for read what inside list and for other thing
-		readListFS(); //we have to much exception so if we we need to login read for security
-		console.log(lists.length +" size "+ typeof lists.length);
-		console.log("line 86 auth  "+ ++i);		
 		response.setHeader("Set-Cookie", [userCookie, authCookie]);
 		response.writeHead(200, {"Content-Type": "text/plain"});
 		response.write(AUTH_KEY + "=" + token);	
@@ -91,6 +85,8 @@ function login(response, parsedUrl, postData){
 	response.end();
 }
 
+
+//i add some problom with him when somthing with the cookie so i change it
 function isLoggedIn (cookies){
 	var token = cookies[AUTH_KEY];
 	var user = cookies["user"];
@@ -98,8 +94,11 @@ function isLoggedIn (cookies){
 	//when i run the program (not in a hidden window we will not get either the name ) 
 	//and will not read the file of the list
 	userName = user; 
-console.log("in auth line 101" +typeof user);	
-	return (token && user && sessions[user] == token); 
+console.log("in auth line 101 " +user);	
+console.log("in auth line 102 " +token);
+console.log("in auth line 103 " +sessions[user]); //print undefined
+console.log("in auth line 104 " +sessions[user] == token); //false
+	return (token && user );//&& sessions[user] == token);  //
 }
 
 
@@ -113,6 +112,7 @@ function createUser(user, password){
 }
 
 
+//adding new task after we check in RH if the DB is OK
 function addNewTask(name,num,task){
 var item = {
 name : name,
@@ -121,8 +121,7 @@ task : [] //come back
 };
 
 lists.push(item);
-fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists));
-//console.log(fs.getTime());
+fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 	return true;
 }
 

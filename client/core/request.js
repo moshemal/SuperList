@@ -1,10 +1,7 @@
 define(['jquery'], function($){
-	
 	'use strict';
 
-	
-	//we will get back from server/auth.js/function login
-	//line 61 response.write(AUTH_KEY + "=" + token);	
+		
 	function login(name, password){
 		return $.ajax("/api/login",  { 
 			method: "post",
@@ -21,14 +18,14 @@ define(['jquery'], function($){
 	} //end login
 
 	
-	 function createUser (name, password, properties){
+	function createUser (name, password, properties){
     return $.ajax("/api/createUser", {
       method: "post",
       success: function(data, a, xhr){console.log(data)},
       data: {
         user: 		name,
         password: password,
-        properties: JSON.stringify(properties )//JSON.stringify(properties,null,2)
+        properties: JSON.stringify(properties)//JSON.stringify(properties,null,2)
       }
     });//$.ajax
   }
@@ -36,9 +33,10 @@ define(['jquery'], function($){
   
   
   
-//if i will have more time i will think and do another
-//list for the mean while its what we have now i really start to understend the work
+/*if i will have more time i will think and do another
+list for the mean while its what we have now i really start to understend the work*/
 function upload(){
+console.log("hello");
 //Request "/api/upload" and will print the result of the request:
 $.get("/api/upload",function(data){
 console.log(typeof data);
@@ -52,22 +50,24 @@ document.getElementById("taskList").innerHTML =
 return; 
 }
 
+//print the list of the user
 var text = "<ul>List Of Task  all: "+obj.length; 
-//var icon = ""
 for(var index = 0 ;index < obj.length ; index++){
-text += "<li> "+obj[index].name +"  "+obj[index].num+"</li>"
+text += "<li> "+obj[index].name +"     |      "+obj[index].num+"</li>"
 }
 text +="</ul>"
 
 //document.getElementById("taskList").innerHTML =text;
+
+//and append it to #taskList 
 $("#taskList").append(text);
-
-
-
 });//end of $.get
 }
 
-		var i =0;
+	var i =0;
+
+	/*adding new task give the server his DB 
+	the only time the server will response with error its only when the*/
   function addNewTask(name){
   return $.ajax("/api/addNewTask", {
 				method: "post",
@@ -76,7 +76,8 @@ $("#taskList").append(text);
                   console.log(data)
 				  //console.log(++i);
       },
-	data:{ //JSON.stringify(data)
+	  //sending to the server
+	data:{ 
        name: 		name,
         num: ''
        //task: []//JSON.stringify(properties,null,2)
