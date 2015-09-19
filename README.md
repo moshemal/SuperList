@@ -2,8 +2,11 @@
 Single page application, with node.js server, educational project
 
 **This project is not for production uses**
+Gali Bril 
+Nadav "Lord of GitHub" Gur-Arieh 
+Matan Rosenfeld 
 
-##  Project Members
+
 
 
 ## Installation
