@@ -111,7 +111,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
   }
 
   
-   user=cookies.getCookie(AUTH_STR);//decorateWithIsloggedIn
+   user=cookies.getCookie(AUTH_STR);//
   if(user !== "" ) {
     console.log("starting application" +user);
     startApp();
