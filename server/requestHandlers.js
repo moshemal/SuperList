@@ -8,11 +8,6 @@ console.log("welcome to upload line 6 in RH.js");
   //var p = auth.getPropertiesFS();
   var lst = auth.getListFS();
   var str = JSON.stringify(lst);
-   console.log("upload RH");
-  console.log(str);
-  
-  
-  //console.log("welcome to upload line 10 in RH.js "+p);
   response.writeHead(200, {"Content-Type": "text/plain"});
   var parsedData = querystring.parse(postData).text;
   //var pp = querystring.parse(p).text;
@@ -38,14 +33,17 @@ function createUser (response, parsedUrl, postData){
       response.write("we are creating user: " + parsedQuery.user);
       response.end();
       return;
-    }
-  }
+    }}
   response.writeHead(500, {"Content-Type": "text/plain"});
   response.write("fail to create new user");
   response.end();
 }
 
 
+function validateCreateTaskParams (parsedQuery) {
+  return (typeof parsedQuery.name === 'string' &&
+  parsedQuery.name !== "");
+}
 
 function addNewTask(response, parsedUrl, postData){
 //console.log(postData);console.log(typeof postData);
@@ -54,16 +52,19 @@ console.log("line 51 RH add new task");
 
   var parsedQuery = querystring.parse(postData);
   //console.log(parsedQuery);console.log(typeof parsedQuery);
-    if (auth.addNewTask(parsedQuery.name,parsedQuery.num,parsedQuery.task)){//auth.js line 80
+    
+	
+	if(validateCreateTaskParams(parsedQuery)){
+	if (auth.addNewTask(parsedQuery.name,parsedQuery.num,parsedQuery.task)){//auth.js line 80
 	console.log("in line 49 request handler = " + parsedQuery.num);
       response.writeHead(200, {"Content-Type": "text/plain"});
       response.write("we are Task user: " + parsedQuery);
       response.end();
       return;
     }
-  
+  }
   response.writeHead(500, {"Content-Type": "text/plain"});
-  response.write("fail to create new Task");
+  response.write("fail to create new Task THE WAS EMPTY");
   response.end();
 }
 

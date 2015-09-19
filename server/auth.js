@@ -5,7 +5,7 @@ var querystring 	= require("querystring");
 var passwords = null;
 var i = 0;
 var index =0;
-var lists = [];
+var lists = []; // for list of task
 var properitess = {};
 var userName=null;
 var sessions 	= {};
@@ -126,13 +126,7 @@ function createUser(user, password){
 }
 
 
-
 function addNewTask(name,num,task){
-
-console.log("name is auth 135"+typeof name);
-//console.log("num is 136  "+num);
-//console.log("task is 137 "+typeof task);
-
 var item = {
 name : name,
 num : lists.length + 1,
@@ -151,6 +145,5 @@ exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn;
 exports.getListFS = getListFS;
 //exports.getPropertiesFS = getPropertiesFS;
-
 exports.createUser 	= createUser;
 exports.addNewTask 	= addNewTask;

@@ -9,12 +9,12 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
   'use strict';
   
   //global vars
-  var AUTH_STR = "auth";
+    var AUTH_STR = "auth";
 	var login;
 	var create;
 	var user = null;
-	var btn;
-var win;
+	var btn; //for button plus
+    var win; //for window task
 	
   function startLoggin(){
 	function loginSuccess(){
@@ -31,7 +31,7 @@ var win;
 	
     login = new Login(); //
     login.appendTo("#container");//
-	login.$.find("#createbtn").on('click', function(){startCreate();});//???
+	login.$.find("#createbtn").on('click', function(){startCreate();});//
     
 	login.getPromise().then(loginSuccess, loginFail);  
 
@@ -60,10 +60,7 @@ var win;
 	  }
   
   
-  
-  
-    
-   //for sign in new User
+   //for create a window add new task
   function startWin(){
   function winSuccess(){
 		console.log("NEW TASK success .");
@@ -75,17 +72,16 @@ var win;
 	 function winFail(){
       console.log("NEW TASK fail trying again");
 	 // win.destroy();
-		win.closeWin();
-      //create.resetDeferred();
-      //create.getPromise().then(createSuccess, createFail);
+		//win.closeWin();//maybe later i will think about another action
+      win.resetDeferred();
+      win.getPromise().then(winSuccess, winFail);
     }
 	 
-  
-  
-	 win = new WinForm();
-	 win.openWin();
+	 win = new WinForm(); //create a new window
+	 win.openWin(); // i spearate that 
 	 
-	  win.$.find(".close-button").on('click', function(){win.closeWin();});//???
+	 //if im only want to close inside the window without any action so close
+	  win.$.find(".close-button").on('click', function(){win.closeWin();});
 	  win.getPromise().then(winSuccess,winFail);  
 	  }
   
@@ -101,17 +97,15 @@ var win;
   function startApp(){
     layout.createLayout("3W", "#container");
 	user=cookies.getCookie('user');
-	NameOfTheUser();
-	console.log("starting application " +user);
+	NameOfTheUser(); //for checking
+	console.log("starting application " +user); //for checking
 	//$('#task').appendTo('#middle-pane');
-	request.upload();	
-	//button.createButton("buttonPlus", "#task");
-	//console.log(button);
-	btn = new BtnAdd();
+	request.upload(); //mybe will change in another postion	
+	
+	btn = new BtnAdd(); 
 	btn.appendTo("#task");
 	btn.$.find(".open-button").on('click', function(){startWin();});//???
-	//win.createBtn();
-	//win = new WindowButton();
+	
 	console.log("bbbbb");
     //menu.createMenu("panelBar", "#megaStore");
 	
@@ -123,7 +117,6 @@ var win;
     console.log("starting application" +user);
     startApp();
   } else {
-  //console.log("login " +user);
     startLoggin();
   }
 });

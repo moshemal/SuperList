@@ -1,28 +1,20 @@
-
+//this class is a combination between kendo and class object for ect. with Login and layout
 define(['jquery', 'text!./BtnAdd.html','kendo'],
-
 function($, template){ //Create){
 	'use strict';
 		
 	function BtnAdd(initObj){
 		initObj = initObj || {};
-		//console.log("hello");
+		console.log("hello button plus");
 		var that = this;
         //var user = {} ;
 		this._dfd = $.Deferred();
 		
 		var htmlDom = this.$ = $(template);
 //this.appendTo();
-		
-
+	
 	}
 
-	
-	//i want to see if i can take the user name
-	//Login.prototype.setName = function (elem){
-		//this.user = elem;
-	//}
-	
 	
 	
 	BtnAdd.prototype.appendTo = function (elem){

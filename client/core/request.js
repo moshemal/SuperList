@@ -22,36 +22,58 @@ define(['jquery'], function($){
 
 	
 	 function createUser (name, password, properties){
-   //console.log("in client/request.js create user properties :: " +properties);
-   
     return $.ajax("/api/createUser", {
       method: "post",
-      success: function(data, a, xhr){
-	  //alert("create line 30 request  "+data);
-        console.log(data)
-      },
+      success: function(data, a, xhr){console.log(data)},
       data: {
         user: 		name,
         password: password,
         properties: JSON.stringify(properties )//JSON.stringify(properties,null,2)
       }
-    });
+    });//$.ajax
   }
   
-
+  
+  /*
+  function strDomHtml(obj){
+  
+  var txt
+  for(var index = 0 ;i<obj.length ; i++){
+  
+  
+  
+  }
+  }
+  */
+  
+  
+//if i will have more time i will think and do another
+//list for the mean while its what we have now i really start to understend the work
 function upload(){
-$.get("/api/upload", function( data ) {
-//alert(data);
-//var inlineTemplate = kendo.template("Hello,  ProductName: #: ProductName # #= job #");
-//var inlineData = "'"+data+"'";//{ firstName: "John", lastName: "Doe" };
-var obj = JSON.parse(data);
-//console.log(obj.length);
+//Request "/api/upload" and will print the result of the request:
+$.get("/api/upload",function(data){
+console.log(typeof data);
+var obj = JSON.parse(data);//make it a objecet
 
-var text = "<h1>List Of Task  all:"+obj.length+"<\h1>" 
+//if we have empty list return
+if(obj.length===0){
 document.getElementById("taskList").innerHTML =
 "<h1>List Of Task<\h1>"+
-"<h2>"+obj[0].name +"</h2>"; 
-});
+"<h2>Empty List</h2>";
+return; 
+}
+
+var text = "<ul>List Of Task  all: "+obj.length; 
+
+for(var index = 0 ;index< obj.length ; index++){
+text += "<li>"+obj[index].name +" "+obj[index].num+"</li>"
+}
+
+text +="</ul>"
+
+document.getElementById("taskList").innerHTML =
+text;
+});//end of $.get
 }
 
 		var i =0;
@@ -67,8 +89,6 @@ document.getElementById("taskList").innerHTML =
        name: 		name,
         num: ''
        //task: []//JSON.stringify(properties,null,2)
-	
-	
 	}
 
 	
@@ -77,11 +97,9 @@ document.getElementById("taskList").innerHTML =
   
 	  
 	return {
-		login:      login,
+	login:      login,
 	createUser: createUser,
     upload: upload,
-	//list : list
 	addNewTask: addNewTask
-	//listView : listView 
 	}
 });
