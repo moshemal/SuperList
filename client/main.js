@@ -63,18 +63,19 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
    //for create a window add new task
   function startWin(){
   function winSuccess(){
-		console.log("NEW TASK success .");
-		request.upload();
+		console.log("NEW TASK success."); 
+		$('#taskList').empty();//if we do append instead of "by id inner" its will not clean the first
+		request.upload(); //have the new list
 		//win.destroy();
-		win.closeWin();
+		win.closeWin(); //and close the window
 	  }
 	  
 	 function winFail(){
       console.log("NEW TASK fail trying again");
 	 // win.destroy();
 		//win.closeWin();//maybe later i will think about another action
-      win.resetDeferred();
-      win.getPromise().then(winSuccess, winFail);
+      win.resetDeferred(); //like we do in Craete and Login
+      win.getPromise().then(winSuccess, winFail); //try agin to have a new task
     }
 	 
 	 win = new WinForm(); //create a new window
@@ -89,7 +90,6 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
   function NameOfTheUser(){
   document.getElementById("middle").innerHTML =
 "<h1>Hello <b>"+user+"</b><\h1>"
-  
   }
   
   
@@ -99,16 +99,15 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	user=cookies.getCookie('user');
 	NameOfTheUser(); //for checking
 	console.log("starting application " +user); //for checking
-	//$('#task').appendTo('#middle-pane');
 	request.upload(); //mybe will change in another postion	
 	
+	//create class Button
 	btn = new BtnAdd(); 
-	btn.appendTo("#task");
-	btn.$.find(".open-button").on('click', function(){startWin();});//???
+	btn.appendTo("#task");//append to the button
+	btn.$.find(".open-button").on('click', function(){startWin();});//if we have event click go to startWin();
 	
-	console.log("bbbbb");
+	
     //menu.createMenu("panelBar", "#megaStore");
-	
   }
 
   

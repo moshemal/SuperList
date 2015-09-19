@@ -39,7 +39,7 @@ function createUser (response, parsedUrl, postData){
   response.end();
 }
 
-
+//the way you did create user
 function validateCreateTaskParams (parsedQuery) {
   return (typeof parsedQuery.name === 'string' &&
   parsedQuery.name !== "");
@@ -48,11 +48,8 @@ function validateCreateTaskParams (parsedQuery) {
 function addNewTask(response, parsedUrl, postData){
 //console.log(postData);console.log(typeof postData);
 console.log("line 51 RH add new task");
-
-
   var parsedQuery = querystring.parse(postData);
   //console.log(parsedQuery);console.log(typeof parsedQuery);
-    
 	
 	if(validateCreateTaskParams(parsedQuery)){
 	if (auth.addNewTask(parsedQuery.name,parsedQuery.num,parsedQuery.task)){//auth.js line 80

@@ -34,17 +34,6 @@ define(['jquery'], function($){
   }
   
   
-  /*
-  function strDomHtml(obj){
-  
-  var txt
-  for(var index = 0 ;i<obj.length ; i++){
-  
-  
-  
-  }
-  }
-  */
   
   
 //if i will have more time i will think and do another
@@ -64,15 +53,17 @@ return;
 }
 
 var text = "<ul>List Of Task  all: "+obj.length; 
-
-for(var index = 0 ;index< obj.length ; index++){
-text += "<li>"+obj[index].name +" "+obj[index].num+"</li>"
+//var icon = ""
+for(var index = 0 ;index < obj.length ; index++){
+text += "<li> "+obj[index].name +"  "+obj[index].num+"</li>"
 }
-
 text +="</ul>"
 
-document.getElementById("taskList").innerHTML =
-text;
+//document.getElementById("taskList").innerHTML =text;
+$("#taskList").append(text);
+
+
+
 });//end of $.get
 }
 
@@ -90,8 +81,6 @@ text;
         num: ''
        //task: []//JSON.stringify(properties,null,2)
 	}
-
-	
 		});
   }
   
