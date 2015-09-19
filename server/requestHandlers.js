@@ -4,14 +4,10 @@ var auth				= require('./auth');
 
 function upload(response, pathname, postData) {
 console.log("welcome to upload line 6 in RH.js");
-  //console.log("upload was called"); 
-  //var p = auth.getPropertiesFS();
   var lst = auth.getListFS();
   var str = JSON.stringify(lst);
   response.writeHead(200, {"Content-Type": "text/plain"});
   var parsedData = querystring.parse(postData).text;
-  //var pp = querystring.parse(p).text;
-  //console.log("line 10 "+pp);
   response.write(str);
   response.end();
 }
@@ -22,7 +18,7 @@ function validateCreateUserParams (parsedQuery) {
   parsedQuery.user !== "" && parsedQuery.password !== "");
 }
 
-//from apiRouter.js "/createUser":  requestHandlers.createUser,
+
 function createUser (response, parsedUrl, postData){
   var parsedQuery = querystring.parse(postData);
   if (validateCreateUserParams(parsedQuery)){//line 15
@@ -39,18 +35,18 @@ function createUser (response, parsedUrl, postData){
   response.end();
 }
 
-//the way you did create user
-function validateCreateTaskParams (parsedQuery) {
+//the way you did create user check if the user didn't sent a empty task
+function validateCreateTaskParams(parsedQuery) {
   return (typeof parsedQuery.name === 'string' &&
   parsedQuery.name !== "");
 }
 
+//adding new task to the list checking + adding
 function addNewTask(response, parsedUrl, postData){
 //console.log(postData);console.log(typeof postData);
 console.log("line 51 RH add new task");
   var parsedQuery = querystring.parse(postData);
   //console.log(parsedQuery);console.log(typeof parsedQuery);
-	
 	if(validateCreateTaskParams(parsedQuery)){
 	if (auth.addNewTask(parsedQuery.name,parsedQuery.num,parsedQuery.task)){//auth.js line 80
 	console.log("in line 49 request handler = " + parsedQuery.num);

@@ -5,17 +5,16 @@ var db							= require('./db');
 
 
 function decorateWithIsloggedIn(func){
-console.log("welcome to decorateWithIsloggedIn line 8 in apiRouter.js");
+//console.log("welcome to decorateWithIsloggedIn line 8 in apiRouter.js");
 	return function (response, parsedUrl, postData, request){
 		var cks = cookies.parseCookies(request);//the function is in cookies.js Objecet of Login
-		//console.log("in line 11 apiRouters "+request.url);//parsedUrl=Objecet
-		if (auth.isLoggedIn(cks)){//the function is in auth.js
 		console.log("in line 11 apiRouters "+cks.user);//parsedUrl=Objecet
-		 //postData = cks;
-		 console.log("in line 14 apiRouters ",postData);//parsedUrl=Objecet
+		if (auth.isLoggedIn(cks)){//the function is in auth.js
+		console.log("in line 13 apiRouters "+cks.user);//parsedUrl=Objecet
 			func(response, parsedUrl, postData, request);//go to upload
 		} 
 		else {
+		console.log("in line 17 apiRouters ");//parsedUrl=Objecet
 			response.writeHead(401, {
 				"Content-Type": "text/plain"
 			});
@@ -27,6 +26,7 @@ console.log("welcome to decorateWithIsloggedIn line 8 in apiRouter.js");
 var handle = {
 	"/login": 			auth.login,
 	"/createUser":  requestHandlers.createUser,
+	//"/upload":      decorateWithIsloggedIn(requestHandlers.upload),
 	"/addNewTask" :  requestHandlers.addNewTask,
 	"/upload":      decorateWithIsloggedIn(requestHandlers.upload)
 }
