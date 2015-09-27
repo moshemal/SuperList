@@ -12,6 +12,18 @@ console.log("welcome to upload line 6 in RH.js");
   response.end();
 }
 
+
+
+function getAllLists(response, pathname, postData) {
+console.log("welcome to getAllLists line 18 in RH.js");
+  var lst = auth.getListFS();
+  var str = JSON.stringify(lst);
+  response.writeHead(200, {"Content-Type": "application/json"});
+  var parsedData = querystring.parse(postData).text;
+  response.write(str);
+  response.end();
+}
+
 function validateCreateUserParams (parsedQuery) {
   return (typeof parsedQuery.user === 'string' &&
   typeof parsedQuery.password === 'string' &&
@@ -61,8 +73,9 @@ console.log("line 51 RH add new task");
   response.end();
 }
 
-
+exports.getAllLists = getAllLists;
 exports.upload      = upload;
+
 exports.createUser  = createUser;
 exports.addNewTask  = addNewTask;
 

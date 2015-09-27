@@ -5,9 +5,7 @@ define(['jquery'], function($){
 	function login(name, password){
 		return $.ajax("/api/login",  { 
 			method: "post",
-			success: function(data, a, xhr){
-			//alert("line 12 in request "+ data);
-				//console.log(xhr);	
+			success: function(data, a, xhr){//	
 			},	
 			data: {
 				user: 		name,
@@ -64,6 +62,8 @@ $("#taskList").append(text);
 });//end of $.get
 }
 
+
+
 	var i =0;
 
 	/*adding new task give the server his DB 
@@ -72,9 +72,7 @@ $("#taskList").append(text);
   return $.ajax("/api/addNewTask", {
 				method: "post",
 				  success: function(data, a, xhr){
-	            //alert("create line 61 request  "+data);
                   console.log(data)
-				  //console.log(++i);
       },
 	  //sending to the server
 	data:{ 
@@ -85,11 +83,23 @@ $("#taskList").append(text);
 		});
   }
   
+  
+  function getAllLists(that){
+  //console.log("this is request");
+     return $.ajax("/api/getAllLists",{
+	 method :"get" //,
+	 });
+  }
+  
+  
+  
 	  
 	return {
 	login:      login,
 	createUser: createUser,
+	getAllLists : getAllLists,
     upload: upload,
 	addNewTask: addNewTask
+	
 	}
 });

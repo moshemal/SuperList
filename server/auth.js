@@ -17,7 +17,7 @@ fs.readFile('db/passwords.json', 'utf8' ,function(err, data){
 		return;
 	}
 	passwords = JSON.parse(data);
-	console.log('read passwords auth line 21: ' +  ++i );
+	//console.log('read passwords auth line 21: ' +  ++i );
      
 });
 
@@ -65,10 +65,7 @@ function login(response, parsedUrl, postData){
 	if (isRegistered(parsedData.user, parsedData.password)){
 		//here the data base
 		userName = parsedData.user; // i need the name of the user for read what inside list and for other thing
-		readListFS(); //we have to much exception so if we we need to login read for security
-		//console.log(lists.length +" size "+ typeof lists.length);
-		//console.log("line 86 auth  "+ ++i);		
-		
+		//readListFS(); //we have to much exception so if we we need to login read for security
 		var token 	= Math.random();
 		var expires = new Date(new Date().getTime() + 1000*60*60*24*4); //4 days 
 		var authCookie = AUTH_KEY + "=" + token + "; Path=/; Expires=" + expires;

@@ -26,9 +26,10 @@ function decorateWithIsloggedIn(func){
 var handle = {
 	"/login": 			auth.login,
 	"/createUser":  requestHandlers.createUser,
-	//"/upload":      decorateWithIsloggedIn(requestHandlers.upload),
 	"/addNewTask" :  requestHandlers.addNewTask,
+	"/getAllLists":      decorateWithIsloggedIn(requestHandlers.getAllLists),
 	"/upload":      decorateWithIsloggedIn(requestHandlers.upload)
+
 }
 
 
