@@ -2,11 +2,35 @@
 
 
 /*button plus in button*/
-#openPlus{
+#task{
 
- font-size : 20px;
+ 
  background-color: rgba(66, 45,7, 0.15); 
  width: 100%; 
+ /*position: absolute;*/
+}
 
+
+#task button {
+size : 20px;
+font-weight: 400;
+ width: 100%; 
+ margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.k-icon {
+            margin-middle: 20px;
+        }
+
+		
+.k-button  {
+  background-color: rgba(66, 45,7, 0.15); 
+}
+
+/*for the List*/
+#taskList{
+ background-color: rgba(240, 221, 212, 0.1);
+ font-family : "Arial";
 
 }
