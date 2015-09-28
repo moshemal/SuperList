@@ -2,8 +2,8 @@
  * Created by moshemal.
  */
 
-define(['jquery', 'modules/Login/Login', 'core/cookies',
- 'core/layout','modules/Create/Create','core/request',
+define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
+ 'core/layout','modules/submit/Create/Create','core/request',
  'modules/ButtonPlus/BtnAdd','modules/Window/WinForm','modules/List/List'],
   function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView){
   'use strict';
@@ -99,12 +99,8 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
   
   function startApp(){
     layout.createLayout("3W", "#container");
-	
-	
 	if(bool !== 1){
 	user=cookies.getCookie('user');
-	
-	
 	}
 	//user=cookies.getCookie('user');
 	NameOfTheUser(); //for checking
@@ -113,8 +109,7 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
    //create class for list
 	list = new ListView();
 	list.appendTo("#taskList");
-	list.getListView(list);
-	
+	list.getListView(list); //for the start
 	
 	
 	
@@ -122,7 +117,10 @@ define(['jquery', 'modules/Login/Login', 'core/cookies',
 	btn = new BtnAdd(); 
 	btn.appendTo("#task");//append to the button
 	btn.$.find(".open-button").on('click', function(){startWin();});//if we have event click go to startWin();
-    //menu.createMenu("panelBar", "#megaStore");
+   
+  
+  
+  
   }
 
   

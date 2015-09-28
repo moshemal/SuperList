@@ -14,8 +14,8 @@ function ListView(initObj){
        
 }
 
+//it's like the upload we will need to get every time the new list
 ListView.prototype.getListView = function (that){
-
 var promise = request.getAllLists(); //form request.js getting the DB from the server
 
 //if succeed go to createListView and put it on the screen		
@@ -33,15 +33,12 @@ return false;
 
 }
 
-
-
-
 ListView.prototype.appendTo = function (elem){
 		if (this.$){
 		console.log("in append TO in List View");
 			this.$.appendTo($(elem));
 			this.$.kendoListView({
-			template : "<div>#:name#</div>",
+			template : '<div><span class="k-icon k-insertUnorderedList">  </span> #:name# <span class="k-icon k-i-pencil"></span></div>',
 			 selectable: true
 			}); 
 		}

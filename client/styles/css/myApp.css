@@ -26,7 +26,7 @@ background-color: rgba(66, 45,7, 0.15);
 
 
 .k-icon {
-            margin-middle: 20px;
+            margin-middle: 10px;
         }
 
 		
@@ -47,6 +47,11 @@ background-color: rgba(66, 45,7, 0.15);
        /*width: "160%";*/
                 }
 
+.k-tool-icon{
+ margin-middle: 10px;
+
+}
+				
 
 /*window of add new task*/				
 				
