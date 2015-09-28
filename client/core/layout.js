@@ -36,8 +36,8 @@ $("#left-pane").kendoSplitter({
 			orientation: "vertical",
 			panes: [
                             { collapsible: true,size:"90px",resizable:true },//top
-                            { collapsible: true, size: "450px",resizable:true  },
-                            { collapsible: false, resizable: false, size: "10px" }
+                            { collapsible: true, size: "470",resizable:true  },
+                            { collapsible: false, resizable: false, size: "20px" }
                         ]
 			
 		});

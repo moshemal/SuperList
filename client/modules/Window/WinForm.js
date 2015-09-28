@@ -11,17 +11,22 @@ function WinForm(initObj){
 		this._dfd = $.Deferred();
 		
 		var wnd = this.$ = $(template);
-//this.appendTo();
+console.log(wnd);
+		
+		
+		
        this.$.kendoWindow({
               modal: true,
-              title: "Dialog window",
+              title: "Create New List",
 			  width: "505px",
+			  height: "100px",
 			  actions: ["Close"],
-              
+               resizable: false,
               visible: false
             }).data("kendoWindow");//.open();
 
 			
+			//when the win is open and there is the button add new list
 			this.$.find("#addtask").on('submit', function(ev){
 			console.log(ev);
 			var name = ev.target[0].value;

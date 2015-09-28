@@ -3,8 +3,6 @@
 
 /*button plus in button*/
 #task{
-
- 
  background-color: rgba(66, 45,7, 0.15); 
  width: 100%; 
  /*position: absolute;*/
@@ -12,12 +10,20 @@
 
 
 #task button {
-size : 20px;
-font-weight: 400;
+size : 10px;
+font-weight: 100;
  width: 100%; 
- margin-top: 15px;
-    margin-bottom: 15px;
+ height: 100%;
+ /*margin-top: 1px;*/
+ /* margin-bottom: 1px;*/
+  /*float: "middle" ;*/
 }
+
+
+#bottom-pane {
+background-color: rgba(66, 45,7, 0.15); 
+}
+
 
 .k-icon {
             margin-middle: 20px;
@@ -28,9 +34,24 @@ font-weight: 400;
   background-color: rgba(66, 45,7, 0.15); 
 }
 
-/*for the List*/
+/*for the List in the left 2 */
 #taskList{
  background-color: rgba(240, 221, 212, 0.1);
  font-family : "Arial";
 
 }
+
+#middle-pane { 
+       background-color: rgba(191, 110, 70, 0.10);
+       /*height: 1000px;700*/
+       /*width: "160%";*/
+                }
+
+
+/*window of add new task*/				
+				
+				
+
+
+
+
