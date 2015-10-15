@@ -38,8 +38,15 @@ background-color: rgba(66, 45,7, 0.15);
 #taskList{
  background-color: rgba(240, 221, 212, 0.1);
  font-family : "Arial";
+}
+
+
+/*for the icon + button of edit*/
+.listOfView button{
+background-color: rgba(240, 221, 212, 0.1);
 
 }
+
 
 #middle-pane { 
        background-color: rgba(191, 110, 70, 0.10);

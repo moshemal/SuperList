@@ -33,12 +33,14 @@ return false;
 
 }
 
+
+/*append the list to the layout*/
 ListView.prototype.appendTo = function (elem){
 		if (this.$){
 		console.log("in append TO in List View");
 			this.$.appendTo($(elem));
 			this.$.kendoListView({
-			template : '<div><span class="k-icon k-insertUnorderedList">  </span> #:name# <span class="k-icon k-i-pencil"></span></div>',
+			template : '<div class="listOfView"><span class="k-icon k-insertUnorderedList">  </span> #:name# <button id ="btnEdit" class ="k-button open-button"></button></div>',//<span class="k-icon k-i-pencil"></span></div>',
 			 selectable: true
 			}); 
 		}
@@ -59,7 +61,14 @@ ListView.prototype.createListView = function (data){
             });
 	   lst.setDataSource(dataSource);
        lst.refresh();
-			
+		
+     $(".listOfView button").kendoButton({
+                spriteCssClass: "k-icon k-i-pencil",
+				
+            });
+
+
+		
 		} 
 		 
 		else {

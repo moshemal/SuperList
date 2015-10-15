@@ -4,8 +4,9 @@
 
 define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  'core/layout','modules/submit/Create/Create','core/request',
- 'modules/ButtonPlus/BtnAdd','modules/Window/WinForm','modules/List/List'],
-  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView){
+ 'modules/ButtonPlus/BtnAdd','modules/Window/WinForm','modules/List/List',
+ 'modules/EditListWindow/EditList'],
+  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,EditList){
   'use strict';
   
   //global vars
@@ -16,6 +17,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	var btn; //for button plus
     var win; //for window task
 	var list ; //for list in the right panel 
+	var edit ; //for rename or remove element from the list
 	
   function startLoggin(){
 	function loginSuccess(){
@@ -87,9 +89,27 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	  }
   
   
+  //a window from the icon button in the list of the user EDIT OR REMOVE
+  function startEditOrRemove(){
+  function editSuccess(){
+		console.log("EDIT success."); 
+	  }
+	  
+	 function editFail(){
+      console.log("Edit fail trying again");
+    
+    }
+	 console.log("in structuer edit");
+	 edit = new EditList(); //create a new window for the select task
+	 edit.openWin(); // i spearate that 
+	 
+	 //if i'm only want to close inside the window without any action so close
+	  edit.$.find(".close-button").on('click', function(){edit.closeWin();});
+	  //edit.getPromise().then(editSuccess,editFail);  
+	 
+  }
   
   
- 
   function NameOfTheUser(){
   document.getElementById("middle").innerHTML =
 "<h1>Hello <b>"+user+"</b><\h1>"
@@ -106,19 +126,18 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	NameOfTheUser(); //for checking
 	console.log("starting application " +user); //for checking
 	
-   //create class for list
-	list = new ListView();
-	list.appendTo("#taskList");
-	list.getListView(list); //for the start
-	
-	
+   
 	
 	//create class Button
 	btn = new BtnAdd(); 
 	btn.appendTo("#task");//append to the button
 	btn.$.find(".open-button").on('click', function(){startWin();});//if we have event click go to startWin();
    
-  
+  //create class for list
+	list = new ListView();
+	list.appendTo("#taskList");
+	list.getListView(list); //for the start
+	list.$.find(".listOfView button").on('click', function(){startEditOrRemove();});
   
   
   }

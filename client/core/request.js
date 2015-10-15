@@ -84,7 +84,21 @@ $("#taskList").append(text);
   }
   
   
-  function getAllLists(that){
+  function editList(oldName, newName){
+		return $.ajax("/api/editList",  { 
+			method: "post",
+			success: function(data, a, xhr){//
+            console.log(data)			
+			},	
+			data: {
+				oldName: 	oldName,
+				 newName:  newName
+			}
+			
+		});
+	} //end login
+  
+  function getAllLists(){
   //console.log("this is request");
      return $.ajax("/api/getAllLists",{
 	 method :"get" //,
@@ -93,13 +107,19 @@ $("#taskList").append(text);
   
   
   
+  
+
+  
+  
+  
+  
 	  
 	return {
 	login:      login,
 	createUser: createUser,
-	getAllLists : getAllLists,
+	getAllLists : getAllLists,  //get all list in the right side
     upload: upload,
-	addNewTask: addNewTask
-	
+	addNewTask: addNewTask, //adding new task 
+	editList : editList //
 	}
 });
