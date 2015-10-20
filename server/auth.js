@@ -123,6 +123,16 @@ fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //f
 }
 
 
+/*adding new task after we check in RH if the DB is OK
+function editList(oldName,newName){
+
+lists["name"] = newName;
+
+//lists.push(item);
+fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
+	return true;
+}
+*/
 
 exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn;
@@ -130,3 +140,4 @@ exports.getListFS = getListFS;
 //exports.getPropertiesFS = getPropertiesFS;
 exports.createUser 	= createUser;
 exports.addNewTask 	= addNewTask;
+//exports.editList 	= editList;

@@ -1,5 +1,5 @@
-define(['jquery','text!./List.html','../EditButton/EditBtn','core/request','kendo'],
-function($, template, EditBtn, request){
+define(['jquery','text!./List.html','core/request','kendo'],
+function($, template ,request){
 'use strict';
 
 
@@ -11,7 +11,6 @@ function ListView(initObj){
 		var that = this;
 		this._dfd = $.Deferred();
 		var lstV = this.$ = $(template);
-		 this.edtBtn = new EditBtn(); //an objecet in the class ListView will try to put it on main
        }
 
 
@@ -42,9 +41,13 @@ ListView.prototype.appendTo = function (elem){
 		console.log("in append TO in List View");
 			this.$.appendTo($(elem));
 			this.$.kendoListView({
-			template : '<div id ="listsOfView"><span class="k-icon k-insertUnorderedList"></span>#:name#<span class ="taskEdit"></span> </div>',
-			 selectable: true //witch element will be edited
-			 //selectable: "multiple"
+			template : '<div id ="listsOfView">#:name#<input type="button" value="edit" class="edit-button" /></div>',
+			//<button id ="btnEdt" class ="k-button open-button"></button></div>',
+            //template :'<div class ="listsOfView">#:name#<a class="k-button k-button-icontext k-add-button" href="\\#"><span class="k-icon k-add"></span></a></div>'
+			//'<div class="listOfView"><span class="k-icon k-insertUnorderedList"></span> <span class>#:name# <button></button></div>',//<span class="k-icon k-i-pencil"></span></div>',
+			//<a class="k-button k-button-icontext k-add-button" href="#"><span class="k-icon k-add"></span>Add new record</a>
+			  //editTemplate: 
+			 selectable: true
 			}); 
 		}
 		
@@ -62,11 +65,14 @@ ListView.prototype.createListView = function (data){
 		var dataSource = new kendo.data.DataSource({
                 data: data
             });
-	   lst.setDataSource(dataSource); //insert the data of the list
+	   lst.setDataSource(dataSource);
        lst.refresh();
-	    console.log(	this.edtBtn);
-	   	this.edtBtn.appendTo(".taskEdit");
-		this.edtBtn.$.find(".open-button").on('click',function(){ console.log("hello world");/*startEditOrRemove();*/});
+		//this.$.appendTo($(".listOfView button"));
+     //$(".listsOfView > button").kendoButton({
+               //spriteCssClass: "k-icon k-i-pencil"
+				//click: function(){startEditOrRemove();}
+				
+           //});
 
 
 		

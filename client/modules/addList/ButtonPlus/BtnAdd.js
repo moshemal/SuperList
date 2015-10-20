@@ -30,7 +30,7 @@ function($, template){ //Create){
 		}
 	}
 	
-	
+	/**
 	BtnAdd.prototype.createBtn = function(){
 		if (this.$){
 			//this.$.appendTo($(elem))
@@ -41,7 +41,7 @@ function($, template){ //Create){
 			console.log("no element for create BTN");
 		}
 	}
-	
+	**/
 	
 	
 	return BtnAdd;

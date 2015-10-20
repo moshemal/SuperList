@@ -7,14 +7,14 @@ function WinForm(initObj){
 		initObj = initObj || {};
 		//console.log("hello");
 		var that = this;
-        //var user = {} ;
 		this._dfd = $.Deferred();
 		
 		var wnd = this.$ = $(template);
 console.log(wnd);
+		//var selecet = this.select();
+		//console.log(selecet[0]);
 		
-		
-		
+		//this.appendTo("#addtask");
        this.$.kendoWindow({
               modal: true,
               title: "Create New List",
@@ -26,9 +26,14 @@ console.log(wnd);
             }).data("kendoWindow");//.open();
 
 			
+			
+			
+			
 			//when the win is open and there is the button add new list
 			this.$.find("#addtask").on('submit', function(ev){
-			console.log(ev);
+			
+			 //ev.preventDefault();
+			//console.log(ev);
 			var name = ev.target[0].value;
 			var promise = request.addNewTask(name);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
@@ -71,10 +76,16 @@ WinForm.prototype.getPromise = function(){
 	
 WinForm.prototype.destroy = function(){
 		this.$.off('submit');
-		//this.$.remove();
+		this.$.remove();
 	}
 	
-
+WinForm.prototype.appendTo = function (elem){
+		if (this.$){
+			this.$.appendTo($(elem))	
+		} else {
+			console.log("no element to add");
+		}
+	}
 
 
 return WinForm;

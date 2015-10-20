@@ -55,15 +55,13 @@ function validateCreateTaskParams(parsedQuery) {
 
 //adding new task to the list checking + adding
 function addNewTask(response, parsedUrl, postData){
-//console.log(postData);console.log(typeof postData);
 console.log("line 51 RH add new task");
   var parsedQuery = querystring.parse(postData);
-  //console.log(parsedQuery);console.log(typeof parsedQuery);
 	if(validateCreateTaskParams(parsedQuery)){
 	if (auth.addNewTask(parsedQuery.name,parsedQuery.num,parsedQuery.task)){//auth.js line 80
 	console.log("in line 49 request handler = " + parsedQuery.num);
       response.writeHead(200, {"Content-Type": "text/plain"});
-      response.write("we are Task user: " + parsedQuery);
+      response.write("we are new Task user: " + parsedQuery);
       response.end();
       return;
     }
@@ -73,10 +71,32 @@ console.log("line 51 RH add new task");
   response.end();
 }
 
+/*edit task to the list checking + edit
+function editList(response, parsedUrl, postData){
+console.log("line 76 RH add edit task");
+  var parsedQuery = querystring.parse(postData);
+	//if(validateEdit(parsedQuery)){
+	if (auth.editList(parsedQuery.newName,parsedQuery.oldName)){//auth.js line 80
+	//console.log("in line 80 request handler = " + parsedQuery.num);
+      response.writeHead(200, {"Content-Type": "text/plain"});
+      response.write("we are edit list user: " + parsedQuery);
+      response.end();
+      return;
+    }
+  //}
+  response.writeHead(404, {"Content-Type": "text/plain"});
+  response.write("fail to edit Task");
+  response.end();
+}
+*/
+
+
+
+
 exports.getAllLists = getAllLists;
 exports.upload      = upload;
 
 exports.createUser  = createUser;
 exports.addNewTask  = addNewTask;
-
+//exports.editList  = editList;
 

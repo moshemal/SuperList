@@ -4,8 +4,8 @@
 
 define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  'core/layout','modules/submit/Create/Create','core/request',
- 'modules/ButtonPlus/BtnAdd','modules/Window/WinForm','modules/List/List',
- 'modules/EditListWindow/EditList'],
+ 'modules/addList/ButtonPlus/BtnAdd','modules/addList/Window/WinForm',
+ 'modules/List/List','modules/EditListWindow/EditList'],
   function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,EditList){
   'use strict';
   
@@ -25,19 +25,16 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
       startApp();
       login.destroy(); //go to the splitter
     }
-
     function loginFail(){
 		console.log("login fail trying again");
 		login.resetDeferred();
 		login.getPromise().then(loginSuccess, loginFail);
     }
-	
-    login = new Login(); //
+    
+	login = new Login(); //
     login.appendTo("#container");//
 	login.$.find("#createbtn").on('click', function(){startCreate();});//
-    
 	login.getPromise().then(loginSuccess, loginFail);  
-
   }
   
    //for sign in new User
@@ -59,7 +56,6 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	create.appendTo("#container");
 	login.destroy();
 	create.getPromise().then(createSuccess,createFail);  
-	  
 	  }
   
   
@@ -69,8 +65,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 		console.log("NEW TASK success."); 
 		//$('#taskList').empty();//if we do append instead of "by id inner" its will not clean the first
 		//request.upload(); //have the new list
-		list.getListView(list); //the new list view instead of using in the request
-		
+		list.getListView(list); //the new list view instead of using in the request	
 		win.closeWin(); //and close the window
 	  }
 	  
@@ -81,16 +76,20 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     }
 	 
 	 win = new WinForm(); //create a new window
-	 win.openWin(); // i spearate that 
+	  win.openWin(); // i spearate that 
+	 
+	 //($(select[0]).
+	 //var select = this.select();
 	 
 	 //if im only want to close inside the window without any action so close
-	  win.$.find(".close-button").on('click', function(){win.closeWin();});
-	  win.getPromise().then(winSuccess,winFail);  
+	  win.$.find("#close").on('click', function(){win.closeWin();});
+	  win.getPromise().then(winSuccess,winFail);
 	  }
   
   
   //a window from the icon button in the list of the user EDIT OR REMOVE
   function startEditOrRemove(){
+  /**
   function editSuccess(){
 		console.log("EDIT success."); 
 	  }
@@ -106,6 +105,10 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	 //if i'm only want to close inside the window without any action so close
 	  edit.$.find(".close-button").on('click', function(){edit.closeWin();});
 	  //edit.getPromise().then(editSuccess,editFail);  
+	 **/
+	 console.log("hello world edit or remove");
+	 
+	 
 	 
   }
   
@@ -126,19 +129,19 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	NameOfTheUser(); //for checking
 	console.log("starting application " +user); //for checking
 	
-   
-	
-	//create class Button
-	btn = new BtnAdd(); 
-	btn.appendTo("#task");//append to the button
-	btn.$.find(".open-button").on('click', function(){startWin();});//if we have event click go to startWin();
-   
   //create class for list
 	list = new ListView();
 	list.appendTo("#taskList");
 	list.getListView(list); //for the start
-	list.$.find(".listOfView button").on('click', function(){startEditOrRemove();});
+	console.log(list.$);
+	//console.log(list.$.children(".listsOfView"));
+	//console.log(list.$());
+	//list.$.find("#lstTask").on('click','.edit-button' ,function(){ console.log("hello world");/*startEditOrRemove();*/});
   
+  //create class Button
+	btn = new BtnAdd(); 
+	btn.appendTo("#task");//append to the button
+	btn.$.find(".open-button").on('click', function(){startWin();});//if we have event click go to startWin();
   
   }
 
