@@ -70,10 +70,12 @@ function login(response, parsedUrl, postData){
 		var expires = new Date(new Date().getTime() + 1000*60*60*24*4); //4 days 
 		var authCookie = AUTH_KEY + "=" + token + "; Path=/; Expires=" + expires;
 		var userCookie = "user=" + parsedData.user + "; Path=/; Expires=" + expires;
+
 		sessions[parsedData.user] = "" + token;
 		response.setHeader("Set-Cookie", [userCookie, authCookie]);
 		response.writeHead(200, {"Content-Type": "text/plain"});
 		response.write(AUTH_KEY + "=" + token);	
+		
 	} 
 
 	else {

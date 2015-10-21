@@ -30,7 +30,7 @@ background-color: rgba(66, 45,7, 0.15);
         }
 
 		
-#listsOfView  .k-button  {
+.listsOfView  .k-button  {
   background-color: rgba(183, 154, 103, 0.15);
   float: "right" ;
 }

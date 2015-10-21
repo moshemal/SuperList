@@ -28,7 +28,13 @@ define(['jquery'], function($){
     });//$.ajax
   }
   
-  
+  function getAllLists(){
+  console.log("this is request all list");
+     return $.ajax("/api/getAllLists",{
+	 method :"get" //, //,
+	 // success: function(data, a, xhr){console.log(data)}
+	 });
+  } 
   
   
 /*if i will have more time i will think and do another
@@ -98,23 +104,12 @@ $("#taskList").append(text);
 		});
 	} //end login
   
-  function getAllLists(){
-  //console.log("this is request");
-     return $.ajax("/api/getAllLists",{
-	 method :"get" //,
-	 });
-  }
+ 
   
   
   
   
-
-  
-  
-  
-  
-	  
-	return {
+return {
 	login:      login,
 	createUser: createUser,
 	getAllLists : getAllLists,  //get all list in the right side

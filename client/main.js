@@ -17,6 +17,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	var btn; //for button plus
     var win; //for window task
 	var list ; //for list in the right panel 
+	var listBtn; //list of btn edit
 	var edit ; //for rename or remove element from the list
 	
   function startLoggin(){
@@ -62,7 +63,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    //for create a window add new task
   function startWin(){
   function winSuccess(){
-		console.log("NEW TASK success."); 
+		console.log("NEW TASK window success."); 
 		//$('#taskList').empty();//if we do append instead of "by id inner" its will not clean the first
 		//request.upload(); //have the new list
 		list.getListView(list); //the new list view instead of using in the request	
@@ -70,21 +71,40 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	  }
 	  
 	 function winFail(){
-      console.log("NEW TASK fail trying again");
+      console.log("NEW TASK window fail trying again");
       win.resetDeferred(); //like we do in Craete and Login
       win.getPromise().then(winSuccess, winFail); //try agin to have a new task
     }
 	 
 	 win = new WinForm(); //create a new window
 	  win.openWin(); // i spearate that 
-	 
-	 //($(select[0]).
-	 //var select = this.select();
-	 
+	  
 	 //if im only want to close inside the window without any action so close
 	  win.$.find("#close").on('click', function(){win.closeWin();});
 	  win.getPromise().then(winSuccess,winFail);
 	  }
+  
+  
+  //have a delay from taking the DB 
+  function startListView(){
+   function listViewSuccess(){
+		console.log("list View success.");
+      listBtn =list.getArrayOfButtons();
+     continueApp(); 
+	  }
+	  
+	 function listViewFail(){
+      console.log("list View fail trying again");
+    }
+	 
+	 list = new ListView(); //create a new window
+	  list.getPromise().then(listViewSuccess,listViewFail);
+	 //console.log("button",list.getArrayOfButtons());
+//return;	 
+	  }
+  
+  
+  
   
   
   //a window from the icon button in the list of the user EDIT OR REMOVE
@@ -121,30 +141,43 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   var bool = 0;
   
   function startApp(){
+  console.log("hello from start app");
     layout.createLayout("3W", "#container");
 	if(bool !== 1){
 	user=cookies.getCookie('user');
+	bool =1;
 	}
 	//user=cookies.getCookie('user');
 	NameOfTheUser(); //for checking
 	console.log("starting application " +user); //for checking
 	
-  //create class for list
-	list = new ListView();
-	list.appendTo("#taskList");
-	list.getListView(list); //for the start
-	console.log(list.$);
-	//console.log(list.$.children(".listsOfView"));
-	//console.log(list.$());
-	//list.$.find("#lstTask").on('click','.edit-button' ,function(){ console.log("hello world");/*startEditOrRemove();*/});
-  
   //create class Button
 	btn = new BtnAdd(); 
 	btn.appendTo("#task");//append to the button
 	btn.$.find(".open-button").on('click', function(){startWin();});//if we have event click go to startWin();
+
+	//list view
+	startListView(); // i have a delay because i did to it a strcture
+	//console.log(listBtn);
+ 
+  
   
   }
 
+  
+  function continueApp(){
+   console.log("hello from continueApp");
+   
+   //for list view
+   console.log(listBtn);
+  
+  
+  
+  }
+  
+  
+  
+  
   
    user=cookies.getCookie(AUTH_STR);//
   if(user !== "" ) {
