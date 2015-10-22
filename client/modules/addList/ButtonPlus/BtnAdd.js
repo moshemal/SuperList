@@ -22,7 +22,8 @@ function($, template){ //Create){
 	//console.log("jjjj");
 		if (this.$){
 			this.$.appendTo($(elem));
- $(".open-button").kendoButton({
+		//define a button plus 	
+      $(".open-button").kendoButton({
 		 spriteCssClass: "k-icon k-i-plus"
 		 });						
 		} else {

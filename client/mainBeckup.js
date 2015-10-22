@@ -73,7 +73,8 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
       console.log("NEW TASK window fail trying again");
       win.resetDeferred(); //like we do in Craete and Login
       win.getPromise().then(winSuccess, winFail); //try again to have a new task
-    }	 
+    }
+	 
 	 win = new WinForm(); //create a new window
 	  win.openWin(); // i spearate that 
 	  
@@ -158,14 +159,28 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   function continueApp(){
    console.log("hello from continueApp");
    //for list view
-  list.$.find(".listsOfView  button").on('click',function(e){
+   //console.log("list of button edit",listBtn);
+   //console.log(arrayBtnHtml);
+   //console.log("in line 164 main "+arrayBtnHtml.length);
+   //arrayBtnHtml.find(".listsOfView  button").on('click',function(){console.log("hello");});
+  //$( "body" ).click(function( event ) {
+  //$( "#log" ).html( "clicked: " + event.target.nodeName );
+  list.$.find(".listsOfView  button").on('click',function( e ) {
+  //$( "#log" ).html( "clicked: " + event.target.nodeName );
  var l= $(e.target).closest(".listsOfView").find(".name").html();
  var btn = $(e.target).closest(".listsOfView").find("#edit").html();
   console.log(btn);
   });
   }//end  continueApp
   
- 
+   var  show = function (e){
+		//var lst = this.$.data("kendoListView");
+		//var item = $(elem).closest("[role='option']");
+		//var data = lst.dataSource.getElementById(item.data("uid"));
+		//alert(data.name);
+		var elem =$(e.event.target).closest(".listsOfView").find(".name").html()
+	console.log(elem); // will print the name	
+	}
  
    user=cookies.getCookie(AUTH_STR);//
   if(user !== "" ) {

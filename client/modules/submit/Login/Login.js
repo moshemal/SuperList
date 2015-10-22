@@ -13,7 +13,7 @@ function($, template, request){
 			console.log(ev);
 			var name = ev.target[0].value;
 			
-			//console.log(user);
+			
 			var password = ev.target[1].value;
 			var promise = request.login(name, password);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
