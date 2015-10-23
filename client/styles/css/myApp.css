@@ -20,48 +20,85 @@ font-weight: 100;
 }
 
 
+/***** Layout ****/
+
+/**for 3 **/
 #bottom-pane {
-background-color: rgba(66, 45,7, 0.15); 
+/*background-color: rgba(66, 45,7, 0.15); */
+background-color:pink;
 }
 
-
-.k-icon {
-            margin-middle: 10px;
-        }
-
-		
-.listsOfView  .k-button  {
-  background-color: rgba(183, 154, 103, 0.15);
-  float: "right" ;
-}
-
-/*for the List in the left 2 */
-#taskList{
- background-color: rgba(240, 221, 212, 0.1);
- font-family : "Arial";
-}
-
-
-/*for the icon + button of edit*/
-.listOfView button{
-background-color: rgba(240, 221, 212, 0.1);
-
-}
-
-
+ /** for 5 **/
+#right-pane{ 
+  /*background-color: rgba(50,89, 14, 0.04);*/
+  background-image: url("../img/right.jpg");	
+     }
+	 
+/**for 2**/
 #middle-pane { 
-       background-color: rgba(191, 110, 70, 0.10);
+   background-color: rgba(191, 110, 70, 0.10);
        /*height: 1000px;700*/
        /*width: "160%";*/
                 }
 
+/**for 4**/
+ #center-pane{ 
+/*background-image: url("../img/timeright.jpg");*/
+ background-color: #7AC5CD;/*blue like the sea*/
+ 
+         }
+			  
+/**for 1**/
+ #top-pane { 
+  background-color: rgba(1, 10, 70, 0.10);
+     }
+			  
+			  
+			  
+/************************************/			  
+/***in  2 list of task MIDDLE-PANE***/	
+/***********************************/
+
+/*** inside pane-content that he is a child of middle-pane****/
+/*for the List in the left 2 */
+#taskList{
+ background-color: rgba(240, 221, 212, 0.1);
+ /*font-family : "Arial";*/
+}
+
+/*for the icon + button of edit*/	
+.listsOfView  .k-button  {
+  /*background-color: rgba(191, 110, 70, 0.10);*/
+  background-color: #FFC125;/*like a gold orange  (goldenrod)*/
+  padding-top: 1px;
+    padding-bottom: 1px;
+    padding-right: 3px;
+    padding-left: 3px;
+  /*float: right ;*/
+}
+
+/*the color for select some task list*/
+.k-state-selected {
+    color: #fff; /*color of the task white*/	
+  background-color: rgba(0, 142, 255, 0.57); /*kind of blue*/
+  border-color: #c5c5c5 ;
+}
+
+
+
+/*******/
+.k-icon {
+   margin-middle: 10px;
+        }
+
+/*********/
 .k-tool-icon{
  margin-middle: 10px;
 
 }
 				
 
-/*window of add new task*/				
+/*window of edit or remove new task*/				
 				
 				
 

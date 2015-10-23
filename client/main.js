@@ -5,7 +5,7 @@
 define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  'core/layout','modules/submit/Create/Create','core/request',
  'modules/addList/ButtonPlus/BtnAdd','modules/addList/Window/WinForm',
- 'modules/List/List','modules/EditOrRemoveWindow/EditOrRemForm'],
+ 'modules/list_edit/List/List','modules/list_edit/EditOrRemoveWindow/EditOrRemForm'],
   function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,EditOrRemForm){
   'use strict';
   
@@ -113,7 +113,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     }
 	 console.log("in structuer edit");
 	 edit = new EditOrRemForm(); //create a new window for the select task
-	 edit.openWin(); // i spearate that 
+	 edit.openWin(nameList); // i spearate that 
 	 
 	 //if i'm only want to close inside the window without any action so close
 	  //edit.$.find(".close-button").on('click', function(){edit.closeWin();});
@@ -157,9 +157,9 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    console.log("hello from continueApp");
    //for list view
   list.$.find(".listsOfView  button").on('click',function(e){
- var l= $(e.target).closest(".listsOfView").find(".name").html();
- var btn = $(e.target).closest(".listsOfView").find("#edit").html();
-  console.log(btn);
+ var name= $(e.target).closest(".listsOfView").find(".name").html();
+ //var btn = $(e.target).closest(".listsOfView").find("button").html();
+  console.log(name);
   });
   }//end  continueApp
   

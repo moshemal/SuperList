@@ -22,7 +22,7 @@ ListView.prototype.appendTo = function (elem){
 			this.$.appendTo($(elem));
 		//define a list view from kendo ui
 			this.$.kendoListView({
-			template :'<div class ="listsOfView"><span class="k-icon k-insertUnorderedList"></span><span class="name">#:name#</span><button id="edit"></button></div>',
+			template :'<div class ="listsOfView"><span class="k-icon k-insertUnorderedList"></span><span class="name">#:name#</span><button></button></div>',
 			selectable: true //witch element will be edited
 			});
 		}
