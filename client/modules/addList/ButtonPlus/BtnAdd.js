@@ -19,7 +19,6 @@ function($, template){ //Create){
 	
 	
 	BtnAdd.prototype.appendTo = function (elem){
-	//console.log("jjjj");
 		if (this.$){
 			this.$.appendTo($(elem));
 		//define a button plus 	

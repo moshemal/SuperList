@@ -2,8 +2,6 @@ define(['jquery','text!./List.html','core/request','kendo'],
 function($, template,request){
 'use strict';
 
-
-
 function ListView(initObj){
 	   initObj = initObj || {};
 		console.log("hello in list view");

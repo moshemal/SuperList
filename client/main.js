@@ -5,8 +5,8 @@
 define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  'core/layout','modules/submit/Create/Create','core/request',
  'modules/addList/ButtonPlus/BtnAdd','modules/addList/Window/WinForm',
- 'modules/List/List'],
-  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView){
+ 'modules/List/List','modules/EditOrRemoveWindow/EditOrRemForm'],
+  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,EditOrRemForm){
   'use strict';
   
   //global vars
@@ -18,7 +18,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     var win; //for window task
 	var list ; //for list in the right panel 
 	var arrayBtnHtml; //array list of btn edit
-	//var edit ; //for rename or remove element from the list
+	var edit ; //for rename or remove element from the list
 	
   function startLoggin(){
 	function loginSuccess(){
@@ -101,29 +101,27 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	  }
   
   //a window from the icon button in the list of the user EDIT OR REMOVE
-  function startEditOrRemove(){
-  /**
-  function editSuccess(){
-		console.log("EDIT success."); 
+  function startEdtOrRemWin(nameList){
+ 
+  function editOrRemSuccess(){
+		console.log("EDIT or remove success."); 
 	  }
 	  
-	 function editFail(){
-      console.log("Edit fail trying again");
+	 function editOrRemFail(){
+      console.log("Edit or Remove fail trying again");
     
     }
 	 console.log("in structuer edit");
-	 edit = new EditList(); //create a new window for the select task
+	 edit = new EditOrRemForm(); //create a new window for the select task
 	 edit.openWin(); // i spearate that 
 	 
 	 //if i'm only want to close inside the window without any action so close
-	  edit.$.find(".close-button").on('click', function(){edit.closeWin();});
-	  //edit.getPromise().then(editSuccess,editFail);  
-	 **/
-	 console.log("hello world edit or remove");
+	  //edit.$.find(".close-button").on('click', function(){edit.closeWin();});
+	  edit.getPromise().then(editOrRemSuccess,editOrRemFail);  
 	 
 	 
 	 
-  }
+  }//end edit
   
   
   function NameOfTheUser(){
