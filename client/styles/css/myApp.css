@@ -66,16 +66,55 @@ background-color:pink;
  /*font-family : "Arial";*/
 }
 
-/*for the icon + button of edit*/	
+.listsOfView {
+    /* width: 211px; */
+    height: 44px;
+}
+
+
+
+/*for the icon + button of edit	
 .listsOfView  .k-button  {
   /*background-color: rgba(191, 110, 70, 0.10);*/
-  background-color: #FFC125;/*like a gold orange  (goldenrod)*/
+  background-color: #FFC125;/*like a gold orange  (goldenrod)
   padding-top: 1px;
     padding-bottom: 1px;
     padding-right: 3px;
     padding-left: 3px;
-  /*float: right ;*/
+  float: right ;
 }
+*/
+/*for the icon + button of edit*/	
+.listsOfView  button  {
+right: 10px;
+display: block;
+  width: 16px;
+  height: 16px;
+  float: right ;
+}
+
+/*for the icon + button of edit*/	
+.listsOfView  .name{
+	/*padding: 15px;*/
+    margin-left: 45px;
+	/*margin-top: 11px;*/
+    /* float: left; */
+    margin-right: 32px;
+}
+
+.listsOfView  .k-insertUnorderedList{
+/*width: 20px;
+    height: 20px;
+	*/
+    float: left;
+	/*
+    margin-left: 112px;
+    margin-right: 11px;
+    margin-top: 11px;
+    margin-bottom: 11px;*/
+}
+
+
 
 /*the color for select some task list*/
 .k-state-selected {
@@ -86,16 +125,16 @@ background-color:pink;
 
 
 
-/*******/
+
+
+/******
 .k-icon {
    margin-middle: 10px;
         }
-
-/*********/
 .k-tool-icon{
  margin-middle: 10px;
-
 }
+***/
 				
 /************************************/
 /*window of edit or remove new task*/				
