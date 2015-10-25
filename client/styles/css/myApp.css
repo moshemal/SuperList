@@ -97,10 +97,34 @@ background-color:pink;
 
 }
 				
-
+/************************************/
 /*window of edit or remove new task*/				
-				
-				
+/***********************************/
+#editForm .buttons {
+        margin-top: 55px;
+      }
+	  
+#editForm .buttons .btnSave{
+        float : right;
+      }	
+#editForm .buttons .btnRemove{
+        float : left;
+      }		  
+	  
+#editForm .k-button {
+        width: 100px;
+      }				
+/*	
+#editform  input{
+       border-bottom: 1px solid #ccc;
+        font-size: 1.4em;
+        font-weight: normal;
+        padding: 0;
+        margin: 0;
+      }	
+	*/
+	
+	
 
 
 

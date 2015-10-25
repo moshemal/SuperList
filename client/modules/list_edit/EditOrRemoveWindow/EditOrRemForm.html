@@ -1,28 +1,20 @@
- <!-- kendoWindow -->
- <div id="editForm">
+<div id="editForm">
 
- <ul>
-  <!-- bind the ProductName field of the selected product -->
-  <li>
-  <input type="text" class="k-textbox" name="name" data-bind="value: selected.name" required />
- </li>
- 
- 
- 
- <!--
-<form id="edittask", method ="post">
-<input name="name" placeholder='edit task' type='text'>
+<form id="editform" , method ="post">
+
+<input type="text" class="k-textbox" name="name" placeholder="value: selected.name" >
 
 <footer>
-<button class="k-button" id ="done">Done</button>
-<button class="k-button close-button" id="remove">Remove</button>
+<div class="buttons">
+ <!-- attach the click event handlers -->
+  <button class="k-button btnSave" disabled>Done</button> 
+  <button class="k-button btnRemove" disabled>Remove</button>
+        </div>
 
- </footer>
- 
+</footer>
 </form>
--->
-</ul>
-
-
- <!---- MUST Change in the future -->
 </div>
+
+
+
+ 

@@ -113,7 +113,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     }
 	 console.log("in structuer edit");
 	 edit = new EditOrRemForm(); //create a new window for the select task
-	 edit.openWin(nameList); // i spearate that 
+	 edit.openWin(); // i spearate that 
 	 
 	 //if i'm only want to close inside the window without any action so close
 	  //edit.$.find(".close-button").on('click', function(){edit.closeWin();});
@@ -160,6 +160,9 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  var name= $(e.target).closest(".listsOfView").find(".name").html();
  //var btn = $(e.target).closest(".listsOfView").find("button").html();
   console.log(name);
+  edit = new EditOrRemForm();
+  edit.openWin();
+  //startEdtOrRemWin();
   });
   }//end  continueApp
   

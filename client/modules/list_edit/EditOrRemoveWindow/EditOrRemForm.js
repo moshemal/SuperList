@@ -15,8 +15,9 @@ function EditOrRemForm(initObj){
               modal: true, //for affect
               title: "Edit List",
 			  width: "505px",
-			  height: "100px",
+			  height: "150px",
 			  actions: ["Close"],
+			 // template : '<input type="text"  data-bind="value:name" name="name">',
                resizable: false,
               visible: false
             }).data("kendoWindow");
@@ -50,7 +51,7 @@ EditOrRemForm.prototype.closeWin = function (){
 		}
 	}
 	
-EditOrRemForm.prototype.openWin = function (nameOfList){
+EditOrRemForm.prototype.openWin = function (){
 		if (this.$){
 		 this.$.data("kendoWindow").center();
 		 this.$.data("kendoWindow").open();
