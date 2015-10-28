@@ -17,7 +17,7 @@ console.log("welcome to upload line 6 in RH.js");
 function getAllLists(response, pathname, postData) {
 console.log("welcome to getAllLists line 18 in RH.js");
   var lst = auth.getListFS();
-  var str = JSON.stringify(lst);
+  var str = JSON.stringify(lst); //
   response.writeHead(200, {"Content-Type": "application/json"});
   var parsedData = querystring.parse(postData).text;
   response.write(str);

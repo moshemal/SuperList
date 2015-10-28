@@ -24,9 +24,9 @@ function EditOrRemForm(initObj){
 	
 			/**
 			//for rename the name of the list
-			this.$.find("#addtask").on('submit', function(ev){
+			this.$.find("#editform").on('submit', function(ev){
 			var name = ev.target[0].value;
-			var promise = request.addNewTask(name);
+			var promise = request.editTask(name);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
 		});

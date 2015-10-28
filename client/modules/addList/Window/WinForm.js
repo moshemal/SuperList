@@ -10,7 +10,7 @@ function WinForm(initObj){
 		this._dfd = $.Deferred();
 		
 		var wnd = this.$ = $(template);
-console.log(wnd);
+//console.log(wnd);
 		//var selecet = this.select();
 		//console.log(selecet[0]);
 		
@@ -25,19 +25,16 @@ console.log(wnd);
               visible: false
             }).data("kendoWindow");//.open();
 
-			
-			
-			
-			
+				console.log(this.$);		
 			//when the win is open and there is the button add new list
 			this.$.find("#addtask").on('submit', function(ev){
-			
 			 //ev.preventDefault();
-			//console.log(ev);
+			 
+			//alert("button save",ev.target[1]);
 			var name = ev.target[0].value;
 			var promise = request.addNewTask(name);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
-			
+			console.log("hello win forn");
 			return false;
 		});
 

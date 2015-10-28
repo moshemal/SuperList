@@ -4,8 +4,9 @@ var cookies					= require("./cookies");
 var db							= require('./db');
 
 
+//i have problom with the cookies
 function decorateWithIsloggedIn(func){
-//console.log("welcome to decorateWithIsloggedIn line 8 in apiRouter.js");
+console.log("welcome to decorateWithIsloggedIn line 9 in apiRouter.js");
 	return function (response, parsedUrl, postData, request){
 		var cks = cookies.parseCookies(request);//the function is in cookies.js Objecet of Login
 		console.log("in line 11 apiRouters "+cks.user);//parsedUrl=Objecet
@@ -23,13 +24,29 @@ function decorateWithIsloggedIn(func){
 	}
 }
 
+
+function isLoggedIn(response, parsedUrl, postData, request){
+console.log("welcome to decorateWithIsloggedIn line 29 in apiRouter.js");
+	var cks = cookies.parseCookies(request);
+    if (auth.isLoggedIn(cks)){
+        response.writeHead(200, {"Content-Type": "text/plain"});
+    }
+	else{
+	console.log("in line 34 apiRouters ");//parsedUrl=Objecet
+        response.writeHead(401, {"Content-Type": "text/plain"});
+    }
+    response.end();
+}
+
+
+
 var handle = {
+     "/isLoggedIn" : isLoggedIn,
 	"/login": 			auth.login,
 	"/createUser":  requestHandlers.createUser,
-	"/addNewTask" :  decorateWithIsloggedIn(requestHandlers.addNewTask),
-	//"/editList" :  requestHandlers.editList,
-	"/getAllLists":      decorateWithIsloggedIn(requestHandlers.getAllLists),
-	"/upload":      decorateWithIsloggedIn(requestHandlers.upload)
+	"/getAllLists": decorateWithIsloggedIn(requestHandlers.getAllLists), //decorateWithIsloggedIn will be called before we even get to main.js decorateWithIsloggedIn
+	"/addNewTask" :  decorateWithIsloggedIn(requestHandlers.addNewTask), //will be called before we even get to main.js decorateWithIsloggedIn
+	"/upload":      decorateWithIsloggedIn(requestHandlers.upload) //will be called before we even get to main.js decorateWithIsloggedIn
 
 }
 

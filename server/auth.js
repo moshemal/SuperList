@@ -47,6 +47,8 @@ return properitess;
 //reading what we have in list.json	
 function readListFS(){
 console.log("welcome to listFS line 54 in auth.js");
+
+//userName = getLoggedIn(cookies);
 var data = fs.readFileSync('db/'+ userName +'/lists/list.json', "utf8"); //it's more fast for write and will return null
 	lists = JSON.parse(data); //an Object
 	console.log("line 62 auth "+   ++i);
@@ -96,8 +98,16 @@ function isLoggedIn (cookies){
 console.log("in auth line 101 " +user);	
 console.log("in auth line 102 " +token);
 console.log("in auth line 103 " +sessions[user]); //print undefined
-console.log("in auth line 104 " +sessions[user] == token); //false
-	return (token && user );//&& sessions[user] == token);  //
+console.log("in auth line 104 " ,sessions[user] == token); //false
+	return (token && user && sessions[user] == token);  //
+}
+
+
+//i have problom with the cookies
+function getLoggedIn(cookies){
+
+return cookies["user"];
+
 }
 
 
@@ -138,6 +148,7 @@ fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //f
 
 exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn;
+exports.getLoggedIn = getLoggedIn;
 exports.getListFS = getListFS;
 //exports.getPropertiesFS = getPropertiesFS;
 exports.createUser 	= createUser;

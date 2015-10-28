@@ -22,7 +22,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	
   function startLoggin(){
 	function loginSuccess(){
-      console.log("login success moving to application gali: was here.");  
+      //console.log("login success moving to application gali: was here.");  
       startApp();
       login.destroy(); //go to the splitter
     }
@@ -62,11 +62,17 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    //for create a window add new task
   function startWin(){
   function winSuccess(){
-		console.log("NEW TASK window success."); 
-		list.getListView(list); //the new list view instead of using in the request	
-		arrayBtnHtml = list.getArrayOfButtons(); //i steal have a delay because of the resolve that in ListView getAll
+		console.log("NEW TASK window success.");
+    		console.log("before",list.$);
+		list.getListView(list); //the new list view instead of using in the request
+       //startListView();	
+    console.log("after",list.$);
+		//console.log("winSuccess lst",list);//list
+		//arrayBtnHtml = list.getArrayOfButtons(); //i steal have a delay because of the resolve that in ListView getAll
 		//console.log(listBtn.length);
+		continueApp(); 	
 		win.closeWin(); //and close the window
+		
 	  }
 	  
 	 function winFail(){
@@ -80,6 +86,9 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	 //if im only want to close inside the window without any action so close
 	  win.$.find("#close").on('click', function(){win.closeWin();});
 	  win.getPromise().then(winSuccess,winFail);
+	  //win.$.find("#addtask #close").on('click',function(e){
+	  //$(e.target).closest("").find("");
+	 // });
 	  }
   
   
@@ -88,7 +97,8 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    function listViewSuccess(){
 	console.log("list View success.");
       arrayBtnHtml =list.getArrayOfButtons();
-     continueApp(); 
+	  console.log("in start",list.$);
+     continueApp(); //fot the button list event
 	  }
 	  
 	 function listViewFail(){
@@ -96,31 +106,24 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     }
 	 
 	 list = new ListView(); //create a new listView
-	  list.getPromise().then(listViewSuccess,listViewFail);
-	  
+	 list.getPromise().then(listViewSuccess,listViewFail);
 	  }
   
   //a window from the icon button in the list of the user EDIT OR REMOVE
-  function startEdtOrRemWin(nameList){
- 
+  function startEdtOrRemWin(){
   function editOrRemSuccess(){
 		console.log("EDIT or remove success."); 
-	  }
-	  
-	 function editOrRemFail(){
+	  } 
+  function editOrRemFail(){
       console.log("Edit or Remove fail trying again");
     
     }
-	 console.log("in structuer edit");
+	 console.log("EDITTTTT");
 	 edit = new EditOrRemForm(); //create a new window for the select task
-	 edit.openWin(); // i spearate that 
-	 
+	 edit.openWin(); // i spearate that 	 
 	 //if i'm only want to close inside the window without any action so close
 	  //edit.$.find(".close-button").on('click', function(){edit.closeWin();});
-	  edit.getPromise().then(editOrRemSuccess,editOrRemFail);  
-	 
-	 
-	 
+	  edit.getPromise().then(editOrRemSuccess,editOrRemFail);  	 
   }//end edit
   
   
@@ -132,24 +135,24 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   var bool = 0;
   
   function startApp(){
-  console.log("hello from start app");
+  console.log("hello from start App");
     layout.createLayout("3W", "#container");
-	if(bool !== 1){
+	//if(bool !== 1){
 	user=cookies.getCookie('user');
-	bool =1;
-	}
+	console.log(user);
+	//}
 	//user=cookies.getCookie('user');
 	NameOfTheUser(); //for checking
 	//console.log("starting application " +user); //for checking
-	
+  
+  
+  startListView(); // i have a delay because i did to it a structure 
   //create class Button
 	btn = new BtnAdd(); 
-	console.log(btn.$);
+	//console.log(btn.$);
 	btn.appendTo("#task");//append to the button
 	btn.$.find(".open-button").on('click', function(){startWin();});//if we have event click go to startWin();
-
-	//list view
-	startListView(); // i have a delay because i did to it a structure  
+	//list view	 
   }//end startApp
 
   
@@ -157,25 +160,37 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    console.log("hello from continueApp");
    //for list view
   list.$.find(".listsOfView  button").on('click',function(e){
- var name= $(e.target).closest(".listsOfView").find(".name").html();
+  console.log("tar ",e.target);
+// var name= $(e.target).closest(".listsOfView").find(".name").html();
  //var btn = $(e.target).closest(".listsOfView").find("button").html();
-  console.log(name);
-  edit = new EditOrRemForm();
-  edit.openWin();
+//  console.log(name);
+   startEdtOrRemWin();
+  //edit = new EditOrRemForm();
+  //edit.openWin();
   //startEdtOrRemWin();
   });
   }//end  continueApp
   
  
+ request.isLoggedIn().then(function(){
+ console.log("sucess");
+ startApp();
+ },
+ function(){
+ console.log("failed");
+ startLoggin();
+ });
  
-   user=cookies.getCookie(AUTH_STR);//
-  if(user !== "" ) {
-  bool = 1;
-    console.log("starting application" +user);
-    startApp();
-  } else {
-    startLoggin();
-  }
+ 
+ 
+   //user=cookies.getCookie(AUTH_STR);//
+  //if(user !== "" ) {
+  //bool = 1;
+   // console.log("starting application" ,user);
+   // startApp();
+  //} else {
+    //startLoggin();
+  //}
   
 });
 

@@ -2,6 +2,16 @@ define(['jquery'], function($){
 	'use strict';
 
 		
+		 function isLoggedIn(){
+	 console.log("this is request all list");
+     return $.ajax("/api/isLoggedIn",{
+	 method :"get" //, //,
+	 // success: function(data, a, xhr){console.log(data)}
+	 });		
+		}
+		
+		
+		
 	function login(name, password){
 		return $.ajax("/api/login",  { 
 			method: "post",
@@ -78,7 +88,7 @@ $("#taskList").append(text);
   return $.ajax("/api/addNewTask", {
 				method: "post",
 				  success: function(data, a, xhr){
-                  console.log(data)
+                 // console.log(data)
       },
 	  //sending to the server
 	data:{ 
@@ -99,8 +109,7 @@ $("#taskList").append(text);
 			data: {
 				oldName: 	oldName,
 				 newName:  newName
-			}
-			
+			}	
 		});
 	} //end login
   
@@ -110,6 +119,7 @@ $("#taskList").append(text);
   
   
 return {
+isLoggedIn : isLoggedIn,
 	login:      login,
 	createUser: createUser,
 	getAllLists : getAllLists,  //get all list in the right side

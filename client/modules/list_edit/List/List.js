@@ -22,8 +22,7 @@ ListView.prototype.appendTo = function (elem){
 			this.$.appendTo($(elem));
 		//define a list view from kendo ui
 			this.$.kendoListView({
-			//template :'<div class><></>All<></></div>',
-			//editTemplate
+			//editTemplate :'<div class><></>All<></></div>',
 			template:'<div class ="listsOfView"><span class="k-icon k-insertUnorderedList"></span><span class="name">#:name#</span><button></button></div>',
 			selectable: true //witch element will be edited
 			});
@@ -41,10 +40,11 @@ ListView.prototype.createListView = function (data){
 		var dataSource = new kendo.data.DataSource({
                 data: data
             });
+			//console.log(dataSource);
 	   lst.setDataSource(dataSource); //insert the data of the list
        lst.refresh(); //was recomend to do will find a better explain
 	   
-	  
+	  console.log("in create LIST VIEW");
 	   //console.log("array of button" ,lst.element.children());//all the template
 	   //var row = $(lst.element.children());//.first();
      //console.log(row);
@@ -67,10 +67,12 @@ ListView.prototype.createListView = function (data){
 //it's like the upload we will need to get every time the new list
 ListView.prototype.getListView = function (that){
 var promise = request.getAllLists(); //form request.js getting the DB from the server
-//if succeed go to createListView and put it on the screen		
+//if succeed go to createListView and put it on the screen
+console.log("data",promise);		
 promise.then(function(data){
+console.log("in getListView");
 		that.createListView(data);
-		console.log("hello from creating");
+		//console.log("hello from creating");
 		//that.getArrayOfButtons();
 		that._dfd.resolve();
 		} ,
