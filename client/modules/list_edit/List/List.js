@@ -13,8 +13,6 @@ function ListView(initObj){
 		that.getListView(that);//get list view
        }
 
-
-
 /*append the list to the layout*/
 ListView.prototype.appendTo = function (elem,that){
 		if (that.$){
@@ -32,39 +30,6 @@ ListView.prototype.appendTo = function (elem,that){
 		}
 	}//end append to
 	
-
-
-ListView.prototype.createListView = function (data){
-		if (this.$){	
-		var lst = this.$.data("kendoListView"); //take the data of kendoListView that we define in appendTo
-		var dataSource = new kendo.data.DataSource({
-                data: data
-            });
-			//console.log(dataSource);
-	   lst.setDataSource(dataSource); //insert the data of the list
-       lst.refresh(); //was recomend to do will find a better explain
-	   
-	  console.log("in create LIST VIEW");
-	   //console.log("array of button" ,lst.element.children());//all the template
-	   //var row = $(lst.element.children());//.first();
-     //console.log(row);
-	   
-	   
-	   //array of buttons to create of html 
-		var row = $(".listsOfView  button").kendoButton({
-               spriteCssClass: "k-icon k-i-pencil" 	  
-           });
-		   
-		   this.arrayOfBtnHtml = $(row);//.first();	
-		} 
-		else {
-		console.log("not good in create list view");
-		console.log("no element to in class LIST VIEW");
-		}
-		
-	}//end of create
-
-	
 //it's like the upload we will need to get every time the new list
 ListView.prototype.getListView = function (that){
 var promise = request.getAllLists(); //form request.js getting the DB from the server
@@ -77,13 +42,34 @@ console.log("in getListView");
 		//that.getArrayOfButtons();
 		that._dfd.resolve();
 		} ,
-//else rejecet		
+       //else reject		
 		function(){
 		that._dfd.reject();
-		console.log("rejecet in list view get");
+		console.log("reject in list view get");
 		});
 return false;
 }
+
+ListView.prototype.createListView = function (data){
+		if (this.$){	
+		var lst = this.$.data("kendoListView"); //take the data of kendoListView that we define in appendTo
+		var dataSource = new kendo.data.DataSource({
+                data: data
+            });
+	   lst.setDataSource(dataSource); //insert the data of the list
+       lst.refresh(); //was recomand to do will find a better explain	   
+	  console.log("in create LIST VIEW");
+	   //console.log("array of button" ,lst.element.children());//all the template
+	   
+	   //array of buttons to create of html 
+		var row = $(".listsOfView  button").kendoButton({
+               spriteCssClass: "k-icon k-i-pencil" 	  
+           });   
+		this.arrayOfBtnHtml = $(row);
+		}else {
+		console.log("failed to create in class LIST VIEW");
+		}
+	}//end of create
 
 ListView.prototype.resetDeferred = function(){
 		this._dfd = new $.Deferred();
@@ -92,18 +78,13 @@ ListView.prototype.resetDeferred = function(){
 ListView.prototype.getPromise = function(){
 		return this._dfd.promise();
 	}
-	
 
-	
+/*for the edit list BUTTONS*/	
 ListView.prototype.getArrayOfButtons = function(){
 //console.log("hello from get all buttons :",this.arrayOfBtn);
 		return this.arrayOfBtnHtml;
 	}
 	
-	
-
-	
-
 return ListView;
 }); 
 

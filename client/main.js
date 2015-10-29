@@ -70,7 +70,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 		button of the list edit not work
 		*/ 
 		setTimeout(function(){
-	    console.log("set time for buttons LIST EDIT");//after we finish with getListView
+	    console.log("set time for buttons LIST EDIT to actually work");//after we finish with getListView
 		win.closeWin(); //and close the window
 		continueApp(); //and continue app (maybe not ne)
         },60); //time out for 0.06 second maybe less 
@@ -135,7 +135,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   }
   
   var bool = 0;
-  
+  var i =0;
   function startApp(){
   console.log("hello from start App");
     layout.createLayout("3W", "#container");
@@ -148,41 +148,34 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	//console.log("starting application " +user); //for checking
   
   
-  startListView(); // i have a delay because i did to it a structure 
-  //create class Button
-	btn = new BtnAdd(); 
-	//console.log(btn.$);
+  startListView(); // i have a delay because i did to it a structure I resolve it's with setTimOut 
+  
+	btn = new BtnAdd();//create class Button 
 	btn.appendTo("#task");//append to the button
-	btn.$.find(".open-button").on('click', function(){startWin();});//if we have event click go to startWin();
-	//list view	 
+	btn.$.find(".open-button").on('click', function(){console.log("in start app "+i++);startWin();});//if we have event click go to startWin();
   }//end startApp
 
   
   function continueApp(){
    console.log("hello from continueApp");
-   //for list view
+ 
+ //LIST of buttons in LIST view   
   list.$.find(".listsOfView  button").on('click',function(e){
   console.log("tar ",e.target);
-// var name= $(e.target).closest(".listsOfView").find(".name").html();
- //var btn = $(e.target).closest(".listsOfView").find("button").html();
-//  console.log(name);
+ //var name= $(e.target).closest(".listsOfView").find(".name").html(); var btn = $(e.target).closest(".listsOfView").find("button").html();
+  //console.log(name);
    startEdtOrRemWin();
-  //edit = new EditOrRemForm();
-  //edit.openWin();
- 
   });
-  
-  
-  console.log("end application");
   }//end  continueApp
   
  
- request.isLoggedIn().then(function(){
- console.log("sucess");
+ request.isLoggedIn().then(
+ function(){
+ console.log("sucess COOKIES");
  startApp();
  },
  function(){
- console.log("failed");
+ console.log("failed COOKIES");
  startLoggin();
  });
  

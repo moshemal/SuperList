@@ -10,16 +10,14 @@ function WinForm(initObj){
 		this._dfd = $.Deferred();
 		
 		var wnd = this.$ = $(template);
-//console.log(wnd);
-		//var selecet = this.select();
-		//console.log(selecet[0]);
+
 		
 		//this.appendTo("#addtask");
        this.$.kendoWindow({
               modal: true,
               title: "Create New List",
 			  width: "505px",
-			  height: "100px",
+			  height: "150px",
 			  actions: ["Close"],
                resizable: false,
               visible: false
@@ -28,23 +26,20 @@ function WinForm(initObj){
 				console.log(this.$);		
 			//when the win is open and there is the button add new list
 			this.$.find("#addtask").on('submit', function(ev){
-			 //ev.preventDefault();
-			 
+			 //ev.preventDefault(); 
 			//alert("button save",ev.target[1]);
 			var name = ev.target[0].value;
 			var promise = request.addNewTask(name);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
-			console.log("hello win forn");
+			console.log("hello win form");
 			return false;
 		});
-
 }
 
 WinForm.prototype.closeWin = function (){
 		if (this.$){
 		this.$.kendoWindow("close");
-		console.log("CLOSE WIN");
-		
+		console.log("CLOSE WIN of adding new task");
 		} else {
 			console.log("no element to CLOSE WIN");
 		}
@@ -54,7 +49,7 @@ WinForm.prototype.openWin = function (){
 		if (this.$){
 		 this.$.data("kendoWindow").center();
 		 this.$.data("kendoWindow").open();
-		console.log("Open WIN");
+		console.log("Open WIN in adding");
 		
 		} else {
 			console.log("no element to Open WIN");
@@ -86,5 +81,4 @@ WinForm.prototype.appendTo = function (elem){
 
 
 return WinForm;
-
 });
