@@ -8,20 +8,20 @@ function ListView(initObj){
 		var that = this;
 		this._dfd = $.Deferred();
 		var lstV = that.$ = $(template);
-		this.arrayOfBtnHtml = [];//html of the buttons
-		this.appendTo("#taskList");//append to div
-		this.getListView(this);//get list view
+		that.arrayOfBtnHtml = [];//html of the buttons
+		that.appendTo("#taskList",that);//append to div
+		that.getListView(that);//get list view
        }
 
 
 
 /*append the list to the layout*/
-ListView.prototype.appendTo = function (elem){
-		if (this.$){
+ListView.prototype.appendTo = function (elem,that){
+		if (that.$){
 		//console.log("in append TO in List View");
-			this.$.appendTo($(elem));
+			that.$.appendTo($(elem));
 		//define a list view from kendo ui
-			this.$.kendoListView({
+			that.$.kendoListView({
 			//editTemplate :'<div class><></>All<></></div>',
 			template:'<div class ="listsOfView"><span class="k-icon k-insertUnorderedList"></span><span class="name">#:name#</span><button></button></div>',
 			selectable: true //witch element will be edited
@@ -57,9 +57,10 @@ ListView.prototype.createListView = function (data){
 		   
 		   this.arrayOfBtnHtml = $(row);//.first();	
 		} 
-		 
 		else {
-		console.log("no element to in class LIST VIEW");}
+		console.log("not good in create list view");
+		console.log("no element to in class LIST VIEW");
+		}
 		
 	}//end of create
 
@@ -72,7 +73,7 @@ console.log("data",promise);
 promise.then(function(data){
 console.log("in getListView");
 		that.createListView(data);
-		//console.log("hello from creating");
+		console.log("hello from get list resolve");
 		//that.getArrayOfButtons();
 		that._dfd.resolve();
 		} ,

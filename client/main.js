@@ -17,7 +17,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	var btn; //for button plus
     var win; //for window task
 	var list ; //for list in the right panel 
-	var arrayBtnHtml; //array list of btn edit
+	var arrayBtnHtml; //array list of button edit
 	var edit ; //for rename or remove element from the list
 	
   function startLoggin(){
@@ -63,25 +63,26 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   function startWin(){
   function winSuccess(){
 		console.log("NEW TASK window success.");
-    		console.log("before",list.$);
 		list.getListView(list); //the new list view instead of using in the request
-       //startListView();	
-    console.log("after",list.$);
-		//console.log("winSuccess lst",list);//list
-		//arrayBtnHtml = list.getArrayOfButtons(); //i steal have a delay because of the resolve that in ListView getAll
-		//console.log(listBtn.length);
-		continueApp(); 	
+		/*
+		if I don't set time out it's first go to close win and continue
+		up but will not update and then if I don't do refresh the 
+		button of the list edit not work
+		*/ 
+		setTimeout(function(){
+	    console.log("set time for buttons LIST EDIT");//after we finish with getListView
 		win.closeWin(); //and close the window
-		
-	  }
+		continueApp(); //and continue app (maybe not ne)
+        },60); //time out for 0.06 second maybe less 
+	  }//end winSuccess
 	  
 	 function winFail(){
       console.log("NEW TASK window fail trying again");
-      win.resetDeferred(); //like we do in Craete and Login
+      win.resetDeferred(); //like we do in Create and Login it's can only fail if we don't input nothing empty 
       win.getPromise().then(winSuccess, winFail); //try again to have a new task
     }	 
 	 win = new WinForm(); //create a new window
-	  win.openWin(); // i spearate that 
+	  win.openWin(); // I was sperate that 
 	  
 	 //if im only want to close inside the window without any action so close
 	  win.$.find("#close").on('click', function(){win.closeWin();});
@@ -95,10 +96,10 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   //have a delay from taking the DB 
   function startListView(){
    function listViewSuccess(){
-	console.log("list View success.");
+	  console.log("list View success.");
       arrayBtnHtml =list.getArrayOfButtons();
 	  console.log("in start",list.$);
-     continueApp(); //fot the button list event
+     continueApp(); //for the button edit list  event
 	  }
 	  
 	 function listViewFail(){
@@ -112,13 +113,14 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   //a window from the icon button in the list of the user EDIT OR REMOVE
   function startEdtOrRemWin(){
   function editOrRemSuccess(){
-		console.log("EDIT or remove success."); 
+		console.log("EDIT or remove success.");
+        continueApp();		
 	  } 
   function editOrRemFail(){
       console.log("Edit or Remove fail trying again");
     
     }
-	 console.log("EDITTTTT");
+	 console.log("EDITTTTT List");
 	 edit = new EditOrRemForm(); //create a new window for the select task
 	 edit.openWin(); // i spearate that 	 
 	 //if i'm only want to close inside the window without any action so close
@@ -167,8 +169,11 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    startEdtOrRemWin();
   //edit = new EditOrRemForm();
   //edit.openWin();
-  //startEdtOrRemWin();
+ 
   });
+  
+  
+  console.log("end application");
   }//end  continueApp
   
  
