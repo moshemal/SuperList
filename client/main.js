@@ -189,8 +189,8 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    /*LIST of buttons in LIST view*/   
   list.$.find(".listsOfView  button").on('click',function(e){
   //console.log("tar ",e.target);
- //var name= $(e.target).closest(".listsOfView").find(".name").html(); var btn = $(e.target).closest(".listsOfView").find("button").html();
-  //console.log(name);
+ var name= $(e.target).closest(".listsOfView").find(".name").html(); //var btn = $(e.target).closest(".listsOfView").find("button").html();
+  console.log(name);
    startEdtOrRemWin();
   });
   }//end  continueApp
