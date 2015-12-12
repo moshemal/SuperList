@@ -33,7 +33,7 @@ ListView.prototype.appendTo = function (elem ,that ){
 /*it's like the upload we will need to get every time the new list*/
 ListView.prototype.getListView = function (that){
  var promise = request.getAllLists(); //form request.js getting the DB from the server
- 
+ console.log("hello from method class getListView of class ListView");
  //if succeed go to createListView and put it on the screen (for checking
  console.log("data",promise);		
  promise.then(function(data){

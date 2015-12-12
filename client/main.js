@@ -162,7 +162,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   var bool = 0;
   var i =0;
   function startApp(){  
-	console.log("hello from start App");
+	//console.log("hello from start App");
     layout.createLayout("3W", "#container"); //create layout
 	//if(bool !== 1){
 	user=cookies.getCookie('user');
@@ -184,8 +184,9 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 
   
   function continueApp(){
-   console.log("hello from continueApp");
-   //LIST of buttons in LIST view   
+   //console.log("hello from continueApp");
+   
+   /*LIST of buttons in LIST view*/   
   list.$.find(".listsOfView  button").on('click',function(e){
   console.log("tar ",e.target);
  //var name= $(e.target).closest(".listsOfView").find(".name").html(); var btn = $(e.target).closest(".listsOfView").find("button").html();
