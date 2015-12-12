@@ -169,7 +169,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     startListView(); // i have a delay because i did to it a structure I resolve it's with setTimOut 
   
   
-	btn = new BtnAdd();//create class Button 
+	btn = new BtnAdd();//create class Button from: modules/addList/ButtonPlus/BtnAdd.js 
 	btn.appendTo("#task");//append to the button
 	btn.$.find(".open-button").on('click', function(){console.log("in start app "+i++);startWin();});//event click go to startWin()
   }//end startApp

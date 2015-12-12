@@ -85,10 +85,9 @@ $("#taskList").append(text);
 	/*adding new task give the server his DB 
 	the only time the server will response with error its only when the*/
   function addNewTask(name){
-  return $.ajax("/api/addNewTask", {
+    return $.ajax("/api/addNewTask", {
 				method: "post",
 				  success: function(data, a, xhr){
-                 // console.log(data)
       },
 	  //sending to the server
 	data:{ 

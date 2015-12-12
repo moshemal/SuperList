@@ -8,11 +8,10 @@ function WinForm(initObj){
 		//console.log("hello");
 		var that = this;
 		this._dfd = $.Deferred();
-		
 		var wnd = this.$ = $(template);
 
 		
-		//this.appendTo("#addtask");
+		
        this.$.kendoWindow({
               modal: true,
               title: "Create New List",
@@ -23,15 +22,15 @@ function WinForm(initObj){
               visible: false
             }).data("kendoWindow");//.open();
 
-				console.log(this.$);		
-			//when the win is open and there is the button add new list
+				//console.log(this.$);		
+			/*when the win is open and there is the button add new list*/
 			this.$.find("#addtask").on('submit', function(ev){
 			 //ev.preventDefault(); 
 			//alert("button save",ev.target[1]);
 			var name = ev.target[0].value;
 			var promise = request.addNewTask(name);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
-			console.log("hello win form");
+			//console.log("hello win form");
 			return false;
 		});
 }
@@ -49,9 +48,8 @@ WinForm.prototype.openWin = function (){
 		if (this.$){
 		 this.$.data("kendoWindow").center();
 		 this.$.data("kendoWindow").open();
-		console.log("Open WIN in adding");
-		
-		} else {
+		//console.log("Open WIN in adding");
+		} else{
 			console.log("no element to Open WIN");
 		}
 	}
