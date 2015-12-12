@@ -166,7 +166,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     layout.createLayout("3W", "#container"); //create layout
 	//if(bool !== 1){
 	user=cookies.getCookie('user');
-	console.log(user);
+	//console.log(user);
 	//}
 	
 	//user=cookies.getCookie('user');
@@ -188,7 +188,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    
    /*LIST of buttons in LIST view*/   
   list.$.find(".listsOfView  button").on('click',function(e){
-  console.log("tar ",e.target);
+  //console.log("tar ",e.target);
  //var name= $(e.target).closest(".listsOfView").find(".name").html(); var btn = $(e.target).closest(".listsOfView").find("button").html();
   //console.log(name);
    startEdtOrRemWin();
