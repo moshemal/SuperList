@@ -10,7 +10,7 @@ function($, template, request){
 		var htmlDom = this.$ = $(template);
 
 		this.$.find("#loginform").on('submit', function(ev){
-			console.log(ev);
+			//console.log(ev);
 			var name = ev.target[0].value;
 			
 			
