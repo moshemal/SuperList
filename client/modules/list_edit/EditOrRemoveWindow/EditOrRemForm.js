@@ -11,6 +11,7 @@ function EditOrRemForm(initObj){
 		
 		var wndEdt = this.$ = $(template);
       console.log(wndEdt);
+	  
        this.$.kendoWindow({
               modal: true, //for affect
               title: "Edit List",

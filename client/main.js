@@ -136,7 +136,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   
     
 /*a window from the icon button in the list of the user EDIT OR REMOVE*/
-  function startEdtOrRemWin(){
+  function startEdtOrRemWin(name){
     function editOrRemSuccess(){
 		console.log("EDIT or remove success.");
         continueApp();		
@@ -190,8 +190,8 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   list.$.find(".listsOfView  button").on('click',function(e){
   //console.log("tar ",e.target);
  var name= $(e.target).closest(".listsOfView").find(".name").html(); //var btn = $(e.target).closest(".listsOfView").find("button").html();
-  console.log(name);
-   startEdtOrRemWin();
+  //console.log(name);
+   startEdtOrRemWin(name);
   });
   }//end  continueApp
   
