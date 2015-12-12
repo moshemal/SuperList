@@ -14,11 +14,11 @@ function ListView(initObj){
        }
 
 /*append the list to the layout*/
-ListView.prototype.appendTo = function (elem,that){
+ListView.prototype.appendTo = function (elem ,that ){
 		if (that.$){
-		//console.log("in append TO in List View");
-			that.$.appendTo($(elem));
-		//define a list view from kendo ui
+		console.log("in append TO in List View");
+		that.$.appendTo($(elem));
+		/*define a list view from kendo ui*/
 			that.$.kendoListView({
 			//editTemplate :'<div class><></>All<></></div>',
 			template:'<div class ="listsOfView"><span class="k-icon k-insertUnorderedList"></span><span class="name">#:name#</span><button></button></div>',
@@ -30,13 +30,14 @@ ListView.prototype.appendTo = function (elem,that){
 		}
 	}//end append to
 	
-//it's like the upload we will need to get every time the new list
+/*it's like the upload we will need to get every time the new list*/
 ListView.prototype.getListView = function (that){
-var promise = request.getAllLists(); //form request.js getting the DB from the server
-//if succeed go to createListView and put it on the screen
-console.log("data",promise);		
-promise.then(function(data){
-console.log("in getListView");
+ var promise = request.getAllLists(); //form request.js getting the DB from the server
+ 
+ //if succeed go to createListView and put it on the screen (for checking
+ console.log("data",promise);		
+ promise.then(function(data){
+ console.log("in getListView");
 		that.createListView(data);
 		console.log("hello from get list resolve");
 		//that.getArrayOfButtons();
@@ -50,14 +51,14 @@ console.log("in getListView");
 return false;
 }
 
-ListView.prototype.createListView = function (data){
+ ListView.prototype.createListView = function (data){
 		if (this.$){	
 		var lst = this.$.data("kendoListView"); //take the data of kendoListView that we define in appendTo
 		var dataSource = new kendo.data.DataSource({
                 data: data
             });
 	   lst.setDataSource(dataSource); //insert the data of the list
-       lst.refresh(); //was recomand to do will find a better explain	   
+       lst.refresh(); //was recommand to do will find a better explain	   
 	  console.log("in create LIST VIEW");
 	   //console.log("array of button" ,lst.element.children());//all the template
 	   
@@ -66,6 +67,7 @@ ListView.prototype.createListView = function (data){
                spriteCssClass: "k-icon k-i-pencil" 	  
            });   
 		this.arrayOfBtnHtml = $(row);
+		
 		}else {
 		console.log("failed to create in class LIST VIEW");
 		}
@@ -81,11 +83,11 @@ ListView.prototype.getPromise = function(){
 
 /*for the edit list BUTTONS*/	
 ListView.prototype.getArrayOfButtons = function(){
-//console.log("hello from get all buttons :",this.arrayOfBtn);
+ //console.log("hello from get all buttons :",this.arrayOfBtn);
 		return this.arrayOfBtnHtml;
 	}
 	
-return ListView;
+ return ListView;
 }); 
 
 

@@ -1,17 +1,19 @@
 define(['jquery'], function($){
 	'use strict';
 
-		
-		 function isLoggedIn(){
+	
+
+/**********************************************************************************/
+/**********************     SUBMIT  *********************************************/
+/*********************************************************************************/	
+	 function isLoggedIn(){
 	 console.log("this is request all list");
      return $.ajax("/api/isLoggedIn",{
 	 method :"get" //, //,
 	 // success: function(data, a, xhr){console.log(data)}
 	 });		
 		}
-		
-		
-		
+			
 	function login(name, password){
 		return $.ajax("/api/login",  { 
 			method: "post",
@@ -20,12 +22,10 @@ define(['jquery'], function($){
 			data: {
 				user: 		name,
 				password: password
-			}
-			
+			}	
 		});
 	} //end login
 
-	
 	function createUser (name, password, properties){
     return $.ajax("/api/createUser", {
       method: "post",
@@ -38,6 +38,13 @@ define(['jquery'], function($){
     });//$.ajax
   }
   
+  
+  
+  
+/**********************************************************************************/
+/**********************     VIEW APPLICATION  ***************************************/
+/*********************************************************************************/	
+  
   function getAllLists(){
   console.log("this is request all list");
      return $.ajax("/api/getAllLists",{
@@ -49,7 +56,7 @@ define(['jquery'], function($){
   
 /*if i will have more time i will think and do another
 list for the mean while its what we have now i really start to understend the work*/
-function upload(){
+ function upload(){
 console.log("hello");
 //Request "/api/upload" and will print the result of the request:
 $.get("/api/upload",function(data){
@@ -79,9 +86,12 @@ $("#taskList").append(text);
 }
 
 
-
+	
+	
+/**********************************************************************************/
+/**********************     WINDOWS APPLICATION  ***************************************/
+/*********************************************************************************/		
 	var i =0;
-
 	/*adding new task give the server his DB 
 	the only time the server will response with error its only when the*/
   function addNewTask(name){

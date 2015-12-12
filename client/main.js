@@ -75,23 +75,31 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   #################################  APPLICATION STRUCTION ################################################
   ########################################################################################################*/
 
-  //have a delay from taking the DB 
+  /*have a delay from taking the DB*/ 
   function startListView(){
    function listViewSuccess(){
 	  console.log("list View success.");
-      arrayBtnHtml =list.getArrayOfButtons();
-	  console.log("in start",list.$);
+      arrayBtnHtml =list.getArrayOfButtons(); //for checking
+	  console.log("in start: ",list.$);
      continueApp(); //for the button edit list  event
-	  }
+	  }//end Success
 	  
 	 function listViewFail(){
       console.log("list View fail trying again");
-    }
+    }//end Fail
 	 
 	 list = new ListView(); //create a new listView from modules/list_edit/List/List.js
 	 list.getPromise().then(listViewSuccess,listViewFail);
 	  }//end startListView
+ 
+ /*the user name for checking*/
+  function NameOfTheUser(){
+  document.getElementById("middle").innerHTML =
+    "<h1>Hello <b>"+user+"</b><\h1>"
+  }
   
+
+ 
 
 /*########################################################################################################
   #################################  APPLICATION WINDOW STRUCTION ########################################
@@ -145,39 +153,39 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   }//end startEdtOrRemWin
   
   
+ 
   
   
-  function NameOfTheUser(){
-  document.getElementById("middle").innerHTML =
-    "<h1>Hello <b>"+user+"</b><\h1>"
-  }
-  
+/**********************************************************************************************/
+/************************** APPLICATION START *************************************************/  
+/**********************************************************************************************/  
   var bool = 0;
   var i =0;
-  function startApp(){
-    console.log("hello from start App");
-    layout.createLayout("3W", "#container");
+  function startApp(){  
+	console.log("hello from start App");
+    layout.createLayout("3W", "#container"); //create layout
 	//if(bool !== 1){
 	user=cookies.getCookie('user');
 	console.log(user);
 	//}
+	
 	//user=cookies.getCookie('user');
-	NameOfTheUser(); //for checking
+	//NameOfTheUser(); //for checking
 	//console.log("starting application " +user); //for checking
   
-  
+   
     startListView(); // i have a delay because i did to it a structure I resolve it's with setTimOut 
-  
   
 	btn = new BtnAdd();//create class Button from: modules/addList/ButtonPlus/BtnAdd.js 
 	btn.appendTo("#task");//append to the button
 	btn.$.find(".open-button").on('click', function(){console.log("in start app "+i++);startWin();});//event click go to startWin()
+  
   }//end startApp
 
   
   function continueApp(){
    console.log("hello from continueApp");
- //LIST of buttons in LIST view   
+   //LIST of buttons in LIST view   
   list.$.find(".listsOfView  button").on('click',function(e){
   console.log("tar ",e.target);
  //var name= $(e.target).closest(".listsOfView").find(".name").html(); var btn = $(e.target).closest(".listsOfView").find("button").html();
@@ -186,6 +194,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   });
   }//end  continueApp
   
+ 
  
  request.isLoggedIn().then(
  function(){
