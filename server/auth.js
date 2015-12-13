@@ -130,19 +130,31 @@ task : [] //come back
 };
 
 lists.push(item);
+consle.log("in auth  addNewTask: ");
+console.log(lists);
 fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 	return true;
 }
 
 
 /*adding new task after we check in RH if the DB is OK
-function editList(oldName,newName){
+function editList(oldName , newName){
 
-lists["name"] = newName;
-
-//lists.push(item);
-fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
-	return true;
+function editItem(user,listName,itemName,properties){
+    if(user) {
+        var list = JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + listName + ".json", 'utf8'));
+        for(var i = 0; i<list.items.length; i++){
+            if(list.items[i]["title"] == itemName){
+                delete properties.listName;
+                delete properties.itemName;
+                list.items[i] = properties;
+                list.items[i]["title"] = itemName;
+                fs.writeFileSync('./db/' + user + '/lists/' + listName + ".json", JSON.stringify(list), 'utf8');
+                return;
+            }
+        }
+    }
+}
 }
 */
 

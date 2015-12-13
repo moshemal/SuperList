@@ -116,7 +116,7 @@ $("#taskList").append(text);
             console.log(data)			
 			},	
 			data: {
-				oldName: 	oldName,
+				oldName : 	oldName,
 				 newName:  newName
 			}	
 		});
