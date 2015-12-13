@@ -34,12 +34,12 @@ ListView.prototype.appendTo = function (elem ,that ){
 ListView.prototype.getListView = function (that){
  var promise = request.getAllLists(); //form request.js getting the DB from the server
  console.log("hello from method class getListView of class ListView");
- //if succeed go to createListView and put it on the screen (for checking
- console.log("data",promise);		
+
+ console.log("data list: ",promise);//if succeed go to createListView and put it on the screen (for checking		
  promise.then(function(data){
  console.log("in getListView");
 		that.createListView(data);
-		console.log("hello from get list resolve");
+		console.log("hello from get list resolve:",data);
 		//that.getArrayOfButtons();
 		that._dfd.resolve();
 		} ,

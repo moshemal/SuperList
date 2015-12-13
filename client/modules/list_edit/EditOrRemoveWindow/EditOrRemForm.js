@@ -18,7 +18,7 @@ function EditOrRemForm(initObj){
 			  width: "505px",
 			  height: "150px",
 			  actions: ["Close"],
-			 // template : '<input type="text"  data-bind="value:name" name="name">',
+			 //template:'<div class ="listsOfView"><span class="k-icon k-insertUnorderedList"></span><span class="name">#:name#</span><button></button></div>'
                resizable: false,
               visible: false
             }).data("kendoWindow");
