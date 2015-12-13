@@ -130,7 +130,7 @@ task : [] //come back
 };
 
 lists.push(item);
-consle.log("in auth  addNewTask: ");
+console.log("in auth  addNewTask: ");
 console.log(lists);
 fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 	return true;
