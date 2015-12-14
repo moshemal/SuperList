@@ -84,7 +84,7 @@ function editList(response, parsedUrl, postData){
 console.log("line 77 RH add edit task");
   var parsedQuery = querystring.parse(postData);
 	if(validateEditList(parsedQuery) ){
-	if (auth.editList(parsedQuery.oldName,parsedQuery.newName)){//auth.js line 143
+	if (auth.editList(parsedQuery.oldName, parsedQuery.newName)){//auth.js line 143
       response.writeHead(200, {"Content-Type": "text/plain"});
       response.write("we are editing Task user: " + parsedQuery);
       response.end();
@@ -102,10 +102,10 @@ console.log("line 77 RH add edit task");
 
 
 
-
+exports.getAllLists = getAllLists;
 exports.upload      = upload;
 exports.createUser  = createUser;
-exports.getAllLists = getAllLists;
+
 exports.addNewTask  = addNewTask;
 exports.editList  = editList;
 
