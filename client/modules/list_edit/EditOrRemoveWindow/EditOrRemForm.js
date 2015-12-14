@@ -11,7 +11,7 @@ function EditOrRemForm(initObj,oldName){
 		
 		var wndEdt = this.$ = $(template);
       console.log(wndEdt);
-	  
+	  console.log(oldName);//
        this.$.kendoWindow({
               modal: true, //for affect
               title: "Edit List",
@@ -26,7 +26,7 @@ function EditOrRemForm(initObj,oldName){
 			
 			//for rename the name of the list
 			this.$.find("#editform").on('submit', function(ev){
-			console.log(oldName);	
+			//console.log(oldName);//undifiend	
 			var newName = ev.target[0].value;
 			var promise = request.editList(oldName,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
