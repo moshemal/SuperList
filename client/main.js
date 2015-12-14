@@ -150,7 +150,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     }
 	
 	console.log("EDITTTTT List");
-	edit = new EditOrRemForm(); //new window for the select task modules/list_edit/EditOrRemoveWindow/EditOrRemForm.js 
+	edit = new EditOrRemForm(name); //new window for the select task modules/list_edit/EditOrRemoveWindow/EditOrRemForm.js 
 	edit.openWin(); // i spearate that 	 
 	edit.getPromise().then(editOrRemSuccess,editOrRemFail);  	 
   }//end startEdtOrRemWin

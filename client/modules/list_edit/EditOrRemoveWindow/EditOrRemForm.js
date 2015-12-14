@@ -3,7 +3,7 @@ function($, template,request){
 'use strict';
 
 
-function EditOrRemForm(initObj){
+function EditOrRemForm(initObj,oldName){
 		initObj = initObj || {};
 		console.log("hello from window editing or remove");
 		var that = this;
@@ -23,15 +23,16 @@ function EditOrRemForm(initObj){
               visible: false
             }).data("kendoWindow");
 	
-			/**
+			
 			//for rename the name of the list
 			this.$.find("#editform").on('submit', function(ev){
-			var name = ev.target[0].value;
-			var promise = request.editTask(name);
+			var newName = ev.target[0].value;
+			var promise = request.editList(oldName,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
 		});
 		
+		/**
 		for remove the name of the list
 		//	this.$.find("#addtask").on('submit', function(ev){
 		//	var name = ev.target[0].value;

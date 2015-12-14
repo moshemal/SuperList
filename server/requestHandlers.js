@@ -95,10 +95,10 @@ console.log("line 77 RH add edit task");
 
 
 
-exports.getAllLists = getAllLists;
-exports.upload      = upload;
 
+exports.upload      = upload;
 exports.createUser  = createUser;
+exports.getAllLists = getAllLists;
 exports.addNewTask  = addNewTask;
 exports.editList  = editList;
 
