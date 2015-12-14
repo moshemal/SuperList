@@ -69,8 +69,6 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	  }//end startCreate
  
 
-
- 
  /*########################################################################################################
   #################################  APPLICATION STRUCTION ################################################
   ########################################################################################################*/
@@ -110,13 +108,13 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   function winSuccess(){
 		console.log("NEW TASK window success.");
 		list.getListView(list);//the new list view instead of using in the request
-		/*
+		/**
 		if I don't set time out it's first go to close win and continue
 		up but will not update and then if I don't do refresh the 
 		button of the "list edit" not work
-		*/ 
+		**/ 
 		setTimeout(function(){
-	    console.log("set time for buttons LIST EDIT to actually work");//after we finish with getListView
+	    //console.log("set time for buttons LIST EDIT to actually work");//after we finish with getListView
 		win.closeWin(); //and close the window
 		continueApp(); //and continue app (maybe not ne)
         },60); //time out for 0.06 second maybe less 
@@ -137,12 +135,21 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     
 /*a window from the icon button in the list of the user EDIT OR REMOVE*/
   function startEdtOrRemWin(name){
-    function editOrRemSuccess(){
+    
+	function editOrRemSuccess(){
 		console.log("EDIT or remove success.");
 		list.getListView(list);//the new list view instead of using in the request
-		edit.closeWin();
-        continueApp();		
-	  }
+		/**
+		if I don't set time out it's first go to close win and continue
+		up but will not update and then if I don't do refresh the 
+		button of the "list edit" not work
+		**/ 
+		setTimeout(function(){
+	    console.log("set time for buttons LIST EDIT to actually work");//after we finish with getListView
+		edit.closeWin();//and close the window
+		continueApp(); //and continue app (maybe not ne)
+        },60); //time out for 0.06 second maybe less 	
+	  }//end
 	  
     function editOrRemFail(){
       console.log("Edit or Remove fail trying again");
@@ -153,7 +160,6 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	//console.log("EDITTTTT List",name);
 	edit = new EditOrRemForm(name); //new window for the select task modules/list_edit/EditOrRemoveWindow/EditOrRemForm.js 
 	edit.openWin(); // i spearate that 
-    //edit.$.find("#close").on('click', function(){edit.closeWin();});//if im only want to close inside the window without any action so close	
 	edit.getPromise().then(editOrRemSuccess,editOrRemFail);  	 
   }//end startEdtOrRemWin
   

@@ -53,8 +53,7 @@ WinForm.prototype.openWin = function (){
 			console.log("no element to Open WIN");
 		}
 	}
-	
-		
+			
 WinForm.prototype.resetDeferred = function(){
 		this._dfd = new $.Deferred();
 	}
@@ -62,8 +61,7 @@ WinForm.prototype.resetDeferred = function(){
 WinForm.prototype.getPromise = function(){
 		return this._dfd.promise();
 	}
-	
-	
+		
 WinForm.prototype.destroy = function(){
 		this.$.off('submit');
 		this.$.remove();

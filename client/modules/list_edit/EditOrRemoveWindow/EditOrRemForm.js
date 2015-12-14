@@ -5,14 +5,12 @@ function($, template,request){
 
 function EditOrRemForm(initObj,oldName){
 		initObj = initObj || {};
-		console.log(initObj);
 		console.log("hello from window editing or remove");
 		var that = this;
 		this._dfd = $.Deferred();
-		
 		var wndEdt = this.$ = $(template);
-      //console.log(wndEdt);
-	  //console.log(oldName);//undifiend
+      
+	  /*WINDOW*/
        this.$.kendoWindow({
               modal: true, //for affect
               title: "Edit List",
@@ -25,9 +23,8 @@ function EditOrRemForm(initObj,oldName){
             }).data("kendoWindow");
 	
 			
-			//for rename the name of the list
+			/*for rename the name of the list*/
 			this.$.find("#editform").on('submit', function(ev){
-			//console.log(oldName);//undifiend	
 			var newName = ev.target[0].value;
 			var promise = request.editList(initObj,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
@@ -60,7 +57,6 @@ EditOrRemForm.prototype.openWin = function (){
 		 this.$.data("kendoWindow").center();
 		 this.$.data("kendoWindow").open();
 		console.log("Open WIN edit or remove");
-		
 		} else {
 			console.log("no element to Open WIN  edit or remove");
 		}
