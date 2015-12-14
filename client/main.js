@@ -193,7 +193,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   list.$.find(".listsOfView  button").on('click',function(e){
   //console.log("tar ",e.target);
  var name= $(e.target).closest(".listsOfView").find(".name").html(); //var btn = $(e.target).closest(".listsOfView").find("button").html();
-  console.log(name);
+  //console.log(name);
    startEdtOrRemWin(name);
   });
   }//end  continueApp

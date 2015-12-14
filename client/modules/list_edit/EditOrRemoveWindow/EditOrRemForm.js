@@ -5,12 +5,13 @@ function($, template,request){
 
 function EditOrRemForm(initObj,oldName){
 		initObj = initObj || {};
+		console.log(initObj);
 		console.log("hello from window editing or remove");
 		var that = this;
 		this._dfd = $.Deferred();
 		
 		var wndEdt = this.$ = $(template);
-      console.log(wndEdt);
+      //console.log(wndEdt);
 	  console.log(oldName);//undifiend
        this.$.kendoWindow({
               modal: true, //for affect
