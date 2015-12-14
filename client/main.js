@@ -140,6 +140,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     function editOrRemSuccess(){
 		console.log("EDIT or remove success.");
 		list.getListView(list);//the new list view instead of using in the request
+		edit.closeWin();
         continueApp();		
 	  }
 	  
@@ -151,7 +152,8 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	
 	//console.log("EDITTTTT List",name);
 	edit = new EditOrRemForm(name); //new window for the select task modules/list_edit/EditOrRemoveWindow/EditOrRemForm.js 
-	edit.openWin(); // i spearate that 	 
+	edit.openWin(); // i spearate that 
+    //edit.$.find("#close").on('click', function(){edit.closeWin();});//if im only want to close inside the window without any action so close	
 	edit.getPromise().then(editOrRemSuccess,editOrRemFail);  	 
   }//end startEdtOrRemWin
   
