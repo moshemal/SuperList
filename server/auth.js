@@ -134,7 +134,7 @@ console.log("in auth  addNewTask: ");
 //console.log(lists.length);
 //for(var i = 0;i<lists.length;i++){
 //console.log(lists[i]["name"]);	
-}
+//}
 fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 	return true;
 }
