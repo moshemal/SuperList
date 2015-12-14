@@ -12,7 +12,7 @@ function EditOrRemForm(initObj,oldName){
 		
 		var wndEdt = this.$ = $(template);
       //console.log(wndEdt);
-	  console.log(oldName);//undifiend
+	  //console.log(oldName);//undifiend
        this.$.kendoWindow({
               modal: true, //for affect
               title: "Edit List",
@@ -29,7 +29,7 @@ function EditOrRemForm(initObj,oldName){
 			this.$.find("#editform").on('submit', function(ev){
 			//console.log(oldName);//undifiend	
 			var newName = ev.target[0].value;
-			var promise = request.editList(oldName,newName);
+			var promise = request.editList(initObj,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
 		});
