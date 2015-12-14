@@ -26,6 +26,7 @@ function EditOrRemForm(initObj,oldName){
 			
 			//for rename the name of the list
 			this.$.find("#editform").on('submit', function(ev){
+			console.log(oldName);	
 			var newName = ev.target[0].value;
 			var promise = request.editList(oldName,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});

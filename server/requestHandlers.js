@@ -81,8 +81,9 @@ function validateEditList(parsedQuery) {
 
 //edit new task to the list checking + edit
 function editList(response, parsedUrl, postData){
-console.log("line 77 RH add edit task");
+console.log("line 84 RH  edit task");
   var parsedQuery = querystring.parse(postData);
+  console.log("line 86 auth.js edit task");
 	if(validateEditList(parsedQuery) ){
 	if (auth.editList(parsedQuery.oldName, parsedQuery.newName)){//auth.js line 143
       response.writeHead(200, {"Content-Type": "text/plain"});
@@ -91,7 +92,8 @@ console.log("line 77 RH add edit task");
       return;
     }
 	}
-  response.writeHead(500, {"Content-Type": "text/plain"});
+	
+  response.writeHead(404, {"Content-Type": "text/plain"});
   response.write("fail to edit Task ");
   response.end();
 }
