@@ -72,18 +72,25 @@ console.log("line 51 RH add new task");
 }
 
 
+function validateEditList(parsedQuery) {
+  return (typeof parsedQuery.newName === 'string' &&
+  typeof parsedQuery.oldName === 'string' &&
+  parsedQuery.newName !== "" && parsedQuery.oldName !== "");
+}
+
+
 //edit new task to the list checking + edit
 function editList(response, parsedUrl, postData){
 console.log("line 77 RH add edit task");
   var parsedQuery = querystring.parse(postData);
-	
+	if(validateEditList(parsedQuery) ){
 	if (auth.editList(parsedQuery.oldName,parsedQuery.newName)){//auth.js line 143
       response.writeHead(200, {"Content-Type": "text/plain"});
       response.write("we are editing Task user: " + parsedQuery);
       response.end();
       return;
     }
-  
+	}
   response.writeHead(500, {"Content-Type": "text/plain"});
   response.write("fail to edit Task ");
   response.end();
