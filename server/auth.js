@@ -131,17 +131,14 @@ task : [] //come back
 
 lists.push(item);
 console.log("in auth  addNewTask: ");
-//console.log(lists.length);
-//for(var i = 0;i<lists.length;i++){
-//console.log(lists[i]["name"]);	
-//}
+
 fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 	return true;
 }
 
 //edit name of the list
 function editList(oldName , newName){
-
+console.log("line 141 auth.js edit task");
 for(var i = 0 ; i<lists.length; i++){
 	if(lists[i]["name"] == oldName){
 		lists[i]["name"] = newName ;
