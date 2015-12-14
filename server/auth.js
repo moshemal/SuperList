@@ -131,35 +131,32 @@ task : [] //come back
 
 lists.push(item);
 console.log("in auth  addNewTask: ");
-console.log(lists.length);
-for(var i = 0;i<lists.length;i++){
-console.log(lists[i]["name"]);	
+//console.log(lists.length);
+//for(var i = 0;i<lists.length;i++){
+//console.log(lists[i]["name"]);	
 }
 fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 	return true;
 }
 
+//edit name of the list
+function editList(oldName,newName){
 
-/*adding new task after we check in RH if the DB is OK
-function editList(oldName , newName){
+for(var i = 0 ; i<lists.length; i++){
+	if(lists[i]["name"]=== oldName){
+		lists[i]["name"] = newName ;
+		fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
+		return true;
+	}
+}
+console.log("fail on edit List no found Name 152 auth.js");
+return false; //the name dont exsiset 	
+}
 
-function editItem(user,listName,itemName,properties){
-    if(user) {
-        var list = JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + listName + ".json", 'utf8'));
-        for(var i = 0; i<list.items.length; i++){
-            if(list.items[i]["title"] == itemName){
-                delete properties.listName;
-                delete properties.itemName;
-                list.items[i] = properties;
-                list.items[i]["title"] = itemName;
-                fs.writeFileSync('./db/' + user + '/lists/' + listName + ".json", JSON.stringify(list), 'utf8');
-                return;
-            }
-        }
-    }
-}
-}
-*/
+
+
+
+
 
 exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn;
@@ -168,4 +165,4 @@ exports.getListFS = getListFS;
 //exports.getPropertiesFS = getPropertiesFS;
 exports.createUser 	= createUser;
 exports.addNewTask 	= addNewTask;
-//exports.editList 	= editList;
+exports.editList 	= editList;

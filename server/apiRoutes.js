@@ -46,8 +46,8 @@ var handle = {
 	"/createUser":  requestHandlers.createUser,
 	"/getAllLists": decorateWithIsloggedIn(requestHandlers.getAllLists), //decorateWithIsloggedIn will be called before we even get to main.js decorateWithIsloggedIn
 	"/addNewTask" :  decorateWithIsloggedIn(requestHandlers.addNewTask), //will be called before we even get to main.js decorateWithIsloggedIn
-	"/upload":      decorateWithIsloggedIn(requestHandlers.upload)//, //will be called before we even get to main.js decorateWithIsloggedIn
-    //"/editList" : decorateWithIsloggedIn(requestHandlers.editList)
+	"/upload":      decorateWithIsloggedIn(requestHandlers.upload), //will be called before we even get to main.js decorateWithIsloggedIn
+    "/editList" : decorateWithIsloggedIn(requestHandlers.editList)
 }
 
 

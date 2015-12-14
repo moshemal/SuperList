@@ -139,11 +139,14 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   function startEdtOrRemWin(name){
     function editOrRemSuccess(){
 		console.log("EDIT or remove success.");
+		list.getListView(list);//the new list view instead of using in the request
         continueApp();		
 	  }
 	  
     function editOrRemFail(){
       console.log("Edit or Remove fail trying again");
+	   edit.resetDeferred(); //like we do in Create and Login it's can only fail if we don't input nothing empty 
+	  edit.getPromise().then(editOrRemSuccess,editOrRemFail);  
     }
 	
 	console.log("EDITTTTT List");

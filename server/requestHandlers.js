@@ -71,24 +71,26 @@ console.log("line 51 RH add new task");
   response.end();
 }
 
-/*edit task to the list checking + edit
+
+//edit new task to the list checking + edit
 function editList(response, parsedUrl, postData){
-console.log("line 76 RH add edit task");
+console.log("line 77 RH add edit task");
   var parsedQuery = querystring.parse(postData);
-	//if(validateEdit(parsedQuery)){
-	if (auth.editList(parsedQuery.newName,parsedQuery.oldName)){//auth.js line 80
-	//console.log("in line 80 request handler = " + parsedQuery.num);
+	
+	if (auth.editList(parsedQuery.oldName,parsedQuery.newName)){//auth.js line 143
       response.writeHead(200, {"Content-Type": "text/plain"});
-      response.write("we are edit list user: " + parsedQuery);
+      response.write("we are editing Task user: " + parsedQuery);
       response.end();
       return;
     }
-  //}
-  response.writeHead(404, {"Content-Type": "text/plain"});
-  response.write("fail to edit Task");
+  
+  response.writeHead(500, {"Content-Type": "text/plain"});
+  response.write("fail to edit Task ");
   response.end();
 }
-*/
+
+
+
 
 
 
@@ -98,5 +100,5 @@ exports.upload      = upload;
 
 exports.createUser  = createUser;
 exports.addNewTask  = addNewTask;
-//exports.editList  = editList;
+exports.editList  = editList;
 
