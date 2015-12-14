@@ -140,10 +140,10 @@ fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //f
 }
 
 //edit name of the list
-function editList(oldName,newName){
+function editList(oldName , newName){
 
 for(var i = 0 ; i<lists.length; i++){
-	if(lists[i]["name"]=== oldName){
+	if(lists[i]["name"] == oldName){
 		lists[i]["name"] = newName ;
 		fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 		return true;
