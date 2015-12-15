@@ -3,7 +3,7 @@ function($, template,request){
 'use strict';
 
 
-function EditOrRemForm(initObj,oldName){
+function EditOrRemForm(initObj){
 		initObj = initObj || {};
 		console.log("hello from window editing or remove");
 		var that = this;

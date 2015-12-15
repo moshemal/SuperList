@@ -135,7 +135,6 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     
 /*a window from the icon button in the list of the user EDIT OR REMOVE*/
   function startEdtOrRemWin(name){
-    
 	function editOrRemSuccess(){
 		console.log("EDIT or remove success.");
 		list.getListView(list);//the new list view instead of using in the request
@@ -156,7 +155,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
       console.log("Edit or Remove fail trying again");
 	   edit.resetDeferred(); //like we do in Create and Login it's can only fail if we don't input nothing empty 
 	  edit.getPromise().then(editOrRemSuccess,editOrRemFail);  
-    }
+    }//end
 	
 	//console.log("EDITTTTT List",name);
 	edit = new EditOrRemForm(name); //new window for the select task modules/list_edit/EditOrRemoveWindow/EditOrRemForm.js 
