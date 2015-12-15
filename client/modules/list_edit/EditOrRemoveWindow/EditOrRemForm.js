@@ -22,11 +22,11 @@ function EditOrRemForm(initObj){
              visible: false
             }).data("kendoWindow");
 	
-			
 			/*for rename the name of the list*/
-			this.$.find("#editform").on('submit', function(ev){
-			var newName = ev.target[0].value;
+			this.$.find("#editform .buttons #btnEdit").on('submit', function(ev){
+			//var newName = ev.target[0].value;
 			//consloe.log(ev.target[0].value;);
+			var  newName= $(ev.target).closest("#editform").find("input").val();
 			var promise = request.editList(initObj,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
