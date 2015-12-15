@@ -1,135 +1,132 @@
-define(['jquery','text!./List.html','../EditButton/EditBtn','core/request','kendo'],
-function($, template,EditBtn,request){
-'use strict';
+define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.html', 'text!./editWindow.html', 'core/request', 'kendo'], function($, list, button, addWindow, editWindow, request){
 
+    var updateFunctions = [];
+    var listView = $(list);
+    var addListButton = $(button);
+    var addListWindow;
+    var editListWindow;
 
+    var openAddWindow = function(){
+        addListWindow = $(addWindow);
+        addListWindow.appendTo('body');
+        addListWindow.kendoWindow({
+            width: "600px",
+            title: "Create New List",
+            actions: [
+                "Close"
+            ],
+            close: function(){
+                var dialog = addListWindow.data("kendoWindow");
+                dialog.destroy();
+                addListWindow.remove();
+                getListView();
+            },
+            modal: true
+        });
 
-function ListView(initObj){
-	   initObj = initObj || {};
-		console.log("hello in list view");
-		var that = this;
-		this._dfd = $.Deferred();
-		var lstV = that.$ = $(template);
-		this.arrayOfBtnHtml = [];//html of the buttons
-		this.appendTo("#taskList");//append to div
-		this.getListView(this);//get list view
-       }
+        var dialog = addListWindow.data("kendoWindow");
+        dialog.center();
 
+        addListWindow.find("#listDialogAddSubmit").kendoButton({
+            click: function(){
+                var dialog = addListWindow.data("kendoWindow");
+                dialog.destroy();
+                request.addList(addListWindow.find("input").val()).then(function(){
+                    getListView();
+                });
+            }
+        });
+    };
 
+    var openEditWindow = function(listName){
+        if(listName != undefined && listName != ""){
+            editListWindow = $(editWindow);
+            editListWindow.appendTo('body');
+            editListWindow.kendoWindow({
+                width: "600px",
+                title: "Edit List Name",
+                actions: [
+                    "Close"
+                ],
+                close: function(){
+                    var dialog = editListWindow.data("kendoWindow");
+                    dialog.destroy();
+                    editListWindow.remove();
+                    getListView();
+                },
+                modal: true
+            });
 
-/*append the list to the layout*/
-ListView.prototype.appendTo = function (elem){
-		if (this.$){
-		//console.log("in append TO in List View");
-			this.$.appendTo($(elem));
-		//define a list view from kendo ui
-			this.$.kendoListView({
-			template :'<div class ="listsOfView"><span class="k-icon k-insertUnorderedList"></span><span class="name">#:name#</span><button id="edit"></button></div>',
-			selectable: true //witch element will be edited
-			});
-		}
-		else {
-			console.log("no element to append TO in List View");
-		}
-	}//end append to
-	
+            var dialog = editListWindow.data("kendoWindow");
+            dialog.center();
 
+            editListWindow.find("input").val(listName);
 
-ListView.prototype.createListView = function (data){
-		if (this.$){	
-		var lst = this.$.data("kendoListView"); //take the data of kendoListView that we define in appendTo
-		var dataSource = new kendo.data.DataSource({
+            editListWindow.find("#listDialogEditSubmit").kendoButton({
+                click: function(){
+                    var dialog = editListWindow.data("kendoWindow");
+                    dialog.destroy();
+                    request.editList(listName,editListWindow.find("input").val()).then(function(){
+                        getListView();
+                    });
+                }
+            });
+
+            editListWindow.find("#listDialogEditRemove").kendoButton({
+                click: function(){
+                    var dialog = editListWindow.data("kendoWindow");
+                    dialog.destroy();
+                    request.removeList(listName).then(function(){
+                        getListView();
+                    });
+                }
+            });
+        }
+    };
+
+   
+
+	  
+    var getListView = function(listName){
+        request.getListView().then(function(data){
+            var list = listView.data("kendoListView");
+            var dataSource = new kendo.data.DataSource({
                 data: data
             });
-	   lst.setDataSource(dataSource); //insert the data of the list
-       lst.refresh(); //was recomend to do will find a better explain
-	   
-	  // console.log(lst.element.children().length);
-	   //console.log("array of button" ,lst.element.children());//all the template
-	   //var row = $(lst.element.children());//.first();
-     //console.log(row);
-	   
-	   
-	   
-	   
-	   //array of buttons to create of html 
-		var row = $(".listsOfView  button").kendoButton({
-               spriteCssClass: "k-icon k-i-pencil" //,
-			  // click: function(e){
-                //   show($(e.event.target).closest(".listsOfView").find(".name").html());
-				//   console.log($(e.event.target));
-				   //console.log($(e.event.target).closest(".listsOfView"));
-				  // }
-           });
-		   
-		   this.arrayOfBtnHtml = $(row);//.first();
-		//   console.log(this.arrayOfBtnHtml);
-		   
-     //console.log(this.arrayOfBtnHtml[0]);		
-		} 
-		 
-		else {
-		console.log("no element to in class LIST VIEW");}
-		
-	}//end of create
+            list.setDataSource(dataSource);
+            list.refresh();
 
-	
-//it's like the upload we will need to get every time the new list
-ListView.prototype.getListView = function (that){
-var promise = request.getAllLists(); //form request.js getting the DB from the server
- //console.log("hello from get all list: ", promise);
-//if succeed go to createListView and put it on the screen		
-promise.then(function(data){
-		that.createListView(data);
-		console.log("hello from creating");
-		//that.getArrayOfButtons();
-		that._dfd.resolve();
-		} ,
-//else rejecet		
-		function(){
-		that._dfd.reject();
-		console.log("rejecet in list view get");
-		});
-return false;
-}
-
-ListView.prototype.resetDeferred = function(){
-		this._dfd = new $.Deferred();
-	}
-
-ListView.prototype.getPromise = function(){
-		return this._dfd.promise();
-	}
-	
-
-	
-ListView.prototype.getArrayOfButtons = function(){
-//console.log("hello from get all buttons :",this.arrayOfBtn);
-		return this.arrayOfBtnHtml;
-	}
-	
-	
- var  show = function (elem){
-		//var lst = this.$.data("kendoListView");
-		//var item = $(elem).closest("[role='option']");
-		//var data = lst.dataSource.getElementById(item.data("uid"));
-		//alert(data.name);
-	console.log(elem); // will print the name	
-	}
-
-	
-
-return ListView;
-}); 
+            if(listName){
+                $(list.element).find(".title").each(function(){
+                    if($(this).html() == listName)
+                        list.select($(this).parent());
+                });
+            }
 
 
+            $(".listView button").kendoButton({
+                spriteCssClass: "k-icon k-i-pencil",
+                click: function(e) {
+                    openEditWindow($(e.event.target).closest(".listView").find(".title").html());
+                }
+            });
 
-	
+            for(var i=0; i<updateFunctions.length; i++){
+                updateFunctions[i]('');
+            }
+        })
+    };
 
+    var addFunctionForChanges = function(func){
+        updateFunctions.push(func);
+    };
 
- 
+    return {
+        createListView: createListView,
+		createAddButton: createAddButton,
+        getListView: getListView,
+        addFunctionForChanges: addFunctionForChanges,
+		createLogo: createLogo
+    }
 
-
-
-
-
+});

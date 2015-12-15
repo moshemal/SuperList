@@ -10,8 +10,6 @@ function WinForm(initObj){
 		this._dfd = $.Deferred();
 		var wnd = this.$ = $(template);
 
-		
-		
        this.$.kendoWindow({
               modal: true,
               title: "Create New List",
@@ -20,17 +18,13 @@ function WinForm(initObj){
 			  actions: ["Close"],
                resizable: false,
               visible: false
-            }).data("kendoWindow");//.open();
-
-				//console.log(this.$);		
+            }).data("kendoWindow");
+	
 			/*when the win is open and there is the button add new list*/
 			this.$.find("#addtask").on('submit', function(ev){
-			 //ev.preventDefault(); 
-			//alert("button save",ev.target[1]);
 			var name = ev.target[0].value;
 			var promise = request.addNewTask(name);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
-			//console.log("hello win form");
 			return false;
 		});
 }
@@ -65,14 +59,6 @@ WinForm.prototype.getPromise = function(){
 WinForm.prototype.destroy = function(){
 		this.$.off('submit');
 		this.$.remove();
-	}
-	
-WinForm.prototype.appendTo = function (elem){
-		if (this.$){
-			this.$.appendTo($(elem))	
-		} else {
-			console.log("no element to add");
-		}
 	}
 
 

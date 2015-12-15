@@ -9,7 +9,8 @@ function EditOrRemForm(initObj,oldName){
 		var that = this;
 		this._dfd = $.Deferred();
 		var wndEdt = this.$ = $(template);
-      
+       this.$.appendTo('body');
+	   
 	  /*WINDOW*/
        this.$.kendoWindow({
               modal: true, //for affect
@@ -18,14 +19,15 @@ function EditOrRemForm(initObj,oldName){
 			  height: "150px",
 			  actions: ["Close"],
 			 //template:'<div class ="listsOfView"><span class="k-icon k-insertUnorderedList"></span><span class="name">#:name#</span><button></button></div>'
-               resizable: false,
-              visible: false
+               resizable: false //,
+             // visible: false
             }).data("kendoWindow");
 	
 			
 			/*for rename the name of the list*/
-			this.$.find("#editform").on('submit', function(ev){
+			this.$.find("#btnEdit").on('submit', function(ev){
 			var newName = ev.target[0].value;
+			consloe.log(ev.target[0].value;);
 			var promise = request.editList(initObj,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
@@ -51,8 +53,9 @@ EditOrRemForm.prototype.closeWin = function (){
 			console.log("no element to CLOSE WIN  edit or remove");
 		}
 	}
-	
-EditOrRemForm.prototype.openWin = function (){
+
+/*action of window edit or remove after we Clicking".listsOfView  button"*/	
+EditOrRemForm.prototype.openWin = function(){
 		if (this.$){
 		 this.$.data("kendoWindow").center();
 		 this.$.data("kendoWindow").open();
@@ -61,8 +64,7 @@ EditOrRemForm.prototype.openWin = function (){
 			console.log("no element to Open WIN  edit or remove");
 		}
 	}
-	
-		
+			
 EditOrRemForm.prototype.resetDeferred = function(){
 		this._dfd = new $.Deferred();
 	}
@@ -70,20 +72,13 @@ EditOrRemForm.prototype.resetDeferred = function(){
 EditOrRemForm.prototype.getPromise = function(){
 		return this._dfd.promise();
 	}
-	
-	
+		
 EditOrRemForm.prototype.destroy = function(){
 		this.$.off('submit');
 		this.$.remove();
 	}
 	
-EditOrRemForm.prototype.appendTo = function (elem){
-		if (this.$){
-			this.$.appendTo($(elem))	
-		} else {
-			console.log("no element to add");
-		}
-	}
+
 
 
 return EditOrRemForm;

@@ -147,6 +147,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 		setTimeout(function(){
 	    console.log("set time for buttons LIST EDIT to actually work");//after we finish with getListView
 		edit.closeWin();//and close the window
+		edit.destroy();
 		continueApp(); //and continue app (maybe not ne)
         },60); //time out for 0.06 second maybe less 	
 	  }//end
@@ -189,7 +190,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   
 	btn = new BtnAdd();//create class Button from: modules/addList/ButtonPlus/BtnAdd.js 
 	btn.appendTo("#task");//append to the button
-	btn.$.find(".open-button").on('click', function(){console.log("in start app "+i++);startWin();});//event click go to startWin()
+	btn.$.find(".open-button").on('click', function(){startWin();});//event click go to startWin()
   
   }//end startApp
 
@@ -200,8 +201,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    /*LIST of buttons in LIST view*/   
   list.$.find(".listsOfView  button").on('click',function(e){
   //console.log("tar ",e.target);
- var name= $(e.target).closest(".listsOfView").find(".name").html(); //var btn = $(e.target).closest(".listsOfView").find("button").html();
-  //console.log(name);
+  var name= $(e.target).closest(".listsOfView").find(".name").html(); 
    startEdtOrRemWin(name);
   });
   }//end  continueApp
