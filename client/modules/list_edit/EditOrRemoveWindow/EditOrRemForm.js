@@ -24,11 +24,10 @@ function EditOrRemForm(initObj){
 	 
 	 this.$.find("input").val(initObj);
 	 var  newName= this.$.find("input").val();
-			consloe.log(newName);
+			console.log(newName);
 			/*for rename the name of the list*/
 			this.$.find("#editform .buttons #btnEdit").on('submit', function(ev){
 			//var newName = ev.target[0].value;
-			//consloe.log(ev.target[0].value;);
 			
 			var promise = request.editList(initObj,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
