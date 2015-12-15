@@ -9,7 +9,7 @@ function EditOrRemForm(initObj){
 		var that = this;
 		this._dfd = $.Deferred();
 		var wndEdt = this.$ = $(template);
-       //this.$.appendTo('body');
+       this.$.appendTo('body');
 	   
 	  /*WINDOW*/
        this.$.kendoWindow({
