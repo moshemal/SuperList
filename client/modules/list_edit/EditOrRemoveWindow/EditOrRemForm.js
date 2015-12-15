@@ -21,7 +21,8 @@ function EditOrRemForm(initObj){
                resizable: false ,
              visible: false
             }).data("kendoWindow");
-	
+	 
+	 this.$.find("input").val(initObj);
 			/*for rename the name of the list*/
 			this.$.find("#editform .buttons #btnEdit").on('submit', function(ev){
 			//var newName = ev.target[0].value;
