@@ -123,7 +123,17 @@ $("#taskList").append(text);
 	} //end login
   
  
-  
+   function removeList(name){
+		return $.ajax("/api/removeList",  { 
+			method: "post",
+			success: function(data, a, xhr){//
+            console.log(data)			
+			},	
+			data: {
+				name : 	name
+			}	
+		});
+	} //end login
   
   
   
@@ -134,6 +144,7 @@ isLoggedIn : isLoggedIn,
 	getAllLists : getAllLists,  //get all list in the right side
     upload: upload,
 	addNewTask: addNewTask, //adding new task 
-	editList : editList //
+	editList : editList, //
+	removeList : removeList
 	}
 });

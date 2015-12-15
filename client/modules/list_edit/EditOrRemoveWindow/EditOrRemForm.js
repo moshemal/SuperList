@@ -35,15 +35,16 @@ function EditOrRemForm(initObj){
 			return false;
 		});
 		
-		/**
-		for remove the name of the list
-		//	this.$.find("#addtask").on('submit', function(ev){
-		//	var name = ev.target[0].value;
-			var promise = request.addNewTask(name);
+		
+		/*for remove the name of the list*/
+			this.$.find("#editform").on('click',"#btnRem" ,function(ev){ //no good with submit
+			var promise = request.removeList(initObj);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
 		});
-		**/
+		
+		
+		
 }
 
 EditOrRemForm.prototype.closeWin = function (){

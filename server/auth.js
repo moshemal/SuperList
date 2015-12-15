@@ -130,7 +130,7 @@ task : [] //come back
 };
 
 lists.push(item);
-console.log("in auth  addNewTask: ");
+//console.log("in auth  addNewTask: ");
 
 fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 	return true;
@@ -138,10 +138,26 @@ fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //f
 
 //edit name of the list
 function editList(oldName , newName){
-console.log("line 141 auth.js edit task");
+//console.log("line 141 auth.js edit task");
 for(var i = 0 ; i<lists.length; i++){
 	if(lists[i]["name"] == oldName){
 		lists[i]["name"] = newName ;
+		fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
+		return true;
+	}
+}
+console.log("fail on edit List no found Name 152 auth.js");
+return false; //the name dont exsiset 	
+}
+
+
+
+//remove name of the list
+function removeList(name){
+//console.log("line 141 auth.js edit task");
+for(var i = 0 ; i<lists.length; i++){
+	if(lists[i]["name"] == name){
+		lists.remove(lists[i]);
 		fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 		return true;
 	}
@@ -163,3 +179,4 @@ exports.getListFS = getListFS;
 exports.createUser 	= createUser;
 exports.addNewTask 	= addNewTask;
 exports.editList 	= editList;
+exports.removeList = removeList;

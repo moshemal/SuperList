@@ -95,8 +95,30 @@ function editList(response, parsedUrl, postData){
   response.end();
 }
 
+function validateRemoveList(parsedQuery) {
+  return (typeof parsedQuery.name === 'string' &&
+  parsedQuery.name !== "" );
+}
 
 
+
+/**###### remove new task to the list checking + remove ######**/
+function removeList(response, parsedUrl, postData){
+   console.log("line 101 RH  remove task");
+  var parsedQuery = querystring.parse(postData);
+	if(validateRemoveList(parsedQuery)){
+		console.log("line 104 RH remove List");
+	if (auth.editList(parsedQuery.name)){//auth.js line 143
+      response.writeHead(200, {"Content-Type": "text/plain"});
+      response.write("from SERVER we are remove List: " + parsedQuery);
+      response.end();
+      return;
+    }
+	}
+  response.writeHead(404, {"Content-Type": "text/plain"});
+  response.write("fail to edit Task ");
+  response.end();
+}
 
 
 
@@ -104,7 +126,6 @@ function editList(response, parsedUrl, postData){
 exports.getAllLists = getAllLists;
 exports.upload      = upload;
 exports.createUser  = createUser;
-
 exports.addNewTask  = addNewTask;
 exports.editList  = editList;
-
+exports.removeList = removeList;
