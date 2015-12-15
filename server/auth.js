@@ -47,11 +47,10 @@ return properitess;
 //reading what we have in list.json	
 function readListFS(){
 console.log("welcome to listFS line 54 in auth.js");
-
 //userName = getLoggedIn(cookies);
 var data = fs.readFileSync('db/'+ userName +'/lists/list.json', "utf8"); //it's more fast for write and will return null
 	lists = JSON.parse(data); //an Object
-	console.log("line 62 auth "+   ++i);
+	console.log("line 54 auth "+   ++i);
 }
 
 function getListFS(){
@@ -61,7 +60,7 @@ return lists;
 }
 	
 function login(response, parsedUrl, postData){
-	console.log("welcome to login 72 in auth.js "+postData);
+	//console.log("welcome to login 72 in auth.js "+postData);
 	var parsedData = querystring.parse(postData);
 
 	if (isRegistered(parsedData.user, parsedData.password)){
@@ -95,10 +94,12 @@ function isLoggedIn (cookies){
 	//when i run the program (not in a hidden window we will not get either the name ) 
 	//and will not read the file of the list
 	userName = user; 
+	/*
 console.log("in auth line 101 " +user);	
 console.log("in auth line 102 " +token);
 console.log("in auth line 103 " +sessions[user]); //print undefined
 console.log("in auth line 104 " ,sessions[user] == token); //false
+*/
 	return (token && user && sessions[user] == token);  //
 }
 
@@ -140,8 +141,10 @@ fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //f
 function editList(oldName , newName){
 //console.log("line 141 auth.js edit task");
 for(var i = 0 ; i<lists.length; i++){
-	if(lists[i]["name"] == oldName){
+	if(lists[i]["name"] === oldName){
 		lists[i]["name"] = newName ;
+		console.log("auth.js line 144 edit list");
+		console.log(lists[i]);
 		fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 		return true;
 	}
@@ -151,13 +154,25 @@ return false; //the name dont exsiset
 }
 
 
+/*remove name of the list
+function updateRemoveList(){
+//console.log("line 141 auth.js edit task");
+for(var i = 0 ; i<lists.length; i++){
+	
+} 	
+}
+*/
 
 //remove name of the list
 function removeList(name){
 //console.log("line 141 auth.js edit task");
 for(var i = 0 ; i<lists.length; i++){
-	if(lists[i]["name"] == name){
-		lists.remove(lists[i]);
+	if(lists[i]["name"] === name){
+	 //The first parameter (i) defines the position where new elements should be added (spliced in).
+	 //The second parameter (1) defines how many elements should be removed.
+		lists.splice(i, 1);
+
+
 		fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 		return true;
 	}

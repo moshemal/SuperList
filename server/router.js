@@ -22,7 +22,7 @@ function route(request, response, postData) {
  //console.log("About to route a request for " + request.url); 
     pathname = "/" + pathname.split("/").slice(2).join("/");
     console.log("in router.js Serving api for Dynamic: ", pathname, " with data: " + postData);
-	
+	console.log("*****************************************************************************");
     return typeof handle[pathname] === 'function' ?
       handle[pathname](response, parsedUrl, postData, request) :
       notFound(response);

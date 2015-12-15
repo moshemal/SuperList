@@ -6,12 +6,12 @@ var db							= require('./db');
 
 //i have problom with the cookies
 function decorateWithIsloggedIn(func){
-console.log("welcome to decorateWithIsloggedIn line 9 in apiRouter.js");
+//console.log("welcome to decorateWithIsloggedIn line 9 in apiRouter.js");
 	return function (response, parsedUrl, postData, request){
 		var cks = cookies.parseCookies(request);//the function is in cookies.js Objecet of Login
-		console.log("in line 11 apiRouters "+cks.user);//parsedUrl=Objecet
+		//console.log("in line 11 apiRouters "+cks.user);//parsedUrl=Objecet
 		if (auth.isLoggedIn(cks)){//the function is in auth.js
-		console.log("in line 13 apiRouters "+cks.user);//parsedUrl=Objecet
+		//console.log("in line 13 apiRouters "+cks.user);//parsedUrl=Objecet
 			func(response, parsedUrl, postData, request);//go to upload
 		} 
 		else {

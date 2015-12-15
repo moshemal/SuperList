@@ -29,7 +29,7 @@ function EditOrRemForm(initObj){
 			//var newName = ev.target[0].value;
 			var newName = $(ev.target).closest("#editform").find("input").val(); 
 			//var  newName= this.$.find("input").val();
-			console.log(newName);
+			console.log("in edit "+newName);
 			var promise = request.editList(initObj,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
@@ -38,6 +38,7 @@ function EditOrRemForm(initObj){
 		
 		/*for remove the name of the list*/
 			this.$.find("#editform").on('click',"#btnRem" ,function(ev){ //no good with submit
+			console.log("in remove");
 			var promise = request.removeList(initObj);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;

@@ -79,10 +79,10 @@ function validateEditList(parsedQuery) {
 
 /**###### edit new task to the list checking + edit ######**/
 function editList(response, parsedUrl, postData){
-   //console.log("line 84 RH  edit task");
+   console.log("line 82 RH  edit task");
   var parsedQuery = querystring.parse(postData);
 	if(validateEditList(parsedQuery)){
-		//console.log("line 86 RH edit task");
+		console.log("line 85 RH edit task");
 	if (auth.editList(parsedQuery.oldName, parsedQuery.newName)){//auth.js line 143
       response.writeHead(200, {"Content-Type": "text/plain"});
       response.write("from SERVER we are editing Task user: " + parsedQuery);
@@ -104,11 +104,11 @@ function validateRemoveList(parsedQuery) {
 
 /**###### remove new task to the list checking + remove ######**/
 function removeList(response, parsedUrl, postData){
-   console.log("line 101 RH  remove task");
+   console.log("line 107 RH  remove task");
   var parsedQuery = querystring.parse(postData);
 	if(validateRemoveList(parsedQuery)){
 		console.log("line 104 RH remove List");
-	if (auth.editList(parsedQuery.name)){//auth.js line 143
+	if (auth.removeList(parsedQuery.name)){//auth.js line 143
       response.writeHead(200, {"Content-Type": "text/plain"});
       response.write("from SERVER we are remove List: " + parsedQuery);
       response.end();
@@ -116,7 +116,7 @@ function removeList(response, parsedUrl, postData){
     }
 	}
   response.writeHead(404, {"Content-Type": "text/plain"});
-  response.write("fail to edit Task ");
+  response.write("fail to remove Task ");
   response.end();
 }
 
