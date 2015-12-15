@@ -201,6 +201,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    /*LIST of buttons in LIST view*/   
   list.$.find(".listsOfView  button").on('click',function(e){
   console.log("target  ",e.target);
+  console.log("target  2",$(e.target).closest(".listsOfView"));
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
    startEdtOrRemWin(name);
   });
