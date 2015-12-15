@@ -27,6 +27,7 @@ function EditOrRemForm(initObj){
 			//var newName = ev.target[0].value;
 			//consloe.log(ev.target[0].value;);
 			var  newName= $(ev.target).closest("#editform").find("input").val();
+			consloe.log(newName);
 			var promise = request.editList(initObj,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
