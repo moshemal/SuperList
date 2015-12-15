@@ -9,7 +9,7 @@ function EditOrRemForm(initObj,oldName){
 		var that = this;
 		this._dfd = $.Deferred();
 		var wndEdt = this.$ = $(template);
-       this.$.appendTo('body');
+       //this.$.appendTo('body');
 	   
 	  /*WINDOW*/
        this.$.kendoWindow({
@@ -18,9 +18,8 @@ function EditOrRemForm(initObj,oldName){
 			  width: "505px",
 			  height: "150px",
 			  actions: ["Close"],
-			 //template:'<div class ="listsOfView"><span class="k-icon k-insertUnorderedList"></span><span class="name">#:name#</span><button></button></div>'
-               resizable: false //,
-             // visible: false
+               resizable: false ,
+             visible: false
             }).data("kendoWindow");
 	
 			
