@@ -25,7 +25,7 @@ function EditOrRemForm(initObj){
 	 this.$.find("input").val(initObj);
 	 
 			/*for rename the name of the list*/
-			this.$.find("#editform #btnEdit").on('submit', function(ev){
+			this.$.find("#btnEdit").on('submit', function(ev){
 			//var newName = ev.target[0].value;
 			var name= $(ev.target).closest("#editform").find("input").val(); 
 			//var  newName= this.$.find("input").val();
