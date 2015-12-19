@@ -4,19 +4,8 @@
   define(['jquery', 'text!./BtnAdd.html','kendo'],
   function($, template){
 	'use strict';
-		
-	function getJBtnPlus(type){
-    var btnPlusHtml;
-		switch (type){
-			case "BtnPlus":  btnPlusHtml = $(template); //
-									break;
-			default:    btnPlusHtml = $(template);
-		}
-		return $(btnPlusHtml);
-	}//
 	
 	
-	/*		
 	function BtnAdd(initObj){
 		initObj = initObj || {};
 		//console.log("hello button plus");
@@ -25,8 +14,6 @@
 		var htmlDom = this.$ = $(template);
 	}
 
-	
-	
 	BtnAdd.prototype.appendTo = function (elem){
 		if (this.$){
 			this.$.appendTo($(elem));
@@ -39,7 +26,19 @@
 		}
 	}
 	return BtnAdd;
-	*/
+	
+	
+	
+/*	
+	function getJBtnPlus(type){
+    var btnPlusHtml;
+		switch (type){
+			case "BtnPlus":  btnPlusHtml = $(template); //
+									break;
+			default:    btnPlusHtml = $(template);
+		}
+		return $(btnPlusHtml);
+	}//
 	
 	
 	function createBtnPlus(type, selector){ //for now its "BtnPlus", "#container"
@@ -52,7 +51,7 @@
 		jBtnPlus.appendTo(selector);
 		
 
-	 $(".open-button").kendoButton({
+	 jBtnPlus.kendoButton({
 		 spriteCssClass: "k-icon k-i-plus"
 		 });					
 	}
@@ -60,7 +59,7 @@
 	return {
 		createBtnPlus : createBtnPlus
 	}
-	
+	*/
 	
 	
 	});

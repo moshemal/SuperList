@@ -6,7 +6,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  'core/layout','modules/submit/Create/Create','core/request',
  'modules/left/addList/ButtonPlus/BtnAdd','modules/left/addList/Window/WinForm',
  'modules/left/list_edit/List/List','modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'],
-  function($, Login, cookies, layout,Create,request,btnAdd,WinForm,ListView,EditOrRemForm){
+  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,EditOrRemForm){
   'use strict';
   
   //global vars
@@ -131,7 +131,6 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	win.$.find("#close").on('click', function(){win.closeWin();});//if im only want to close inside the window without any action so close
 	win.getPromise().then(winSuccess,winFail);
 	  }//end startWin
-  
     
 /*a window from the icon button in the list of the user EDIT OR REMOVE*/
   function startEdtOrRemWin(name){
@@ -163,22 +162,20 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	edit.getPromise().then(editOrRemSuccess,editOrRemFail);  	 
   }//end startEdtOrRemWin
   
-  
- 
-  
-  
+    
 /**********************************************************************************************/
 /************************** APPLICATION START *************************************************/  
 /**********************************************************************************************/  
   var bool = 0;
   var i =0;
   function startApp(){  
+	
 	//console.log("hello from start App");
     layout.createLayout("3W", "#container"); //create layout
-	//if(bool !== 1){
+	//if(bool !== 1)
 	user=cookies.getCookie('user');
 	//console.log(user);
-	//}
+	
 	
 	//user=cookies.getCookie('user');
 	//NameOfTheUser(); //for checking
@@ -187,10 +184,10 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    
     startListView(); // i have a delay because i did to it a structure I resolve it's with setTimOut 
   
-	//btn = new BtnAdd();//create class Button from: modules/addList/ButtonPlus/BtnAdd.js 
-	btnAdd.createBtnPlus("BtnPlus", "#task");
-	//btn.appendTo("#task");//append to the button
-	btnAdd.$.find(".open-button").on('click', function(){startWin();});//event click go to startWin()
+	btn = new BtnAdd();//create class Button from: modules/addList/ButtonPlus/BtnAdd.js 
+	//btnAdd.createBtnPlus("BtnPlus", "#task");
+	btn.appendTo("#task");//append to the button
+	btn.$.find(".open-button").on('click', function(){startWin();});//event click go to startWin()
   
   }//end startApp
 
@@ -228,7 +225,9 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    // console.log("starting application" ,user);
    // startApp();
   //} else {
-    //startLoggin();
+    
+	
+	//startLoggin();
   //}
   
 });
