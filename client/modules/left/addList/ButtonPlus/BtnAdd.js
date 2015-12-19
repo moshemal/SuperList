@@ -5,6 +5,18 @@
   function($, template){
 	'use strict';
 		
+	function getJBtnPlus(type){
+    var btnPlusHtml;
+		switch (type){
+			case "BtnPlus":  btnPlusHtml = $(template); //
+									break;
+			default:    btnPlusHtml = $(template);
+		}
+		return $(btnPlusHtml);
+	}//
+	
+	
+	/*		
 	function BtnAdd(initObj){
 		initObj = initObj || {};
 		//console.log("hello button plus");
@@ -26,6 +38,29 @@
 			console.log("no element to add");
 		}
 	}
-	
 	return BtnAdd;
+	*/
+	
+	
+	function createBtnPlus(type, selector){ //for now its "BtnPlus", "#container"
+		var jBtnPlus = getJBtnPlus(type); //will return BtnAdd.html
+		var container = $(selector); //"#container"
+		container.css({
+			width: "100%",
+			height: "100%"
+		});
+		jBtnPlus.appendTo(selector);
+		
+
+	 $(".open-button").kendoButton({
+		 spriteCssClass: "k-icon k-i-plus"
+		 });					
+	}
+
+	return {
+		createBtnPlus : createBtnPlus
+	}
+	
+	
+	
 	});
