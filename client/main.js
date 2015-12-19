@@ -4,9 +4,9 @@
 
 define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  'core/layout','modules/submit/Create/Create','core/request',
- 'modules/addList/ButtonPlus/BtnAdd','modules/addList/Window/WinForm',
- 'modules/list_edit/List/List','modules/list_edit/EditOrRemoveWindow/EditOrRemForm'],
-  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,EditOrRemForm){
+ 'modules/left/addList/ButtonPlus/BtnAdd','modules/left/addList/Window/WinForm',
+ 'modules/left/list_edit/List/List','modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'],
+  function($, Login, cookies, layout,Create,request,btnAdd,WinForm,ListView,EditOrRemForm){
   'use strict';
   
   //global vars
@@ -187,9 +187,10 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    
     startListView(); // i have a delay because i did to it a structure I resolve it's with setTimOut 
   
-	btn = new BtnAdd();//create class Button from: modules/addList/ButtonPlus/BtnAdd.js 
-	btn.appendTo("#task");//append to the button
-	btn.$.find(".open-button").on('click', function(){startWin();});//event click go to startWin()
+	//btn = new BtnAdd();//create class Button from: modules/addList/ButtonPlus/BtnAdd.js 
+	btnAdd.createLayout("BtnPlus", "#task");
+	//btn.appendTo("#task");//append to the button
+	btnAdd.$.find(".open-button").on('click', function(){startWin();});//event click go to startWin()
   
   }//end startApp
 
