@@ -78,7 +78,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    function listViewSuccess(){
 	  console.log("list View success.");
       arrayBtnHtml =list.getArrayOfButtons(); //for checking
-	  console.log("in start: ",list.$);
+	  //console.log("in start: ",list.$);
      continueApp(); //for the button edit list  event
 	  }//end Success
 	  
@@ -96,9 +96,6 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
     "<h1>Hello <b>"+user+"</b><\h1>"
   }
   
-
- 
-
 /*########################################################################################################
   #################################  APPLICATION WINDOW STRUCTION ########################################
   ########################################################################################################*/
@@ -197,12 +194,20 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    
    /*LIST of buttons in LIST view*/   
   list.$.find(".listsOfView  button").on('click',function(e){
-  //console.log("target  ",e.target);
-  //console.log("target  2",$(e.target).closest(".listsOfView"));
-  //console.log("target  3",$(e.target).closest(".listsOfView").find(".name"));
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
    startEdtOrRemWin(name);
   });
+  
+   /*LIST of buttons in LIST view*/   
+  list.$.find(".listsOfView").on('click',function(e){
+	console.log("hello");  
+  var name= $(e.target).closest(".listsOfView").find(".name").html(); 
+ console.log("target   "+name);
+  });
+  
+  
+  
+  
   }//end  continueApp
   
  
