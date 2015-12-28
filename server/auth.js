@@ -172,7 +172,17 @@ console.log("fail on edit List no found Name 152 auth.js");
 return false; //the name dont exsiset 	
 }
 
-
+function getAllItems(name){
+	
+	for(var i = 0 ; i<lists.length; i++){
+	if(lists[i]["name"] === name){
+	 console.log("in auth.js line 179 ",lists[i]["task"]);
+		return true;
+	}
+	}
+	console.log("in auth.js line 182");
+	return false;
+}
 
 
 
@@ -186,3 +196,4 @@ exports.createUser 	= createUser;
 exports.addNewTask 	= addNewTask;
 exports.editList 	= editList;
 exports.removeList = removeList;
+exports.getAllItems = getAllItems;

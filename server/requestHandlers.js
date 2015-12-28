@@ -101,7 +101,6 @@ function validateRemoveList(parsedQuery) {
 }
 
 
-
 /**###### remove new task to the list checking + remove ######**/
 function removeList(response, parsedUrl, postData){
    console.log("line 107 RH  remove task");
@@ -120,6 +119,24 @@ function removeList(response, parsedUrl, postData){
   response.end();
 }
 
+/**###### remove new task to the list checking + remove ######**/
+function getAllItems(response, parsedUrl, postData){
+   console.log("line 125 RH  get All Items");
+  var parsedQuery = querystring.parse(postData);
+	if(validateRemoveList(parsedQuery)){
+		console.log("line 128 RH get All Items");
+	if (auth.getAllItems(parsedQuery.name)){//auth.js line 143
+      response.writeHead(200, {"Content-Type": "text/plain"});
+      
+	  response.write("from SERVER we are get All Items: " + parsedQuery);
+      response.end();
+      return;
+    }
+	}
+  response.writeHead(404, {"Content-Type": "text/plain"});
+  response.write("fail to get All Items ");
+  response.end();
+}
 
 
 
@@ -129,3 +146,4 @@ exports.createUser  = createUser;
 exports.addNewTask  = addNewTask;
 exports.editList  = editList;
 exports.removeList = removeList;
+exports.getAllItems = getAllItems;

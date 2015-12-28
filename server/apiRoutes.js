@@ -48,6 +48,8 @@ var handle = {
 	"/addNewTask" :  decorateWithIsloggedIn(requestHandlers.addNewTask), //will be called before we even get to main.js decorateWithIsloggedIn
 	 "/editList" : decorateWithIsloggedIn(requestHandlers.editList),
 	 "/removeList" : decorateWithIsloggedIn(requestHandlers.removeList),
+	 
+	 "/getAllItems" : decorateWithIsloggedIn(requestHandlers.getAllItems),
 	"/upload":      decorateWithIsloggedIn(requestHandlers.upload)//will be called before we even get to main.js decorateWithIsloggedIn
    
 }
