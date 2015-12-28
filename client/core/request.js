@@ -42,7 +42,7 @@ define(['jquery'], function($){
   
   
 /**********************************************************************************/
-/**********************     VIEW APPLICATION  ***************************************/
+/**********************   LEFT SIDE   VIEW APPLICATION   **************************/
 /*********************************************************************************/	
   
   function getAllLists(){
@@ -52,7 +52,22 @@ define(['jquery'], function($){
 	 // success: function(data, a, xhr){console.log(data)}
 	 });
   } 
-  
+ 
+
+/**********************************************************************************/
+/**********************  MIDDLE SIDE   VIEW APPLICATION   ************************/
+/*********************************************************************************/	
+function getAllItems(listName){
+        return $.ajax("/api/getAllItems", {
+            method: "post",
+            success: function(data, a, xhr){
+                console.log(data)
+            },
+            data: {
+                listName: listName
+            }
+        });
+    } 
   
 /*if i will have more time i will think and do another
 list for the mean while its what we have now i really start to understend the work*/
@@ -135,16 +150,29 @@ $("#taskList").append(text);
 		});
 	} //end login
   
-  
+    function getAllItems(name){
+		return $.ajax("/api/getAllItems",  { 
+			method: "post",
+			success: function(data, a, xhr){//
+            console.log(data)			
+			},	
+			data: {
+				name : 	name
+			}	
+		});
+	} //end login
   
 return {
 isLoggedIn : isLoggedIn,
 	login:      login,
 	createUser: createUser,
+	
 	getAllLists : getAllLists,  //get all list in the right side
     upload: upload,
 	addNewTask: addNewTask, //adding new task 
 	editList : editList, //
-	removeList : removeList
+	removeList : removeList,
+	
+	getAllItems : getAllItems
 	}
 });

@@ -143,8 +143,8 @@ function editList(oldName , newName){
 for(var i = 0 ; i<lists.length; i++){
 	if(lists[i]["name"] === oldName){
 		lists[i]["name"] = newName ;
-		conole.log(typeof lists[i]["task"]);
-		conole.log(lists[i]["task"]);
+		console.log(typeof lists[i]["task"]);
+		console.log(lists[i]["task"]);
 		console.log("auth.js line 144 edit list");
 		console.log(lists[i]);
 		fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync

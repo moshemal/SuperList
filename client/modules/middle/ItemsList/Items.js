@@ -8,7 +8,6 @@ function Items(initObj){
 		var that = this;
 		this._dfd = $.Deferred();
 		var itemsV = that.$ = $(template);
-		//that.arrayOfBtnHtml = [];//html of the buttons
 		that.appendTo("#taskList",that);//append to div
 		that.getListView(that);//get list view
        }
@@ -36,8 +35,6 @@ Items.prototype.appendTo = function(elem ,that){
             dataTextField : "label"
         });
 			
-			
-			});
 		}
 		
 		else {
@@ -45,31 +42,24 @@ Items.prototype.appendTo = function(elem ,that){
 		}
 	}//end append to
 	
-
-
-Items.prototype.createItemsListView = function (data){
-		if (this.$){	
-		var lst = this.$.data("kendoListView"); //take the data of kendoListView that we define in appendTo
-		var dataSource = new kendo.data.DataSource({//the data 
-                data: data
-            });
-	   lst.setDataSource(dataSource); //insert the data of the list
-       lst.refresh();//was recommand to do will find a better explain	   
-	   console.log("in create LIST VIEW");
-	  
-	   
-	   //array of buttons to create of html 
-		var row = $(".listsOfView  button").kendoButton({
-               spriteCssClass: "k-icon k-i-pencil" 	  
-           });   
-		this.arrayOfBtnHtml = $(row);
-		
-		}else {
-		console.log("failed to create in class LIST VIEW");
-		}
-	}//end of create list view
-
+Items.prototype.getLstOfItems(that,name){
+	var promise = request.getAllItems(name); //form request.js getting the DB from the server
+   promise.then(function(data){
+   //console.log("in getListView");
+   that.createListView(data);
+   console.log("hello from get list ITEMS resolve:",data);
+	that._dfd.resolve();
+		} ,
+       //else reject		
+		function(){
+		that._dfd.reject();
+		console.log("reject in list view get ITEMS");
+		});
+return false;
 	
+	
+	
+}
 	
 Items.prototype.resetDeferred = function(){
 		this._dfd = new $.Deferred();
@@ -86,32 +76,14 @@ Items.prototype.getPromise = function(){
 
 
 
-
+/**
 define(['jquery', 'text!./view.html','text!./addNewItem.html', 'core/request', 'kendo'], function($, view, addNewItem, request){
 
     var middleView = $(view);
     var updateFunctions = [];
     var OpenItemFunction;
 
-    function createMiddleView(selector){
-        middleView.appendTo(selector);
-        middleView.kendoTabStrip({
-			  animation: {
-            // fade-out current tab over 1000 milliseconds
-            close: {
-                duration: 1000,
-                effects: "fadeOut"
-            },
-           // fade-in new tab over 500 milliseconds
-           open: {
-               duration: 500,
-               effects: "fadeIn"
-           }
-       },
-            dataContentField: "content",
-            dataTextField : "label"
-        });
-    }
+   
 
     var openNewTab = function(listName,itemName){
         if(listName != ""){
@@ -189,7 +161,7 @@ define(['jquery', 'text!./view.html','text!./addNewItem.html', 'core/request', '
     }
 
 });
-
+**/
 
 
 
