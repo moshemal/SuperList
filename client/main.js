@@ -229,7 +229,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   } else {
     startLoggin();
   }
-})
+
   
   /**
  request.isLoggedIn().then(
