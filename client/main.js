@@ -3,7 +3,7 @@
  */
 
 define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
- 'core/layout','modules/submit/Create/Create','core/request','core/request'
+ 'core/layout','modules/submit/Create/Create','core/request','core/request',
  'modules/left/addList/ButtonPlus/BtnAdd','modules/left/addList/Window/WinForm',
  'modules/left/list_edit/List/List','modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'],
   function($, Login, cookies, layout,Create,request,request1,BtnAdd,WinForm,ListView,EditOrRemForm){
