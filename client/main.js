@@ -3,10 +3,10 @@
  */
 
 define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
- 'core/layout','modules/submit/Create/Create','core/request',
+ 'core/layout','modules/submit/Create/Create','core/request','core/request'
  'modules/left/addList/ButtonPlus/BtnAdd','modules/left/addList/Window/WinForm',
  'modules/left/list_edit/List/List','modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'],
-  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,EditOrRemForm){
+  function($, Login, cookies, layout,Create,request,request1,BtnAdd,WinForm,ListView,EditOrRemForm){
   'use strict';
   
   //global vars
@@ -203,7 +203,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	console.log("hello");  
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
  console.log("target   "+name);
- request.getAllItems(name).then(
+ request1.getAllItems(name).then(
  function(){
  console.log("sucess ");
  
