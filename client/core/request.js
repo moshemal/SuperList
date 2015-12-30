@@ -177,9 +177,9 @@ return;
 
 
 var text = "<ul>List Of Task  all: "+obj.task.length; 
-for(var index = 0 ;index < obj.task.length ; index++){
-text += "<li> "+obj.task[index] "</li>"
-}
+//for(var index = 0 ;index < obj.task.length ; index++){
+text += "<li> "+obj.task "</li>"
+//}
 text +="</ul>"
 
 //document.getElementById("taskList").innerHTML =text;
