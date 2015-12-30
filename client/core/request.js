@@ -175,6 +175,7 @@ document.getElementById("tabstrip").innerHTML =
 return; 
 }
 
+
 var text = "<ul>List Of Task  all: "+obj.length; 
 for(var index = 0 ;index < obj.length ; index++){
 text += "<li> "+obj[index].task "</li>"

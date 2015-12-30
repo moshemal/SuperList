@@ -216,14 +216,10 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  //startItemListView(name);
  //
   });
-  
-  
-  
-  
+    
   }//end  continueApp
   
- 
- 
+
  request.isLoggedIn().then(
  function(){
  console.log("sucess COOKIES");
@@ -232,7 +228,8 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  function(){
  console.log("failed COOKIES");
  startLoggin();
- });
+ }
+ );
  
  
  
