@@ -56,12 +56,12 @@ var data = fs.readFileSync('db/'+ userName +'/lists/list.json', "utf8"); //it's 
 
 function getListFS(){
 readListFS();
-//console.log('auth line 80: ' + lists);
+console.log('auth line 59: ' + lists);
 return lists;
 }
 	
 function login(response, parsedUrl, postData){
-	//console.log("welcome to login 72 in auth.js "+postData);
+	console.log("welcome to login 64 in auth.js "+postData);
 	var parsedData = querystring.parse(postData);
 
 	if (isRegistered(parsedData.user, parsedData.password)){

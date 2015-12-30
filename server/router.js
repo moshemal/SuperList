@@ -18,8 +18,8 @@ function route(request, response, postData) {
   //console.log("About to route a request for " + pathname);
 
   if (pathname.indexOf("/api") === 0){
-  //console.log("About to route a request for " + pathname);
- //console.log("About to route a request for " + request.url); 
+  console.log("About to route a request for " + pathname);
+ console.log("About to route a request for " + request.url); 
     pathname = "/" + pathname.split("/").slice(2).join("/");
     console.log("in router.js Serving api for Dynamic: ", pathname, " with data: " + postData);
 	console.log("*****************************************************************************");
