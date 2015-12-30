@@ -213,9 +213,6 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  
  });
  
- 
- 
- );
  //startItemListView(name);
  //
   });
