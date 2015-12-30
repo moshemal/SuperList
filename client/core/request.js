@@ -176,9 +176,9 @@ return;
 }
 
 
-var text = "<ul>List Of Task  all: "+obj.length; 
-for(var index = 0 ;index < obj.length ; index++){
-text += "<li> "+obj[index].task "</li>"
+var text = "<ul>List Of Task  all: "+obj.task.length; 
+for(var index = 0 ;index < obj.task.length ; index++){
+text += "<li> "+obj.task[index] "</li>"
 }
 text +="</ul>"
 
