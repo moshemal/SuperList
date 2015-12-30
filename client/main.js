@@ -31,7 +31,6 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   function startLoggin(){
 	function loginSuccess(){
       //console.log("checking for me if login success");  
-	  user=cookies.getCookie('user');
       startApp(); //go to function startApp and start the application
       login.destroy(); //delete page of login
     }
@@ -204,34 +203,17 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	console.log("hello");  
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
  console.log("target   "+name);
- request.getAllItems(name).then(
- function(){
- console.log("sucess ");
- 
- },
- function(){
- console.log("failed ");
- 
- });
- 
  //startItemListView(name);
  //
   });
-    
+  
+  
+  
+  
   }//end  continueApp
   
-
-    //checking if allready logged in
-  if(cookies.getCookie(AUTH_STR) !== "" ) {
-    console.log("starting application");
-	user=cookies.getCookie('user');
-    startApp();
-  } else {
-    startLoggin();
-  }
-
-  
-  /**
+ 
+ 
  request.isLoggedIn().then(
  function(){
  console.log("sucess COOKIES");
@@ -240,9 +222,8 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  function(){
  console.log("failed COOKIES");
  startLoggin();
- }
- );
- **/
+ });
+ 
  
  
    //user=cookies.getCookie(AUTH_STR);//

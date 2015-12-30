@@ -151,8 +151,8 @@ $("#taskList").append(text);
 	} //end login
   
     function getAllItems(name){
-	/*	return $.ajax("/api/getAllItems",  { 
-	//		method: "post",
+		return $.ajax("/api/getAllItems",  { 
+			method: "post",
 			success: function(data, a, xhr){//
             console.log(data)			
 			},	
@@ -160,38 +160,7 @@ $("#taskList").append(text);
 				name : 	name
 			}	
 		});
-		*/
-	console.log("hello");
-//Request "/api/upload" and will print the result of the request:
-$.get("/api/getAllItems",name,function(data){
-console.log(typeof data);
-var obj = JSON.parse(data);//make it a objecet
-
-//if we have empty list return
-if(obj.length===0){
-document.getElementById("tabstrip").innerHTML =
-"<h1>List Of Task<\h1>"+
-"<h2>Empty List</h2>";
-return; 
-}
-
-
-var text = "<ul>List Of Task  all: "+obj.task.length; 
-//for(var index = 0 ;index < obj.task.length ; index++){
-text += "<li> "+obj.task "</li>"
-//}
-text +="</ul>"
-
-//document.getElementById("taskList").innerHTML =text;
-
-//and append it to #taskList 
-$("#tabstrip").append(text);
-	});//end of $.get
-} //end login
-  
-  
-  
-  
+	} //end login
   
   
 return {
