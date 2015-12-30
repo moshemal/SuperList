@@ -3,10 +3,10 @@
  */
 
 define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
- 'core/layout','modules/submit/Create/Create','core/request','core/request',
+ 'core/layout','modules/submit/Create/Create','core/request',
  'modules/left/addList/ButtonPlus/BtnAdd','modules/left/addList/Window/WinForm',
  'modules/left/list_edit/List/List','modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'],
-  function($, Login, cookies, layout,Create,request,request1,BtnAdd,WinForm,ListView,EditOrRemForm){
+  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,EditOrRemForm){
   'use strict';
   
   //global vars
@@ -31,6 +31,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   function startLoggin(){
 	function loginSuccess(){
       //console.log("checking for me if login success");  
+	  user=cookies.getCookie('user');
       startApp(); //go to function startApp and start the application
       login.destroy(); //delete page of login
     }
@@ -203,7 +204,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	console.log("hello");  
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
  console.log("target   "+name);
- request1.getAllItems(name).then(
+ request.getAllItems(name).then(
  function(){
  console.log("sucess ");
  
@@ -220,6 +221,17 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   }//end  continueApp
   
 
+    //checking if allready logged in
+  if(cookies.getCookie(AUTH_STR) !== "" ) {
+    console.log("starting application");
+	user=cookies.getCookie('user');
+    startApp();
+  } else {
+    startLoggin();
+  }
+})
+  
+  /**
  request.isLoggedIn().then(
  function(){
  console.log("sucess COOKIES");
@@ -230,7 +242,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  startLoggin();
  }
  );
- 
+ **/
  
  
    //user=cookies.getCookie(AUTH_STR);//
