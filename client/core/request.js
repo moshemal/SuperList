@@ -161,7 +161,7 @@ $("#taskList").append(text);
 			}	
 		});
 		*/
-		console.log("hello");
+	console.log("hello");
 //Request "/api/upload" and will print the result of the request:
 $.get("/api/getAllItems",name,function(data){
 console.log(typeof data);
@@ -174,7 +174,7 @@ document.getElementById("tabstrip").innerHTML =
 "<h2>Empty List</h2>";
 return; 
 }
-//print the list of the user
+
 var text = "<ul>List Of Task  all: "+obj.length; 
 for(var index = 0 ;index < obj.length ; index++){
 text += "<li> "+obj[index].task "</li>"
@@ -185,7 +185,8 @@ text +="</ul>"
 
 //and append it to #taskList 
 $("#tabstrip").append(text);
-	} //end login
+	});//end of $.get
+} //end login
   
   
   
