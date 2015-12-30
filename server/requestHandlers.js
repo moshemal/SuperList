@@ -54,7 +54,7 @@ function validateCreateTaskParams(parsedQuery) {
 
 /**######adding new task to the list checking + adding######**/
 function addNewTask(response, parsedUrl, postData){
-console.log("line 51 RH add new task");
+//console.log("line 51 RH add new task");
   var parsedQuery = querystring.parse(postData);
 	if(validateCreateTaskParams(parsedQuery)){
 	if (auth.addNewTask(parsedQuery.name,parsedQuery.num,parsedQuery.task)){//auth.js line 80
@@ -125,10 +125,10 @@ function getAllItems(response, parsedUrl, postData){
   var parsedQuery = querystring.parse(postData);
 	if(validateRemoveList(parsedQuery)){
 		console.log("line 128 RH get All Items");
-	if (auth.getAllItems(parsedQuery.name)){//auth.js line 143
+	if (auth.getAllItems(parsedQuery.name,parsedQuery.task)){//auth.js line 143
       response.writeHead(200, {"Content-Type": "text/plain"});
       
-	  response.write("from SERVER we are get All Items: " + parsedQuery);
+	  response.write("from SERVER we are get All Items: " + parsedQuery.task);
       response.end();
       return;
     }

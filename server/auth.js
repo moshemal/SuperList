@@ -172,15 +172,17 @@ console.log("fail on edit List no found Name 152 auth.js");
 return false; //the name dont exsiset 	
 }
 
-function getAllItems(name){
+function getAllItems(name,items){
 	
 	for(var i = 0 ; i<lists.length; i++){
 	if(lists[i]["name"] === name){
 	 console.log("in auth.js line 179 ",lists[i]["task"]);
+	 items = lists[i]["task"];
+ console.log("in auth.js line 181 ",items);	 
 		return true;
 	}
 	}
-	console.log("in auth.js line 182");
+	console.log("in auth.js line 185");
 	return false;
 }
 

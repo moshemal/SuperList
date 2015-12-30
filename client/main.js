@@ -203,6 +203,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	console.log("hello");  
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
  console.log("target   "+name);
+ request.getAllItems(name);
  //startItemListView(name);
  //
   });
