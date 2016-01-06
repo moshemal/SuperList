@@ -128,7 +128,7 @@ function addNewTask(name,num,task){
 var item = {
 name : name,
 num : lists.length + 1,
-task : [] //come back
+task : ['a'+name,'b'+name,'c'+name] //come back
 };
 
 lists.push(item);
@@ -173,7 +173,6 @@ return false; //the name dont exsiset
 }
 
 function getAllItems(name,items){
-	
 	for(var i = 0 ; i<lists.length; i++){
 	if(lists[i]["name"] === name){
 	 console.log("in auth.js line 179 ",lists[i]["task"]);

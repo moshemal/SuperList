@@ -35,9 +35,9 @@ define(['jquery', 'text!./templates/l2U.html', 'text!./templates/l3W.html', 'ken
 $("#left-pane").kendoSplitter({
 			orientation: "vertical",
 			panes: [
-                            { collapsible: true,size:"90px",resizable:true },//top
-                            { collapsible: true, size: "470",resizable:true  },
-                            { collapsible: false, resizable: false, size: "20px" }
+                            { collapsible: true,size:"90px",resizable:true },//top 1
+                            { collapsible: false, size: "470",resizable:true  },//middle 2
+                            { collapsible: false, resizable: true, size: "20px" } //buttom 3 button
                         ]
 			
 		});

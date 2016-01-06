@@ -162,13 +162,14 @@ $("#taskList").append(text);
 		});
 	} //end login
   
-  
+
+//public  
 return {
 isLoggedIn : isLoggedIn,
 	login:      login,
 	createUser: createUser,
 	
-	getAllLists : getAllLists,  //get all list in the right side
+	getAllLists : getAllLists,  //return get all list in the right side
     upload: upload,
 	addNewTask: addNewTask, //adding new task 
 	editList : editList, //
