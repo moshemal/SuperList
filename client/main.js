@@ -4,10 +4,10 @@
 
 define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  'core/layout','modules/submit/Create/Create','core/request',
- 'modules/left/addList/ButtonPlus/BtnAdd','modules/left/addList/Window/WinForm',
+ /*'modules/left/addList/ButtonPlus/BtnAdd','modules/left/addList/Window/WinForm',*/
  'modules/left/list_edit/List/List','modules/middle/itemsList/ItemB',
- 'modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'],
-  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,ItemB,EditOrRemForm){
+ /*'modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'*/],
+  function($, Login, cookies, layout,Create,request,/*BtnAdd,WinForm,*/ListView,ItemB /*,EditOrRemForm*/){
   'use strict';
   
   //global vars
@@ -15,11 +15,11 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	 login,
 	 create,
 	 user = null,
-	 btn, //for button plus
-     win, //for window task
+	// btn, //for button plus
+     //win, //for window task
 	 list , //for list in the right panel 
 	 arrayBtnHtml, //array list of button edit
-	 edit , //for rename or remove element from the list
+	 //edit , //for rename or remove element from the list
 	 tab;
 
 
@@ -79,7 +79,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   function startListView(){
    function listViewSuccess(){
 	  console.log("check in main 3 :: list View success.");
-      arrayBtnHtml = list.getArrayOfButtons(); //for checking
+      //arrayBtnHtml = list.getArrayOfButtons(); //for checking
 	  //console.log("in start: ",list.$);
      continueApp(); //for the button edit list  event
 	  }//end Success
@@ -202,23 +202,25 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
    
     startListView(); // i have a delay because i did to it a structure I resolve it's with setTimOut 
   
+  
+  /**
 	btn = new BtnAdd();//create class Button from: modules/addList/ButtonPlus/BtnAdd.js 
-	//btnAdd.createBtnPlus("BtnPlus", "#task");
 	btn.appendTo("#task");//append to the button
 	btn.$.find(".open-button").on('click', function(){startWin();});//event click go to startWin()
-  
+  **/
   }//end startApp
 
   
   function continueApp(){
    //console.log("check in main 8 :: hello from continueApp");
    
-   /*LIST of buttons in LIST view*/   
+   /*LIST of buttons in LIST view  
   list.$.find(".listsOfView  button").on('click',function(e){
 	  console.log("check in main 8.1 :: .listsOfView  button " +name);
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
    startEdtOrRemWin(name);
   });
+  */
   
    /*LIST of buttons in LIST view*/   
   list.$.find(".listsOfView ").on('click',function(e){
@@ -228,10 +230,6 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  startMiddleItems(name);
  //
   });
-  
-  
-  
-  
   }//end  continueApp
   
  

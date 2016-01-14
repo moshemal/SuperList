@@ -1,3 +1,11 @@
+ body{
+   height: 100%;
+     }
+      
+
+
+
+
 /*************************************************************/
 /******Layout for 3 background color for button plus ********/
 /************************************************************/
@@ -42,7 +50,6 @@ button#close {
     float: right;
 }
 
-
 button#save {
     height: 38px;
 }
@@ -75,22 +82,15 @@ button#save {
 /*for the List in the left 2 */
 #taskList{
  background-color: rgba(240, 221, 212, 0.1);
- /*font-family : "Arial";*/
 }	  
 	  	  
 #taskList .listsOfView {
-    /*width: 211px;*/
     height: 34px;
 }
 
 /*the icon on the left of every task*/	  
 .listsOfView  .k-insertUnorderedList{
     float: left;
-	/*
-    margin-left: 112px;
-    margin-right: 11px;
-    margin-top: 11px;
-    margin-bottom: 11px;*/
 }
 	  
 /*for the icon + button of edit*/	
@@ -121,7 +121,6 @@ display: block;
   float: right ;
   background-color: rgba(191, 110, 70, 0.10);
 }
-
 .k-sprite.k-icon.k-i-pencil {
     vertical-align: top;
 	height: 16px;
@@ -132,8 +131,6 @@ display: block;
     border-bottom-width: 11px;
     margin-left: -7px;
 }
-
-
 .listsOfView button.k-button.k-button-icon{
     border-width: 0.5px;
 }	  
@@ -149,8 +146,7 @@ display: block;
 /****************************************************************/	  
 #editForm .buttons {
         margin-top: 55px;
-      }
-	  
+      }	  
 #editForm .buttons .btnSave{
         float : right;
       }	
@@ -158,13 +154,7 @@ display: block;
         float : left;
       }		  
 
-/**	  
-#editForm .k-button {
-        width: 100px;
-      }	  
-**/	  
-	  
-	  
+  
 	  
 
 /***** Layout ****/
@@ -173,22 +163,40 @@ display: block;
   /*background-color: rgba(50,89, 14, 0.04);*/
   background-image: url("../img/right.jpg");	
      }
-	 
-
-
 /**for 4**/
  #center-pane{ 
-/*background-image: url("../img/timeright.jpg");*/
  background-color: #7AC5CD;/*blue like the sea*/
- 
-         }
-			  
+ text-align: center;
+         }			  
 /**for 1**/
  #top-pane { 
   background-color: rgba(1, 10, 70, 0.10);
      }
 			  
-			  
+#left-pane {
+    background-color: #46466D;
+	text-align: center;
+}
+
+#listView {
+    margin-top: 1px;
+}
+.listView {
+    height: 35px;
+	background-color: #8888D0;
+}
+.k-tabstrip .k-content.k-state-active {
+    background-color: rgba(127, 56, 158, 0.22);
+    color: #2e2e2e;
+}
+
+.listView .name{
+    margin-top: 8px;
+    float: left;
+    margin-left: 20px;
+}
+
+		  
 			  
 
 

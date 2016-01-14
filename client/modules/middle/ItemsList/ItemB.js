@@ -23,17 +23,26 @@ ItemB.prototype.appendTo = function(elem ,that){
     that.$.appendTo($(elem));
 	//that.createKenduTabStrip(that);//func 2
 	that.$.kendoTabStrip({
+		animation: {
+            // fade-out current tab over 1000 milliseconds
+            close: {
+                duration: 1000,
+                effects: "fadeOut"
+            },
+           // fade-in new tab over 500 milliseconds
+           open: {
+               duration: 500,
+               effects: "fadeIn"
+           }
+       },
 		dataContentField: "content",
             dataTextField : "text"
-		
-		
 	});
 	}else{
 		console.log("no element to append TO in Items");
 	}
 		
 	}//end append to
-
 
 ItemB.prototype.createKenduTabStrip = function(that){
      console.log("func 2 :: in createKenduTabStrip");
@@ -60,28 +69,28 @@ ItemB.prototype.createKenduTabStrip = function(that){
 	
 	/*it's like the upload we will need to get every time the new list*/
 ItemB.prototype.getMiddle = function(that,name){
-  console.log("func 3 :: hello from getMiddle");
+  console.log("func 3.1 :: hello from getMiddle");
   var promise = request.getAllItems(name);//request
   promise.then(function(data){
-   that.createMiddle(data);//func 4
-   console.log("hello from get Tab Strip:",data);
+   that.createMiddle(data,that);//func 4
+   console.log("func 3.2 :: hello from get Tab Strip:",data);
 	that._dfd.resolve();
 		} ,
 		function(){
 		that._dfd.reject();
-		console.log("reject in Tab Strip");
+		//console.log("reject in Tab Strip");
 		});
   return false;
 }
 
-ItemB.prototype.createMiddle = function (data){
-	if (this.$){	
+ItemB.prototype.createMiddle = function (data,that){
+	if (that.$){	
 	//console.log("func 4 :: Secseed to create in class Middle");
-      var tab = this.$.data("kendoTabStrip");
+      var tab = that.$.data("kendoTabStrip");
 	 console.log("in func 4.1 :: " ,typeof tab);//[]
-       var itemList = $('<div id="listView"></div>');
+       var itemList = $('<div id=".listsOfView"></div>');
         itemList.kendoListView({
-                    template: '<div class="listView #:task#"><span class="task">#:task#</span></div>',
+                    template: '<div class=".listsOfView #:name#"><span class="task">#:task#</span></div>',
                     selectable: true,
                     dataSource: data.items
                 });
@@ -95,6 +104,7 @@ ItemB.prototype.createMiddle = function (data){
            tab.setDataSource(dataSource);
                 tab.reload();				
 				itemList.appendTo(tab.contentElement(0));
+				console.log(tab.contentElement(0));
 		      //tab.select("li:first");
 		}else {
 		console.log("failed to create in class Middle");
@@ -111,12 +121,7 @@ ItemB.prototype.getPromise = function(){
 		return this._dfd.promise();
 	}
 
-
-	
-	
-	
 	return ItemB;
-	
 });
 
 

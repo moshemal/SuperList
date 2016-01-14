@@ -48,7 +48,8 @@ return false;
 }
 
 ListView.prototype.createListView = function (data){
-		if (this.$){	
+		if (this.$){
+console.log("func lst 0 :: LIST",data); 			
 		var lst = this.$.data("kendoListView"); //take the data of kendoListView that we define in appendTo
 		var dataSource = new kendo.data.DataSource({//the data 
                 data: data
