@@ -16,7 +16,9 @@ console.log("welcome to upload line 6 in RH.js");
 function getAllLists(response, pathname, postData) {
 console.log("welcome to getAllLists line 18 in RH.js");
   var lst = auth.getListFS();
+   console.log("in List RH "+typeof lst);
   var str = JSON.stringify(lst); //
+  console.log("in List RH "+typeof str);
   response.writeHead(200, {"Content-Type": "application/json"});
   var parsedData = querystring.parse(postData).text;
   response.write(str);
@@ -121,17 +123,18 @@ function removeList(response, parsedUrl, postData){
 
 /**###### remove new task to the list checking + remove ######**/
 function getAllItems(response, parsedUrl, postData){
-   console.log("line 125 RH  get All Items");
   var parsedQuery = querystring.parse(postData);
+  console.log("in line 125 RH",parsedQuery);
+	
 	if(validateRemoveList(parsedQuery)){
-		console.log("line 128 RH get All Items");
-	if (auth.getAllItems(parsedQuery.name,parsedQuery.task)){//auth.js line 143
-      response.writeHead(200, {"Content-Type": "text/plain"});
-      
-	  response.write("from SERVER we are get All Items: " + parsedQuery.task);
+		var item =auth.getAllItems(parsedQuery.name) ;
+	//if(auth.getAllItems(parsedQuery.name)){//auth.js line 143
+	console.log("line 128 RH get All Items",typeof item);
+      response.writeHead(200, {"Content-Type": "text/plain"}); 
+	  response.write(item.toString());
       response.end();
       return;
-    }
+    //}
 	}
   response.writeHead(404, {"Content-Type": "text/plain"});
   response.write("fail to get All Items ");

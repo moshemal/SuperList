@@ -57,14 +57,15 @@ define(['jquery'], function($){
 /**********************************************************************************/
 /**********************  MIDDLE SIDE   VIEW APPLICATION   ************************/
 /*********************************************************************************/	
-function getAllItems(listName){
+function getAllItems(name){
+	//console.log("hello from r");
         return $.ajax("/api/getAllItems", {
             method: "post",
             success: function(data, a, xhr){
                 console.log(data)
             },
             data: {
-                listName: listName
+                name : name
             }
         });
     } 
@@ -150,17 +151,6 @@ $("#taskList").append(text);
 		});
 	} //end login
   
-    function getAllItems(name){
-		return $.ajax("/api/getAllItems",  { 
-			method: "post",
-			success: function(data, a, xhr){//
-            console.log(data)			
-			},	
-			data: {
-				name : 	name
-			}	
-		});
-	} //end login
   
 
 //public  

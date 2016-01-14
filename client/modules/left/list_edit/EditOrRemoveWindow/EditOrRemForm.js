@@ -5,7 +5,7 @@ function($, template,request){
 
 function EditOrRemForm(initObj){
 		initObj = initObj || {};
-		console.log("hello from window editing or remove");
+		console.log("function 0 edit or rem :: hello from window editing or remove");
 		var that = this;
 		this._dfd = $.Deferred();
 		var wndEdt = this.$ = $(template);
@@ -29,7 +29,7 @@ function EditOrRemForm(initObj){
 			//var newName = ev.target[0].value;
 			var newName = $(ev.target).closest("#editform").find("input").val(); 
 			//var  newName= this.$.find("input").val();
-			console.log("in edit "+newName);
+			console.log("function 1.1 edit or rem :: in edit "+newName);
 			var promise = request.editList(initObj,newName);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
@@ -38,7 +38,7 @@ function EditOrRemForm(initObj){
 		
 		/*for remove the name of the list*/
 			this.$.find("#editform").on('click',"#btnRem" ,function(ev){ //no good with submit
-			console.log("in remove");
+			console.log("function 1.2 edit or rem :: in remove");
 			var promise = request.removeList(initObj);
 			promise.then(function(){that._dfd.resolve()}, function(){that._dfd.reject()});
 			return false;
@@ -51,7 +51,7 @@ function EditOrRemForm(initObj){
 EditOrRemForm.prototype.closeWin = function (){
 		if (this.$){
 		this.$.kendoWindow("close");
-		console.log("CLOSE WIN  edit or remove");
+		console.log("function 2 edit or rem :: CLOSE WIN  edit or remove");
 		
 		} else {
 			console.log("no element to CLOSE WIN  edit or remove");
@@ -63,7 +63,7 @@ EditOrRemForm.prototype.openWin = function(){
 		if (this.$){
 		 this.$.data("kendoWindow").center();
 		 this.$.data("kendoWindow").open();
-		console.log("Open WIN edit or remove");
+		console.log("function 3 edit or rem :: Open WIN edit or remove");
 		} else {
 			console.log("no element to Open WIN  edit or remove");
 		}
@@ -81,12 +81,7 @@ EditOrRemForm.prototype.destroy = function(){
 		this.$.off('submit');
 		this.$.remove();
 	}
-	
-
-
-
 return EditOrRemForm;
-
 });
 
 

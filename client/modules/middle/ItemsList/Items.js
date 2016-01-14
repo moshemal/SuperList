@@ -8,8 +8,8 @@ function Items(initObj){
 		var that = this;
 		this._dfd = $.Deferred();
 		var itemsV = that.$ = $(template);
-		that.appendTo("#taskList",that);//append to div
-		that.getListView(that);//get list view
+		that.appendTo("#tab",that);//append to div
+		that.getLstOfItems(that,initObj);//get list view
        }
 
 /*append the list to the layout*/
@@ -44,17 +44,8 @@ Items.prototype.appendTo = function(elem ,that){
 	
 Items.prototype.getLstOfItems(that,name){
 	var promise = request.getAllItems(name); //form request.js getting the DB from the server
-   promise.then(function(data){
-   //console.log("in getListView");
-   that.createListView(data);
-   console.log("hello from get list ITEMS resolve:",data);
-	that._dfd.resolve();
-		} ,
-       //else reject		
-		function(){
-		that._dfd.reject();
-		console.log("reject in list view get ITEMS");
-		});
+   
+   
 return false;
 	
 	

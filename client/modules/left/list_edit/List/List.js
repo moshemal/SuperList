@@ -4,7 +4,7 @@ function($, template,request){
 
 function ListView(initObj){
 	   initObj = initObj || {};
-		console.log("hello in list view");
+		//console.log("hello in list view");
 		var that = this;
 		this._dfd = $.Deferred();
 		var lstV = that.$ = $(template);
@@ -16,7 +16,7 @@ function ListView(initObj){
 /*append the list to the layout*/
 ListView.prototype.appendTo = function(elem ,that){
 		if (that.$){
-		console.log("in append TO in List View");
+		//console.log("in append TO in List View");
 		that.$.appendTo($(elem));
 		/*define a list view from kendo ui*/
 			that.$.kendoListView({
@@ -36,13 +36,13 @@ ListView.prototype.getListView = function (that){
    promise.then(function(data){
    
    that.createListView(data);
-   console.log("hello from get list resolve:",data);
+   //console.log("hello from get list resolve:",data);
 	that._dfd.resolve();
 		} ,
        //else reject		
 		function(){
 		that._dfd.reject();
-		console.log("reject in list view get");
+		//console.log("reject in list view get");
 		});
 return false;
 }
@@ -55,7 +55,7 @@ ListView.prototype.createListView = function (data){
             });
 	   lst.setDataSource(dataSource); //insert the data of the list
        lst.refresh();//was recommand to do will find a better explain	   
-	   console.log("in create LIST VIEW");
+	   //console.log("in create LIST VIEW");
 	  
 	   
 	   //array of buttons to create of html 

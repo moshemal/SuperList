@@ -5,20 +5,22 @@
 define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  'core/layout','modules/submit/Create/Create','core/request',
  'modules/left/addList/ButtonPlus/BtnAdd','modules/left/addList/Window/WinForm',
- 'modules/left/list_edit/List/List','modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'],
-  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,EditOrRemForm){
+ 'modules/left/list_edit/List/List','modules/middle/itemsList/ItemB',
+ 'modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'],
+  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,ItemB,EditOrRemForm){
   'use strict';
   
   //global vars
-    var AUTH_STR = "auth";
-	var login;
-	var create;
-	var user = null;
-	var btn; //for button plus
-    var win; //for window task
-	var list ; //for list in the right panel 
-	var arrayBtnHtml; //array list of button edit
-	var edit ; //for rename or remove element from the list
+    var AUTH_STR = "auth",
+	 login,
+	 create,
+	 user = null,
+	 btn, //for button plus
+     win, //for window task
+	 list , //for list in the right panel 
+	 arrayBtnHtml, //array list of button edit
+	 edit , //for rename or remove element from the list
+	 tab;
 
 
 
@@ -30,7 +32,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 /*If the cookies is expierd do start login*/	
   function startLoggin(){
 	function loginSuccess(){
-      //console.log("checking for me if login success");  
+      //console.log("check in main 1 ::checking for me if login success");  
       startApp(); //go to function startApp and start the application
       login.destroy(); //delete page of login
     }
@@ -50,7 +52,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 /*for sign in new User*/
   function startCreate(){
 	  function createSuccess(){
-		console.log("creation success moving to login.");
+		//console.log("check in main 2 :: creation success moving to login.");
 		startLoggin();//and go to struction  startLogin
 		create.destroy();//delete page create user
 	  }
@@ -70,18 +72,19 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
  
 
  /*########################################################################################################
-  #################################  APPLICATION STRUCTION ################################################
+  #################################  APPLICATION STRUCTION LEFT SIDE#######################################
   ########################################################################################################*/
 
   /*have a delay from taking the DB*/ 
   function startListView(){
    function listViewSuccess(){
-	  console.log("list View success.");
-      arrayBtnHtml =list.getArrayOfButtons(); //for checking
+	  console.log("check in main 3 :: list View success.");
+      arrayBtnHtml = list.getArrayOfButtons(); //for checking
 	  //console.log("in start: ",list.$);
      continueApp(); //for the button edit list  event
 	  }//end Success
 	  
+	  //NOT FINISH MUST COME BACK
 	 function listViewFail(){
       console.log("list View fail trying again");
     }//end Fail
@@ -97,13 +100,13 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   }
   
 /*########################################################################################################
-  #################################  APPLICATION WINDOW STRUCTION ########################################
+  #################################  APPLICATION WINDOW STRUCTION LEFT SIDE ##############################
   ########################################################################################################*/
 
 /*for create a window add New task*/
   function startWin(){
   function winSuccess(){
-		console.log("NEW TASK window success.");
+		//console.log("check in main 4.1 :: NEW TASK window success.");
 		list.getListView(list);//the new list view instead of using in the request
 		/**
 		if I don't set time out it's first go to close win and continue
@@ -111,14 +114,14 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 		button of the "list edit" not work
 		**/ 
 		setTimeout(function(){
-	    //console.log("set time for buttons LIST EDIT to actually work");//after we finish with getListView
+	    //console.log("check in main 4.2 :: set time for buttons LIST EDIT to actually work");//after we finish with getListView
 		win.closeWin(); //and close the window
 		continueApp(); //and continue app (maybe not ne)
         },60); //time out for 0.06 second maybe less 
 	  }//end winSuccess
 	  
   function winFail(){
-      console.log("NEW TASK window fail trying again");
+      //console.log("NEW TASK window fail trying again");
       win.resetDeferred(); //like we do in Create and Login it's can only fail if we don't input nothing empty 
       win.getPromise().then(winSuccess, winFail); //try again to have a new task
     }
@@ -132,7 +135,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 /*a window from the icon button in the list of the user EDIT OR REMOVE*/
   function startEdtOrRemWin(name){
 	function editOrRemSuccess(){
-		console.log("EDIT or remove success.");
+		console.log("check in main 5 :: EDIT or remove success.");
 		list.getListView(list);//the new list view instead of using in the request
 		/**
 		if I don't set time out it's first go to close win and continue
@@ -148,7 +151,7 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	  }//end
 	  
     function editOrRemFail(){
-      console.log("Edit or Remove fail trying again");
+      console.log("check in main 5 :: Edit or Remove fail trying again");
 	   edit.resetDeferred(); //like we do in Create and Login it's can only fail if we don't input nothing empty 
 	  edit.getPromise().then(editOrRemSuccess,editOrRemFail);  
     }//end
@@ -159,6 +162,27 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 	edit.getPromise().then(editOrRemSuccess,editOrRemFail);  	 
   }//end startEdtOrRemWin
   
+  
+/*########################################################################################################
+#################################  APPLICATION STRUCTION MIDDLE SIDE #####################################
+########################################################################################################*/
+ function startMiddleItems(name){
+	 function middleTabStripSuccess(){
+	  console.log("check in main 6 :: Tab Strip Success.");
+	  //console.log("in start: ",list.$);
+     continueApp(); //for the button edit list  event
+	  }//end Success
+	  
+	 function middleTabStripFail(){
+      console.log("check in main 6 :: Tab Strip Fail trying again");
+    }//end Fail
+	 
+	 tab = new ItemB(name); //create a new listView from modules/list_edit/List/List.js
+	 tab.getPromise().then(middleTabStripSuccess,middleTabStripFail); 
+ }
+  
+  
+  
     
 /**********************************************************************************************/
 /************************** APPLICATION START *************************************************/  
@@ -166,14 +190,11 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
   var bool = 0;
   var i =0;
   function startApp(){  
-	
-	//console.log("hello from start App");
+	//console.log("check in main 7 :: hello from start App");
     layout.createLayout("3W", "#container"); //create layout
 	//if(bool !== 1)
 	user=cookies.getCookie('user');
 	//console.log(user);
-	
-	
 	//user=cookies.getCookie('user');
 	//NameOfTheUser(); //for checking
 	//console.log("starting application " +user); //for checking
@@ -190,20 +211,21 @@ define(['jquery', 'modules/submit/Login/Login', 'core/cookies',
 
   
   function continueApp(){
-   //console.log("hello from continueApp");
+   //console.log("check in main 8 :: hello from continueApp");
    
    /*LIST of buttons in LIST view*/   
   list.$.find(".listsOfView  button").on('click',function(e){
+	  console.log("check in main 8.1 :: .listsOfView  button " +name);
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
    startEdtOrRemWin(name);
   });
   
    /*LIST of buttons in LIST view*/   
-  list.$.find(".listsOfView").on('click',function(e){
-	console.log("hello");  
+  list.$.find(".listsOfView ").on('click',function(e){
+	//console.log("hello");  
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
- console.log("target   "+name);
- //startItemListView(name);
+ console.log("check in main 8.2 :: only in target .listsOfView  "+name);
+ startMiddleItems(name);
  //
   });
   

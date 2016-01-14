@@ -143,10 +143,10 @@ function editList(oldName , newName){
 for(var i = 0 ; i<lists.length; i++){
 	if(lists[i]["name"] === oldName){
 		lists[i]["name"] = newName ;
-		console.log(typeof lists[i]["task"]);
-		console.log(lists[i]["task"]);
-		console.log("auth.js line 144 edit list");
-		console.log(lists[i]);
+		//console.log(typeof lists[i]["task"]);
+		//console.log(lists[i]["task"]);
+		//console.log("auth.js line 144 edit list");
+		//console.log(lists[i]);
 		fs.writeFileSync('db/'+ userName +'/lists/list.json',JSON.stringify(lists)); //faster writeFileSync
 		return true;
 	}
@@ -172,17 +172,17 @@ console.log("fail on edit List no found Name 152 auth.js");
 return false; //the name dont exsiset 	
 }
 
-function getAllItems(name,items){
+function getAllItems(name){
 	for(var i = 0 ; i<lists.length; i++){
 	if(lists[i]["name"] === name){
-	 console.log("in auth.js line 179 ",lists[i]["task"]);
-	 items = lists[i]["task"];
- console.log("in auth.js line 181 ",items);	 
-		return true;
+	 //console.log("in auth.js line 179 ",lists[i]["task"]);
+	// items = lists[i]["task"];
+ //console.log("in auth.js line 181 ",typeof items);	 
+		return lists[i]["task"];
 	}
 	}
 	console.log("in auth.js line 185");
-	return false;
+	return {};
 }
 
 
@@ -197,4 +197,5 @@ exports.createUser 	= createUser;
 exports.addNewTask 	= addNewTask;
 exports.editList 	= editList;
 exports.removeList = removeList;
+
 exports.getAllItems = getAllItems;
