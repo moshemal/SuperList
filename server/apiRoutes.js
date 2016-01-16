@@ -43,11 +43,11 @@ console.log("welcome to decorateWithIsloggedIn line 29 in apiRouter.js");
 var handle = {
      "/isLoggedIn" : isLoggedIn,
 	"/login": 			auth.login,
-	"/createUser":  requestHandlers.createUser,
+	//"/createUser":  requestHandlers.createUser,
 	"/getAllLists": decorateWithIsloggedIn(requestHandlers.getAllLists), //decorateWithIsloggedIn will be called before we even get to main.js decorateWithIsloggedIn
-	"/addNewTask" :  decorateWithIsloggedIn(requestHandlers.addNewTask), //will be called before we even get to main.js decorateWithIsloggedIn
-	 "/editList" : decorateWithIsloggedIn(requestHandlers.editList),
-	 "/removeList" : decorateWithIsloggedIn(requestHandlers.removeList),
+	//"/addNewTask" :  decorateWithIsloggedIn(requestHandlers.addNewTask), //will be called before we even get to main.js decorateWithIsloggedIn
+	 //"/editList" : decorateWithIsloggedIn(requestHandlers.editList),
+	 //"/removeList" : decorateWithIsloggedIn(requestHandlers.removeList),
 	 
 	 "/getAllItems" : decorateWithIsloggedIn(requestHandlers.getAllItems),
 	"/upload":      decorateWithIsloggedIn(requestHandlers.upload)//will be called before we even get to main.js decorateWithIsloggedIn

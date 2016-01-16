@@ -2,10 +2,6 @@
    height: 100%;
      }
       
-
-
-
-
 /*************************************************************/
 /******Layout for 3 background color for button plus ********/
 /************************************************************/
@@ -13,7 +9,8 @@
 background-color: rgba(66, 45,7, 0.15); 
 /*background-color:pink;*/
 }
-/*button plus in button*/
+
+/*button plus in button 3*/
 #task{
  background-color: rgba(66, 45,7, 0.15); 
  width: 100%; 
@@ -74,8 +71,6 @@ button#save {
 /*************************************************************/
 #middle-pane { 
    background-color: rgba(191, 110, 70, 0.10);
-       /*height: 1000px;700*/
-       /*width: "160%";*/
       }
 	  
 /*** inside pane-content that he is a child of middle-pane****/
@@ -103,14 +98,6 @@ button#save {
 }
 
 
-/*for the icon + button of edit*/	
-.listsOfView  button  {
-right: 10px;
-display: block;
-  width: 16px;
-  height: 16px;
-  float: right ;
-}
 
 /*for the icon + button of edit*/	
 .listsOfView  button  {
@@ -172,16 +159,17 @@ display: block;
  #top-pane { 
   background-color: rgba(1, 10, 70, 0.10);
      }
-			  
+
+/*1 2 3*/	 
 #left-pane {
     background-color: #46466D;
 	text-align: center;
 }
 
-#listView {
+#listsOfView {
     margin-top: 1px;
 }
-.listView {
+.listsOfView {
     height: 35px;
 	background-color: #8888D0;
 }
@@ -190,51 +178,27 @@ display: block;
     color: #2e2e2e;
 }
 
-.listView .name{
+.listsOfView .name{
     margin-top: 8px;
     float: left;
     margin-left: 20px;
 }
 
-		  
+
+#taskList ul{
+font-family :Arial;
+font-size :18px;
+/*text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;*/
+}
+
+ul>li{
+font-size :13px;
+font-family :cursive;
+
+}		  
 			  
 
 
-
-
-/*for the icon + button of edit	
-.listsOfView  .k-button  {
-  /*background-color: rgba(191, 110, 70, 0.10);*/
-  /*background-color: #FFC125;/*like a gold orange  (goldenrod)/
-  padding-top: 1px;
-    padding-bottom: 1px;
-    padding-right: 3px;
-    padding-left: 3px;
-  float: right ;
-}
-*/
-
-/******
-.k-icon {
-   margin-middle: 10px;
-        }
-.k-tool-icon{
- margin-middle: 10px;
-}
-***/
-				
-				
-/*	
-#editform  input{
-       border-bottom: 1px solid #ccc;
-        font-size: 1.4em;
-        font-weight: normal;
-        padding: 0;
-        margin: 0;
-      }	
-	*/
-	
-	
 
 
 

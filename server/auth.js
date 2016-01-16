@@ -1,4 +1,4 @@
-var fs 						= require('fs');
+var fs 		= require('fs');
 
 var querystring 	= require("querystring");
 
@@ -18,8 +18,7 @@ fs.readFile('db/passwords.json', 'utf8' ,function(err, data){
 		return;
 	}
 	passwords = JSON.parse(data);
-	//console.log('read passwords auth line 21: ' +  ++i );
-     
+	//console.log('read passwords auth line 21: ' +  ++i );   
 });
 
 
@@ -107,12 +106,10 @@ console.log("in auth line 104 " ,sessions[user] == token); //false
 
 //i have problom with the cookies
 function getLoggedIn(cookies){
-
 return cookies["user"];
-
 }
 
-
+/**
 function createUser(user, password){
 	if (passwords[user]){
 		return false;
@@ -171,6 +168,7 @@ for(var i = 0 ; i<lists.length; i++){
 console.log("fail on edit List no found Name 152 auth.js");
 return false; //the name dont exsiset 	
 }
+**/
 
 function getAllItems(name){
 	for(var i = 0 ; i<lists.length; i++){
@@ -193,9 +191,10 @@ exports.isLoggedIn 	= isLoggedIn;
 exports.getLoggedIn = getLoggedIn;
 exports.getListFS = getListFS;
 //exports.getPropertiesFS = getPropertiesFS;
+/**
 exports.createUser 	= createUser;
 exports.addNewTask 	= addNewTask;
 exports.editList 	= editList;
 exports.removeList = removeList;
-
+**/
 exports.getAllItems = getAllItems;

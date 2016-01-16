@@ -25,6 +25,12 @@ console.log("welcome to getAllLists line 18 in RH.js");
   response.end();
 }
 
+function validateRemoveList(parsedQuery) {
+  return (typeof parsedQuery.name === 'string' &&
+  parsedQuery.name !== "" );
+}
+
+/**
 function validateCreateUserParams (parsedQuery) {
   return (typeof parsedQuery.user === 'string' &&
   typeof parsedQuery.password === 'string' &&
@@ -54,7 +60,7 @@ function validateCreateTaskParams(parsedQuery) {
   parsedQuery.name !== "");
 }
 
-/**######adding new task to the list checking + adding######**/
+//######adding new task to the list checking + adding######
 function addNewTask(response, parsedUrl, postData){
 //console.log("line 51 RH add new task");
   var parsedQuery = querystring.parse(postData);
@@ -79,7 +85,7 @@ function validateEditList(parsedQuery) {
   parsedQuery.newName !== "" && parsedQuery.oldName !== "");
 }
 
-/**###### edit new task to the list checking + edit ######**/
+//###### edit new task to the list checking + edit ######
 function editList(response, parsedUrl, postData){
    console.log("line 82 RH  edit task");
   var parsedQuery = querystring.parse(postData);
@@ -97,13 +103,9 @@ function editList(response, parsedUrl, postData){
   response.end();
 }
 
-function validateRemoveList(parsedQuery) {
-  return (typeof parsedQuery.name === 'string' &&
-  parsedQuery.name !== "" );
-}
 
 
-/**###### remove new task to the list checking + remove ######**/
+//###### remove new task to the list checking + remove ######
 function removeList(response, parsedUrl, postData){
    console.log("line 107 RH  remove task");
   var parsedQuery = querystring.parse(postData);
@@ -120,6 +122,8 @@ function removeList(response, parsedUrl, postData){
   response.write("fail to remove Task ");
   response.end();
 }
+**/
+
 
 /**###### remove new task to the list checking + remove ######**/
 function getAllItems(response, parsedUrl, postData){
@@ -145,8 +149,9 @@ function getAllItems(response, parsedUrl, postData){
 
 exports.getAllLists = getAllLists;
 exports.upload      = upload;
-exports.createUser  = createUser;
+/**exports.createUser  = createUser;
 exports.addNewTask  = addNewTask;
 exports.editList  = editList;
 exports.removeList = removeList;
+**/
 exports.getAllItems = getAllItems;
