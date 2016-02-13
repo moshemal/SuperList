@@ -3,7 +3,7 @@ var url 					= require('url');
 var handle				= require('./apiRoutes').handle;
 
 
-var staticServer 	= new staticLib.Server('../client/');
+var staticServer 	= new staticLib.Server('../client/BeckUp/');
 
 function notFound(response){
   response.writeHead(404, {"Content-Type": "text/plain"});
