@@ -1,5 +1,5 @@
-define(['jquery', 'text!./templates/l2U.html', 'text!./templates/l3W.html', 'kendo'], 
-	function($, l2U, l3W){
+define(['jquery', 'text!./templates/l3W.html', 'kendo'], 
+	function($, l3W){
 		'use strict';
 	//console.log($);
 	
