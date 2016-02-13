@@ -28,7 +28,7 @@ function route(request, response, postData) {
       notFound(response);
   } 
   else {
-   // console.log("in router.js Serving static for: " + pathname);
+   console.log("in router.js Serving static for: " + pathname);
     staticServer.serve(request, response);
   }
 }
