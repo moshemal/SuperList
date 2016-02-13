@@ -11,7 +11,7 @@ function($,template,request){
 		this._dfd = $.Deferred();
 		var tabS = that.$ = $(template);
 		that.appendTo("#tabstrip",that);//append to div func 1
-		that.getMiddle(that,initObj);//get list view func 3	
+		that.getMiddle(that);//get list view func 3	
 		
 	}
 		
@@ -65,7 +65,7 @@ ItemB.prototype.createKenduTabStrip = function(that){
 }
 	
 	/*it's like the upload we will need to get every time the new list*/
-ItemB.prototype.getMiddle = function(that,name){
+ItemB.prototype.getMiddle = function(that){
   console.log("func 3.1 :: hello from getMiddle");
   var promise = request.getAllItems(name);//request
   promise.then(function(data){

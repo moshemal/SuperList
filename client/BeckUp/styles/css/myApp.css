@@ -1,0 +1,205 @@
+ body{
+   height: 100%;
+     }
+      
+/*************************************************************/
+/******Layout for 3 background color for button plus ********/
+/************************************************************/
+#bottom-pane {
+background-color: rgba(66, 45,7, 0.15); 
+/*background-color:pink;*/
+}
+
+/*button plus in button 3*/
+#task{
+ background-color: rgba(66, 45,7, 0.15); 
+ width: 100%; 
+ /*position: absolute;*/
+}
+#task button {
+size : 10px;
+font-weight: 100;
+ width: 100%; 
+ height: 100%;
+ /*margin-top: 1px;*/
+ /* margin-bottom: 1px;*/
+  /*float: "middle" ;*/
+}
+
+/*************************************************************/
+/**********************Window adding NEW TASK******************/
+/*************************************************************/
+
+.cancel-btn{
+    /*margin-right: 11px;*/
+    /*margin-left: 90px;*/
+    margin-top: -53px;
+    /*padding-top: 1px;*/
+	/*float: right;*/
+    /*height: 38px;*/
+}
+
+button#close {
+    height: 38px;
+    margin-bottom: 11px;
+    margin-left: 90px;
+    /*margin-right: 11px;*/
+    float: right;
+}
+
+button#save {
+    height: 38px;
+}
+
+#addtask footer{
+    width: 486.461;
+    height: 39px;
+    margin-right: 11px;
+    margin-bottom: 11px;
+    margin-left: 11px;
+    margin-top: 11px;
+}
+
+#addtask input[type="text"]{
+    padding-left: 111px;
+    margin-left: 80px;
+    margin-right: 111px;
+}
+
+/*************************************************************/
+/*******Layout for 2 List of Task background-color************/
+/*************************************************************/
+#middle-pane { 
+   background-color: rgba(191, 110, 70, 0.10);
+      }
+	  
+/*** inside pane-content that he is a child of middle-pane****/
+/*for the List in the left 2 */
+#taskList{
+ background-color: rgba(240, 221, 212, 0.1);
+}	  
+	  	  
+#taskList .listsOfView {
+    height: 34px;
+}
+
+/*the icon on the left of every task*/	  
+.listsOfView  .k-insertUnorderedList{
+    float: left;
+}
+	  
+/*for the icon + button of edit*/	
+.listsOfView  .name{
+	/*padding: 15px;*/
+    margin-left: 45px;
+	/*margin-top: 11px;*/
+    /* float: left; */
+    margin-right: 32px;
+}
+
+
+
+/*for the icon + button of edit*/	
+.listsOfView  button  {
+right: 10px;
+display: block;
+  width: 16px;
+  height: 16px;
+  float: right ;
+  background-color: rgba(191, 110, 70, 0.10);
+}
+.k-sprite.k-icon.k-i-pencil {
+    vertical-align: top;
+	height: 16px;
+    width: 16px;
+    margin-bottom: -1px;
+    margin-top: 1px;
+    margin-right: 1px;
+    border-bottom-width: 11px;
+    margin-left: -7px;
+}
+.listsOfView button.k-button.k-button-icon{
+    border-width: 0.5px;
+}	  
+/*the color for select some task list*/
+.k-state-selected {
+    color: #fff; /*color of the task white*/	
+  background-color: rgba(0, 142, 255, 0.57); /*kind of blue*/
+  border-color: #c5c5c5 ;
+}
+	  
+/****************************************************************/	  
+/******* Window of edit or remove a Task of the List View********/	  
+/****************************************************************/	  
+#editForm .buttons {
+        margin-top: 55px;
+      }	  
+#editForm .buttons .btnSave{
+        float : right;
+      }	
+#editForm .buttons .btnRemove{
+        float : left;
+      }		  
+
+  
+	  
+
+/***** Layout ****/
+ /** for 5 **/
+#right-pane{ 
+  /*background-color: rgba(50,89, 14, 0.04);*/
+  background-image: url("../img/right.jpg");	
+     }
+/**for 4**/
+ #center-pane{ 
+ background-color: #7AC5CD;/*blue like the sea*/
+ text-align: center;
+         }			  
+/**for 1**/
+ #top-pane { 
+  background-color: rgba(1, 10, 70, 0.10);
+     }
+
+/*1 2 3*/	 
+#left-pane {
+    background-color: #46466D;
+	text-align: center;
+}
+
+#listsOfView {
+    margin-top: 1px;
+}
+.listsOfView {
+    height: 35px;
+	background-color: #8888D0;
+}
+.k-tabstrip .k-content.k-state-active {
+    background-color: rgba(127, 56, 158, 0.22);
+    color: #2e2e2e;
+}
+
+.listsOfView .name{
+    margin-top: 8px;
+    float: left;
+    margin-left: 20px;
+}
+
+
+#taskList ul{
+font-family :Arial;
+font-size :18px;
+/*text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;*/
+}
+
+ul>li{
+font-size :13px;
+font-family :cursive;
+
+}		  
+			  
+
+
+
+
+
+

@@ -44,7 +44,7 @@ var handle = {
      "/isLoggedIn" : isLoggedIn,
 	"/login": 			auth.login,
 	//"/createUser":  requestHandlers.createUser,
-	"/getAllLists": decorateWithIsloggedIn(requestHandlers.getAllLists), //decorateWithIsloggedIn will be called before we even get to main.js decorateWithIsloggedIn
+	//"/getAllLists": decorateWithIsloggedIn(requestHandlers.getAllLists), //decorateWithIsloggedIn will be called before we even get to main.js decorateWithIsloggedIn
 	//"/addNewTask" :  decorateWithIsloggedIn(requestHandlers.addNewTask), //will be called before we even get to main.js decorateWithIsloggedIn
 	 //"/editList" : decorateWithIsloggedIn(requestHandlers.editList),
 	 //"/removeList" : decorateWithIsloggedIn(requestHandlers.removeList),

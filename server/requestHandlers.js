@@ -12,7 +12,7 @@ console.log("welcome to upload line 6 in RH.js");
   response.end();
 }
 
-/**####### all name of the tasks #####**/
+/**####### all name of the tasks #####*
 function getAllLists(response, pathname, postData) {
 console.log("welcome to getAllLists line 18 in RH.js");
   var lst = auth.getListFS();
@@ -147,7 +147,7 @@ function getAllItems(response, parsedUrl, postData){
 
 
 
-exports.getAllLists = getAllLists;
+//exports.getAllLists = getAllLists;
 exports.upload      = upload;
 /**exports.createUser  = createUser;
 exports.addNewTask  = addNewTask;

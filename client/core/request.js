@@ -23,7 +23,7 @@ define(['jquery'], function($){
 		});
 	} //end login
 
-	/**
+	
 	function createUser (name, password, properties){
     return $.ajax("/api/createUser", {
       method: "post",
@@ -35,7 +35,7 @@ define(['jquery'], function($){
       }
     });//$.ajax
   }
-  **/
+ 
   
   
   
@@ -101,7 +101,7 @@ $("#taskList").append(text);
 /**********************     WINDOWS APPLICATION  ***************************************/	
 	//var i =0;
 /*adding new task give the server his DB the only time the server will response with error its only when the*/
-/**
+
 	function addNewTask(name){
     return $.ajax("/api/addNewTask", {
 				method: "post",
@@ -142,22 +142,19 @@ $("#taskList").append(text);
 			}	
 		});
 	} //end login
-  **/
+ 
   
 
 //public  
 return {
 isLoggedIn : isLoggedIn,
 	login:      login,
-	//createUser: createUser,
-	
+	createUser: createUser,
 	getAllLists : getAllLists,  //return get all list in the right side
     upload: upload,
-    /**	
     addNewTask: addNewTask, //adding new task 
 	editList : editList, //
 	removeList : removeList,
-	**/
 	getAllItems : getAllItems
 	}
 });

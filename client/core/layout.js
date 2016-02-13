@@ -29,7 +29,7 @@ define(['jquery', 'text!./templates/l2U.html', 'text!./templates/l3W.html', 'ken
 		panes: [
                { collapsible: true, size: "250px" },//123
                { collapsible: false },//4
-               { collapsible: true, size: "220px"}//,resizable: true }//5
+               { collapsible: true, size: "22px"}//,resizable: true }//5
                 ]});
 
 $("#left-pane").kendoSplitter({

@@ -6,12 +6,12 @@ define(['jquery',
 'modules/submit/Login/Login', 
 'core/cookies',
  'core/layout',
- /*'modules/submit/Create/Create',*/ 'core/request',
- /*'modules/left/addList/ButtonPlus/BtnAdd','modules/left/addList/Window/WinForm',*/
+ 'modules/submit/Create/Create', 'core/request',
+ 'modules/left/addList/ButtonPlus/BtnAdd','modules/left/addList/Window/WinForm',
  'modules/left/list_edit/List/List',
  'modules/middle/itemsList/ItemB',
- /*'modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'*/],
-  function($, Login, cookies, layout,/*Create,*/request,/*BtnAdd,WinForm,*/ListView,ItemB /*,EditOrRemForm*/){
+ 'modules/left/list_edit/EditOrRemoveWindow/EditOrRemForm'],
+  function($, Login, cookies, layout,Create,request,BtnAdd,WinForm,ListView,ItemB,EditOrRemForm){
   'use strict';
   
   //global vars
@@ -19,11 +19,11 @@ define(['jquery',
 	 login,
 	 //create,
 	 user = null,
-	// btn, //for button plus
-     //win, //for window task
+	 btn, //for button plus
+     win, //for window task
 	 list , //for list in the right panel 
 	 arrayBtnHtml, //array list of button edit
-	 //edit , //for rename or remove element from the list
+	 edit , //for rename or remove element from the list
 	 tab;
 
 
@@ -53,7 +53,7 @@ define(['jquery',
 	login.getPromise().then(loginSuccess, loginFail);//  
   }//end of login
  
-/**for sign in new User
+/**for sign in new User**/
   function startCreate(){
 	  function createSuccess(){
 		//console.log("check in main 2 :: creation success moving to login.");
@@ -73,13 +73,13 @@ define(['jquery',
 	login.destroy();//destroy login page and go to sign up page (create user).
 	create.getPromise().then(createSuccess,createFail);  
 	  }//end startCreate
- **/
+ 
 
  /*########################################################################################################
   #################################  APPLICATION STRUCTION LEFT SIDE#######################################
   ########################################################################################################*/
 
-  /*have a delay from taking the DB*/ 
+  /**have a delay from taking the DB**/ 
   function startListView(){
    function listViewSuccess(){
 	  console.log("check in main 3 :: list View success.");
@@ -97,6 +97,9 @@ define(['jquery',
 	 list.getPromise().then(listViewSuccess,listViewFail);
 	  }//end startListView
  
+ 
+ 
+ 
  /*the user name for checking*/
   function NameOfTheUser(){
   document.getElementById("middle").innerHTML =
@@ -107,7 +110,7 @@ define(['jquery',
   #################################  APPLICATION WINDOW STRUCTION LEFT SIDE ##############################
   ########################################################################################################*/
 
-/**for create a window add New task
+/**for create a window add New task**/
   function startWin(){
   function winSuccess(){
 		//console.log("check in main 4.1 :: NEW TASK window success.");
@@ -116,7 +119,7 @@ define(['jquery',
 		if I don't set time out it's first go to close win and continue
 		up but will not update and then if I don't do refresh the 
 		button of the "list edit" not work
-		 
+		 **/
 		setTimeout(function(){
 	    //console.log("check in main 4.2 :: set time for buttons LIST EDIT to actually work");//after we finish with getListView
 		win.closeWin(); //and close the window
@@ -145,7 +148,7 @@ define(['jquery',
 		if I don't set time out it's first go to close win and continue
 		up but will not update and then if I don't do refresh the 
 		button of the "list edit" not work
-		
+		**/
 		setTimeout(function(){
 	    console.log("set time for buttons LIST EDIT to actually work");//after we finish with getListView
 		edit.closeWin();//and close the window
@@ -165,12 +168,13 @@ define(['jquery',
 	edit.openWin(); // i spearate that 
 	edit.getPromise().then(editOrRemSuccess,editOrRemFail);  	 
   }//end startEdtOrRemWin
-  **/
+  
   
 /*########################################################################################################
 #################################  APPLICATION STRUCTION MIDDLE SIDE #####################################
 ########################################################################################################*/
  
+ /**
  function startMiddleItems(name){
 	 function middleTabStripSuccess(){
 	  console.log("check in main 6 :: Tab Strip Success.");
@@ -184,9 +188,22 @@ define(['jquery',
 	 tab = new ItemB(name); //create a new listView from modules/list_edit/List/List.js
 	 tab.getPromise().then(middleTabStripSuccess,middleTabStripFail); 
  }
+  **/
   
-  
-  
+  function startMiddle(){
+  function tabSuccess(){
+	  console.log("tab:: tab success.");
+     continueApp(); 
+	  }//end Success
+	  
+	  //NOT FINISH MUST COME BACK
+	 function tabFail(){
+      console.log("tab fail trying again");
+    }//end Fail
+	 
+	 tab = new ItemB(); 
+	 tab.getPromise().then(tabSuccess,tabFail);
+  }
     
 /**********************************************************************************************/
 /************************** APPLICATION START *************************************************/  
@@ -204,25 +221,25 @@ define(['jquery',
 	//console.log("starting application " +user); //for checking
   
    
-    startListView(); // i have a delay because i did to it a structure I resolve it's with setTimOut 
-  /**
+    //startListView(); // i have a delay because i did to it a structure I resolve it's with setTimOut 
+  
 	btn = new BtnAdd();//create class Button from: modules/addList/ButtonPlus/BtnAdd.js 
 	btn.appendTo("#task");//append to the button
 	btn.$.find(".open-button").on('click', function(){startWin();});//event click go to startWin()
-  **/
+  
   }//end startApp
 
   
   function continueApp(){
    //console.log("check in main 8 :: hello from continueApp");
    
-   /**LIST of buttons in LIST view  
+   /**LIST of buttons in LIST view**/  
   list.$.find(".listsOfView  button").on('click',function(e){
 	  console.log("check in main 8.1 :: .listsOfView  button " +name);
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
    startEdtOrRemWin(name);
   });
-  **/
+ 
   
    /*LIST of buttons in LIST view*/   
   list.$.find(".listsOfView ").on('click',function(e){
@@ -230,7 +247,6 @@ define(['jquery',
   var name= $(e.target).closest(".listsOfView").find(".name").html(); 
  console.log("check in main 8.2 :: only in target .listsOfView  "+name);
  startMiddleItems(name);
- //
   });
   }//end  continueApp
   
