@@ -47,7 +47,7 @@ define(['jquery',
   function startApp(){  
     layout.createLayout("3W", "#container"); //create layout
 	btn.createBtnPlus("+","#task");
-	btn.$.find(".open-button").on('click', function(){console.log("hello");});//btn.$ = undifined
+	btn.$.find(".open-button").on('click', function(){console.log("in main");});//event click go to startWin()
 	//console.log("in main" ,btn.getJqueryBtn().find());//getJqueryBtn
   }//end startApp
 
