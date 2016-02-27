@@ -35,7 +35,7 @@ define(['jquery',
 	login = new Login();//from: modules/submit/Login/Login.js
     login.appendTo("#container");//
 	login.getPromise().then(loginSuccess, loginFail);//  
-  }//end of login
+  }//
  
 
  
@@ -47,8 +47,7 @@ define(['jquery',
   function startApp(){  
     layout.createLayout("3W", "#container"); //create layout
 	btn.createBtnPlus("+","#task");
-	
-  
+	console.log("in main" ,btn.$.find('.open-button'));
   }//end startApp
 
   

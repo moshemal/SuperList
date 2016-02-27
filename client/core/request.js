@@ -22,6 +22,14 @@ define(['jquery'], function($){
     }
 
    
+   function getAllLists(){
+  console.log("this is request all list");
+     return $.ajax("/api/getAllLists",{
+	 method :"get" 
+	 });
+  } 
+   
+   
 
 	return {
         isLoggedIn:  isLoggedIn,

@@ -10,7 +10,7 @@
 	
 	function createBtnPlus(type, selector){
 		var jBtnPlus = getBtnPlus(type);
-		jBtnPlus.appendTo(selector);
+		jBtnPlus.appendTo(selector);//
 		
 		$(".open-button").kendoButton({
 		 spriteCssClass: "k-icon k-i-plus"
