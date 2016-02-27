@@ -8,12 +8,13 @@ define(['jquery',
  'core/layout', 'modules/left/Button/BtnAdd',
   'core/request'
  ],
-  function($, Login, cookies, layout,btn,request){
+  function($, Login, cookies, layout,BtnAdd,request){
   'use strict';
   
   //global vars
     var AUTH_STR = "auth",
 	 login,
+	 btnPlus,
 	 //create,
 	 user = null;
 
@@ -46,9 +47,14 @@ define(['jquery',
  
   function startApp(){  
     layout.createLayout("3W", "#container"); //create layout
-	btn.createBtnPlus("+","#task");
-	btn.$.find(".open-button").on('click', function(){console.log("in main");});//event click go to startWin()
-	//console.log("in main" ,btn.getJqueryBtn().find());//getJqueryBtn
+	
+	//create btn plus left side in buttom
+	btnPlus = new BtnAdd();
+	btnPlus.appendTo("#task");
+	
+	
+	
+	
   }//end startApp
 
   

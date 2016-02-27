@@ -3,31 +3,21 @@
   function($, template){
 	'use strict';
 	
-	function getBtnPlus(type){
-		var btnPlusHtml = $(template);
-		return $(btnPlusHtml);
+	function BtnAdd(initObj){
+		initObj = initObj || {};
+		var that = this;
+		this._dfd = $.Deferred();
+		var htmlDom = this.$ = $(template);
 	}
-	
-	function createBtnPlus(type, selector){
-		var jBtnPlus = getBtnPlus(type);
-		jBtnPlus.appendTo(selector);//
-		
-		$(".open-button").kendoButton({
-		 spriteCssClass: "k-icon k-i-plus"
-		 });
-	}
-	
-	function getJqueryBtn(){
-		var btnPlusHtml = $(template);
-		return $(btnPlusHtml);
-	}
-	
 
-	return {
-		createBtnPlus : createBtnPlus,
-		getJqueryBtn : getJqueryBtn
+	
+	BtnAdd.prototype.appendTo = function (elem){
+		if (this.$){
+			this.$.appendTo($(elem)) //#task	
+		} else {
+			console.log("no element to button plus");
+		}
 	}
-	
-	
-	
+
+	return BtnAdd;	
 	});
