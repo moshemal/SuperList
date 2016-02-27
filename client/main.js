@@ -47,7 +47,8 @@ define(['jquery',
   function startApp(){  
     layout.createLayout("3W", "#container"); //create layout
 	btn.createBtnPlus("+","#task");
-	console.log("in main" ,btn.$.find('.open-button'));
+	btn.$.find(".open-button").on('click', function(){console.log("hello");});//btn.$ = undifined
+	//console.log("in main" ,btn.getJqueryBtn().find());//getJqueryBtn
   }//end startApp
 
   

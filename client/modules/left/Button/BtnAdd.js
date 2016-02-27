@@ -17,9 +17,15 @@
 		 });
 	}
 	
+	function getJqueryBtn(){
+		var btnPlusHtml = $(template);
+		return $(btnPlusHtml);
+	}
+	
 
 	return {
-		createBtnPlus : createBtnPlus
+		createBtnPlus : createBtnPlus,
+		getJqueryBtn : getJqueryBtn
 	}
 	
 	
