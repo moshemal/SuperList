@@ -5,19 +5,19 @@
 /*************************************************************/
 /******Layout for 3 background color for button plus ********/
 /************************************************************/
-/*#bottom-pane {
+#bottom-pane {
 background-color: rgba(66, 45,7, 0.15); 
 /*background-color:pink;*/
-/*}
-*/
+}
+
 
 /*button plus in button 3*/
-#bottom-pane{
+#task{
  background-color: rgba(69, 90,7, 0.12); 
  /*width: 100%;*/ 
  /*position: absolute;*/
 }
-#bottom-pane button {
+#task button {
 size : 10px;
 font-weight: 100;
  width: 100%; 
