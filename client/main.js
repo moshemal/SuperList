@@ -50,8 +50,8 @@ define(['jquery',
 	
 	//create btn plus left side in buttom
 	btnPlus = new BtnAdd();
-	btnPlus.appendTo("#task");
-	
+	btnPlus.appendTo("#bottom-pane");
+	btnPlus.$.find(".open-button").on('click', function(){console.log("hello");});//event click go to startWin()
 	
 	
 	
