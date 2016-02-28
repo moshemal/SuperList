@@ -13,8 +13,8 @@ background-color: rgba(66, 45,7, 0.15);
 
 /*button plus in button 3*/
 #bottom-pane{
- background-color: rgba(66, 45,7, 0.15); 
- width: 100%; 
+ background-color: rgba(69, 90,7, 0.12); 
+ /*width: 100%;*/ 
  /*position: absolute;*/
 }
 #bottom-pane button {
