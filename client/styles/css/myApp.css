@@ -5,10 +5,11 @@
 /*************************************************************/
 /******Layout for 3 background color for button plus ********/
 /************************************************************/
-#bottom-pane {
+/*#bottom-pane {
 background-color: rgba(66, 45,7, 0.15); 
 /*background-color:pink;*/
-}
+/*}
+*/
 
 /*button plus in button 3*/
 #bottom-pane{

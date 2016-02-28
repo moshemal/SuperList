@@ -13,7 +13,10 @@
 	
 	BtnAdd.prototype.appendTo = function (elem){
 		if (this.$){
-			this.$.appendTo($(elem)) //#task	
+			this.$.appendTo($(elem)) //#bottom-pane
+       $(".open-button").kendoButton({
+		 spriteCssClass: "k-icon k-i-plus"
+		 });				
 		} else {
 			console.log("no element to button plus");
 		}
