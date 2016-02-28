@@ -11,12 +11,12 @@ background-color: rgba(66, 45,7, 0.15);
 }
 
 /*button plus in button 3*/
-#task{
+#bottom-pane{
  background-color: rgba(66, 45,7, 0.15); 
  width: 100%; 
  /*position: absolute;*/
 }
-#task button {
+#bottom-pane button {
 size : 10px;
 font-weight: 100;
  width: 100%; 

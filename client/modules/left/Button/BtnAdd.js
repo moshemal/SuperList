@@ -5,9 +5,9 @@
 	
 	function BtnAdd(initObj){
 		initObj = initObj || {};
-		var that = this;
-		this._dfd = $.Deferred();
-		var htmlDom = this.$ = $(template);
+		var that = this;//????
+		this._dfd = $.Deferred();//???
+		var htmlDom = this.$ = $(template);//???
 	}
 
 	
