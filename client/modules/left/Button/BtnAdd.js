@@ -14,7 +14,7 @@
 	BtnAdd.prototype.appendTo = function (elem){
 		if (this.$){
 			this.$.appendTo($(elem)) //#bottom-pane
-       $(".open-button").kendoButton({
+       $("#buttonWin").kendoButton({
 		 spriteCssClass: "k-icon k-i-plus"
 		 });				
 		} else {
