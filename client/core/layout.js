@@ -37,7 +37,7 @@ $("#left-pane").kendoSplitter({
 			panes: [
                             { collapsible: true,size:"90px",resizable:true },//top 1
                             { collapsible: false, size: "470",resizable:true  },//middle 2
-                            { collapsible: false, resizable: true, size: "20px" } //buttom 3 button
+                            { collapsible: false, resizable: false, size: "20px" } //buttom 3 button
                         ]
 			
 		});
