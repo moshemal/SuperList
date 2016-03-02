@@ -52,7 +52,7 @@ define(['jquery',
 	btnPlus = new BtnAdd();
 	btnPlus.appendTo("#task");
 	//console.log(btnPlus.$);
-	btnPlus.$.find(".open-button").on('click', function(){console.log("hello");});//event click go to startWin()
+	btnPlus.$.find(".open-button").on('click', function(){console.log("hello world");});//event click go to startWin()
 	
 	
 	
