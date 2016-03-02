@@ -22,7 +22,6 @@ define(['jquery',
 /*If the cookies is expierd do start login*/	
   function startLoggin(){
 	function loginSuccess(){
-      //console.log("check in main 1 ::checking for me if login success");  
       startApp(); //go to function startApp and start the application
       login.destroy(); //delete page of login
     }
@@ -51,8 +50,7 @@ define(['jquery',
 	//create btn plus left side in buttom
 	btnPlus = new BtnAdd();
 	btnPlus.appendTo("#task");
-	//console.log(btnPlus.$);
-	btnPlus.$.find(".open-button").on('click', function(){console.log("hello world");});//event click go to startWin()
+	btnPlus.$.find("#buttonWin").on('click', function(){console.log("hello world");});//event click go to startWin()
 	
 	
 	
