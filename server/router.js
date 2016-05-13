@@ -15,11 +15,9 @@ function route(request, response, postData) {
   var parsedUrl = url.parse(request.url);
   var pathname = parsedUrl.pathname;
 
-  //console.log("About to route a request for " + pathname);
+  console.log("About to route a request for " + pathname);
 
-  if (pathname.indexOf("/api") === 0){
-  //console.log("About to route a request for " + pathname);
- //console.log("About to route a request for " + request.url); 
+  if (pathname.indexOf("/api") === 0){ 
     pathname = "/" + pathname.split("/").slice(2).join("/");
     console.log("in router.js Serving api for Dynamic: ", pathname, " with data: " + postData);
 	console.log("*****************************************************************************");
