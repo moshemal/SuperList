@@ -28,11 +28,21 @@ function createUser (user, properites){
 					});
 					
 			});
-		
-		
-		
 		}//end else
 	})
 }
 
+//
+function getListsView(user){
+	
+	console.log("in server/db.js line 38: ",user);
+	
+	if(user){
+		var files = fs.readdirSync('./db/'+user+'/lists'); //Returns an array of filenames
+	}
+	
+}
+
+
 exports.createUser = createUser;
+exports.getListsView =  getListsView;
