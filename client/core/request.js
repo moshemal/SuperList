@@ -12,7 +12,7 @@ define(['jquery'], function($){
         return $.ajax("/api/login", {
             method: "post",
             success: function(data, a, xhr){
-                console.log(data)
+                console.log("in function login: ",data)
             },
             data: {
                 user: 		name,
