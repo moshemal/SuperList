@@ -89,7 +89,15 @@ define(['jquery',
   
   
   
- request.isLoggedIn().then(function() {startApp();},function(){startLoggin();});
+ request.isLoggedIn().then(
+ function() {
+	 console.log("already login");
+	 startApp();
+	 },
+	 function(){
+		 console.log("please login");
+		 startLoggin();
+		 });
  
  
  

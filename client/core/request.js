@@ -4,7 +4,7 @@ define(['jquery'], function($){
 
     function isLoggedIn(){
         return $.ajax("/api/isLoggedIn", {
-            method: "get"
+            method: "post"
         });
     }
 
