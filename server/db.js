@@ -33,16 +33,24 @@ function createUser (user, properites){
 }
 
 //
-function getListsView(user){
-	
-	console.log("in server/db.js line 38: ",user);
+function getAllListsView(user){
+	console.log("in server/db.js line 37: ",user);
 	
 	if(user){
+		//the path db/user/lists/fileName1...n.json
 		var files = fs.readdirSync('./db/'+user+'/lists'); //Returns an array of filenames
+		var output = [];
+		for(var i = 0 ; i < files.length ;i++){
+		var count = 0 ; //for every fileName(n).json reset in order to count his items
+		//JSON.parce - 
+		count = JSON.parce(fs.readFileSync('./db/' + user + '/lists/' + files[i], 'utf8')).items.length;
+		output.push({title : files[i].split('.')[0] , id : i ,count : count});
 	}
-	
+	return output;
+	}
+	return {}; //return empty
 }
 
 
 exports.createUser = createUser;
-exports.getListsView =  getListsView;
+exports.getAllListsView =  getAllListsView;

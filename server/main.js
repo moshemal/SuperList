@@ -1,3 +1,6 @@
+/*require is used to load a module*/ 
+
+
 
 /*the server will be require to answer on adress that 
 depends on request adress --> it's require URL
@@ -8,7 +11,7 @@ var router 	= require("./router");
 /*the server have to be able to return 
 interent pages --> he need to have a compenent that 
 fill http request*/
-var http		= require("http"); 
+var http	= require("http"); 
 
 function start(route){
 
