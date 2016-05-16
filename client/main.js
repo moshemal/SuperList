@@ -4,19 +4,19 @@
 
 define(['jquery', 
 'modules/Login/Login', 
-'core/cookies',
+//'core/cookies',
  'core/layout', 
- 'modules/left/Button/BtnAdd','modules/left/Window/Window',
+ //'modules/left/Button/BtnAdd','modules/left/Window/Window',
   'core/request'
  ],
-  function($, Login, cookies, layout,BtnAdd,Window,request){
+  function($, Login, /*cookies,*/ layout,/*BtnAdd,Window,*/request){
   'use strict';
   
   //global vars
     var AUTH_STR = "auth",
 	 login,
-	 btnPlus,
-	 winAdd,
+	 //btnPlus,
+	 //winAdd,
 	 //create,
 	 user = null;
 
@@ -42,6 +42,7 @@ define(['jquery',
 /**********************************************************************************************/
 /************************** WINDOW OF NEW TASK *************************************************/  
 /**********************************************************************************************/  	
+  /*
   function winAddTask(){
 	function addTaskSuccess(){
       continueApp(); //
@@ -56,7 +57,7 @@ define(['jquery',
     
 	winAdd.getPromise().then(addTaskSuccess, addTaskFail);//  
   }//
- 
+ */
  
  
  
@@ -68,22 +69,18 @@ define(['jquery',
   function startApp(){  
     layout.createLayout("3W", "#container"); //create layout
 	
-	//create btn plus left side in buttom
+	/*create btn plus left side in buttom
 	btnPlus = new BtnAdd();
 	btnPlus.appendTo("#task");
 	btnPlus.$.find("#buttonWin").on('click', function(){
 		console.log("hello world");
 		winAddTask();
 		});//event click go to winAddTask()
-	
-	
-	
+		*/
+		
   }//end startApp
 
-  var i =0;
-  function continueApp(){
-	console.log("hello world "+i++);    
-  }
+  
   
   
   

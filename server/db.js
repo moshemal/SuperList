@@ -35,7 +35,6 @@ function createUser (user, properites){
 //
 function getAllListsView(user){
 	console.log("in server/db.js line 37: ",user);
-	
 	if(user){
 		//the path db/user/lists/fileName1...n.json
 		var files = fs.readdirSync('./db/'+user+'/lists'); //Returns an array of filenames
