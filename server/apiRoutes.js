@@ -24,11 +24,12 @@ function isLoggedIn(response, parsedUrl, postData, request){
 	var cks = cookies.parseCookies(request);
     console.log("welcome to isLoggedIn line 25 in apiRouter.js\n");
 	if (auth.isLoggedIn(cks)){
+		console.log("in line 27 function isLoggedIn in apiRouters.js \n ");
         response.writeHead(200, {
 			"Content-Type": "text/plain"
 			});
     }else{
-	console.log("in line 29 apiRouters ");//parsedUrl=Objecet
+	console.log("in line 32 function isLoggedIn in apiRouters.js \n ");//parsedUrl=Objecet
         response.writeHead(401, {
 			"Content-Type": "text/plain"
 			});		
