@@ -44,6 +44,8 @@ function login(response, parsedUrl, postData){
 function isLoggedIn (cookies){
 	var token = cookies[AUTH_KEY];
 	var user = cookies["user"];
+	console.log("in line 47  function isLoggedIn in  auth.js",user,token);
+	
 	return (token && user && sessions[user] == token); 
 }
 
