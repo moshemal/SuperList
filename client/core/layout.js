@@ -1,5 +1,5 @@
-define(['jquery', 'text!./templates/l3W.html', 'kendo'], 
-	function($, l3W){
+define(['jquery', 'text!./templates/l3W.html','modules/left/List/List' ,'kendo'], 
+	function($, l3W, leftLst){
 		'use strict';
 	//console.log($);
 	
@@ -24,6 +24,10 @@ define(['jquery', 'text!./templates/l3W.html', 'kendo'],
 		});
 		jLayout.appendTo(selector);
 		
+		leftLst.createListView($("#left-pane")); //left side list view
+		
+		
+		
 		//the craetion of kendo from libery vendours of kendoSplitter
 		jLayout.kendoSplitter({
 		panes: [
@@ -31,7 +35,7 @@ define(['jquery', 'text!./templates/l3W.html', 'kendo'],
                { collapsible: false },//4
                { collapsible: true, size: "22px"}//,resizable: true }//5
                 ]});
-
+/*
 $("#left-pane").kendoSplitter({
 			orientation: "vertical",
 			panes: [
@@ -41,7 +45,7 @@ $("#left-pane").kendoSplitter({
                         ]
 			
 		});
-
+*/
 
 				
 	}

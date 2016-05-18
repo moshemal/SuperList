@@ -64,7 +64,11 @@ var getAllListView = function(listName){
     };
 
 
-
+return {
+	createListView : createListView
+	
+	
+}
 
 }); 
 
