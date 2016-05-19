@@ -22,11 +22,13 @@ var  createListView = function(selector){
                 }
             }
         });
+		
+		console.log("hello ");
 
-        getAllListView();	
+        getAllLists();	
     };
 
-var getAllListView = function(listName){
+var getAllLists = function(listName){
 	console.log("in line 32 list.js getAllLists");
 	
 	var promise = request.getAllLists();
@@ -46,9 +48,9 @@ var getAllListView = function(listName){
                 });
             }
 			
-			$(".listView button").kendoButton({
-                spriteCssClass: "k-icon k-i-pencil"  
-            });
+			//$(".listView button").kendoButton({
+              //  spriteCssClass: "k-icon k-i-pencil"  
+            //});
    
    for(var i=0; i<updateFunctions.length; i++){
                 updateFunctions[i]('');
@@ -64,8 +66,8 @@ var getAllListView = function(listName){
 
 
 return {
-	createListView : createListView
-	
+	createListView : createListView,
+	getAllLists : getAllLists
 	
 }
 
