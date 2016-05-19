@@ -44,7 +44,7 @@ var handle = {
 	"/login": 			auth.login,
 	"/upload":      decorateWithIsloggedIn(requestHandlers.upload),//will be called before we even get to main.js decorateWithIsloggedIn
    
-   "/getAllListsView" : decorateWithIsloggedIn(requestHandlers.getAllListsView)
+   "/getAllLists" : decorateWithIsloggedIn(requestHandlers.getAllLists)
    
 }
 
