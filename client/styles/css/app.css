@@ -113,3 +113,31 @@
   color: #333333;
   text-decoration: none;
 }
+
+
+
+#left-pane {
+    background-color: khaki;
+}
+
+#left-pane h1 {
+    text-align: center;
+}
+
+#listView {
+    margin-top: 30px;
+}
+.listView {
+    height: 35px;
+}
+
+.listView .title{
+    margin-top: 8px;
+    float: left;
+    margin-left: 20px;
+}
+
+.listView p {
+    margin: 8px;
+    float: right;
+}

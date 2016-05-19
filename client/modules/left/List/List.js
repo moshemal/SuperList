@@ -47,7 +47,7 @@ var createListView = function(selector){
 
 
 return {
-	createListView: createListView,
+	createListView : createListView,
         getListView: getListView
 	
 }
