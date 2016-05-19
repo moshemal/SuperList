@@ -36,7 +36,7 @@ function getAllListsView(user){
 		for(var i = 0 ; i < files.length ;i++){
 		var count = 0 ; //for every fileName(n).json reset in order to count his items
 		//JSON.parce - 
-		count = JSON.parce(fs.readFileSync('./db/' + user + '/lists/' + files[i], 'utf8')).items.length;
+		var count = JSON.parce(fs.readFileSync('./db/' + user + '/lists/' + files[i], 'utf8')).items.length;
 		output.push({title : files[i].split('.')[0] , id : i ,count : count});
 	}
 	return output;
