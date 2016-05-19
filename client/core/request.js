@@ -33,7 +33,8 @@ define(['jquery'], function($){
 
 	return {
         isLoggedIn:  isLoggedIn,
-		login:       login
+		login:       login ,
+		getAllLists : getAllLists
         
 	}
 });
