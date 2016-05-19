@@ -10,7 +10,7 @@ console.log("welcome to upload line 6 in RH.js");
   response.end();
 }
 
-function getAllLists(response, pathname, postData,request,user) {
+function getAllListsView(response, pathname, postData,request,user) {
   console.log("welcome to getAllListsView line 14 in RH.js");
 
   response.writeHead(200, {"Content-Type": "application/json"});
@@ -22,5 +22,5 @@ function getAllLists(response, pathname, postData,request,user) {
 
 
 exports.upload      = upload;
-exports.getAllLists = getAllLists;
+exports.getAllListsView = getAllListsView;
 

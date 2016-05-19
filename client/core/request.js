@@ -22,9 +22,9 @@ define(['jquery'], function($){
     }
 
    
-   function getAllLists(){
-  console.log("this is request all list");
-     return $.ajax("/api/getAllLists",{
+   function getAllListsView(){
+  //console.log("this is request all list");
+     return $.ajax("/api/getAllListsView",{
 	 method :"get" 
 	 });
   } 
@@ -34,7 +34,7 @@ define(['jquery'], function($){
 	return {
         isLoggedIn:  isLoggedIn,
 		login:       login ,
-		getAllLists : getAllLists
+		getAllListsView : getAllListsView
         
 	}
 });
