@@ -20,7 +20,7 @@ var  createListView = function(selector){
               //  for(var i=0; i<updateFunctions.length; i++){
               //      updateFunctions[i]($(select[0]).find(".title").html());
                // }
-            }
+            //}
         });
 		
 		console.log("hello ");
