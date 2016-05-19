@@ -4,7 +4,6 @@ function createUser (user, properites){
 	fs.stat('./db/' + user, function(err, stat){
 	//console.log("in db.js "+properites);
 		if (stat){
-	
 			return;
 		} 
 		else {
@@ -12,21 +11,16 @@ function createUser (user, properites){
 			
 			function(){
 					fs.mkdir('./db/' + user + '/lists', //file db --> file user --> file list  
-					
-					
 					function(){
 					//file db -->file user --> properties.json
 				        //properites={
 						//"full": "value",
                         //	"job: "value"					
 						//}
-						var e =[];
-						
+						var e =[];	
 						fs.writeFile('./db/' + user + '/properites.json', properites , 'utf8');
 						fs.writeFile('./db/' + user + '/lists/list.json', JSON.stringify(e) , 'utf8');
-						
 					});
-					
 			});
 		}//end else
 	})
@@ -34,7 +28,7 @@ function createUser (user, properites){
 
 //
 function getAllListsView(user){
-	console.log("in server/db.js line 37: ",user);
+	console.log("in server/db.js line 31: ",user);
 	if(user){
 		//the path db/user/lists/fileName1...n.json
 		var files = fs.readdirSync('./db/'+user+'/lists'); //Returns an array of filenames
@@ -46,7 +40,8 @@ function getAllListsView(user){
 		output.push({title : files[i].split('.')[0] , id : i ,count : count});
 	}
 	return output;
-	}
+	}//end of if
+	
 	return {}; //return empty
 }
 
