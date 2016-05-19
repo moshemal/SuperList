@@ -35,6 +35,11 @@ font-weight: 100;
 /**********************Window adding NEW TASK******************/
 /*************************************************************/
 
+
+ul .add-task-buttons{
+list-style-type: none;
+}
+
 .cancel-btn{
     /*margin-right: 11px;*/
     /*margin-left: 90px;*/

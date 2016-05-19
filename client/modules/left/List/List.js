@@ -3,77 +3,58 @@ function($, template,request){
 'use strict';
 
 
-var updateFunctions = [] ;
+//var updateFunctions = [] ;
 var listView = $(template);
 
 
 
-var  createListView = function(selector){
-        $("<h1>Listttt</h1>").appendTo(selector);
-		listView.appendTo(selector);
-        console.log("hello ");
-		
-		
+var createListView = function(selector){
+
+        $("<h1>Lists</h1>").appendTo(selector);
+        listView.appendTo(selector);
+        
+        //
         listView.kendoListView({
             template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
-            selectable: true 
-			//,
-            /*change: function(){
-              //  var select = this.select();
-              //  for(var i=0; i<updateFunctions.length; i++){
-              //      updateFunctions[i]($(select[0]).find(".title").html());
-               // }
-            //}*/
-		});
-		
-		console.log("hello ");
+            selectable: true  
+        });
 
-        getAllLists();	
+        getListView();
     };
-
-var getAllLists = function(listName){
-	console.log("in line 32 list.js getAllLists");
 	
-	var promise = request.getAllLists();
-	 promise.then(function(data){
-		var list = listView.data("kendoListView");
-		var dataSource = new kendo.data.DataSource({
+	
+	
+	
+ var getListView = function(listName){
+        request.getListView().then(function(data){
+            var list = listView.data("kendoListView");
+            var dataSource = new kendo.data.DataSource({
                 data: data
             });
-			
             list.setDataSource(dataSource);
             list.refresh();
-			
-			 if(listName){
+
+            if(listName){
                 $(list.element).find(".title").each(function(){
                     if($(this).html() == listName)
                         list.select($(this).parent());
                 });
-            }
-			
-			//$(".listView button").kendoButton({
-              //  spriteCssClass: "k-icon k-i-pencil"  
-            //});
-   
-   /*for(var i=0; i<updateFunctions.length; i++){
-                updateFunctions[i]('');}*/
-       
-		});	
-		};
-
-
- var addFunctionForChanges = function(func){
-        updateFunctions.push(func);
+            }     
+        })
     };
 
 
+
+
 return {
-	createListView : createListView ,
-	getAllLists : getAllLists
+	createListView: createListView,
+        getListView: getListView
 	
 }
 
 }); 
+
+
 
 
 
