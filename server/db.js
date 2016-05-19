@@ -39,6 +39,7 @@ function getAllListsView(user){
 		//JSON.parce - 
 		
 		 var count = JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + files[i], 'utf8')).items.length;
+		 console.log("in  ",count);
 		output.push({title : files[i].split('.')[0] , id : i ,count : count});
 	}
 	return output;
