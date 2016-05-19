@@ -9,7 +9,7 @@ var listView = $(template);
 
 
 var  createListView = function(selector){
-        $("<h1>List</h1>").appendTo(selector);
+        $("<h1>List!!!</h1>").appendTo(selector);
 		listView.appendTo(selector);
         console.log("hello ");
         listView.kendoListView({
