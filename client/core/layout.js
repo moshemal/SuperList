@@ -28,7 +28,7 @@ define(['jquery', 'text!./templates/l3W.html','modules/left/List/List' ,'kendo']
 		
 		
 		
-		//the craetion of kendo from libery vendours of kendoSplitter
+		//the craetion of kendo from libery vendours of kendoSplitter hj
 		jLayout.kendoSplitter({
 		panes: [
                { collapsible: true, size: "250px" },//123
