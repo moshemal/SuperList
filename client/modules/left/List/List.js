@@ -12,6 +12,8 @@ var  createListView = function(selector){
         $("<h1>Listttt</h1>").appendTo(selector);
 		listView.appendTo(selector);
         console.log("hello ");
+		
+		
         listView.kendoListView({
             template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
             selectable: true 
@@ -53,13 +55,10 @@ var getAllLists = function(listName){
               //  spriteCssClass: "k-icon k-i-pencil"  
             //});
    
-   //for(var i=0; i<updateFunctions.length; i++){
-               // updateFunctions[i]('');
-           // }
+   /*for(var i=0; i<updateFunctions.length; i++){
+                updateFunctions[i]('');}*/
        
 		});	
-
-		
 		};
 
 
@@ -69,7 +68,7 @@ var getAllLists = function(listName){
 
 
 return {
-	createListView : createListView,
+	createListView : createListView ,
 	getAllLists : getAllLists
 	
 }
