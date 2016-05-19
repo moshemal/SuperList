@@ -50,7 +50,7 @@ function isLoggedIn (cookies){
 }
 
 function getLoggedIn(cookies){
-	conosle.log("line 53 function getLoggedIn in auth.js",cookies["user"]);
+	console.log("line 53 function getLoggedIn in auth.js "+cookies["user"]);
     return cookies["user"];
 }
 
