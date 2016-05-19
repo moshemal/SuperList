@@ -1,7 +1,7 @@
 var requestHandlers = require("./requestHandlers");
 var auth 						= require("./auth");
 var cookies					= require("./cookies");
-//var db							= require('./db');
+var db							= require('./db');
 
 
 
