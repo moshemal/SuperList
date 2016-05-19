@@ -14,7 +14,8 @@ var  createListView = function(selector){
         console.log("hello ");
         listView.kendoListView({
             template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
-            selectable: true //,
+            selectable: true 
+			//,
             /*change: function(){
               //  var select = this.select();
               //  for(var i=0; i<updateFunctions.length; i++){
@@ -57,7 +58,9 @@ var getAllLists = function(listName){
            // }
        
 		});	
-};
+
+		
+		};
 
 
  var addFunctionForChanges = function(func){
