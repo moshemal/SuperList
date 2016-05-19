@@ -18,13 +18,13 @@ var createListView = function(selector){
             selectable: true  
         });
 console.log("hello2");
-        getListView();
+        getAllLists();
     };
 	
 	
 	
 	
- var getListView = function(listName){
+ var getAllLists = function(listName){
 	 console.log("hello3");
         request.getAllLists().then(function(data){
             var list = listView.data("kendoListView");
@@ -49,7 +49,7 @@ console.log("hello2");
 
 return {
 	createListView : createListView,
-        getListView: getListView
+       getAllLists: getAllLists
 	
 }
 
