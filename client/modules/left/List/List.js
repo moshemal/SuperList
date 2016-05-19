@@ -11,15 +11,15 @@ var listView = $(template);
 var  createListView = function(selector){
         $("<h1>List</h1>").appendTo(selector);
 		listView.appendTo(selector);
-        
+        console.log("hello ");
         listView.kendoListView({
             template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
-            selectable: true,
-            change: function(){
-                var select = this.select();
-                for(var i=0; i<updateFunctions.length; i++){
-                    updateFunctions[i]($(select[0]).find(".title").html());
-                }
+            selectable: true //,
+            //change: function(){
+              //  var select = this.select();
+              //  for(var i=0; i<updateFunctions.length; i++){
+              //      updateFunctions[i]($(select[0]).find(".title").html());
+               // }
             }
         });
 		
@@ -52,9 +52,9 @@ var getAllLists = function(listName){
               //  spriteCssClass: "k-icon k-i-pencil"  
             //});
    
-   for(var i=0; i<updateFunctions.length; i++){
-                updateFunctions[i]('');
-            }
+   //for(var i=0; i<updateFunctions.length; i++){
+               // updateFunctions[i]('');
+           // }
        
 		});	
 };
