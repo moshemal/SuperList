@@ -26,7 +26,7 @@ var createListView = function(selector){
 	
 	
  var getListView = function(listName){
-        request.getListView().then(function(data){
+        request.getAllLists().then(function(data){
             var list = listView.data("kendoListView");
             var dataSource = new kendo.data.DataSource({
                 data: data
