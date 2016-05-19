@@ -27,13 +27,12 @@ var  createListView = function(selector){
     };
 
 var getAllListView = function(listName){
+	console.log("in line 32 list.js getAllLists");
 	
 	var promise = request.getAllLists();
-	console.log("in line 32 list.js getAllLists");
-	promise.then(function(data){
+	 promise.then(function(data){
 		var list = listView.data("kendoListView");
-            
-			var dataSource = new kendo.data.DataSource({
+		var dataSource = new kendo.data.DataSource({
                 data: data
             });
 			
