@@ -32,7 +32,7 @@ function route(request, response, postData){
       handle[pathname](response, parsedUrl, postData, request) :
       notFound(response);
   } else {
-   console.log("in router.js Serving static for: " + pathname);
+   //console.log("in router.js Serving static for: " + pathname);
     staticServer.serve(request, response);
   }
 }
