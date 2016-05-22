@@ -17,6 +17,8 @@ var createListView = function(selector){
             template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
             selectable: true  
         });
+		
+		console.log("type of" , listView);
 console.log("hello2");
         getAllListsView();
     };
