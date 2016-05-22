@@ -26,7 +26,7 @@ console.log("hello2");
 	
  var getAllListsView = function(listName){
 	 console.log("hello3");
-        request.getAllLists().then(function(data){
+        request.getAllListsView().then(function(data){
             var list = listView.data("kendoListView");
             var dataSource = new kendo.data.DataSource({
                 data: data
@@ -62,7 +62,8 @@ return {
 	
 
 /**
-define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.html', 'text!./editWindow.html', 'core/request', 'kendo'], function($, list, button, addWindow, editWindow, request){
+define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.html', 'text!./editWindow.html',
+ 'core/request', 'kendo'], function($, list, button, addWindow, editWindow, request){
 
     var updateFunctions = [];
     var listView = $(list);
