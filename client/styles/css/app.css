@@ -156,10 +156,11 @@ display: block;
  }
  
  .listView button .k-i-pencil{
-    
     width: 16px;
     height: 16px;
-	padding-right: .14em;
     float: right;
  }
  
+ body .k-button-icon {
+    padding-right: .14em;
+}
