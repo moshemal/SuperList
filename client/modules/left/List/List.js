@@ -9,34 +9,36 @@ var listView = $(template);
 
 
 var createListView = function(selector){
+	
+	/*append the list to the layout*/
         $("<h1>Lists</h1>").appendTo(selector);
         listView.appendTo(selector);
   
-		console.log("hello1");//for debug
-		
+	/*define a list view from kendo ui*/
         listView.kendoListView({
             template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
-            selectable: true  
+            selectable: true  //witch element will be edited
         });
-       console.log("hello2");//for debug
+      
         getAllListsView();
+		console.log("hello 6");
     };
 	
 	
 	
 	
  var getAllListsView = function(listName){
-	 console.log("hello3");
-	 var promise = request.getAllListsView();
+	
+	 var promise = request.getAllListsView();//form request.js getting the DB from the server
 		 
        promise.then(function(data){
 		   console.log("hello 4");
-            var list = listView.data("kendoListView");
-            var dataSource = new kendo.data.DataSource({
+            var list = listView.data("kendoListView");//
+            var dataSource = new kendo.data.DataSource({//the data
                 data: data
             });
-            list.setDataSource(dataSource);
-            list.refresh();
+            list.setDataSource(dataSource);//insert the data of the list
+            list.refresh();//was recommand to do will find a better explain
 
 			/*
             if(listName){
@@ -49,7 +51,7 @@ var createListView = function(selector){
 		function(){
 			console.log("failed");		
 		});
-		console.log("hello 5 this is print before 'hello 4' and the request dont know why\n" 
+		console.log("hello 5 this is print before 'hello 4'\n and the request dont know why\n" 
 		+ "have TIME OUT we might ");//this is print 
 		return false;
     };
