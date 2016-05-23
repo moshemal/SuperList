@@ -23,7 +23,7 @@ define(['jquery'], function($){
 
    
    function getAllListsView(){
-  //console.log("this is request all list");
+  console.log("this is request all list");
      return $.ajax("/api/getAllListsView",{
 	 method :"get" 
 	 });

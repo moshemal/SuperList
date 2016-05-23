@@ -41,12 +41,13 @@ var createListView = function(selector){
             list.setDataSource(dataSource);
             list.refresh();
 
+			/*
             if(listName){
                 $(list.element).find(".title").each(function(){
                     if($(this).html() == listName)
                         list.select($(this).parent());
                 });
-            }     
+            }*/     
         });
 		console.log("hello 5");
 		return false;
