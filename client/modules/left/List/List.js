@@ -48,7 +48,13 @@ var createListView = function(selector){
                         list.select($(this).parent());
                 });
             }*/     
-        });
+        },
+		function(){
+			console.log("failed");
+			
+			
+			
+		});
 		console.log("hello 5");
 		return false;
     };
