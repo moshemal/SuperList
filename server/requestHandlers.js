@@ -23,9 +23,8 @@ function getAllListsView(response, pathname, postData,request,user) {
 
 
 function getAllItems(response, pathname, postData,request,user){
-
   var parsedQuery = querystring.parse(postData);
-  console.log("welcome to getAllItems line 28 in RH.js",parsedQuery.listName);
+   console.log("welcome to getAllItems line 28 in RH.js",parsedQuery.listName);
    console.log("welcome to getAllItems line 29 in RH.js typeof",typeof parsedQuery.listName);
  
    if(parsedQuery.listName != "" ){       		 
@@ -41,5 +40,5 @@ function getAllItems(response, pathname, postData,request,user){
 }
 
 exports.upload      = upload;
-exports.getAllListsView = getAllListsView;
-exports.getAllItems = getAllItems;
+exports.getAllListsView = getAllListsView; //left
+exports.getAllItems = getAllItems; //middle

@@ -36,7 +36,7 @@ define(['jquery'], function($){
         isLoggedIn:  isLoggedIn,
 		login:       login ,
 		
-		getAllListsView : getAllListsView,
+		getAllListsView : getAllListsView
 		
 		//getAllItems : getAllItems
         

@@ -57,7 +57,7 @@ function getAllItems(user,listName){
 	console.log("in server/db.js line 57: ",listName);
 	console.log("################################");
 	if(user){
-		  return  JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + listName, 'utf8')).items.length;
+		  return  JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + listName+".json", 'utf8'));
 	}	
 	return {}; //return empty
 }
@@ -65,4 +65,7 @@ function getAllItems(user,listName){
 
 
 exports.createUser = createUser;
-exports.getAllListsView =  getAllListsView;
+
+exports.getAllListsView =  getAllListsView;//left
+
+exports.getAllItems =  getAllItems;//middle
