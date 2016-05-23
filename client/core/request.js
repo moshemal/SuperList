@@ -25,7 +25,8 @@ define(['jquery'], function($){
    function getAllListsView(){
   console.log("this is request all list");
      return $.ajax("/api/getAllListsView",{
-	 method :"get" 
+	 method :"get" ,
+	 success: function(data, a, xhr){console.log(data)}
 	 });
   } 
    
