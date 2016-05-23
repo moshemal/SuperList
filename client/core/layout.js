@@ -28,13 +28,23 @@ define(['jquery', 'text!./templates/l3W.html','modules/left/List/List' ,'kendo']
 		
 		
 		
-		//the craetion of kendo from libery vendours of kendoSplitter hj
+		/*the craetion of kendo from libery vendours of kendoSplitter hj
 		jLayout.kendoSplitter({
 		panes: [
                { collapsible: true, size: "250px" },//123
                { collapsible: false },//4
                { collapsible: true, size: "22px"}//,resizable: true }//5
                 ]});
+				
+				*/
+				jLayout.kendoSplitter({
+            orientation: "horizontal",
+            panes: [
+                { collapsible: true, size: "30%", max: "30%" },
+                { collapsible: false },
+                { collapsible: true, size: "40%", max: "40%" }
+            ]
+        });
 /*
 $("#left-pane").kendoSplitter({
 			orientation: "vertical",
