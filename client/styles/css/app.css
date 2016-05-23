@@ -145,3 +145,7 @@
 .listView  .k-insertUnorderedList{
     float: left;
 }
+
+.listView button {
+     float: right;
+ }
