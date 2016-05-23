@@ -11,7 +11,8 @@ var listView = $(template);
 var createListView = function(selector){
         $("<h1>Lists</h1>").appendTo(selector);
         listView.appendTo(selector);
-        console.log("hello1");
+        
+		console.log("hello1");
         //
         listView.kendoListView({
             template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
@@ -19,7 +20,7 @@ var createListView = function(selector){
         });
 		
 		console.log("type of" , listView);
-console.log("hello2");
+       console.log("hello2");
         getAllListsView();
     };
 	
@@ -28,7 +29,11 @@ console.log("hello2");
 	
  var getAllListsView = function(listName){
 	 console.log("hello3");
-        request.getAllListsView().then(function(data){
+	 var promise = request.getAllListsView();
+	 
+	 
+       promise.then(function(data){
+		   console.log("hello 4");
             var list = listView.data("kendoListView");
             var dataSource = new kendo.data.DataSource({
                 data: data
@@ -43,7 +48,7 @@ console.log("hello2");
                 });
             }     
         });
-		console.log("hello4");
+		console.log("hello 5");
     };
 
 
