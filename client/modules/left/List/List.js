@@ -16,12 +16,12 @@ var createListView = function(selector){
   
 	/*define a list view from kendo ui*/
         listView.kendoListView({
-            template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
+            template: '<div class="listView"><span class="k-icon k-insertUnorderedList"></span><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
             selectable: true  //witch element will be edited
         });
       
         getAllListsView();
-		console.log("hello 6");
+		console.log("hello 6");//hello 4 is last need to see what will i do with this
     };
 	
 	
