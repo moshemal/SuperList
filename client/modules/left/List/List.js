@@ -11,16 +11,14 @@ var listView = $(template);
 var createListView = function(selector){
         $("<h1>Lists</h1>").appendTo(selector);
         listView.appendTo(selector);
-        
-		console.log("hello1");
-        //
+  
+		console.log("hello1");//for debug
+		
         listView.kendoListView({
             template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
             selectable: true  
         });
-		
-		console.log("type of" , listView);
-       console.log("hello2");
+       console.log("hello2");//for debug
         getAllListsView();
     };
 	
@@ -49,12 +47,10 @@ var createListView = function(selector){
             }*/     
         },
 		function(){
-			console.log("failed");
-			
-			
-			
+			console.log("failed");		
 		});
-		console.log("hello 5");
+		console.log("hello 5 this is print before 'hello 4' and the request dont know why\n" 
+		 "have TIME OUT we might ");//this is print 
 		return false;
     };
 
