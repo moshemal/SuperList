@@ -39,6 +39,12 @@ var createListView = function(selector){
             });
             list.setDataSource(dataSource);//insert the data of the list
             list.refresh();//was recommand to do will find a better explain
+			
+			
+			
+			$(".listView  button").kendoButton({
+               spriteCssClass: "k-icon k-i-pencil" 	  
+           });   
 
 			/*
             if(listName){
