@@ -30,8 +30,7 @@ var createListView = function(selector){
  var getAllListsView = function(listName){
 	 console.log("hello3");
 	 var promise = request.getAllListsView();
-	 
-	 
+		 
        promise.then(function(data){
 		   console.log("hello 4");
             var list = listView.data("kendoListView");
