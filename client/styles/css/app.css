@@ -141,3 +141,7 @@
     margin: 8px;
     float: right;
 }
+/*the icon on the left of every task*/	  
+.listsOfView  .k-insertUnorderedList{
+    float: left;
+}
