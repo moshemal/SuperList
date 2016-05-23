@@ -21,7 +21,7 @@ var createListView = function(selector){
 			change : function(){//Fires when the list view selection has changed.
 				//handle event
 				var select = this.select; //jQuery the selected items if called without arguments.
-				console.log($(select));
+				console.log($(select[1]));
 				console.log($(select[0]).find(".title").html());
 			}
 			
