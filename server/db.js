@@ -38,8 +38,9 @@ function getAllListsView(user){
 		var count = 0 ; //for every fileName(n).json reset in order to count his items
 		//JSON.parce - 
 		
-		 var count = JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + files[i], 'utf8')).items.length;
-		 console.log("in  ",count);
+		  count = JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + files[i], 'utf8')).items.length;
+		 console.log("in of task",count);
+		 console.log("in of task", files[i].split('.')[0]);
 		output.push({title : files[i].split('.')[0] , id : i ,count : count});
 	}
 	return output;
