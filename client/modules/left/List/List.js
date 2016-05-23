@@ -50,7 +50,7 @@ var createListView = function(selector){
 			console.log("failed");		
 		});
 		console.log("hello 5 this is print before 'hello 4' and the request dont know why\n" 
-		 "have TIME OUT we might ");//this is print 
+		+ "have TIME OUT we might ");//this is print 
 		return false;
     };
 
