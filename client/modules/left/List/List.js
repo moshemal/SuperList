@@ -49,6 +49,7 @@ var createListView = function(selector){
             }     
         });
 		console.log("hello 5");
+		return false;
     };
 
 
