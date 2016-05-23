@@ -157,10 +157,9 @@ display: block;
  
  .listView button .k-i-pencil{
     
-	 right: 10px;
-display: block;
-  width: 16px;
-  height: 16px;
-   /*float: right;*/
+    width: 16px;
+    height: 16px;
+	padding-right: .14em;
+    float: right;
  }
  
