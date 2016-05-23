@@ -148,4 +148,8 @@
 
 .listView button {
      float: right;
+	 right: 10px;
+display: block;
+  width: 16px;
+  height: 16px;
  }
