@@ -3,7 +3,7 @@ function($, template,request){
 'use strict';
 
 
-//var updateFunctions = [] ;
+var updateFunctions = [] ;
 var listView = $(template);
 
 
@@ -17,7 +17,13 @@ var createListView = function(selector){
 	/*define a list view from kendo ui*/
         listView.kendoListView({
             template: '<div class="listView"><span class="k-icon k-insertUnorderedList"></span><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
-            selectable: true  //witch element will be edited
+            selectable: true,  //witch element will be edited
+			change : function(){//Fires when the list view selection has changed.
+				//handle event
+				var select = this.select; //jQuery the selected items if called without arguments.
+				
+			}
+			
         });
       
         getAllListsView();
@@ -39,8 +45,6 @@ var createListView = function(selector){
             });
             list.setDataSource(dataSource);//insert the data of the list
             list.refresh();//was recommand to do will find a better explain
-			
-			
 			
 			$(".listView  button").kendoButton({
                spriteCssClass: "k-icon k-i-pencil" 	  

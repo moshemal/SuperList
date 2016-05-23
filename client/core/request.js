@@ -29,13 +29,16 @@ define(['jquery'], function($){
 	 //success: function(data, a, xhr){console.log(data)}//give type of Array[size of tasks] (array of objects)
 	 });
   } 
-   
-   
+    
+	
 
 	return {
         isLoggedIn:  isLoggedIn,
 		login:       login ,
-		getAllListsView : getAllListsView
+		
+		getAllListsView : getAllListsView,
+		
+		//getAllItems : getAllItems
         
 	}
 });

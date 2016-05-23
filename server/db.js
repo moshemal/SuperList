@@ -52,6 +52,17 @@ function getAllListsView(user){
 	return {}; //return empty
 }
 
+function getAllItems(user,listName){
+	console.log("in server/db.js line 56: ",user);
+	console.log("in server/db.js line 57: ",listName);
+	console.log("################################");
+	if(user){
+		  return  JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + listName, 'utf8')).items.length;
+	}	
+	return {}; //return empty
+}
+
+
 
 exports.createUser = createUser;
 exports.getAllListsView =  getAllListsView;
