@@ -21,6 +21,11 @@ define(['jquery'], function($){
         });
     }
 
+	 function  getAllListsView(){
+        return $.ajax("/api/getAllListsView", {
+            method: "get"
+        });
+    }
    
    function getAllItems(listName){
      return $.ajax("/api/getAllItems",{
