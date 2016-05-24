@@ -28,7 +28,7 @@ define(['jquery', 'text!./templates/l3W.html','modules/left/List/List','modules/
 		midView.createMiddleView($("#center-pane"));//middle side tab strip 
 		
 		
-		leftLst.addFunctionForChanges(view.openNewTab);
+		leftLst.addFunctionForChanges(midView.openNewTab);
 		
 	
 				jLayout.kendoSplitter({
