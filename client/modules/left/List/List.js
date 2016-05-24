@@ -59,7 +59,11 @@ var createListView = function(selector){
                     if($(this).html() == listName)
                         list.select($(this).parent());
                 });
-            }    
+            }
+
+            for(var i=0; i<updateFunctions.length; i++){
+                updateFunctions[i]('');
+            }			
         },
 		function(){
 			console.log("failed");		
