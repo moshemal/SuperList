@@ -22,23 +22,28 @@ define(['jquery'], function($){
     }
 
    
-   function getAllListsView(){
-  console.log("this is request all list");
-     return $.ajax("/api/getAllListsView",{
-	 method :"get" ,
-	 //success: function(data, a, xhr){console.log(data)}//give type of Array[size of tasks] (array of objects)
+   function getAllItems(listName){
+     return $.ajax("/api/getAllItems",{
+	 method :"post" ,
+	 success: function(data, a, xhr){
+		 console.log(data)
+		 },
+		data: {
+			listName : listName
+		} 
 	 });
   } 
-    
+   
+   
 	
 
 	return {
         isLoggedIn:  isLoggedIn,
 		login:       login ,
 		
-		getAllListsView : getAllListsView
+		getAllListsView : getAllListsView,
 		
-		//getAllItems : getAllItems
+		getAllItems : getAllItems
         
 	}
 });

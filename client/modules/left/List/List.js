@@ -76,7 +76,7 @@ var createListView = function(selector){
 
 
 return {
-	createListView : createListView,
+	   createListView : createListView,
        getAllListsView : getAllListsView,
 	   addFunctionForChanges : addFunctionForChanges
 	

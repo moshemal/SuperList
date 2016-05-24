@@ -1,5 +1,5 @@
-define(['jquery', 'text!./templates/l3W.html','modules/left/List/List' ,'kendo'], 
-	function($, l3W, leftLst){
+define(['jquery', 'text!./templates/l3W.html','modules/left/List/List','modules/middle/TabStripMid' ,'kendo'], 
+	function($, l3W, leftLst,midView){
 		'use strict';
 	//console.log($);
 	
@@ -22,21 +22,15 @@ define(['jquery', 'text!./templates/l3W.html','modules/left/List/List' ,'kendo']
 			width: "100%",
 			height: "100%"
 		});
+		
 		jLayout.appendTo(selector);
+		leftLst.createListView($("#left-pane")); //left side list view		
+		midView.createMiddleView($("#center-pane"));//middle side tab strip 
 		
-		leftLst.createListView($("#left-pane")); //left side list view
 		
+		leftLst.addFunctionForChanges(view.openNewTab);
 		
-		
-		/*the craetion of kendo from libery vendours of kendoSplitter hj
-		jLayout.kendoSplitter({
-		panes: [
-               { collapsible: true, size: "250px" },//123
-               { collapsible: false },//4
-               { collapsible: true, size: "22px"}//,resizable: true }//5
-                ]});
-				
-				*/
+	
 				jLayout.kendoSplitter({
             orientation: "horizontal",
             panes: [
@@ -45,17 +39,6 @@ define(['jquery', 'text!./templates/l3W.html','modules/left/List/List' ,'kendo']
                 { collapsible: true, size: "40%", max: "40%" }
             ]
         });
-/*
-$("#left-pane").kendoSplitter({
-			orientation: "vertical",
-			panes: [
-                            { collapsible: true,size:"90px",resizable:true },//top 1
-                            { collapsible: false, size: "470",resizable:true  },//middle 2
-                            { collapsible: false, resizable: false, size: "20px" } //buttom 3 button
-                        ]
-			
-		});
-*/
 
 				
 	}
