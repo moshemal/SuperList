@@ -21,8 +21,10 @@ var createListView = function(selector){
 			change : function(){//Fires when the list view selection has changed.
 				//handle event
 				var select = this.select; //jQuery the selected items if called without arguments.
-				//console.log($(select[1]));
-				console.log($(select[0]).find(".title").html());
+				for(var i=0; i<updateFunctions.length; i++){
+					console.log($(select[0]).find(".title").html());
+                    updateFunctions[i]($(select[0]).find(".title").html());
+                }
 			}
 			
         });
@@ -62,17 +64,21 @@ var createListView = function(selector){
 		function(){
 			console.log("failed");		
 		});
-		console.log("hello 5 this is print before 'hello 4'\n and the request dont know why\n" 
-		+ "have TIME OUT we might ");//this is print 
+		console.log("hello 5  is printed before 'hello 4'+ request\n" 
+		+ "have TIME OUT we might ");
 		return false;
     };
 
 
+	var addFunctionForChanges = function(func){
+        updateFunctions.push(func);
+    };
 
 
 return {
 	createListView : createListView,
-       getAllListsView : getAllListsView
+       getAllListsView : getAllListsView,
+	   addFunctionForChanges : addFunctionForChanges
 	
 }
 
@@ -94,12 +100,7 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
     var addListWindow;
     var editListWindow;
     var createListView = function(selector){
-		//var elem = document.createElement("img");
-		//elem.setAttribute("src", "http://superlistapp.com/wp-content/uploads/2014/08/SuperlistLogo-text1-300x48.png");
-		//elem.setAttribute("height", "40");
-		//elem.setAttribute("width", "150");
-		//elem.setAttribute("alt", "Flower");
-        //$(elem).appendTo(selector);
+		
         listView.appendTo(selector);
         //addListButton.appendTo(selector);
 
@@ -123,32 +124,9 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
 
         getListView();
     };
-	var createLogo = function(selector){
-		var elem = document.createElement("img");
-		elem.setAttribute("src", "http://superlistapp.com/wp-content/uploads/2014/08/SuperlistLogo-text1-300x48.png");
-		elem.setAttribute("height", "40");
-		elem.setAttribute("width", "150");
-		elem.setAttribute("alt", "Flower");
-        $(elem).appendTo(selector);
-    
-    };
+	
 
-	    var createAddButton = function(selector){
-
-        //$("<h1>Lists</h1>").appendTo(selector);
-        //listView.appendTo(selector);
-        addListButton.appendTo(selector);
-
-        addListButton.kendoButton({
-            click: function(e) {
-                openAddWindow();
-            }
-        });
-
-        
-
-        
-    };
+	    
     var getListView = function(listName){
         request.getListView().then(function(data){
             var list = listView.data("kendoListView");
