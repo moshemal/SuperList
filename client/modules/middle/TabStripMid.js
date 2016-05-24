@@ -63,7 +63,7 @@ function createMiddleView(selector){
 		tab.setDataSource(dataSource);//insert the data of the list - tab
 		tab.reload();//reload tabStrip tab(s) via AJAX	
 		}			
-		
+		console.log("tab Strip 5");
 	};		
         
       
