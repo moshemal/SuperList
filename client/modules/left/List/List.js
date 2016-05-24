@@ -53,13 +53,13 @@ var createListView = function(selector){
                spriteCssClass: "k-icon k-i-pencil" 	  
            });   
 
-			/*
+			
             if(listName){
                 $(list.element).find(".title").each(function(){
                     if($(this).html() == listName)
                         list.select($(this).parent());
                 });
-            }*/     
+            }    
         },
 		function(){
 			console.log("failed");		
