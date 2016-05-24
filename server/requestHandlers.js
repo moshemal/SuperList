@@ -24,12 +24,13 @@ function getAllListsView(response, pathname, postData,request,user) {
 
 function getAllItems(response, pathname, postData,request,user){
   var parsedQuery = querystring.parse(postData);
+  
    console.log("welcome to getAllItems line 28 in RH.js",parsedQuery.listName);
    console.log("welcome to getAllItems line 29 in RH.js typeof",typeof parsedQuery.listName);
  
    if(parsedQuery.listName != "" ){       		 
   response.writeHead(200, {"Content-Type": "application/json"});
-  response.write(db.getAllItems(user, parsedQuery.listName)); //will return a string 
+  response.write(JSON.stringify(db.getAllItems(user, parsedQuery.listName))); //will return a string 
   response.end();		 
 	return;		 
 	}
