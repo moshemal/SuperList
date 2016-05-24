@@ -39,8 +39,6 @@ define(['jquery'], function($){
 	 });
   } 
    
-   
-	
 
 	return {
         isLoggedIn:  isLoggedIn,
