@@ -21,8 +21,8 @@ define(['jquery'], function($){
         });
     }
 
-	 function  getAllListsView(){
-        return $.ajax("/api/getAllListsView", {
+	 function  getAllLists(){
+        return $.ajax("/api/getAllLists", {
             method: "get"
         });
     }
@@ -44,7 +44,7 @@ define(['jquery'], function($){
         isLoggedIn:  isLoggedIn,
 		login:       login ,
 		
-		getAllListsView : getAllListsView,
+		getAllLists : getAllLists,
 		
 		getAllItems : getAllItems
         
