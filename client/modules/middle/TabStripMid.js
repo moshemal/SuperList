@@ -18,6 +18,7 @@ function createMiddleView(selector){
 		}
 			
 	var openNewTab = function(listName){
+		console.log("Tab Strip in middle",listName);
 		if(listName != ""){
 		var promise = request.getAllItems(listName);//form request.js getting the DB from the server
 		 
