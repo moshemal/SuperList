@@ -36,7 +36,7 @@ function getAllItems(response, pathname, postData,request,user){
 	}
 	
   response.writeHead(404, {"Content-Type": "text/plain"});
-  response.write("fail to get All Items ");
+  response.write("");
   response.end();			
 }
 

@@ -161,6 +161,15 @@ display: block;
     float: right;
  }
  
+ 
+ #buttonWin{
+    width: 100%;
+    margin-top: 40px;
+}
+ 
+ 
+ 
+ 
  body .k-button-icon {
     padding-right: .14em;
 }

@@ -1,19 +1,23 @@
-define(['jquery','text!./List.html','core/request','kendo'],
-function($, template,request){
+define(['jquery','text!./List.html','text!./BtnPlus.html','core/request','kendo'],
+function($, template,btnPlus,request){
 'use strict';
 
 
 var updateFunctions = [] ;
 var listView = $(template);
 
+var btnAdd =  $(btnPlus);
+
 
 
 var createListView = function(selector){
-	
 	/*append the list to the layout*/
         $("<h1>Lists</h1>").appendTo(selector);
         listView.appendTo(selector);
-  
+		
+		btnAdd.appendTo(selector);
+		btnAdd.kendoButton();
+		
 	/*define a list view from kendo ui*/
         listView.kendoListView({
             template: '<div class="listView"><span class="k-icon k-insertUnorderedList"></span><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
@@ -33,11 +37,8 @@ var createListView = function(selector){
 		console.log("hello 6");//hello 4 is last need to see what will i do with this
     };
 	
-	
-	
-	
+		
  var getAllListsView = function(listName){
-	
 	 var promise = request.getAllListsView();//form request.js getting the DB from the server
 		 console.log("hello" ,listName);
        promise.then(function(data){
@@ -73,6 +74,9 @@ var createListView = function(selector){
 		return false;
     };
 
+	
+	
+	
 
 	var addFunctionForChanges = function(func){
         updateFunctions.push(func);
