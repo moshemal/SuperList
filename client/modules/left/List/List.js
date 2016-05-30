@@ -56,6 +56,7 @@ var createListView = function(selector){
 
 			
             if(listName){
+				console.log(listName);
                 $(list.element).find(".title").each(function(){
                     if($(this).html() == listName)
                         list.select($(this).parent());
