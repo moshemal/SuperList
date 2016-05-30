@@ -33,6 +33,6 @@ function getAllItems(response, pathname, postData,request,user){
   response.end();			
 }
 
-exports.upload      = upload;
+//exports.upload      = upload;
 exports.getAllListsView = getAllListsView; //left
 exports.getAllItems = getAllItems; //middle
