@@ -12,7 +12,7 @@ var addLstWin ;
 
 //
  var openAddWindow = function(){
-        addLstWin = $(addWindow);
+        addLstWin = $(winAdd);
         addLstWin.appendTo('body');//
 		
         addLstWin.kendoWindow({
