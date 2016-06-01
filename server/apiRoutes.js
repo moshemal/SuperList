@@ -45,6 +45,7 @@ var handle = {
 	//"/upload":      decorateWithIsloggedIn(requestHandlers.upload),//will be called before we even get to main.js decorateWithIsloggedIn
    
    "/getAllListsView" : decorateWithIsloggedIn(requestHandlers.getAllListsView), //left side  list view
+   "/addList" : decorateWithIsloggedIn(requestHandlers.addList),
    
    "/getAllItems" : decorateWithIsloggedIn(requestHandlers.getAllItems) //middle side  tabStrip+ listView
    

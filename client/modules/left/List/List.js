@@ -1,22 +1,67 @@
-define(['jquery','text!./List.html','text!./BtnPlus.html','core/request','kendo'],
-function($, template,btnPlus,request){
+define(['jquery','text!./List.html','text!./BtnPlus.html','text!./AddWin.html','core/request','kendo'],
+function($, lstView , btnPlus ,winAdd, request){
 'use strict';
 
 
 var updateFunctions = [] ;
-var listView = $(template);
+var listView = $(lstView);
 
 var btnAdd =  $(btnPlus);
+var addLstWin ;
 
 
+//
+ var openAddWindow = function(){
+        addLstWin = $(addWindow);
+        addLstWin.appendTo('body');//
+		
+        addLstWin.kendoWindow({
+            width: "600px",
+            title: "Create New List",
+            actions: [
+                "Close"
+            ],
+            close: function(){
+                var dialog = addLstWin.data("kendoWindow");
+                dialog.destroy();
+                addLstWin.remove();
+                getAllListsView();
+            },
+            modal: true
+        });
 
+        var dialog = addLstWin.data("kendoWindow");
+        dialog.center();
+
+        addLstWin.find("#dialogListAdd").kendoButton({
+			//
+            click: function(){
+                var dialog = addLstWin.data("kendoWindow");
+                dialog.destroy();
+                request.addList(addLstWin.find("input").val()).then(function(){
+                    getAllListsView();
+                },
+				function(){
+				console.log("failed");
+				});
+            }
+        });
+    };
+
+
+//
 var createListView = function(selector){
 	/*append the list to the layout*/
         $("<h1>Lists</h1>").appendTo(selector);
         listView.appendTo(selector);
 		
+		//
 		btnAdd.appendTo(selector);
-		btnAdd.kendoButton();
+		btnAdd.kendoButton({
+		click: function(e) {
+                openAddWindow();
+            }
+		});
 		
 	/*define a list view from kendo ui*/
         listView.kendoListView({
@@ -26,7 +71,6 @@ var createListView = function(selector){
 				//handle event
 				var select = this.select; //jQuery the selected items if called without arguments.
 				for(var i=0; i<updateFunctions.length; i++){
-					//console.log($(select[0]).find(".title").html());
                     updateFunctions[i]($(select[0]).find(".title").html());
                 }
 			}
@@ -37,7 +81,7 @@ var createListView = function(selector){
 		console.log("hello 6");//hello 4 is last need to see what will i do with this
     };
 	
-		
+//		
  var getAllListsView = function(listName){
 	 var promise = request.getAllListsView();//form request.js getting the DB from the server
 		 console.log("hello" ,listName);
@@ -70,16 +114,12 @@ var createListView = function(selector){
 		function(){
 			console.log("failed");		
 		});
-		console.log("hello 5  is printed before 'hello 4'+ request\n" 
-		+ "have TIME OUT we might ");
+		
 		return false;
     };
 
-	
-	
-	
-
-	var addFunctionForChanges = function(func){
+//
+ var addFunctionForChanges = function(func){
         updateFunctions.push(func);
     };
 
@@ -99,91 +139,6 @@ return {
 
 	
 
-/**
-define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.html', 'text!./editWindow.html',
- 'core/request', 'kendo'], function($, list, button, addWindow, editWindow, request){
-
-    var updateFunctions = [];
-    var listView = $(list);
-    var addListButton = $(button);
-    var addListWindow;
-    var editListWindow;
-    var createListView = function(selector){
-		
-        listView.appendTo(selector);
-        //addListButton.appendTo(selector);
-
-        //addListButton.kendoButton({
-          //  click: function(e) {
-            //    openAddWindow();
-            //}
-       // });
-
-
-        listView.kendoListView({
-            template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
-            selectable: true,
-            change: function(){
-                var select = this.select();
-                for(var i=0; i<updateFunctions.length; i++){
-                    updateFunctions[i]($(select[0]).find(".title").html());
-                }
-            }
-        });
-
-        getListView();
-    };
-	
-
-	    
-    var getListView = function(listName){
-        request.getListView().then(function(data){
-            var list = listView.data("kendoListView");
-            var dataSource = new kendo.data.DataSource({
-                data: data
-            });
-            list.setDataSource(dataSource);
-            list.refresh();
-
-            if(listName){
-                $(list.element).find(".title").each(function(){
-                    if($(this).html() == listName)
-                        list.select($(this).parent());
-                });
-            }
-
-
-            $(".listView button").kendoButton({
-                spriteCssClass: "k-icon k-i-pencil",
-                click: function(e) {
-                    openEditWindow($(e.event.target).closest(".listView").find(".title").html());
-                }
-            });
-
-            for(var i=0; i<updateFunctions.length; i++){
-                updateFunctions[i]('');
-            }
-        })
-    };
-
-    var addFunctionForChanges = function(func){
-        updateFunctions.push(func);
-    };
-
-    return {
-        createListView: createListView,
-		createAddButton: createAddButton,
-        getListView: getListView,
-        addFunctionForChanges: addFunctionForChanges,
-		createLogo: createLogo
-    }
-
-});
-
-
-
-**/
- 
 
 
 

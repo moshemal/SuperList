@@ -173,3 +173,14 @@ display: block;
  body .k-button-icon {
     padding-right: .14em;
 }
+
+#addTask input{
+    height: 30px;
+    font-size: 17px;
+}
+
+#addTask #dialogListAdd{
+    float: right;
+    margin-top: 70px;
+}
+

@@ -3,16 +3,31 @@ var db					= require('./db');
 var auth				= require('./auth');
 
 
-function getAllListsView(response, pathname, postData,request,user) {
+function getAllListsView(response, parsedUrl, postData,request,user) {//response, parsedUrl, postData,request, user
   console.log("welcome to getAllListsView line 14 in RH.js");
   response.writeHead(200, {"Content-Type": "application/json"});
   //JSON.stringify -
   var parsedData = JSON.stringify(db.getAllListsView(user)); //
-  /*console.log("in line 19 RH getAllListsView:" , parsedData);*/
   console.log("in line 20 RH getAllListsView: " + typeof parsedData);//string
   response.write(parsedData);
   response.end();
 }
+
+
+//######adding new task to the list checking + adding######
+function addList(response, parsedUrl, postData,request,user){
+     var parsedQuery = querystring.parse(postData);
+    if(parsedQuery.listName != ""){
+        db.addList(user, parsedQuery.listName);
+        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.write("Ok");
+        response.end();
+    }else{
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }
+    }
 
 
 function getAllItems(response, pathname, postData,request,user){
@@ -35,4 +50,7 @@ function getAllItems(response, pathname, postData,request,user){
 
 //exports.upload      = upload;
 exports.getAllListsView = getAllListsView; //left
+exports.addList = addList;
+
+
 exports.getAllItems = getAllItems; //middle

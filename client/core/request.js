@@ -27,6 +27,23 @@ define(['jquery'], function($){
         });
     }
    
+   function addList(name){
+    return $.ajax("/api/addList", {
+				method: "post",
+				  success: function(data, a, xhr){
+      },
+	  //sending to the server
+	data:{ 
+       listName: 		listName
+	}
+		});
+  }
+   
+   
+   
+   
+   
+   
    function getAllItems(listName){
      return $.ajax("/api/getAllItems",{
 	 method :"post" ,
@@ -45,6 +62,7 @@ define(['jquery'], function($){
 		login:       login ,
 		
 		getAllListsView : getAllListsView,
+		addList : addList ,
 		
 		getAllItems : getAllItems
         
