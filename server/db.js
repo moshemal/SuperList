@@ -59,7 +59,7 @@ function addList(user,listName){
 }
 
 
-function editList(user,newName,oldName){
+function editList(user,oldName,newName){
 	 if(user){
         fs.stat('./db/' + user + "/lists/" + oldName + ".json", function(err, stat){
             if (stat){
@@ -68,9 +68,7 @@ function editList(user,newName,oldName){
 					console.log("rename list old name : "+oldName+"  to new name: "+newName);
 					var oldJsonName = './db/' + user + "/lists/" + oldName + ".json";
 					var newJsonName = './db/' + user + "/lists/" + newName + ".json";
-                    fs.renameSync(oldJsonName , newJsonName );					
-						
-						
+                    fs.renameSync(oldJsonName , newJsonName );						
 					}
 				});
 				

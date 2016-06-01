@@ -58,7 +58,7 @@ var editOpenWin = function(listName){
         return;			
 	}	
 	   
-	editWin = $(editWindow); //
+	editWin = $(winEdit); //
             editWin.appendTo('body');
             editWin.kendoWindow({
                 width: "600px",
@@ -84,7 +84,7 @@ var editOpenWin = function(listName){
                 click: function(){
                     var dialog = editWin.data("kendoWindow");
                     dialog.destroy();
-                    request.editList(listName,editListWindow.find("input").val()).then(function(){
+                    request.editList(listName, editWin.find("input").val()).then(function(){
                      getAllListsView();
                     },
 					function(){

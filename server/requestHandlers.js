@@ -33,6 +33,7 @@ function addList(response, parsedUrl, postData,request,user){
 //###### edit new task to the list checking + edit ######
 function editList(response, parsedUrl, postData,request,user){
   var parsedQuery = querystring.parse(postData);
+  
     if(parsedQuery.oldName != "" && parsedQuery.newName != ""){
         db.editList(user, parsedQuery.oldName, parsedQuery.newName);
         response.writeHead(200, {"Content-Type": "text/plain"});
