@@ -27,7 +27,7 @@ define(['jquery'], function($){
         });
     }
    
-   function addList(name){
+   function addList(listName){
     return $.ajax("/api/addList", {
 				method: "post",
 				  success: function(data, a, xhr){
