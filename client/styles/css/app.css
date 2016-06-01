@@ -184,3 +184,22 @@ display: block;
     margin-top: 70px;
 }
 
+#allBtnEdit{
+	margin-top:70px;	
+}
+
+#editListWin input{
+    height: 30px;
+    font-size: 17px;
+}
+
+#allBtnEdit #dialogBtnEdit{
+    float: right;
+}
+
+#allBtnEdit #dialogBtnRem{
+    float: left;
+}
+
+
+

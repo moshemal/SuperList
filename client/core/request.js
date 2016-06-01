@@ -1,5 +1,4 @@
 define(['jquery'], function($){
-	
 	'use strict';
 
     function isLoggedIn(){
@@ -21,7 +20,7 @@ define(['jquery'], function($){
         });
     }
 
-	 function  getAllListsView(){
+	function  getAllListsView(){
         return $.ajax("/api/getAllListsView", {
             method: "get"
         });
@@ -39,6 +38,37 @@ define(['jquery'], function($){
 		});
   }
    
+   
+   function editList(oldName, newName){
+	    return $.ajax("/api/editList", {
+				method: "post",
+				  success: function(data, a, xhr){
+					  console.log(data);
+      },
+	  //sending to the server
+	data:{ 
+       oldName : 		oldName,
+	   newName : newName
+	}
+		});
+	   
+	   
+   }
+   
+   
+    function removeList(listName){
+		 return $.ajax("/api/removeList", {
+				method: "post",
+				  success: function(data, a, xhr){
+					  console.log(data);
+      },
+	  //sending to the server
+	data:{ 
+       listName : 		listName
+	  
+	}
+		 });	
+	}
    
    
    
@@ -63,6 +93,8 @@ define(['jquery'], function($){
 		
 		getAllListsView : getAllListsView,
 		addList : addList ,
+		editList : editList ,
+		 removeList :  removeList,
 		
 		getAllItems : getAllItems
         

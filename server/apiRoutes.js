@@ -46,6 +46,11 @@ var handle = {
    
    "/getAllListsView" : decorateWithIsloggedIn(requestHandlers.getAllListsView), //left side  list view
    "/addList" : decorateWithIsloggedIn(requestHandlers.addList),
+   "/editList" : decorateWithIsloggedIn(requestHandlers.editList),
+   "/removeList" : decorateWithIsloggedIn(requestHandlers.removeList),
+
+
+   
    
    "/getAllItems" : decorateWithIsloggedIn(requestHandlers.getAllItems) //middle side  tabStrip+ listView
    

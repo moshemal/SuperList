@@ -1,5 +1,5 @@
-define(['jquery','text!./List.html','text!./BtnPlus.html','text!./AddWin.html','core/request','kendo'],
-function($, lstView , btnPlus ,winAdd, request){
+define(['jquery','text!./List.html','text!./BtnPlus.html','text!./AddWin.html','text!./EditOrRemWin.html','core/request','kendo'],
+function($, lstView , btnPlus ,winAdd, winEdit, request){
 'use strict';
 
 
@@ -9,12 +9,13 @@ var listView = $(lstView);
 var btnAdd =  $(btnPlus);
 var addLstWin ;
 
+var editWin ;
+
 
 //
  var openAddWindow = function(){
         addLstWin = $(winAdd);
         addLstWin.appendTo('body');//
-		
         addLstWin.kendoWindow({
             width: "600px",
             title: "Create New List",
@@ -47,13 +48,71 @@ var addLstWin ;
             }
         });
     };
+	
+	
+var editOpenWin = function(listName){
+	
+	if(listName === undefined || listName === ""){
+		console.log("in editOpenWin " +listName);
+        return;			
+	}	
+	   
+	editWin = $(editWindow); //
+            editWin.appendTo('body');
+            editWin.kendoWindow({
+                width: "600px",
+                title: "Edit List Name",
+                actions: [
+                    "Close"
+                ],
+                close: function(){
+                    var dialog = editWin.data("kendoWindow");
+                    dialog.destroy();
+                    editWin.remove();
+                   getAllListsView();
+                },
+                modal: true
+            });
 
+            var dialog = editWin.data("kendoWindow");
+            dialog.center();
 
+            editWin.find("input").val(listName); //witch we will have the name of the list we want to edit (in the place holder)
+
+            editWin.find("#dialogBtnEdit").kendoButton({ //if we click on Done button 
+                click: function(){
+                    var dialog = editWin.data("kendoWindow");
+                    dialog.destroy();
+                    request.editList(listName,editListWindow.find("input").val()).then(function(){
+                     getAllListsView();
+                    },
+					function(){
+					console.log("failed edit");
+					});
+                }
+            });
+
+           editWin.find("#dialogBtnRem").kendoButton({ //if we click on Remove button 
+                click: function(){
+                    var dialog = editWin.data("kendoWindow");
+                    dialog.destroy();
+                    request.removeList(listName).then(function(){
+                        getAllListsView();
+                    },
+					function(){
+					console.log("failed remove");
+					});
+                }
+            });   
+	   
+	   
+};	
+	
+	
 //
 var createListView = function(selector){
-	/*append the list to the layout*/
         $("<h1>Lists</h1>").appendTo(selector);
-        listView.appendTo(selector);
+        listView.appendTo(selector);//append the list to the layout
 		
 		//
 		btnAdd.appendTo(selector);
@@ -63,18 +122,16 @@ var createListView = function(selector){
             }
 		});
 		
-	/*define a list view from kendo ui*/
-        listView.kendoListView({
+        listView.kendoListView({//define a list view from kendo ui
             template: '<div class="listView"><span class="k-icon k-insertUnorderedList"></span><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
             selectable: true,  //witch element will be edited
+			
 			change : function(){//Fires when the list view selection has changed.
-				//handle event
 				var select = this.select; //jQuery the selected items if called without arguments.
 				for(var i=0; i<updateFunctions.length; i++){
                     updateFunctions[i]($(select[0]).find(".title").html());
                 }
 			}
-			
         });
       
         getAllListsView();

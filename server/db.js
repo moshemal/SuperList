@@ -57,7 +57,39 @@ function addList(user,listName){
         });
     }
 }
-	
+
+
+function editList(user,newName,oldName){
+	 if(user){
+        fs.stat('./db/' + user + "/lists/" + oldName + ".json", function(err, stat){
+            if (stat){
+                fs.stat('./db/' + user + "/lists/" + newName + ".json", function(err,stat1){
+					if(!stat1){
+					console.log("rename list old name : "+oldName+"  to new name: "+newName);
+					var oldJsonName = './db/' + user + "/lists/" + oldName + ".json";
+					var newJsonName = './db/' + user + "/lists/" + newName + ".json";
+                    fs.renameSync(oldJsonName , newJsonName );					
+						
+						
+					}
+				});
+				
+            } 
+        });
+    }	
+}
+
+
+function removeList(user,listName){
+	 if(user){
+        fs.stat('./db/' + user + "/lists/" + listName + ".json", function(err, stat){
+            if (stat){
+                console.log("Removing the list '" + listName);
+                fs.unlink('./db/' + user + "/lists/" + listName + ".json");
+            } 
+        });
+    }
+}	
 	
 
 function getAllItems(user,listName){
@@ -76,6 +108,8 @@ exports.createUser = createUser;
 
 exports.getAllListsView =  getAllListsView;//left
 exports.addList   = addList;
+exports.editList  = editList;
+exports.removeList   = removeList;
 
 
 exports.getAllItems =  getAllItems;//middle

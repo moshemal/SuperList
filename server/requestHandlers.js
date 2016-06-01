@@ -30,6 +30,45 @@ function addList(response, parsedUrl, postData,request,user){
     }
 
 
+//###### edit new task to the list checking + edit ######
+function editList(response, parsedUrl, postData,request,user){
+  v
+  ar parsedQuery = querystring.parse(postData);
+    if(parsedQuery.oldName != "" && parsedQuery.newName != ""){
+        db.editList(user, parsedQuery.oldName, parsedQuery.newName);
+        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }else{
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }
+}
+
+
+
+//###### remove new task to the list checking + remove ######
+function removeList(response, parsedUrl, postData,request,user){
+   var parsedQuery = querystring.parse(postData);
+    if(parsedQuery.listName != ""){
+        db.removeList(user, parsedQuery.listName);
+        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }else{
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }
+}
+
+	
+	
+	
+	
+	
+
 function getAllItems(response, pathname, postData,request,user){
   var parsedQuery = querystring.parse(postData);
   
@@ -51,6 +90,7 @@ function getAllItems(response, pathname, postData,request,user){
 //exports.upload      = upload;
 exports.getAllListsView = getAllListsView; //left
 exports.addList = addList;
-
+exports.editList  = editList;
+exports.removeList   = removeList;
 
 exports.getAllItems = getAllItems; //middle
