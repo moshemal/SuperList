@@ -52,6 +52,7 @@ var editWin ;
 	
 var editOpenWin = function(listName){
 	
+	console.log("hello 7")
 	if(listName === undefined || listName === ""){
 		console.log("in editOpenWin " +listName);
         return;			
@@ -152,7 +153,11 @@ var createListView = function(selector){
             list.refresh();//was recommand to do will find a better explain
 			
 			$(".listView  button").kendoButton({
-               spriteCssClass: "k-icon k-i-pencil" 	  
+               spriteCssClass: "k-icon k-i-pencil",
+			   click : function(e){
+				    editOpenWin($(e.event.target).closest(".listView").find(".title").html()); 
+			   }
+			   
            });   
 
 			
