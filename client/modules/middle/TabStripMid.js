@@ -1,5 +1,5 @@
-define(['jquery','text!./template.html','kendo'],
-function($ , tabHtml){
+define(['jquery','text!./template.html','core/request','kendo'],
+function($ , tabHtml,request){
 	'use strict';
 	
 	var middle = $(tabHtml);
