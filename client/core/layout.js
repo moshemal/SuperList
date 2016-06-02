@@ -29,7 +29,7 @@ define(['jquery', 'text!./templates/l3W.html','modules/left/List/List' ,'modules
 		
 		
 		leftLst.addFunctionForChanges(midView.openNewTab);
-		 midView.addFunctionForChanges(leftLst.getListView);
+		 midView.addFunctionForChanges(leftLst.getAllListsView);
 		
 		
 	

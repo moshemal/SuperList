@@ -6,20 +6,14 @@ function($ , tabHtml,request){
 	var updateFunctions = [];
 	
   function createMiddle(selector){
-		
 		middle.appendTo(selector);
-		
 		console.log("check tab1");
-		
 		middle.kendoTabStrip({
 			dataContentField: "content", //sets the field of the data item that provides the text content of the tab content element		
-			dataTextField : "label"//sets the field of the data item that provides the text name TAB
-			
+			dataTextField : "label" //sets the field of the data item that provides the text name TAB
 		});
 			console.log("check tab2 ");	
 	}
-	
-	
 	
     var openNewTab = function(listName,itemName){
 		console.log("check tab 6",listName);
@@ -40,8 +34,7 @@ function($ , tabHtml,request){
                     dataSource: data.items
                 });
 
-                if(itemName)
-                    itemList.select($(itemList.element).find("."+itemName));
+                
 
                 var dataSource = new kendo.data.DataSource({
                     data: [{
