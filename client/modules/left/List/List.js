@@ -124,13 +124,12 @@ var createListView = function(selector){
 		});
 		
         listView.kendoListView({//define a list view from kendo ui
-            template: '<div class="listView"><span class="k-icon k-insertUnorderedList"></span><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
+            template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
             selectable: true,  //witch element will be edited
 			
 			change : function(){//Fires when the list view selection has changed.
 				var select = this.select; //jQuery the selected items if called without arguments.
 				for(var i=0; i<updateFunctions.length; i++){
-					console.log(select[0]);
                     updateFunctions[i]($(select[0]).find(".title").html());
                 }
 			}
