@@ -201,5 +201,32 @@ display: block;
     float: left;
 }
 
+#tabstrip input {
+    height: 30px;
+    font-size: 17px;
+    width:88%;
+}
 
+
+.item {
+    float: left;
+    margin: 40px;
+}
+
+.item .row {
+    float:left;
+    width: 100%;
+    margin: 5px;
+}
+
+.item label {
+    font-size: 20px;
+    padding-right: 50px;
+    float: left;
+}
+
+.item input {
+    height: 25px;
+    font-size: 16px;
+}
 

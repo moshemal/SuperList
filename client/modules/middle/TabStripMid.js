@@ -10,7 +10,7 @@ function($ , tabHtml){
 		
 		console.log("check tab1");
 		
-		middle.kendoTabStip({
+		middle.kendoTabStrip({
 			dataTextField : "label", //sets the field of the data item that provides the text name TAB
 			dataContentField : "content" //sets the field of the data item that provides the text content of the tab content element		
 		});
@@ -30,8 +30,7 @@ function($ , tabHtml){
                     content: ""
                 }]
             });
-			
-			tab.setDataSource(dataSource);
+            tab.setDataSource(dataSource);
             tab.reload();
 			console.log("check 4 if no listName");
 			return;

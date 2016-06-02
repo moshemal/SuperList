@@ -84,11 +84,6 @@ function getAllItems(response, parsedUrl, postData,request,user){
 
 
 
-  
-}
-
-
-
 //left
 exports.getAllListsView = getAllListsView; 
 exports.addList = addList;
