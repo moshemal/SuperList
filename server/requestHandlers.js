@@ -69,7 +69,7 @@ function removeList(response, parsedUrl, postData,request,user){
 	
 	
 
-function getAllItems(response, pathname, postData,request,user){
+function getAllItems(response, parsedUrl, postData,request,user){
   var parsedQuery = querystring.parse(postData);
   
    console.log("welcome to getAllItems line 28 in RH.js",parsedQuery.listName);
@@ -88,7 +88,9 @@ function getAllItems(response, pathname, postData,request,user){
 }
 
 //exports.upload      = upload;
-exports.getAllListsView = getAllListsView; //left
+
+//left
+exports.getAllListsView = getAllListsView; 
 exports.addList = addList;
 exports.editList  = editList;
 exports.removeList   = removeList;

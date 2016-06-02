@@ -104,10 +104,11 @@ function getAllItems(user,listName){
 
 exports.createUser = createUser;
 
-exports.getAllListsView =  getAllListsView;//left
+//left
+exports.getAllListsView =  getAllListsView;
 exports.addList   = addList;
 exports.editList  = editList;
 exports.removeList   = removeList;
 
-
-exports.getAllItems =  getAllItems;//middle
+//middle
+exports.getAllItems =  getAllItems;
