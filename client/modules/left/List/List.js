@@ -130,7 +130,7 @@ var createListView = function(selector){
 			change : function(){//Fires when the list view selection has changed.
 				var select = this.select; //jQuery the selected items if called without arguments.
 				for(var i=0; i<updateFunctions.length; i++){
-					console.log($(select[0]).find(".title").html());
+					console.log(select[0]);
                     updateFunctions[i]($(select[0]).find(".title").html());
                 }
 			}
