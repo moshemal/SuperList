@@ -67,27 +67,27 @@ function removeList(response, parsedUrl, postData,request,user){
 	
 	
 	
-	
-
 function getAllItems(response, parsedUrl, postData,request,user){
-  var parsedQuery = querystring.parse(postData);
-  
-   console.log("welcome to getAllItems line 28 in RH.js",parsedQuery.listName);
-   console.log("welcome to getAllItems line 29 in RH.js typeof",typeof parsedQuery.listName);
- 
-   if(parsedQuery.listName != "" ){       		 
-  response.writeHead(200, {"Content-Type": "application/json"});
-  response.write(JSON.stringify(db.getAllItems(user, parsedQuery.listName))); //will return a string 
-  response.end();		 
-	return;		 
-	}
-	
-  response.writeHead(404, {"Content-Type": "text/plain"});
-  response.write("");
-  response.end();			
+    var parsedQuery = querystring.parse(postData);
+	console.log("in line 72 RH the : "+typeof parsedQuery.listName);
+	console.log("in line 73 RH the : "+ parsedQuery.listName);
+    if(parsedQuery.listName != ""){
+        response.writeHead(200, {"Content-Type": "application/json"});
+        response.write(JSON.stringify(db.getAllItems(user, parsedQuery.listName)));
+        response.end();
+    }else{
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }
 }
 
-//exports.upload      = upload;
+
+
+  
+}
+
+
 
 //left
 exports.getAllListsView = getAllListsView; 
@@ -95,4 +95,5 @@ exports.addList = addList;
 exports.editList  = editList;
 exports.removeList   = removeList;
 
-exports.getAllItems = getAllItems; //middle
+//middle
+exports.getAllItems = getAllItems; 

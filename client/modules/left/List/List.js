@@ -174,7 +174,7 @@ var createListView = function(selector){
             }			
         },
 		function(){
-			console.log("failed");		
+			console.log("failed ");		
 		});
 		
 		return false;

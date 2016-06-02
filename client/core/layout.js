@@ -1,7 +1,7 @@
-define(['jquery', 'text!./templates/l3W.html','modules/left/List/List' /*,'modules/middle/TabStripMid'*/ ,'kendo'], 
+define(['jquery', 'text!./templates/l3W.html','modules/left/List/List' ,'modules/middle/TabStripMid' ,'kendo'], 
 	function($, l3W, leftLst,midView){
 		'use strict';
-	//console.log($);
+	
 	
 	function getJLayout (type){
 		var layoutHtml;
@@ -25,10 +25,10 @@ define(['jquery', 'text!./templates/l3W.html','modules/left/List/List' /*,'modul
 		
 		jLayout.appendTo(selector);
 		leftLst.createListView($("#left-pane")); //left side list view		
-		//midView.createMiddleView($("#center-pane"));//middle side tab strip 
+		midView.createMiddle($("#center-pane"));//middle side tab strip 
 		
 		
-		//leftLst.addFunctionForChanges(midView.openNewTab);
+		leftLst.addFunctionForChanges(midView.openNewTab);
 		
 	
 				jLayout.kendoSplitter({

@@ -1,79 +1,82 @@
-define(['jquery','text!./template.html','core/request','kendo'],
-function($, template,request){
-'use strict';
-
-var middleView = $(template);
-
-function createMiddleView(selector){
+define(['jquery','text!./template.html','kendo'],
+function($ , tabHtml){
+	'use strict';
 	
-        middleView.appendTo(selector);
-		console.log("tab strip 1");
+	var middle = $(tabHtml);
+	
+	var createMiddle = function(selector){
 		
-	/*define a Tab Strip from kendo ui*/
-        middleView.kendoTabStrip({
-			dataContentField : "content",//sets the field of the data-item that provides the text content of the tab content element
-			dataTextField : "label" //sets the field of the data item that provides the text name of the tab
+		middle.appendTo(selector);
+		
+		console.log("check tab1");
+		
+		middle.kendoTabStip({
+			dataTextField : "label", //sets the field of the data item that provides the text name TAB
+			dataContentField : "content" //sets the field of the data item that provides the text content of the tab content element		
 		});
-		console.log("tab strip 2");
-		}
-			
+		
+		console.log("check tab2 ");	
+	};
+	
+	
 	var openNewTab = function(listName){
-		console.log("Tab Strip in middle",listName);
-		if(listName != ""){
-		var promise = request.getAllItems(listName);//form request.js getting the DB from the server
-		 
-       promise.then(function(data){
-		console.log("tab strip 3");   
-		var tab = middleView.data("kendoTabStrip");//
+		console.log("check 3 tab listName is : "+listName);
+		
+		if(listName == undefined || listName == ""){
+			var tab = middle.data("kendoTabStip");
+			var dataSource = new kendo.data.DataSource({
+                data: [{
+                    label: "",
+                    content: ""
+                }]
+            });
+			
+			tab.setDataSource(dataSource);
+            tab.reload();
+			console.log("check 4 if no listName");
+			return;
+		}
+		
+		//else
+			var promise = request.getAllItems(listName);//form request.js getting the DB from the server
+			 promise.then(function(data){
+               var tab = middleView.data("kendoTabStrip");
+               var itemList = $('<div id="listView"></div>');
 
-        itemList = $('<div id = "listView"></div>');
-        itemList.kendoListView({
-            template: '<div class="listView #:title#"><span class="title">#:title#</span></div>',
-            selectable: true,  //witch element will be edited	
-			dataSource : data.items
-        });		
+                itemList.kendoListView({
+                    template: '<div class="listView #:title#"><span class="title">#:title#</span></div>',
+                    selectable: true,
+                    dataSource: data.items
+                });
+
+                var dataSource = new kendo.data.DataSource({
+                    data: [{
+                        label: listName,
+                        content: ""
+                    }]
+                });
+
+                tab.setDataSource(dataSource);
+                tab.reload();
+                tab.select("li:first");
+            },
+			function(){
+				console.log("failed");
+			});
 		
-		 var dataSource = new kendo.data.DataSource({//the data
-                data: [{
-					label : listName ,
-					content : ""
-				}]
-            });
-			
-		tab.setDataSource(dataSource);//insert the data of the list - tab
-		tab.reload();//reload tabStrip tab(s) via AJAX
-		
-		itemList.appendTo(tab.contentElement(0));
-		
-		tab.select("li:first");
-	   },  
-		
-		function(){   
-		 console.log("failed in middle ");     
-	   });
-		}else{
-			console.log("tab Strip 4");
-			var tab = middleView.data("kendoTabStrip");//
-			 var dataSource = new kendo.data.DataSource({//the data
-                data: [{
-					label : "",
-					content : ""
-				}]
-            });
-			
-		tab.setDataSource(dataSource);//insert the data of the list - tab
-		tab.reload();//reload tabStrip tab(s) via AJAX	
-		}			
-		console.log("tab Strip 5");
-	};		
-        
+		console.log("check 6 tab strip");		
+	};
       
-	  
-	  
-	  
-      return {
-		  createMiddleView : createMiddleView ,
-		  openNewTab : openNewTab
 
-	  }	  
-});//
+
+
+
+
+	  
+    return{
+		 createMiddle :  createMiddle,
+		 openNewTab : openNewTab
+	}
+	
+	
+});
