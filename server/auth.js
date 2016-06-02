@@ -20,11 +20,11 @@ function isRegistered(id, password){
 
 function login(response, parsedUrl, postData){
 	
-	var parsedData = querystring.parse(postData);//
+	var parsedData = querystring.parse(postData);
 
 	if (isRegistered(parsedData.user, parsedData.password)){
 		var token 	= Math.random();
-		var expires = new Date(new Date().getTime() + 1000*60*60*24*2); //2 days 
+		var expires = new Date(new Date().getTime() + 1000*60*60*24*4); //4 days 
 		var authCookie = AUTH_KEY + "=" + token + "; Path=/; Expires=" + expires;
 		var userCookie = "user=" + parsedData.user + "; Path=/; Expires=" + expires;
 		sessions[parsedData.user] = "" + token;
@@ -44,16 +44,16 @@ function login(response, parsedUrl, postData){
 function isLoggedIn (cookies){
 	var token = cookies[AUTH_KEY];
 	var user = cookies["user"];
-	//console.log("in line 47  function isLoggedIn in  auth.js",token);
-	console.log("in line 48  function isLoggedIn in  auth.js",user);
 	return (token && user && sessions[user] == token); 
 }
 
+
+
 function getLoggedIn(cookies){
-	console.log("line 53 function getLoggedIn in auth.js "+cookies["user"]);
     return cookies["user"];
 }
 
 exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn; 
+//exports.createUser 	= createUser;
 exports.getLoggedIn = getLoggedIn;

@@ -12,6 +12,9 @@
   -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
 }
+
+
+
 .form .register {
   display: none;
 }
@@ -114,14 +117,17 @@
   text-decoration: none;
 }
 
-
-
 #left-pane {
     background-color: khaki;
 }
 
 #left-pane h1 {
     text-align: center;
+}
+
+#addListButton {
+    width: 100%;
+    margin-top: 40px;
 }
 
 #listView {
@@ -141,63 +147,31 @@
     margin: 8px;
     float: right;
 }
-/*the icon on the left of every task*/	  
-.listView  .k-insertUnorderedList{
-    float: left;
-}
 
 .listView button {
-    
-	 right: 10px;
-display: block;
-  width: 16px;
-  height: 16px;
-   float: right;
+     float: right;
  }
- 
- .listView button .k-i-pencil{
-    width: 16px;
-    height: 16px;
-    float: right;
- }
- 
- 
- #buttonWin{
-    width: 100%;
-    margin-top: 40px;
-}
- 
- 
- 
- 
- body .k-button-icon {
-    padding-right: .14em;
-}
 
-#addTask input{
+#addListWindow input{
     height: 30px;
     font-size: 17px;
 }
 
-#addTask #dialogListAdd{
+#addListWindow #listDialogAddSubmit{
     float: right;
     margin-top: 70px;
 }
 
-#allBtnEdit{
-	margin-top:70px;	
-}
-
-#editListWin input{
+#editListWindow input{
     height: 30px;
     font-size: 17px;
 }
 
-#allBtnEdit #dialogBtnEdit{
+#editListWindow #listDialogEditSubmit{
     float: right;
 }
 
-#allBtnEdit #dialogBtnRem{
+#editListWindow #listDialogEditRemove{
     float: left;
 }
 
@@ -207,6 +181,10 @@ display: block;
     width:88%;
 }
 
+#tabstrip button {
+    height: 36px;
+    width: 36px;
+}
 
 .item {
     float: left;
@@ -229,4 +207,3 @@ display: block;
     height: 25px;
     font-size: 16px;
 }
-

@@ -1,5 +1,5 @@
 var staticLib			= require('node-static');
-var url 					= require('url'); 
+var url 					= require('url');
 var handle				= require('./apiRoutes').handle;
 
 
@@ -11,30 +11,21 @@ function notFound(response){
   response.end();
 }
 
-function route(request, response, postData){
-
-/*
- - request.url - has the request details
- - parse - we use the parse function of the URL class witch we had included to in oreder 
-   to get the parsedUrl.pathname
-*/	
+function route(request, response, postData) {
   var parsedUrl = url.parse(request.url);
   var pathname = parsedUrl.pathname;
 
-  //console.log("About to route a request for " + pathname);
+  console.log("About to route a request for " + pathname);
 
-  if (pathname.indexOf("/api") === 0){ 
+  if (pathname.indexOf("/api") === 0){
     pathname = "/" + pathname.split("/").slice(2).join("/");
-    console.log("in router.js Serving api for Dynamic: ", pathname, " with data: " + postData);
-	console.log("*****************************************************************************");
-    
-	return typeof handle[pathname] === 'function' ?
+    console.log("Serving api for: ", pathname, " with data: " + postData);
+    return typeof handle[pathname] === 'function' ?
       handle[pathname](response, parsedUrl, postData, request) :
       notFound(response);
   } else {
-   //console.log("in router.js Serving static for: " + pathname);
+    console.log("Serving static for: " + pathname);
     staticServer.serve(request, response);
   }
 }
 exports.route = route;
-

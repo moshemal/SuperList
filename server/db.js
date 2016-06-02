@@ -1,53 +1,25 @@
 var fs = require('fs');
 
-function createUser (user, properites){
-	fs.stat('./db/' + user, function(err, stat){
-	//console.log("in db.js "+properites);
-		if (stat){
-			return;
-		} 
-		else {
-			fs.mkdir('./db/' + user , //file db --> file user
-			
-			function(){
-					fs.mkdir('./db/' + user + '/lists', //file db --> file user --> file list  
-					function(){
-					//file db -->file user --> properties.json
-				        //properites={
-						//"full": "value",
-                        //	"job: "value"					
-						//}
-						var e =[];	
-						fs.writeFile('./db/' + user + '/properites.json', properites , 'utf8');
-						fs.writeFile('./db/' + user + '/lists/list.json', JSON.stringify(e) , 'utf8');
-					});
-			});
-		}//end else
-	})
+
+
+
+function getListView(user){
+    console.log(user);
+    if(user){
+        var files = fs.readdirSync('./db/' + user + '/lists');
+        var output = [];
+        for(var i = 0; i<files.length; i++){
+            var count = 0;
+            var count = JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + files[i], 'utf8')).items.length;
+            output.push({title: files[i].split('.')[0],id: i,count: count});
+        }
+        return output;
+    }
+    return {};
 }
 
-//
-function getAllListsView(user){
-	console.log("in server/db.js line 31: ",user);
-	console.log("################################");
-	if(user){
-		//the path db/user/lists/fileName1...n.json
-		var files = fs.readdirSync('./db/'+user+'/lists'); //Returns an array of filenames
-		var output = [];
-		for(var i = 0 ; i < files.length ;i++){
-		var count = 0 ; //for every fileName(n).json reset in order to count his items
-		count = JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + files[i], 'utf8')).items.length;
-		output.push({title : files[i].split('.')[0] , id : i ,count : count});
-	}
-	return output;
-	}//end of if
-	
-	return {}; //return empty
-}
-
-
-function addList(user,listName){
-	 if(user){
+function addList(user, listName){
+    if(user){
         fs.stat('./db/' + user + "/lists/" + listName + ".json", function(err, stat){
             if (stat){
                 return;
@@ -58,57 +30,101 @@ function addList(user,listName){
     }
 }
 
-
-function editList(user,oldName,newName){
-	 if(user){
+function editList(user, oldName, newName){
+    if(user){
         fs.stat('./db/' + user + "/lists/" + oldName + ".json", function(err, stat){
             if (stat){
-                fs.stat('./db/' + user + "/lists/" + newName + ".json", function(err,stat1){
-					if(!stat1){
-					console.log("rename list old name : "+oldName+"  to new name: "+newName);
-					var oldJsonName = './db/' + user + "/lists/" + oldName + ".json";
-					var newJsonName = './db/' + user + "/lists/" + newName + ".json";
-                    fs.renameSync(oldJsonName , newJsonName );						
-					}
-				});
-				
-            } 
+                fs.stat('./db/' + user + "/lists/" + newName + ".json", function(err, stat1){
+                        if(!stat1) {
+                            console.log("Changing the name of the list '"+oldName+"' to '"+newName+"'");
+                            fs.renameSync('./db/' + user + "/lists/" + oldName + ".json", './db/' + user + "/lists/" + newName + ".json");
+                        }
+                    }
+                );
+            }
         });
-    }	
+    }
 }
 
-
-function removeList(user,listName){
-	 if(user){
+function removeList(user, listName){
+    if(user){
         fs.stat('./db/' + user + "/lists/" + listName + ".json", function(err, stat){
             if (stat){
                 console.log("Removing the list '" + listName);
                 fs.unlink('./db/' + user + "/lists/" + listName + ".json");
-            } 
+            }
         });
     }
-}	
-	
-
-function getAllItems(user,listName){
-	console.log("in server/db.js line 56: ",user);
-	console.log("in server/db.js line 57: ",listName);
-	console.log("################################");
-	if(user){
-		  return  JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + listName+".json", 'utf8'));
-	}	
-	return {}; //return empty
 }
 
+function getItems(user, listName){
+    if(user){
+        return JSON.parse(fs.readFileSync('./db/' + user + '/lists/'  + listName + ".json", 'utf8'));
+    }
+    return {};
+}
 
+function getItem(user, listName, itemName){
+    if(user){
+        var list = JSON.parse(fs.readFileSync('./db/' + user + '/lists/'  + listName + ".json", 'utf8'));
+        for(var i = 0; i<list.items.length; i++){
+            if(list.items[i]["title"] == itemName)
+                return list.items[i];
+        }
+    }
+    return {};
+}
 
-exports.createUser = createUser;
+function addItem(user,listName,itemName){
+    if(user) {
+        var list = JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + listName + ".json", 'utf8'));
+        var addThis = true;
+        for(var i = 0; i<list.items.length; i++){
+            if(list.items[i]["title"] == itemName)
+                addThis = false;
+        }
+        if(addThis)
+            list.items.push({"title": itemName});
+        fs.writeFileSync('./db/' + user + '/lists/' + listName + ".json", JSON.stringify(list), 'utf8');
+    }
+}
 
-//left
-exports.getAllListsView =  getAllListsView;
-exports.addList   = addList;
-exports.editList  = editList;
-exports.removeList   = removeList;
+function editItem(user,listName,itemName,properties){
+    if(user) {
+        var list = JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + listName + ".json", 'utf8'));
+        for(var i = 0; i<list.items.length; i++){
+            if(list.items[i]["title"] == itemName){
+                delete properties.listName;
+                delete properties.itemName;
+                list.items[i] = properties;
+                list.items[i]["title"] = itemName;
+                fs.writeFileSync('./db/' + user + '/lists/' + listName + ".json", JSON.stringify(list), 'utf8');
+                return;
+            }
+        }
+    }
+}
 
-//middle
-exports.getAllItems =  getAllItems;
+function removeItem(user,listName,itemName){
+    if(user){
+        var list = JSON.parse(fs.readFileSync('./db/' + user + '/lists/' + listName + ".json", 'utf8'));
+        for(var i = 0; i<list.items.length; i++){
+            if(list.items[i]["title"] == itemName){
+                list.items.splice(i, 1);
+                fs.writeFileSync('./db/' + user + '/lists/' + listName + ".json", JSON.stringify(list), 'utf8');
+                return;
+            }
+        }
+    }
+}
+
+//exports.createUser = createUser;
+exports.getListView = getListView;
+exports.addList = addList;
+exports.editList = editList;
+exports.removeList = removeList;
+exports.getItems = getItems;
+exports.getItem = getItem;
+exports.addItem = addItem;
+exports.editItem = editItem;
+exports.removeItem = removeItem;

@@ -2,38 +2,44 @@ var querystring = require('querystring');
 var db					= require('./db');
 var auth				= require('./auth');
 
-
-function getAllListsView(response, parsedUrl, postData,request,user) {//response, parsedUrl, postData,request, user
-  console.log("welcome to getAllListsView line 14 in RH.js");
-  response.writeHead(200, {"Content-Type": "application/json"});
-  //JSON.stringify -
-  var parsedData = JSON.stringify(db.getAllListsView(user)); //
-  console.log("in line 20 RH getAllListsView: " + typeof parsedData);//string
-  response.write(parsedData);
+function upload(response, pathname, postData) {
+  console.log("upload was called");
+  response.writeHead(200, {"Content-Type": "text/plain"});
+  var parsedData = querystring.parse(postData).text;
+  response.write("You have sent: " + parsedData);
   response.end();
 }
 
+function validateCreateUserParams (parsedQuery) {
+  return (typeof parsedQuery.user === 'string' &&
+  typeof parsedQuery.password === 'string' &&
+  parsedQuery.user !== "" && parsedQuery.password !== "");
+}
 
-//######adding new task to the list checking + adding######
-function addList(response, parsedUrl, postData,request,user){
-     var parsedQuery = querystring.parse(postData);
+
+
+function getListView(response, parsedUrl, postData,request, user){
+    response.writeHead(200, {"Content-Type": "application/json"});
+    response.write(JSON.stringify(db.getListView(user)));
+    response.end();
+}
+
+function addList(response, parsedUrl, postData, request, user){
+    var parsedQuery = querystring.parse(postData);
     if(parsedQuery.listName != ""){
         db.addList(user, parsedQuery.listName);
         response.writeHead(200, {"Content-Type": "text/plain"});
-        response.write("Ok");
+        response.write("");
         response.end();
     }else{
         response.writeHead(404, {"Content-Type": "text/plain"});
         response.write("");
         response.end();
     }
-    }
+}
 
-
-//###### edit new task to the list checking + edit ######
-function editList(response, parsedUrl, postData,request,user){
-  var parsedQuery = querystring.parse(postData);
-  
+function editList(response, parsedUrl, postData, request, user){
+    var parsedQuery = querystring.parse(postData);
     if(parsedQuery.oldName != "" && parsedQuery.newName != ""){
         db.editList(user, parsedQuery.oldName, parsedQuery.newName);
         response.writeHead(200, {"Content-Type": "text/plain"});
@@ -46,11 +52,8 @@ function editList(response, parsedUrl, postData,request,user){
     }
 }
 
-
-
-//###### remove new task to the list checking + remove ######
-function removeList(response, parsedUrl, postData,request,user){
-   var parsedQuery = querystring.parse(postData);
+function removeList(response, parsedUrl, postData, request, user){
+    var parsedQuery = querystring.parse(postData);
     if(parsedQuery.listName != ""){
         db.removeList(user, parsedQuery.listName);
         response.writeHead(200, {"Content-Type": "text/plain"});
@@ -63,17 +66,11 @@ function removeList(response, parsedUrl, postData,request,user){
     }
 }
 
-	
-	
-	
-	
-function getAllItems(response, parsedUrl, postData,request,user){
+function getItems(response, parsedUrl, postData, request, user){
     var parsedQuery = querystring.parse(postData);
-	console.log("in line 72 RH the : "+typeof parsedQuery.listName);
-	console.log("in line 73 RH the : "+ parsedQuery.listName);
     if(parsedQuery.listName != ""){
         response.writeHead(200, {"Content-Type": "application/json"});
-        response.write(JSON.stringify(db.getAllItems(user, parsedQuery.listName)));
+        response.write(JSON.stringify(db.getItems(user, parsedQuery.listName)));
         response.end();
     }else{
         response.writeHead(404, {"Content-Type": "text/plain"});
@@ -82,13 +79,70 @@ function getAllItems(response, parsedUrl, postData,request,user){
     }
 }
 
+function getItem(response, parsedUrl, postData, request, user){
+    var parsedQuery = querystring.parse(postData);
+    if(parsedQuery.listName != "" && parsedQuery.itemName){
+        response.writeHead(200, {"Content-Type": "application/json"});
+        response.write(JSON.stringify(db.getItem(user, parsedQuery.listName, parsedQuery.itemName)));
+        response.end();
+    }else{
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }
+}
 
+function addItem(response, parsedUrl, postData, request, user){
+    var parsedQuery = querystring.parse(postData);
+    if(parsedQuery.listName != "" && parsedQuery.itemName){
+        db.addItem(user, parsedQuery.listName, parsedQuery.itemName);
+        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }else{
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }
+}
 
-//left
-exports.getAllListsView = getAllListsView; 
-exports.addList = addList;
+function editItem(response, parsedUrl, postData, request, user){
+    var parsedQuery = querystring.parse(postData);
+    if(parsedQuery.listName != "" && parsedQuery.itemName){
+        db.editItem(user, parsedQuery.listName, parsedQuery.itemName, parsedQuery);
+        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }else{
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }
+}
+
+function removeItem(response, parsedUrl, postData, request, user){
+    var parsedQuery = querystring.parse(postData);
+    if(parsedQuery.listName != "" && parsedQuery.itemName){
+        db.removeItem(user, parsedQuery.listName, parsedQuery.itemName);
+        response.writeHead(200, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }else{
+        response.writeHead(404, {"Content-Type": "text/plain"});
+        response.write("");
+        response.end();
+    }
+}
+
+exports.upload      = upload;
+
+exports.getListView  = getListView;
+exports.addList  = addList;
 exports.editList  = editList;
-exports.removeList   = removeList;
+exports.removeList  = removeList;
 
-//middle
-exports.getAllItems = getAllItems; 
+exports.getItems = getItems;
+exports.getItem = getItem;
+exports.addItem = addItem;
+exports.editItem = editItem;
+exports.removeItem = removeItem;
