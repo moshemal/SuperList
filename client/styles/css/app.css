@@ -181,6 +181,13 @@
 }
 
 
+.k-tabstrip .k-content.k-state-active {
+    background-color: #7AC5CD;/*blue like the sea*/
+    color: #2e2e2e;
+}
+
+
+
 #tabstrip input {
     height: 30px;
     font-size: 17px;
