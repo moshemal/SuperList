@@ -1,4 +1,7 @@
-define(['jquery', 'text!./view.html','text!./addNewItem.html', 'core/request', 'kendo'], function($, view, addNewItem, request){
+define(['jquery', 'text!./view.html','text!./addNewItem.html', 'core/request', 'kendo'],
+ function($, view, addNewItem, request){
+	 'use strict';
+
 
     var middleView = $(view);
     var updateFunctions = [];
@@ -22,7 +25,7 @@ define(['jquery', 'text!./view.html','text!./addNewItem.html', 'core/request', '
                 var itemList = $('<div id="listView"></div>');
 
                 itemList.kendoListView({
-                    template: '<div class="listView #:title#"><span class="title">#:title#</span></div>',
+                    template: '<div class="listMiddView #:title#"><span class="title">#:title#</span></div>',
                     selectable: true,
                     change: function(){
                         var select = this.select();

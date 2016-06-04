@@ -186,7 +186,9 @@
     color: #2e2e2e;
 }
 
-
+.listMiddView{
+background-color: #7AC5CD;		
+}
 
 #tabstrip input {
     height: 30px;
