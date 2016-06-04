@@ -118,7 +118,7 @@
 }
 
 #left-pane {
-    background-color: khaki;
+     background-color: #8888D0;
 }
 
 #left-pane h1 {
@@ -135,6 +135,7 @@
 }
 .listView {
     height: 35px;
+	background-color: #8888D0;
 }
 
 .listView .title{
@@ -174,6 +175,11 @@
 #editListWindow #listDialogEditRemove{
     float: left;
 }
+
+#center-pane{ 
+ background-color: #7AC5CD;/*blue like the sea*/
+}
+
 
 #tabstrip input {
     height: 30px;

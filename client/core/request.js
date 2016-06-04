@@ -21,19 +21,7 @@ define(['jquery'], function($){
         });
     }
 
-    function createUser (name, password, properties){
-        return $.ajax("/api/createUser", {
-          method: "post",
-          success: function(data, a, xhr){
-            console.log(data)
-          },
-          data: {
-            user: 		name,
-            password: password,
-            properties: JSON.stringify(properties || {})
-          }
-        });
-    }
+    
 
     function getListView(){
         return $.ajax("/api/getListView", {
@@ -143,7 +131,7 @@ define(['jquery'], function($){
 	return {
         isLoggedIn:  isLoggedIn,
 		login:       login,
-        createUser:  createUser,
+        //createUser:  createUser,
         getListView: getListView,
         addList: addList,
         editList: editList,

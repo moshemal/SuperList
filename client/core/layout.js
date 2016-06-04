@@ -1,4 +1,4 @@
-efine(['jquery', 'text!./templates/l3W.html','modules/List/List', 'modules/View/View', 'modules/Item/Item', 'kendo'],
+define(['jquery', 'text!./templates/l3W.html','modules/List/List', 'modules/View/View', 'modules/Item/Item', 'kendo'],
 	function($,  l3W, list, view, item){
 		'use strict';
 
@@ -14,7 +14,7 @@ efine(['jquery', 'text!./templates/l3W.html','modules/List/List', 'modules/View/
 		return $(layoutHtml);
 	}
 
-	function createLayout (type, selector){
+	function createLayout(type, selector){
 		var jLayout = getJLayout(type);
 		var container = $(selector);
 		container.css({
