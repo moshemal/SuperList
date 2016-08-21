@@ -187,7 +187,8 @@
 }
 
 .listMiddView{
-background-color: #7AC5CD;		
+	height: 35px;
+   background-color: #7AC5CD;		
 }
 
 #tabstrip input {
