@@ -205,6 +205,7 @@
 .item {
     float: left;
     margin: 40px;
+	background-color : 	#F0F8FF ;
 }
 
 .item .row {
