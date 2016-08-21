@@ -62,15 +62,8 @@ button#save {
 }
 
 
-
-
-
 /***** Layout ****/
- /** for 5 **/
-#right-pane{ 
-  /*background-color: rgba(50,89, 14, 0.04);*/
-  background-image: url("../img/right.jpg");	
-     }
+
 /**for 4**/
  #center-pane{ 
  background-color: #7AC5CD;/*blue like the sea*/
