@@ -130,6 +130,7 @@ var createListView = function(selector){
 			change : function(){//Fires when the list view selection has changed.
 				var select = this.select; //jQuery the selected items if called without arguments.
 				for(var i=0; i<updateFunctions.length; i++){
+					console.log($(select[0]));
                     updateFunctions[i]($(select[0]).find(".title").html());
                 }
 			}
@@ -142,7 +143,7 @@ var createListView = function(selector){
 //		
  var getAllListsView = function(listName){
 	 var promise = request.getAllListsView();//form request.js getting the DB from the server
-		 console.log("hello" ,listName);
+		 //console.log("hello" ,listName);
        promise.then(function(data){
 		   console.log("hello 4");
             var list = listView.data("kendoListView");//
@@ -177,7 +178,7 @@ var createListView = function(selector){
 			console.log("failed ");		
 		});
 		
-		return false;
+		//return false;
     };
 
 //
