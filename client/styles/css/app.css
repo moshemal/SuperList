@@ -151,12 +151,12 @@
 
 .listView p {
     margin: 8px;
-    /*float: right;*/
+  float : right;
 }
 
 /*button edit*/
 .listView button{ /*parent > child*/
-     float: right;
+     clear: right;
 	 background-color: #8888D0;
  }
 
