@@ -152,11 +152,12 @@
 .listView p {
     margin: 8px;
   float : right;
+  font-family : "Comic Sans MS", cursive, sans-serif;
 }
 
 /*button edit*/
 .listView button{ /*parent > child*/
-     clear: left;
+      float: right;
 	 background-color: #8888D0;
  }
 
