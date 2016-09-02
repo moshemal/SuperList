@@ -117,18 +117,23 @@
   text-decoration: none;
 }
 
+
+/*List of list side */
 #left-pane {
      background-color: #8888D0;
 }
 
+/*the title */
 #left-pane h1 {
     text-align: center;
 }
 
+/*button plus*/
 #addListButton {
     width: 100%;
     margin-top: 40px;
 }
+
 
 #listView {
     margin-top: 30px;
@@ -149,8 +154,9 @@
     float: right;
 }
 
-.listView button {
+.listView button{ /*parent > child*/
      float: right;
+	 background-color: #8888D0;
  }
 
 #addListWindow input{
