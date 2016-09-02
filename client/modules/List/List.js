@@ -87,17 +87,18 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
     var createListView = function(selector){
 
         $("<h1>Lists</h1>").appendTo(selector);
-        listView.appendTo(selector);
-        addListButton.appendTo(selector);
+        listView.appendTo(selector); //
+        addListButton.appendTo(selector); //
 
+		/*button plus*/
         addListButton.kendoButton({
-            click: function(e) {
-                openAddWindow();
+            click: function(e) { //if we will click the button
+                openAddWindow(); //the function that we have 
             }
         });
 
         listView.kendoListView({
-            template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
+            template: '<div class="listView"><span class="title">#:title#</span><p>#:count#</p><button></button></div>',
             selectable: true,
             change: function(){
                 var select = this.select();
