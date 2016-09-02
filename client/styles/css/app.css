@@ -156,7 +156,7 @@
 
 /*button edit*/
 .listView button{ /*parent > child*/
-     clear: right;
+     clear: left;
 	 background-color: #8888D0;
  }
 
