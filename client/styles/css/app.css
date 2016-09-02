@@ -154,6 +154,7 @@
     float: right;
 }
 
+/*button edit*/
 .listView button{ /*parent > child*/
      float: right;
 	 background-color: #8888D0;

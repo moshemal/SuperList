@@ -38,7 +38,7 @@ define(['jquery', 'text!./templates/l3W.html','modules/List/List', 'modules/View
             panes: [
                 { collapsible: true, size: "30%", max: "30%" },
                 { collapsible: false },
-                { collapsible: true, size: "20%", max: "30%" }
+                { collapsible: true, size: "25%", max: "30%" }
             ]
         });
 	}
