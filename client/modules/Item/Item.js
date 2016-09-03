@@ -11,7 +11,7 @@ define(['jquery', 'text!./item.html', 'core/request', 'kendo'], function($, item
 
         request.getItem(listName,itemName).then(function(data){
             rightView.empty();
-            var currentItem = $(item).clone();
+            var currentItem = $(item).clone(); //
             currentItem.find("input#title").val(data.title);
             currentItem.find("input#starting_date").val(data.starting_date);
             currentItem.find("input#end_date").val(data.end_date);
