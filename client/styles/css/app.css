@@ -126,12 +126,14 @@
 /*the title */
 #left-pane h1 {
     text-align: center;
+	font-family : "Comic Sans MS", cursive, sans-serif;
 }
 
 /*button plus*/
 #addListButton {
     width: 100%;
-    margin-top: 5px;
+   height : 100%;
+   background-color: #8888D0;
 }
 
 
