@@ -86,9 +86,9 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
 
     var createListView = function(selector){
 
-        $("<h1>Lists</h1>").appendTo(selector);
-        listView.appendTo(selector); //
-        addListButton.appendTo(selector); //
+        $("<h1>Lists</h1>").appendTo("#top-pane");
+        listView.appendTo("#middle-pane"); //
+        addListButton.appendTo("#bottom-pane"); //
 
 		/*button plus*/
         addListButton.kendoButton({
