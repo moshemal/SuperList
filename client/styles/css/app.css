@@ -237,6 +237,14 @@
 	font-family : "Comic Sans MS", cursive, sans-serif;
 }
 
+#rightBtn{
+	margin-top:70px;
+	float: left;
+	
+}
+
+
+
 #right-pane{
 	background-color : 	#F0F8FF ;/*AliceBlue*/
 }
