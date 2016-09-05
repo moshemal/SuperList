@@ -48,6 +48,7 @@ define(['jquery', 'text!./item.html', 'core/request', 'kendo'], function($, item
 			currentItem.find("#itemCansel").kendoButton({
                 click: function(){
                      console.log("nothing to do");
+				}
                     });
                 
            
