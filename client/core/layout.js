@@ -22,7 +22,7 @@ define(['jquery', 'text!./templates/l3W.html','modules/List/List', 'modules/View
 			height: "100%"
 		});
 		jLayout.appendTo(selector);
-        list.createListView($("#left-pane"));
+        list.createListView($("#top-pane","#middle-pane","#bottom-pane")); //#left-pane
         view.createMiddleView($("#center-pane"));
         item.createRightView($("#right-pane"));
 
@@ -36,9 +36,9 @@ define(['jquery', 'text!./templates/l3W.html','modules/List/List', 'modules/View
         jLayout.kendoSplitter({
             orientation: "horizontal",
             panes: [
-                { collapsible: true, size: "30%", max: "30%" },
-                { collapsible: false },
-                { collapsible: true, size: "25%", max: "30%" }
+                { collapsible: true, size: "30%", max: "30%" }, //left
+                { collapsible: false }, //middle
+                { collapsible: true, size: "30%", max: "40%" } //right
             ]
         });
 		

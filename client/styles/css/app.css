@@ -226,14 +226,14 @@
 }
 
 .item label {
-    font-size: 15px;
+    font-size: 12px;
     padding-right: 50px;
     float: left;
 }
 
 .item input {
     height: 25px;
-    font-size: 16px;
+    font-size: 14px;
 	font-family : "Comic Sans MS", cursive, sans-serif;
 }
 
