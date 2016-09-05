@@ -22,8 +22,11 @@ define(['jquery', 'text!./templates/l3W.html','modules/List/List', 'modules/View
 			height: "100%"
 		});
 		jLayout.appendTo(selector);
-        list.createListView($("#top-pane","#middle-pane","#bottom-pane")); //#left-pane
+		
+        list.createListView($("#left-pane")); //#left-pane
+		
         view.createMiddleView($("#center-pane"));
+		
         item.createRightView($("#right-pane"));
 
         list.addFunctionForChanges(view.openNewTab);

@@ -87,10 +87,10 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
     };
 
 	/*craeting a left side*/
-    var createListView = function(top_selctor, mid_selctor ,bottom_selctor){
-        $("<h1>Lists</h1>").appendTo(top_selctor);//only the name List
-        listView.appendTo(mid_selctor); //the lists
-        addListButton.appendTo(bottom_selctor); //the button
+    var createListView = function(selector){
+        $("<h1>Lists</h1>").appendTo("#top-pane");//only the name
+        listView.appendTo("#middle-pane"); //the lists
+        addListButton.appendTo("#bottom-pane"); //the button
 
 		//button plus a kendu libery
         addListButton.kendoButton({
@@ -100,7 +100,7 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
             }
         });
 
-		//list view middle-pane = mid_selctor a kendu libery
+		//list view middle-pane a kendu libery
         listView.kendoListView({
             template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
             selectable: true,
