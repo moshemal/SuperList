@@ -49,8 +49,8 @@ define(['jquery', 'text!./item.html', 'core/request', 'kendo'], function($, item
                 click: function(){
                      console.log("nothing to do");
                     });
-                }
-            });
+                
+           
 			
 			
             currentItem.appendTo(rightView);
