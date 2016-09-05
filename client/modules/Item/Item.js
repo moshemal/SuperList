@@ -13,7 +13,9 @@ define(['jquery', 'text!./item.html', 'core/request', 'kendo'], function($, item
 
         request.getItem(listName,itemName).then(function(data){
             rightView.empty();
-            var currentItem = $(item).clone(); //
+			
+			//The clone() method makes a copy of selected elements, including child nodes, text and attributes.
+            var currentItem = $(item).clone(); 
             currentItem.find("input#title").val(data.title);
             currentItem.find("input#starting_date").val(data.starting_date);
             currentItem.find("input#end_date").val(data.end_date);
@@ -43,6 +45,14 @@ define(['jquery', 'text!./item.html', 'core/request', 'kendo'], function($, item
                 }
             });
 
+			currentItem.find("#itemCansel").kendoButton({
+                click: function(){
+                     console.log("nothing to do");
+                    });
+                }
+            });
+			
+			
             currentItem.appendTo(rightView);
         });
     };

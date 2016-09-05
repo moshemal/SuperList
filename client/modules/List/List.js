@@ -94,7 +94,7 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
 
 		//button plus a kendu libery
         addListButton.kendoButton({
-			 spriteCssClass: "k-icon k-si-plus",
+			 spriteCssClass: "k-icon k-si-plus", //the icon plus
             click: function(e) { //if we will click the button
                 openAddWindow(); //the function that we have 
             }
