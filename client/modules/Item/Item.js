@@ -5,6 +5,8 @@ define(['jquery', 'text!./item.html', 'core/request', 'kendo'], function($, item
 
     function createRightView(selector){
         rightView.appendTo(selector);
+		
+		
     }
 
     var openItem = function(listName,itemName){

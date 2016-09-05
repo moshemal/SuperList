@@ -6,6 +6,7 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
     var addListWindow;
     var editListWindow;
 
+	/*window for adding a new list name*/
     var openAddWindow = function(){
         addListWindow = $(addWindow);
         addListWindow.appendTo('body');
@@ -38,6 +39,7 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
         });
     };
 
+	/*in the middle pane adding a new window adding*/
     var openEditWindow = function(listName){
         if(listName != undefined && listName != ""){
             editListWindow = $(editWindow);
@@ -84,19 +86,20 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
         }
     };
 
+	/*craeting a left side*/
     var createListView = function(selector){
+        $("<h1>Lists</h1>").appendTo("#top-pane");//only the name
+        listView.appendTo("#middle-pane"); //the lists
+        addListButton.appendTo("#bottom-pane"); //the button
 
-        $("<h1>Lists</h1>").appendTo("#top-pane");
-        listView.appendTo("#middle-pane"); //
-        addListButton.appendTo("#bottom-pane"); //
-
-		/*button plus*/
+		//button plus a kendu libery
         addListButton.kendoButton({
             click: function(e) { //if we will click the button
                 openAddWindow(); //the function that we have 
             }
         });
 
+		//list view middle-pane a kendu libery
         listView.kendoListView({
             template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
             selectable: true,
@@ -111,8 +114,10 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
         getListView();
     };
 
+	/*the db prmise*/
     var getListView = function(listName){
-        request.getListView().then(function(data){
+		
+        request.getListView().then(function(data){ 
             var list = listView.data("kendoListView");
             var dataSource = new kendo.data.DataSource({
                 data: data
@@ -126,8 +131,6 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
                         list.select($(this).parent());
                 });
             }
-
-
             $(".listView button").kendoButton({
                 spriteCssClass: "k-icon k-i-pencil",
                 click: function(e) {
@@ -138,7 +141,9 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
             for(var i=0; i<updateFunctions.length; i++){
                 updateFunctions[i]('');
             }
-        })
+        }, function(){
+			console.log("failed");
+		})
     };
 
     var addFunctionForChanges = function(func){
