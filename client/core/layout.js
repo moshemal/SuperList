@@ -49,7 +49,7 @@ define(['jquery', 'text!./templates/l3W.html','modules/List/List', 'modules/View
 		$("#left-pane").kendoSplitter({
 			orientation: "vertical",
 			panes: [
-                            { collapsible: true,size:"90px",resizable:true },//top 1
+                            { collapsible: true,size:"90px",resizable:false },//top 1
                             { collapsible: false, size: "470",resizable:true  },//middle 2
                             { collapsible: false, resizable: true, size: "20px" } //buttom 3 button
                         ]

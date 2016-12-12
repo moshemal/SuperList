@@ -1,8 +1,10 @@
-define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.html', 'text!./editWindow.html', 'core/request', 'kendo'], function($, list, button, addWindow, editWindow, request){
+define(['jquery', 'text!./list.html', 'text!./button.html','text!./upBtn.html', 'text!./addWindow.html', 'text!./editWindow.html', 'core/request', 'kendo'], 
+        function($, list, button,upBtn, addWindow, editWindow, request){
 
     var updateFunctions = [];
     var listView = $(list);
     var addListButton = $(button);
+	var top = $(upBtn);
     var addListWindow;
     var editListWindow;
 
@@ -88,17 +90,22 @@ define(['jquery', 'text!./list.html', 'text!./button.html', 'text!./addWindow.ht
 
 	/*craeting a left side*/
     var createListView = function(selector){
-        $("<h1>Lists</h1>").appendTo("#top-pane");//only the name
+        top.appendTo("#top-pane");//only the name
         listView.appendTo("#middle-pane"); //the lists
         addListButton.appendTo("#bottom-pane"); //the button
 
-		//button plus a kendu libery
-        addListButton.kendoButton({
+		
+        addListButton.kendoButton({//button plus a kendu libery
 			 spriteCssClass: "k-icon k-si-plus", //the icon plus
             click: function(e) { //if we will click the button
                 openAddWindow(); //the function that we have 
             }
         });
+		
+		top.kendoButton({
+			
+		});
+		
 
 		//list view middle-pane a kendu libery
         listView.kendoListView({

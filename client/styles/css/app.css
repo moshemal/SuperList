@@ -121,17 +121,33 @@ body{
     }
 
 
-/*List of list side */
-#left-pane {
+
+#left-pane { /*List of list side */
      background-color: #989076; /*#F0F8FF*/
     }
 #left-pane h1 {/*the title */
     text-align: center;
 	font-family : "Comic Sans MS", cursive, sans-serif;
    }
+
 #top-pane { /**for 1**/
-  background-color: #989076 ; /*rgba(1, 10, 70, 0.10);*/
+  background-color: rgba(1, 10, 70, 0.10);
+  width: 399px;
      }
+ #upBtn {
+ width: 100%;
+ height : 100%;
+background-color: rgba(1, 10, 70, 0.10);
+  background-image: url("/vendors/kendo-ui/styles/textures/highlight.png");
+
+ 
+}
+
+#upBtn h2 {
+	color : white ;
+	font-family : "Comic Sans MS", cursive, sans-serif;
+}
+
 
 #listView { /*** list of tasks 2**/ 
     /*margin-top: 30px;*/
@@ -161,9 +177,9 @@ body{
  background-color: rgba(66, 45,7, 0.15); 
  }
 #addListButton {
-    width: 100%;
+   width: 100%;
    height : 100%;
-   background-color: #8888D0;
+   background-color: rgba(1, 10, 70, 0.10);
 }
 #task{
  background-color: rgba(69, 90,7, 0.12);
@@ -172,7 +188,7 @@ body{
  position: absolute;
 }
 #task button {
-/*size : 10px;*/
+
 font-weight: 100;
  width: 100%; 
  height: 100%;
@@ -187,21 +203,15 @@ font-weight: 100;
 #center-pane{ /**for 4**/
    background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */
     text-align: center;
-}
-
-
-		 
+}		 
  .k-tabstrip .k-content.k-state-active {
    background-color: rgba(0, 0, 255, 0.23);	  /* blue with opacity*/
     /*color: #2e2e2e;*/
 }
-
 #listMiddView .listMiddView{
 	height: 35px;
    background-color:  rgba(0, 0, 255, 0.3);		
 }
-
-
 #tabstrip input {
     height: 30px;
     font-size: 17px;
