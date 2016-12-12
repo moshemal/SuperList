@@ -123,14 +123,14 @@ body{
 
 /*List of list side */
 #left-pane {
-     background-color: #8888D0;
+     background-color: #F0F8FF; /*#F0F8FF*/
     }
 #left-pane h1 {/*the title */
     text-align: center;
 	font-family : "Comic Sans MS", cursive, sans-serif;
    }
 #top-pane { /**for 1**/
-  background-color: #F0F8FF ; /*rgba(1, 10, 70, 0.10);*/
+  background-color: #8888D0 ; /*rgba(1, 10, 70, 0.10);*/
      }
 
 #listView { /*** list of tasks 2**/ 
@@ -146,7 +146,7 @@ body{
     margin-left: 20px;
 }
 .listView p {
-    margin: 6px;
+   margin: 6px;
   float : right;
   font-family : "Comic Sans MS", cursive, sans-serif;
 }
@@ -189,13 +189,9 @@ font-weight: 100;
     text-align: center;
 }
          
-/*		 
-#listMiddView{
-	background-color: rgba(0, 0, 255, 0.3);
-}
-*/		 
+		 
  .k-tabstrip .k-content.k-state-active {
-   background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */
+   background-color: hsla(290,60%,70%,0.3);  /* blue with opacity */
     color: #2e2e2e;
 }
 .listMiddView{
