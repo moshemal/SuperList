@@ -188,15 +188,18 @@ font-weight: 100;
    background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */
     text-align: center;
 }
-         
+/*
+ #listMiddView{
+	background-color: blue;  /* blue with opacity 		
+} */       
 		 
  .k-tabstrip .k-content.k-state-active {
    background-color: hsla(290,60%,70%,0.3);  /* blue with opacity */
     color: #2e2e2e;
 }
-.listMiddView{
+#listMiddView .listMiddView{
 	height: 35px;
-   background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */		
+   background-color: blue;  /* blue with opacity rgba(0, 0, 255, 0.3)*/		
 }
  
  
