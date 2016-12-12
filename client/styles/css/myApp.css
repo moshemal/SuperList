@@ -1,78 +1,20 @@
- body{
-   height: 100%;
-     }
+ 
       
-/*************************************************************/
-/******Layout for 3 background color for button plus ********/
-/************************************************************/
-#bottom-pane {
-background-color: rgba(66, 45,7, 0.15); 
-/*background-color:pink;*/
-}
 
 
-/*button plus in button 3*/
-#task{
- background-color: rgba(69, 90,7, 0.12);
- height: 53px; 
- width: 100%; 
- position: absolute;
-}
-
-#task button {
-/*size : 10px;*/
-font-weight: 100;
- width: 100%; 
- height: 100%;
- background-color: rgba(70, 90,7, 0.12);  
- border-bottom-width: 1px;
- border-top-width: 1px;
- padding-top: 12px;
- padding-bottom: 12px;
-}
-
-/*************************************************************/
-/**********************Window adding NEW TASK******************/
-/*************************************************************/
 
 
-ul .add-task-buttons{
-list-style-type: none;
-}
 
-.cancel-btn{
-    /*margin-right: 11px;*/
-    /*margin-left: 90px;*/
-    margin-top: -53px;
-    /*padding-top: 1px;*/
-	/*float: right;*/
-    /*height: 38px;*/
-}
 
-button#close {
-    height: 38px;
-    margin-bottom: 11px;
-    margin-left: 90px;
-    /*margin-right: 11px;*/
-    float: right;
-}
-
-button#save {
-    height: 38px;
-}
 
 
 /***** Layout ****/
 
-/**for 4**/
- #center-pane{ 
- background-color: #7AC5CD;/*blue like the sea*/
- text-align: center;
-         }			  
-/**for 1**/
- #top-pane { 
-  background-color: rgba(1, 10, 70, 0.10);
-     }
+
+
+
+		 
+
 
 
 	  

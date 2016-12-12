@@ -9,7 +9,7 @@ define(['jquery', 'text!./view.html','text!./addNewItem.html', 'core/request', '
 
     function createMiddleView(selector){
 
-        middleView.appendTo(selector);
+        middleView.appendTo(selector); //#center-pane
 
         middleView.kendoTabStrip({
             dataContentField: "content",
@@ -22,7 +22,7 @@ define(['jquery', 'text!./view.html','text!./addNewItem.html', 'core/request', '
             request.getItems(listName).then(function(data){
                 var tab = middleView.data("kendoTabStrip");
 
-                var itemList = $('<div id="listView"></div>');
+                var itemList = $('<div id="listMiddView"></div>');
 
                 itemList.kendoListView({
                     template: '<div class="listMiddView #:title#"><span class="title">#:title#</span></div>',

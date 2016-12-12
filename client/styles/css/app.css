@@ -12,9 +12,6 @@
   -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
 }
-
-
-
 .form .register {
   display: none;
 }
@@ -118,25 +115,31 @@
 }
 
 
+/**********Apllication page*****************/
+
+body{
+   height: 100%;
+    }
+
+
 /*List of list side */
 #left-pane {
      background-color: #8888D0;
-}
+    }
 
 /*the title */
 #left-pane h1 {
     text-align: center;
 	font-family : "Comic Sans MS", cursive, sans-serif;
-}
+   }
 
-/*button plus*/
-#addListButton {
-    width: 100%;
-   height : 100%;
-   background-color: #8888D0;
-}
+/**for 1**/
+ #top-pane { 
+  background-color: rgba(1, 10, 70, 0.10);
+     }
 
 
+/*** list of tasks 2**/
 #listView {
     margin-top: 30px;
 }
@@ -144,61 +147,94 @@
     height: 35px;
 	background-color: #8888D0;
 }
-
 .listView .title{
     margin-top: 8px;
     float: left;
     margin-left: 20px;
 }
-
 .listView p {
     margin: 6px;
   float : right;
   font-family : "Comic Sans MS", cursive, sans-serif;
 }
-
-/*button edit*/
-.listView button{ /*parent > child*/
+.listView button{ /*parent > child  button edit*/
       float: right;
 	 background-color: #8888D0;
  }
 
+	 
+/******Layout for 3 background color for button plus ********/
+#bottom-pane {
+ background-color: rgba(66, 45,7, 0.15); 
+ }
+#addListButton {
+    width: 100%;
+   height : 100%;
+   background-color: #8888D0;
+}
+/*button plus in button 3*/
+#task{
+ background-color: rgba(69, 90,7, 0.12);
+ height: 53px; 
+ width: 100%; 
+ position: absolute;
+}
+#task button {
+/*size : 10px;*/
+font-weight: 100;
+ width: 100%; 
+ height: 100%;
+ background-color: rgba(70, 90,7, 0.12);  
+ border-bottom-width: 1px;
+ border-top-width: 1px;
+ padding-top: 12px;
+ padding-bottom: 12px;
+}
+
+
+
+
+ /**for 4**/
+ #center-pane{ 
+   background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */
+    text-align: center;
+         }
+/***   ****/
+#tabstrip .k-tabstrip .k-content.k-state-active {
+   background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */
+    color: #2e2e2e;
+}
+
+
+
+.listMiddView{
+	height: 35px;
+   background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */		
+}
+ 
+ 
+ 
+ 
+ /*Window add list*/
 #addListWindow input{
     height: 30px;
     font-size: 17px;
 }
-
 #addListWindow #listDialogAddSubmit{
     float: right;
     margin-top: 70px;
 }
 
+/* Edit list of tasks*/
 #editListWindow input{
     height: 30px;
     font-size: 17px;
 }
-
 #editListWindow #listDialogEditSubmit{
     float: right;
 }
-
 #editListWindow #listDialogEditRemove{
     float: left;
-}
-
-#center-pane{ 
- background-color: #7AC5CD;/*blue like the sea*/
-}
-
-
-.k-tabstrip .k-content.k-state-active {
-    background-color: #7AC5CD;/*blue like the sea*/
-    color: #2e2e2e;
-}
-
-.listMiddView{
-	height: 35px;
-   background-color: #7AC5CD;		
 }
 
 #tabstrip input {
@@ -206,31 +242,29 @@
     font-size: 17px;
     width:88%;
 }
-
 #tabstrip button {
     height: 36px;
     width: 36px;
 }
 
+
+/* */
 .item {
     float: left;
     margin: 40px;
 	background-color : 	#F0F8FF ;
 	font-family : "Comic Sans MS", cursive, sans-serif;
 }
-
 .item .row {
     float:left;
     width: 100%;
     margin: 5px;
 }
-
 .item label {
-    font-size: 12px;
+    font-size: 14px;
     padding-right: 50px;
     float: left;
 }
-
 .item input {
     height: 25px;
     font-size: 14px;
@@ -242,9 +276,37 @@
 	float: left;
 	
 }
-
-
-
 #right-pane{
 	background-color : 	#F0F8FF ;/*AliceBlue*/
+}
+
+
+/*************************************************************/
+/**********************Window adding NEW TASK******************/
+/*************************************************************/
+
+
+ul .add-task-buttons{
+list-style-type: none;
+}
+
+.cancel-btn{
+    /*margin-right: 11px;*/
+    /*margin-left: 90px;*/
+    margin-top: -53px;
+    /*padding-top: 1px;*/
+	/*float: right;*/
+    /*height: 38px;*/
+}
+
+button#close {
+    height: 38px;
+    margin-bottom: 11px;
+    margin-left: 90px;
+    /*margin-right: 11px;*/
+    float: right;
+}
+
+button#save {
+    height: 38px;
 }
