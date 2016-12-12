@@ -132,17 +132,16 @@ body{
 
 #top-pane { /**for 1**/
   background-color: rgba(1, 10, 70, 0.10);
-  width: 399px;
+  /*width: 399px;*/
      }
  #upBtn {
  width: 100%;
  height : 100%;
-background-color: rgba(1, 10, 70, 0.10);
+  background-color: rgba(1, 10, 70, 0.10);
   background-image: url("/vendors/kendo-ui/styles/textures/highlight.png");
 
  
 }
-
 #upBtn h2 {
 	color : white ;
 	font-family : "Comic Sans MS", cursive, sans-serif;
@@ -180,7 +179,9 @@ background-color: rgba(1, 10, 70, 0.10);
    width: 100%;
    height : 100%;
    background-color: rgba(1, 10, 70, 0.10);
+  background-image: url("/vendors/kendo-ui/styles/textures/highlight.png");
 }
+
 #task{
  background-color: rgba(69, 90,7, 0.12);
  height: 53px; 
@@ -188,7 +189,6 @@ background-color: rgba(1, 10, 70, 0.10);
  position: absolute;
 }
 #task button {
-
 font-weight: 100;
  width: 100%; 
  height: 100%;
