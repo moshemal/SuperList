@@ -172,7 +172,6 @@ body{
    height : 100%;
    background-color: #8888D0;
 }
-/*button plus in button 3*/
 #task{
  background-color: rgba(69, 90,7, 0.12);
  height: 53px; 
@@ -195,18 +194,14 @@ font-weight: 100;
 
 
  /**for 4**/
- #center-pane{ 
+#center-pane{ 
    background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */
     text-align: center;
          }
-/***   ****/
-#tabstrip .k-tabstrip .k-content.k-state-active {
+#tabstrip-1 .k-tabstrip .k-content.k-state-active {
    background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */
     color: #2e2e2e;
 }
-
-
-
 .listMiddView{
 	height: 35px;
    background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */		
