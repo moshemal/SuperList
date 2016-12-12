@@ -123,22 +123,22 @@ body{
 
 /*List of list side */
 #left-pane {
-     background-color: #F0F8FF; /*#F0F8FF*/
+     background-color: #989076; /*#F0F8FF*/
     }
 #left-pane h1 {/*the title */
     text-align: center;
 	font-family : "Comic Sans MS", cursive, sans-serif;
    }
 #top-pane { /**for 1**/
-  background-color: #8888D0 ; /*rgba(1, 10, 70, 0.10);*/
+  background-color: #989076 ; /*rgba(1, 10, 70, 0.10);*/
      }
 
 #listView { /*** list of tasks 2**/ 
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 }
 .listView {
     height: 35px;
-	background-color: #F0F8FF  ;
+	background-color: #989076  ;
 }
 .listView .title{
     margin-top: 8px;
@@ -152,7 +152,7 @@ body{
 }
 .listView button{ /*parent > child  button edit*/
       float: right;
-	 background-color: #8888D0;
+	 background-color: #989076;
  }
 
 	 
@@ -189,21 +189,28 @@ font-weight: 100;
     text-align: center;
 }
 
- #listMiddView{
-	background-color: blue;  /* blue with opacity*/ 		
-}        
+
 		 
  .k-tabstrip .k-content.k-state-active {
-   background-color: hsla(290,60%,70%,0.3);  /* blue with opacity*/ 
-    color: #2e2e2e;
+   background-color: rgba(0, 0, 255, 0.23);	  /* blue with opacity*/
+    /*color: #2e2e2e;*/
 }
 
 #listMiddView .listMiddView{
 	height: 35px;
-   background-color:  red;  /* blue with opacity rgba(0, 0, 255, 0.3)  hsla(290,60%,70%,0.3)*/		
+   background-color:  rgba(0, 0, 255, 0.3);		
 }
- 
- 
+
+
+#tabstrip input {
+    height: 30px;
+    font-size: 17px;
+    width:88%;
+}
+#tabstrip button {
+    height: 36px;
+    width: 36px;
+} 
  
  
  /*Window add list*/
@@ -228,15 +235,7 @@ font-weight: 100;
     float: left;
 }
 
-#tabstrip input {
-    height: 30px;
-    font-size: 17px;
-    width:88%;
-}
-#tabstrip button {
-    height: 36px;
-    width: 36px;
-}
+
 
 
 /* */
