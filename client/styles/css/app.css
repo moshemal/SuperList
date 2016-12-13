@@ -134,13 +134,11 @@ body{
   background-color: rgba(1, 10, 70, 0.10);
   /*width: 399px;*/
      }
- #upBtn {
+#upBtn {
  width: 100%;
  height : 100%;
   background-color: rgba(1, 10, 70, 0.10);
   background-image: url("/vendors/kendo-ui/styles/textures/highlight.png");
-
- 
 }
 #upBtn h2 {
 	color : white ;
@@ -171,33 +169,20 @@ body{
  }
 
 	 
-/******Layout for 3 background color for button plus ********/
-#bottom-pane {
- background-color: rgba(66, 45,7, 0.15); 
+
+#bottom-pane { /******Layout for 3 background color for button plus ********/
+  background-color: rgba(1, 10, 70, 0.10); 
  }
 #addListButton {
    width: 100%;
    height : 100%;
    background-color: rgba(1, 10, 70, 0.10);
-  background-image: url("/vendors/kendo-ui/styles/textures/highlight.png");
+   background-image: url("/vendors/kendo-ui/styles/textures/highlight.png");
+  color : white ;
+  
 }
 
-#task{
- background-color: rgba(69, 90,7, 0.12);
- height: 53px; 
- width: 100%; 
- position: absolute;
-}
-#task button {
-font-weight: 100;
- width: 100%; 
- height: 100%;
- background-color: rgba(70, 90,7, 0.12);  
- border-bottom-width: 1px;
- border-top-width: 1px;
- padding-top: 12px;
- padding-bottom: 12px;
-}
+
 
 
 #center-pane{ /**for 4**/
@@ -303,3 +288,23 @@ button#close {
 button#save {
     height: 38px;
 }
+
+
+/*
+#task{
+ background-color: rgba(1, 10, 70, 0.10);
+ height: 53px; 
+ width: 100%; 
+ position: absolute;
+}
+#task button {
+font-weight: 100;
+ width: 100%; 
+ height: 100%;
+ background-color: rgba(70, 90,7, 0.12);  
+ border-bottom-width: 1px;
+ border-top-width: 1px;
+ padding-top: 12px;
+ padding-bottom: 12px;
+}
+*/
