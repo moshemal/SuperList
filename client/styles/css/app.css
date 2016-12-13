@@ -154,7 +154,7 @@ body{
     margin-top: 8px;
     float: left;
     margin-left: 20px;
-	font-weight: bold;
+	
 }
 .listView p {
 	margin: 6px;
@@ -162,7 +162,7 @@ body{
     float: left;
     left: 155px;
     font-family: "Comic Sans MS", cursive, sans-serif;
-	font-weight: bold;
+	
   
 }
 .listView button{ /*parent > child  button edit*/
@@ -173,8 +173,19 @@ body{
 	
  }
 
-.listView: hover{
-	background: #1a9bcb;
+ /*
+.k-state-selected {
+	color: #fff; /*color of the task white
+	font-weight: bold;
+  background-color: blue; /*kind of blue*
+  border-color: #c5c5c5 ;
+}
+*/
+.listView  :hover{
+ color: #fff; /*color of the task white*/
+	font-weight: bold;
+  background-color: blue; /*kind of blue*/
+  border-color: #c5c5c5 ;
 }
 
 #bottom-pane { /******Layout for 3 background color for button plus ********/
