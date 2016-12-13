@@ -122,18 +122,14 @@ body{
 
 
 
-#left-pane { /*List of list side */
+#left-pane { /*List of list side 1 2 3*/
      background-color: #989076; /*#F0F8FF*/
     }
-#left-pane h1 {/*the title */
-    text-align: center;
-	font-family : "Comic Sans MS", cursive, sans-serif;
-   }
-
+	
 #top-pane { /**for 1**/
   background-color: rgba(1, 10, 70, 0.10);
   /*width: 399px;*/
-     }
+     }	
 #upBtn {
  width: 100%;
  height : 100%;
@@ -145,33 +141,41 @@ body{
 	font-family : "Comic Sans MS", cursive, sans-serif;
 }
 
-
-#listView { /*** list of tasks 2**/ 
-    /*margin-top: 30px;*/
+#middle-pane{ /** for 2 **/
+    background-color: #c5c5c5;
+	background-image: url("/vendors/kendo-ui/styles/textures/brushed-metal.png");	
 }
 .listView {
     height: 35px;
-	background-color: #4c164c  ;
-	background-image: url("/vendors/kendo-ui/styles/textures/hsv-gradient.png");
+	background-color: #c5c5c5;
+	background-image: url("/vendors/kendo-ui/styles/textures/brushed-metal.png");
 }
 .listView .title{
     margin-top: 8px;
     float: left;
     margin-left: 20px;
+	font-weight: bold;
 }
 .listView p {
-   margin: 6px;
-  float : right;
-  font-family : "Comic Sans MS", cursive, sans-serif;
-  background-color: #4c164c  ;
-	background-image: url("/vendors/kendo-ui/styles/textures/hsv-gradient.png");
+	margin: 6px;
+    position: fixed;
+    float: left;
+    left: 155px;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+	font-weight: bold;
+  
 }
 .listView button{ /*parent > child  button edit*/
       float: right;
-	 background-color: #989076;
+	  right : 10px;
+	  background-color: #c5c5c5;
+	  background-image: url("/vendors/kendo-ui/styles/textures/brushed-metal.png");
+	
  }
 
-	 
+.listView: hover{
+	background: #1a9bcb;
+}
 
 #bottom-pane { /******Layout for 3 background color for button plus ********/
   background-color: rgba(1, 10, 70, 0.10); 
@@ -179,7 +183,7 @@ body{
 #addListButton {
    width: 100%;
    height : 100%;
-   background-color: rgba(11, 10, 20, 0.4);
+   background-color: rgba(9,8,7,0.7);
    background-image: url("/vendors/kendo-ui/styles/textures/highlight.png");
   color : white ;
   font-weight: bold;

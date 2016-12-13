@@ -109,7 +109,7 @@ define(['jquery', 'text!./list.html', 'text!./button.html','text!./upBtn.html', 
 
 		//list view middle-pane a kendu libery
         listView.kendoListView({
-            template: '<div class="listView"><span class="title">#:title#</span><button></button><p>#:count#</p></div>',
+            template: '<div class="listView"><span class="title">#:title#</span><p>#:count#</p><button></button></div>',
             selectable: true,
             change: function(){
                 var select = this.select();
