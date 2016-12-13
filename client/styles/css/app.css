@@ -151,8 +151,8 @@ body{
 }
 .listView {
     height: 35px;
-	background-color: #989076  ;
-	background-image: url("/vendors/kendo-ui/styles/textures/glass-lighter.png");
+	background-color: #4c164c  ;
+	background-image: url("/vendors/kendo-ui/styles/textures/hsv-gradient.png");
 }
 .listView .title{
     margin-top: 8px;
@@ -163,6 +163,8 @@ body{
    margin: 6px;
   float : right;
   font-family : "Comic Sans MS", cursive, sans-serif;
+  background-color: #4c164c  ;
+	background-image: url("/vendors/kendo-ui/styles/textures/hsv-gradient.png");
 }
 .listView button{ /*parent > child  button edit*/
       float: right;
