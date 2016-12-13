@@ -51,7 +51,7 @@ define(['jquery', 'text!./templates/l3W.html','modules/List/List', 'modules/View
 			panes: [
                             { collapsible: true,size:"90px",resizable:false },//top 1
                             { collapsible: false, size: "470",resizable:true  },//middle 2
-                            { collapsible: false, resizable: true, size: "20px" } //buttom 3 button
+                            { collapsible: false, resizable: false, size: "20px" } //buttom 3 button
                         ]
 			
 		});
