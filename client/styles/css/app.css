@@ -147,6 +147,7 @@ body{
 }
 .listView {
     height: 35px;
+	color: rgba(5, 4, 6, 0.9);
 	background-color: #c5c5c5;
 	background-image: url("/vendors/kendo-ui/styles/textures/brushed-metal.png");
 }
@@ -154,38 +155,42 @@ body{
     margin-top: 8px;
     float: left;
     margin-left: 20px;
+	font-weight: bold;
 	
 }
 .listView p {
 	margin: 6px;
-    position: fixed;
-    float: left;
-    left: 155px;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-	
-  
+    float: right;
+    font-family: "Comic Sans MS", cursive, sans-serif; 
+	font-weight: bold;
 }
+
 .listView button{ /*parent > child  button edit*/
       float: right;
 	  right : 10px;
-	  background-color: #c5c5c5;
-	  background-image: url("/vendors/kendo-ui/styles/textures/brushed-metal.png");
-	
+	  background-color: blue; /*kind of blue*/
+      border-color: #c5c5c5 ;
+	  display : none;
+	  color: #fff; /*color of the task white*/
  }
 
- /*
-.k-state-selected {
-	color: #fff; /*color of the task white
-	font-weight: bold;
-  background-color: blue; /*kind of blue*
-  border-color: #c5c5c5 ;
-}
-*/
-.listView  :hover{
+
+.listView:hover{
  color: #fff; /*color of the task white*/
 	font-weight: bold;
   background-color: blue; /*kind of blue*/
   border-color: #c5c5c5 ;
+}
+
+
+
+.listView button:hover{
+ color: #fff; /*color of the task white*/
+  font-weight: bold;
+  background-color: blue; /*kind of blue*/
+  border-color: #c5c5c5 ;
+  float: right;
+  right : 10px;
 }
 
 #bottom-pane { /******Layout for 3 background color for button plus ********/

@@ -145,6 +145,32 @@ define(['jquery', 'text!./list.html', 'text!./button.html','text!./upBtn.html', 
                     openEditWindow($(e.event.target).closest(".listView").find(".title").html());
                 }
             });
+			
+			
+			
+			$( ".listView" )
+       .on( 'mouseover', function(e){
+		   $(e.target).closest(".listView").find("button").show();
+           $(e.target).closest(".listView").find("p").css({
+			"margin": "6px",
+             "position": "fixed",
+             "float": "left",
+             "left": "155px",
+			 "font-family": "Comic Sans MS"
+			 });	
+         })
+      .on('mouseleave',function(e) {
+		  $(e.target).closest(".listView").find("button").hide();
+		  $(e.target).closest(".listView").find("p").css({
+			 "margin": "6px",
+             "position": "",
+			 "float": "right",
+			 "left": "",
+			 "font-family": "Comic Sans MS"
+			 });	     	   
+            });			
+            
+			
 
             for(var i=0; i<updateFunctions.length; i++){
                 updateFunctions[i]('');
