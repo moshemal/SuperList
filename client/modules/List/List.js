@@ -109,7 +109,7 @@ define(['jquery', 'text!./list.html', 'text!./button.html','text!./upBtn.html', 
 
 		//list view middle-pane a kendu libery
         listView.kendoListView({
-            template: '<div class="listView"><span class="title">#:title#</span><p>#:count#</p><button></button></div>',
+            template: '<div class="listView"><span class="k-icon k-insertUnorderedList"></span><span class="title">#:title#</span><p>#:count#</p><button></button></div>',
             selectable: true,
             change: function(){
                 var select = this.select();
@@ -152,8 +152,8 @@ define(['jquery', 'text!./list.html', 'text!./button.html','text!./upBtn.html', 
        .on( 'mouseover', function(e){
 		   $(e.target).closest(".listView").find("button").show();
            $(e.target).closest(".listView").find("p").css({
-			"margin": "6px",
-             "position": "fixed",
+			"margin": "1px",
+             "position": "relative",
              "float": "left",
              "left": "155px",
 			 "font-family": "Comic Sans MS"
