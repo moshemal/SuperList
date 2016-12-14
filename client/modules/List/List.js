@@ -159,6 +159,7 @@ define(['jquery', 'text!./list.html', 'text!./button.html','text!./upBtn.html', 
 			 "font-family": "Comic Sans MS"
 			 });	
          })
+		 
       .on('mouseleave',function(e) {
 		  $(e.target).closest(".listView").find("button").hide();
 		  $(e.target).closest(".listView").find("p").css({
@@ -167,7 +168,8 @@ define(['jquery', 'text!./list.html', 'text!./button.html','text!./upBtn.html', 
 			 "float": "right",
 			 "left": "",
 			 "font-family": "Comic Sans MS"
-			 });	     	   
+			 });
+			 
             });			
             
 			
