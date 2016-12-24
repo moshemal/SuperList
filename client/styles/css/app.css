@@ -151,13 +151,9 @@ body{
 	background-color: #c5c5c5;
 	background-image: url("/vendors/kendo-ui/styles/textures/brushed-metal.png");
 }
-
-
 .listView  .k-insertUnorderedList{
     float: left;
 }
-
-
 .listView .title{
    margin-top: 8px;
     margin-left: 45px; /* 20*/
@@ -171,7 +167,6 @@ body{
     font-family: "Comic Sans MS", cursive, sans-serif; 
 	font-weight: bold;
 }
-
 .listView button{ /*parent > child  button edit*/
       float: right;
 	  right : 10px;
@@ -183,8 +178,6 @@ body{
 	  padding-left: .4em;
       padding-right: .2em;
  }
-
-
 .listView:hover{
 	color: #fff;
     font-weight: bold;
@@ -193,13 +186,9 @@ body{
     border-width: 1px;
     /*padding-top: 5px;*/ 
 }
-
-
-
 .listView button:hover{
- color: #fff; /*color of the task white*/
+  color: #fff; /*color of the task white*/
   font-weight: bold;
-  /*background-color: blue; /*kind of blue*/
   border-color: #c5c5c5 ;
   float: right;
   right : 10px;
@@ -213,7 +202,7 @@ body{
    height : 100%;
    background-color: rgba(9,8,7,0.7);
    background-image: url("/vendors/kendo-ui/styles/textures/highlight.png");
-  color : white ;
+   color : white ;
   font-weight: bold;
 }
 
@@ -221,30 +210,70 @@ body{
 
 
 #center-pane{ /**for 4**/
-   background-color: rgba(0, 0, 255, 0.3);  /* blue with opacity */
     text-align: center;
+	font-weight : bold;
 }		 
- .k-tabstrip .k-content.k-state-active {
-   background-color: rgba(0, 0, 255, 0.23);	  /* blue with opacity*/
-    /*color: #2e2e2e;*/
-}
+
 #listMiddView .listMiddView{
-	height: 35px;
-   background-color:  rgba(0, 0, 255, 0.3);		
+	height: 25px;
 }
+.listMiddView .title {
+ color : white ;	
+}
+
+#listMiddView .listMiddView:hover{
+    border-color: #bcb4b0;
+    background-color: #58504c; /*black with grey*/
+	font-weight : 400;
+}
+
+#center-pane ,#listMiddView .listMiddView , .k-tabstrip .k-content.k-state-active {
+    background: silver; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left, DarkSlateGrey,silver ); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, DarkSlateGrey,silver); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, DarkSlateGrey,silver); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, DarkSlateGrey,silver); /* Standard syntax (must be last) */	
+}
+
+.k-tabstrip-items .k-state-active{
+	background-color: rgba(255,255,255,.4);
+    border-color: #c5c5c5;
+    right: 226px;	
+}
+
+.k-tabstrip-items .k-item {
+	margin: 0 -7px 0 0;	
+}
+
+
 #tabstrip input {
-    height: 30px;
+	height: 34px;
+	width: 410px;/*90%;*/
+	margin : 8px 0;
+	padding: 2px 13px;
     font-size: 17px;
-    width:88%;
+	background-color : rgb(16,16,16) ; /*black*/
+	color : rgb(248,248,248) ; /**/
+	
 }
+
+
+
 #tabstrip button {
-    height: 36px;
+    height: 40px;
     width: 36px;
-} 
+	background : silver;
+}
  
+#tabstrip button:hover{
+	color: #e3e3e3; /*almost white*/
+    border-color: #bcb4b0;
+    background-color: #58504c; /*black with grey*/
+	font-weight : 400;
+ }
  
- /*Window add list*/
-#addListWindow input{
+ /*Window add list*/   /* Edit list of tasks*/
+#addListWindow input , #editListWindow input{
     height: 30px;
     font-size: 17px;
 }
@@ -253,11 +282,13 @@ body{
     margin-top: 70px;
 }
 
-/* Edit list of tasks*/
+/* Edit list of tasks
 #editListWindow input{
     height: 30px;
     font-size: 17px;
 }
+*/
+
 #editListWindow #listDialogEditSubmit{
     float: right;
 }

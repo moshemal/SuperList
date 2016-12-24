@@ -44,8 +44,8 @@ define(['jquery'], function($){
   function getAllLists(){
   console.log("this is request all list");
      return $.ajax("/api/getAllLists",{
-	 method :"get" //, //,
-	 // success: function(data, a, xhr){console.log(data)}
+	 method :"get", //, //,
+	 //success: function(data, a, xhr){console.log(data)}
 	 });
   } 
  

@@ -19,24 +19,54 @@ define(['jquery', 'text!./view.html','text!./addNewItem.html', 'core/request', '
 
     var openNewTab = function(listName,itemName){
         if(listName != ""){
-            request.getItems(listName).then(function(data){
-                var tab = middleView.data("kendoTabStrip");
-
-                var itemList = $('<div id="listMiddView"></div>');
+            request.getItems(listName).then(function(data){ //get the items of the lists
+                
+				var tab = middleView.data("kendoTabStrip"); //the list name 
+                var itemList = $('<div id="listMiddView"></div>'); //the content
 
                 itemList.kendoListView({
-                    template: '<div class="listMiddView #:title#"><span class="title">#:title#</span></div>',
+                    template: '<div class="listMiddView #:title#"><span class="title">#:title#</span></div>', //each item
                     selectable: true,
                     change: function(){
                         var select = this.select();
                         OpenItemFunction(listName,$(select[0]).find(".title").html());
                     },
-                    dataSource: data.items
+                    dataSource: data.items //content
                 });
+/*
+$( ".listMiddView" )
+       .on( 'mouseover', function(e){
+           $(e.target).closest(".listMiddView").find(".title").css({
+			"background-color": "pink",
+			"background": "pink", 
+            "background":" pink", 
+            "background": "pink", 
+            "background": "pink" 
+			
+			 });	
+         })
+		 
+      .on('mouseleave',function(e) {
+		  $(e.target).closest(".listMiddView").find(".title").css({
+			 "background": "silver",   
+    "background": "-webkit-linear-gradient(left, DarkSlateGrey,silver )",
+    "background":" -o-linear-gradient(right, DarkSlateGrey,silver)", 
+   "background": "-moz-linear-gradient(right, DarkSlateGrey,silver)", 
+   "background": "linear-gradient(to right, DarkSlateGrey,silver)" 
+			 });
+			 
+            });			
 
-                if(itemName)
-                    itemList.select($(itemList.element).find("."+itemName));
 
+*/
+				
+            
+				
+                if(itemName){ //if the list isnt empty we have min 1 item
+				console.log(itemName);
+                   itemList.select($(itemList.element).find("."+itemName));//
+                
+				}
                 var dataSource = new kendo.data.DataSource({
                     data: [{
                         label: listName,
@@ -61,9 +91,10 @@ define(['jquery', 'text!./view.html','text!./addNewItem.html', 'core/request', '
                         });
                     }
                 });
-
                 tab.select("li:first");
             });
+			
+			
         }else{
             var tab = middleView.data("kendoTabStrip");
             var dataSource = new kendo.data.DataSource({

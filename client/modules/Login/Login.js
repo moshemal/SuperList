@@ -24,13 +24,6 @@ function($, template, request){
 	}
 
 	
-	//i want to see if i can take the user name
-	//Login.prototype.setName = function (elem){
-		//this.user = elem;
-	//}
-	
-	
-	
 	Login.prototype.appendTo = function (elem){
 		if (this.$){
 			this.$.appendTo($(elem))	
