@@ -30,13 +30,17 @@ define(['jquery', 'text!./view.html','text!./addNewItem.html', 'core/request', '
                     change: function(){
                         var select = this.select();
                         OpenItemFunction(listName,$(select[0]).find(".title").html());
+						//console.log($(select[0]));
                     },
                     dataSource: data.items //content
                 });
+				
+				console.log($(itemList));
+				//console.log($(select[0]).find(".title").html());
 /*
-$( ".listMiddView" )
+$( ".listMiddView #:title#" )
        .on( 'mouseover', function(e){
-           $(e.target).closest(".listMiddView").find(".title").css({
+           $(e.target).closest(".listMiddView #:title#").find(".title").css({
 			"background-color": "pink",
 			"background": "pink", 
             "background":" pink", 
@@ -47,7 +51,7 @@ $( ".listMiddView" )
          })
 		 
       .on('mouseleave',function(e) {
-		  $(e.target).closest(".listMiddView").find(".title").css({
+		  $(e.target).closest(".listMiddView #:title#").find(".title").css({
 			 "background": "silver",   
     "background": "-webkit-linear-gradient(left, DarkSlateGrey,silver )",
     "background":" -o-linear-gradient(right, DarkSlateGrey,silver)", 
@@ -57,12 +61,12 @@ $( ".listMiddView" )
 			 
             });			
 
-
 */
+
 				
             
 				
-                if(itemName){ //if the list isnt empty we have min 1 item
+                if(itemName){ //
 				console.log(itemName);
                    itemList.select($(itemList.element).find("."+itemName));//
                 
@@ -81,7 +85,6 @@ $( ".listMiddView" )
 
                 addItem.appendTo(tab.contentElement(0));
                 itemList.appendTo(tab.contentElement(0));
-
                 $(tab.contentElement(0)).find("button").kendoButton({
                     click: function(e) {
                         request.addItem(listName,$(tab.contentElement(0)).find("input").val()).then(function(){
