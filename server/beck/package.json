@@ -1,0 +1,23 @@
+{
+  "name": "superlist.server",
+  "version": "1.0.0",
+  "description": "server for superlist application",
+  "main": "main.js",
+  "dependencies": {
+    "node-static": "^0.7.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moshemal/SuperList.git"
+  },
+  "author": "Moshe Malka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/moshemal/SuperList/issues"
+  },
+  "homepage": "https://github.com/moshemal/SuperList#readme"
+}

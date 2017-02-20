@@ -47,16 +47,13 @@ function isLoggedIn (cookies){
 	return (token && user && sessions[user] == token); 
 }
 
-function createUser (user, password){
-	if (passwords[user]){
-		return false;
-	}
-	passwords[user] = password;
-	fs.writeFile('db/passwords.json', JSON.stringify(passwords), 'utf8');
-	return true;
-}
 
+
+function getLoggedIn(cookies){
+    return cookies["user"];
+}
 
 exports.login 			= login;
 exports.isLoggedIn 	= isLoggedIn; 
-exports.createUser 	= createUser;
+//exports.createUser 	= createUser;
+exports.getLoggedIn = getLoggedIn;

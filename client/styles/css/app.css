@@ -1,0 +1,358 @@
+.form {
+  position: relative;
+  background: #ffffff;
+  width: 285px;
+  margin: 40px auto 0;
+  padding: 40px;
+  border-top: 5px solid #33b5e5;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
+}
+.form .register {
+  display: none;
+}
+.form h2 {
+  margin: 0 0 20px;
+  line-height: 1;
+  color: #33b5e5;
+  font-size: 18px;
+  font-weight: 400;
+}
+.form .alert {
+  position: relative;
+  background: #f3f3f3;
+  color: #666666;
+  font-size: 12px;
+  margin-bottom: 20px;
+  padding: 15px;
+  text-align: left;
+}
+.form .alert .fa-times-circle {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  display: block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  margin-top: -8px;
+  float: right;
+}
+.form input {
+  outline: none;
+  display: block;
+  width: 100%;
+  margin: 0 0 20px;
+  padding: 10px 15px;
+  border: 1px solid #d9d9d9;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #ccc;
+  font-family: "Roboto";
+  -webkti-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-wieght: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: all 0.3s linear 0s;
+  -moz-transition: all 0.3s linear 0s;
+  -ms-transition: all 0.3s linear 0s;
+  -o-transition: all 0.3s linear 0s;
+  transition: all 0.3s linear 0s;
+}
+.form input:focus {
+  color: #333333;
+  border: 1px solid #33b5e5;
+}
+.form button {
+  cursor: pointer;
+  background: #33b5e5;
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 25px;
+  border: 0;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #ffffff;
+  font-family: "Roboto";
+  font-size: 14px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transition: all 0.3s linear 0s;
+  -moz-transition: all 0.3s linear 0s;
+  -ms-transition: all 0.3s linear 0s;
+  -o-transition: all 0.3s linear 0s;
+  transition: all 0.3s linear 0s;
+}
+.form button:hover {
+  background: #1a9bcb;
+}
+.form footer {
+  background: #f2f2f2;
+  width: 100%;
+  padding: 15px 40px;
+  margin: 0 0 -40px -40px;
+  -webkit-border-radius: 0 0 3px 3px;
+  -moz-border-radius: 0 0 3px 3px;
+  border-radius: 0 0 3px 3px;
+  color: #666666;
+  font-size: 12px;
+  text-align: center;
+}
+.form footer a {
+  color: #333333;
+  text-decoration: none;
+}
+
+
+/**********Apllication page*****************/
+body{
+   height: 100%;
+    }
+
+
+
+#left-pane { /*List of list side 1 2 3*/
+     background-color: #989076; /*#F0F8FF*/
+    }
+	
+#top-pane , #upBtn{ /**for 1**/
+  background-color: rgba(1, 10, 70, 0.10);
+  /*width: 399px;*/
+     }
+	 
+#upBtn {
+ width: 100%;
+ height : 100%;
+  /*background-color: rgba(1, 10, 70, 0.10);*/
+  background-image: url("/vendors/kendo-ui/styles/textures/highlight.png");
+}
+#upBtn h2 {
+	color : white ;
+	font-family : "Comic Sans MS", cursive, sans-serif;
+}
+
+#middle-pane{ /** for 2 **/
+    background-color: #c5c5c5;
+	background-image: url("/vendors/kendo-ui/styles/textures/brushed-metal.png");	
+}
+.listView {
+    height: 35px;
+	color: rgba(5, 4, 6, 0.9);
+	background-color: #c5c5c5;
+	background-image: url("/vendors/kendo-ui/styles/textures/brushed-metal.png");
+}
+.listView  .k-insertUnorderedList{
+    float: left;
+}
+.listView .title{
+   margin-top: 8px;
+    margin-left: 45px; /* 20*/
+    margin-right: 32px;
+	font-weight: bold;
+	
+}
+.listView p {
+	margin: 1px;
+    float: right;
+    font-family: "Comic Sans MS", cursive, sans-serif; 
+	font-weight: bold;
+}
+.listView button{ /*parent > child  button edit*/
+      float: right;
+	  right : 10px;
+	  background-color: hsla(210, 98%, 48%, 0.43);
+      border-color: #c5c5c5 ;
+	  display : none;
+	  color: #fff; /*color of the task white*/
+	  border-radius: 13px;
+	  padding-left: .4em;
+      padding-right: .2em;
+ }
+.listView:hover{
+	color: #fff;
+    font-weight: bold;
+    background-color: blue;
+    border-color: #2e2e2e;
+    border-width: 1px;
+    /*padding-top: 5px;*/ 
+}
+.listView button:hover{
+  color: #fff; /*color of the task white*/
+  font-weight: bold;
+  border-color: #c5c5c5 ;
+  float: right;
+  right : 10px;
+}
+
+#bottom-pane { /******Layout for 3 background color for button plus ********/
+  background-color: rgba(1, 10, 70, 0.10); 
+ }
+#addListButton {
+   width: 100%;
+   height : 100%;
+   background-color: rgba(9,8,7,0.7);
+   background-image: url("/vendors/kendo-ui/styles/textures/highlight.png");
+   color : white ;
+   font-weight: bold;
+}
+
+
+
+
+#center-pane{ /**for 4**/
+    text-align: center;
+	font-weight : bold;
+}		 
+
+#listMiddView .listMiddView{
+	height: 25px;
+}
+.listMiddView .title {
+ color : white ;	
+}
+
+#listMiddView .listMiddView:hover{
+    border-color: #bcb4b0;
+    background-color: #58504c; /*black with grey*/
+	font-weight : 400;
+}
+
+#center-pane ,#listMiddView .listMiddView , .k-tabstrip .k-content.k-state-active {
+    background: silver; /* For browsers that do not support gradients */    
+    background: -webkit-linear-gradient(left, DarkSlateGrey,silver ); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(right, DarkSlateGrey,silver); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(right, DarkSlateGrey,silver); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to right, DarkSlateGrey,silver); /* Standard syntax (must be last) */	
+}
+
+.k-tabstrip-items .k-state-active{
+	background-color: rgba(255,255,255,.4);
+    border-color: #c5c5c5;
+    right: 226px;	
+}
+
+.k-tabstrip-items .k-item {
+	margin: 0 -7px 0 0;	
+}
+
+
+#tabstrip input {
+	height: 34px;
+	width: 410px;/*90%;*/
+	margin : 8px 0;
+	padding: 2px 13px;
+    font-size: 17px;
+	background-color : rgb(16,16,16) ; /*black*/
+	color : rgb(248,248,248) ; /**/
+	
+}
+
+
+
+#tabstrip button {
+    height: 40px;
+    width: 36px;
+	background : silver;
+}
+ 
+#tabstrip button:hover{
+	color: #e3e3e3; /*almost white*/
+    border-color: #bcb4b0;
+    background-color: #58504c; /*black with grey*/
+	font-weight : 400;
+ }
+ 
+ /*Window add list*/   /* Edit list of tasks*/
+#addListWindow input , #editListWindow input{
+    height: 30px;
+    font-size: 17px;
+}
+#addListWindow #listDialogAddSubmit{
+    float: right;
+    margin-top: 70px;
+}
+
+/* Edit list of tasks
+#editListWindow input{
+    height: 30px;
+    font-size: 17px;
+}
+*/
+
+#editListWindow #listDialogEditSubmit{
+    float: right;
+}
+#editListWindow #listDialogEditRemove{
+    float: left;
+}
+
+
+
+
+/* */
+.item {
+    float: left;
+    margin: 40px;
+	background-color : 	#F0F8FF ;
+	font-family : "Comic Sans MS", cursive, sans-serif;
+}
+.item .row {
+    float:left;
+    width: 100%;
+    margin: 5px;
+}
+.item label {
+    font-size: 14px;
+    padding-right: 50px;
+    float: left;
+}
+.item input {
+    height: 25px;
+    font-size: 14px;
+	font-family : "Comic Sans MS", cursive, sans-serif;
+}
+#rightBtn{
+	margin-top:70px;
+	float: left;
+	
+}
+#right-pane{
+	background-color : 	#F0F8FF ;/*AliceBlue*/
+}
+
+
+
+/**********************Window adding NEW TASK******************/
+ul .add-task-buttons{
+list-style-type: none;
+}
+.cancel-btn{
+    /*margin-right: 11px;*/
+    /*margin-left: 90px;*/
+    margin-top: -53px;
+    /*padding-top: 1px;*/
+	/*float: right;*/
+    /*height: 38px;*/
+}
+button#close {
+    height: 38px;
+    margin-bottom: 11px;
+    margin-left: 90px;
+    /*margin-right: 11px;*/
+    float: right;
+}
+button#save {
+    height: 38px;
+}
+

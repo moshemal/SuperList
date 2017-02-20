@@ -1,12 +1,11 @@
 /**
- * Created by moshemal.
+ * Created by galibr.
  */
 
-define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout'], 
-  function($, Login, cookies, layout){
+
+define(['jquery', 'modules/Login/Login',  'core/request', 'core/layout'],
+  function($, Login, request, layout){
   'use strict';
-  
-  var AUTH_STR = "auth";
 
   function startLoggin(){
     function loginSuccess(){
@@ -16,26 +15,26 @@ define(['jquery', 'modules/Login/Login', 'core/cookies', 'core/layout'],
     }
 
     function loginFail(){
-      console.log("login fail tring again");
+      console.log("login fail trying again");
       login.resetDeferred();
       login.getPromise().then(loginSuccess, loginFail);
     }
 
     var login = new Login();
     login.appendTo("#container");
-    login.getPromise().then(loginSuccess, loginFail);  
+    login.getPromise().then(loginSuccess, loginFail);
+
+      $("#container").on("click","#register",function(){
+          login.destroy();
+          startRegister();
+          return false;
+      })
   }
+
   
   function startApp(){
-    layout.createLayout("3W", "#container");
+      layout.createLayout("3W", "#container");
   }
 
-  //checking if allready logged in
-  if(cookies.getCookie(AUTH_STR) !== "" ) {
-    console.log("starting application");
-    startApp();
-  } else {
-    startLoggin();
-  }
+  request.isLoggedIn().then(function() {startApp();},function(){startLoggin();});
 });
-
